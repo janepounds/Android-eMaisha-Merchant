@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/creditCardBackground"
+                android:padding="5dp"
+                android:text="@string/shop_name" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="35dp">
+
+                <EditText
+                    android:id="@+id/etxt_shop_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="@string/shop_name"
+                    android:inputType="text"
+                    android:padding="8dp"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/creditCardBackground"
+                android:padding="5dp"
+                android:text="@string/shop_contact_number" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="35dp">
+
+                <EditText
+                    android:id="@+id/etxt_shop_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="@string/shop_contact_number"
+                    android:inputType="text"
+                    android:padding="8dp"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/creditCardBackground"
+                android:padding="5dp"
+                android:text="@string/shop_email" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="35dp">
+
+                <EditText
+                    android:id="@+id/etxt_shop_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="@string/shop_email"
+                    android:inputType="text"
+                    android:padding="8dp"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+            </androidx.cardview.widget.CardView>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/creditCardBackground"
+                android:padding="5dp"
+                android:text="@string/currency_symbol" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="35dp">
+
+                <EditText
+                    android:id="@+id/etxt_shop_currency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:fontFamily="@font/montserrat"
+                    android:drawableRight="@drawable/drop_down"
+                    android:hint="@string/shop_currency"
+                    android:inputType="text"
+                    android:padding="8dp"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+            </androidx.cardview.widget.CardView>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/creditCardBackground"
+                android:padding="5dp"
+                android:text="@string/shop_address" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="35dp">
+
+                <EditText
+                    android:id="@+id/etxt_shop_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="@string/supplier_address_one"
+                    android:inputType="text"
+                    android:padding="8dp"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="35dp">
+
+                <EditText
+                    android:id="@+id/etxt_address_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="@string/supplier_address_two"
+                    android:inputType="text"
+                    android:padding="8dp"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+            </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+            <TextView
+                android:id="@+id/txt_shop_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="40dp"
+                android:background="@drawable/balance_cards"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/edit"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_update"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="18dp"
+                android:background="@drawable/balance_cards"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/update_information"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

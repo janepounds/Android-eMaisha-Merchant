@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#01baef</color>
+    <color name="colorPrimaryDark">#01baef</color>
+    <color name="colorAccent">#01baef</color>
+    <color name="white">#FFFFFF</color>
+    <color name="title_color">#000</color>
+    <color name="textColorPrimaryDark">#757575</color>
+    <color name="creditCardBackground">#557F5F</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="textColorSecondaryLight">#666666</color>
+    <color name="deleteIconColor">#DF0456</color>
+
+    <color name="windowBackground">#eeeeee</color>
+
+    <color name="grey_5">#F8F8F8</color>
+    <color name="grey_60">#666666</color>
+    <color name="grey_10">#e6e6e6</color>
+
+    <color name="blue_grey">#546e7a</color>
+    <color name="searchbar">#F0F0F0</color>
+
+</resources>
