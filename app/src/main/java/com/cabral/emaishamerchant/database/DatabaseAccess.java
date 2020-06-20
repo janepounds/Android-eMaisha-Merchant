@@ -64,7 +64,7 @@ public class DatabaseAccess {
     }
 
     //insert customer
-    public boolean addCustomer(String customer_name, String customer_cell, String customer_email, String customer_address, String customer_address_two) {
+    public boolean addCustomer(String customer_name, String customer_cell, String customer_email, String customer_address, String customer_address_two,String customer_image) {
 
         ContentValues values = new ContentValues();
 
@@ -74,6 +74,7 @@ public class DatabaseAccess {
         values.put("customer_email", customer_email);
         values.put("customer_address", customer_address);
         values.put("customer_address_two", customer_address_two);
+        values.put("customer_image", customer_image);
 
         long check = database.insert("customers", null, values);
         database.close();
@@ -172,7 +173,7 @@ public class DatabaseAccess {
 
 
     //update customer
-    public boolean updateCustomer(String customer_id, String customer_name, String customer_cell, String customer_email, String customer_address, String customer_address_two) {
+    public boolean updateCustomer(String customer_id, String customer_name, String customer_cell, String customer_email, String customer_address, String customer_address_two, String customer_image) {
 
         ContentValues values = new ContentValues();
 
@@ -182,6 +183,7 @@ public class DatabaseAccess {
         values.put("customer_email", customer_email);
         values.put("customer_address", customer_address);
         values.put("customer_address_two",customer_address_two);
+        values.put("customer_image",customer_image);
 
         long check = database.update("customers", values, " customer_id=? ", new String[]{customer_id});
         database.close();
@@ -233,7 +235,6 @@ public class DatabaseAccess {
         values.put("product_description", product_description);
         values.put("product_buy_price", product_buy_price);
         values.put("product_sell_price", product_sell_price);
-
         values.put("product_supplier", product_supplier);
         values.put("product_image", product_image);
         values.put("product_stock", product_stock);
@@ -338,7 +339,7 @@ public class DatabaseAccess {
 
 
     //insert Suppliers
-    public boolean addSuppliers(String suppliers_name, String suppliers_contact_person, String suppliers_cell, String suppliers_email, String suppliers_address, String suppliers_address_two) {
+    public boolean addSuppliers(String suppliers_name, String suppliers_contact_person, String suppliers_cell, String suppliers_email, String suppliers_address, String suppliers_address_two, String suppliers_image) {
 
         ContentValues values = new ContentValues();
 
@@ -349,6 +350,7 @@ public class DatabaseAccess {
         values.put("suppliers_email", suppliers_email);
         values.put("suppliers_address", suppliers_address);
         values.put("suppliers_address_two", suppliers_address_two);
+        values.put("suppliers_image", suppliers_image);
 
         long check = database.insert("suppliers", null, values);
         database.close();
@@ -363,7 +365,7 @@ public class DatabaseAccess {
 
 
     //update Suppliers
-    public boolean updateSuppliers(String suppliers_id, String suppliers_name, String suppliers_contact_person, String suppliers_cell, String suppliers_email, String suppliers_address, String suppliers_address_two) {
+    public boolean updateSuppliers(String suppliers_id, String suppliers_name, String suppliers_contact_person, String suppliers_cell, String suppliers_email, String suppliers_address, String suppliers_address_two, String suppliers_image) {
 
         ContentValues values = new ContentValues();
 
@@ -374,6 +376,7 @@ public class DatabaseAccess {
         values.put("suppliers_email", suppliers_email);
         values.put("suppliers_address", suppliers_address);
         values.put("suppliers_address_two", suppliers_address_two);
+        values.put("suppliers_image", suppliers_image);
 
         long check = database.update("suppliers", values, "suppliers_id=?", new String[]{suppliers_id});
         database.close();
@@ -1148,6 +1151,7 @@ public class DatabaseAccess {
                 map.put("customer_email", cursor.getString(3));
                 map.put("customer_address", cursor.getString(4));
                 map.put("customer_address_two", cursor.getString(5));
+                map.put("customer_image", cursor.getString(6));
 
 
                 customer.add(map);
@@ -1593,6 +1597,7 @@ public class DatabaseAccess {
                 map.put("suppliers_email", cursor.getString(4));
                 map.put("suppliers_address", cursor.getString(5));
                 map.put("suppliers_address_two", cursor.getString(6));
+                map.put("suppliers_image", cursor.getString(7));
 
 
                 supplier.add(map);

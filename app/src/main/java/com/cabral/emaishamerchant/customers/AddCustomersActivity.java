@@ -3,13 +3,17 @@ package com.cabral.emaishamerchant.customers;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,19 +22,24 @@ import com.cabral.emaishamerchant.HomeActivity;
 import com.cabral.emaishamerchant.R;
 import com.cabral.emaishamerchant.database.DatabaseAccess;
 import com.cabral.emaishamerchant.database.DatabaseOpenHelper;
+import com.cabral.emaishamerchant.product.AddProductActivity;
 import com.cabral.emaishamerchant.utils.BaseActivity;
 import com.obsez.android.lib.filechooser.ChooserDialog;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 import es.dmoral.toasty.Toasty;
+import in.mayanknagwanshi.imagepicker.ImageSelectActivity;
 
 public class AddCustomersActivity extends BaseActivity {
 
 
     ProgressDialog loading;
     EditText etxtCustomerName, etxtAddress, etxtAddressTwo, etxtCustomerCell, etxtCustomerEmail;
-    TextView txtAddCustomer;
+    ImageView imgCustomer;
+    String mediaPath, encodedImage = "N/A";
+    TextView txtAddCustomer, txtChooseImage;
 
 
     @Override
@@ -49,6 +58,33 @@ public class AddCustomersActivity extends BaseActivity {
         etxtAddress = findViewById(R.id.etxt_address);
         etxtAddressTwo = findViewById(R.id.etxt_address_two);
         txtAddCustomer = findViewById(R.id.txt_add_customer);
+        imgCustomer = findViewById(R.id.customer_image);
+        txtChooseImage = findViewById(R.id.txt_choose_customer_image);
+
+        txtChooseImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(AddCustomersActivity.this, ImageSelectActivity.class);
+                intent.putExtra(ImageSelectActivity.FLAG_COMPRESS, true);//default is true
+                intent.putExtra(ImageSelectActivity.FLAG_CAMERA, true);//default is true
+                intent.putExtra(ImageSelectActivity.FLAG_GALLERY, true);//default is true
+                startActivityForResult(intent, 1213);
+            }
+        });
+
+        imgCustomer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(AddCustomersActivity.this, ImageSelectActivity.class);
+                intent.putExtra(ImageSelectActivity.FLAG_COMPRESS, true);//default is true
+                intent.putExtra(ImageSelectActivity.FLAG_CAMERA, true);//default is true
+                intent.putExtra(ImageSelectActivity.FLAG_GALLERY, true);//default is true
+                startActivityForResult(intent, 1213);
+            }
+        });
+
 
 
         txtAddCustomer.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +123,7 @@ public class AddCustomersActivity extends BaseActivity {
                     DatabaseAccess databaseAccess = DatabaseAccess.getInstance(AddCustomersActivity.this);
                     databaseAccess.open();
 
-                    boolean check = databaseAccess.addCustomer(customer_name, customer_cell, customer_email, customer_address, customer_address_two);
+                    boolean check = databaseAccess.addCustomer(customer_name, customer_cell, customer_email, customer_address, customer_address_two,encodedImage);
 
                     if (check) {
                         Toasty.success(AddCustomersActivity.this, R.string.customer_successfully_added, Toast.LENGTH_SHORT).show();
@@ -204,6 +240,43 @@ public class AddCustomersActivity extends BaseActivity {
             }
         });
 
+    }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try {
+
+            // When an Image is picked
+            if (requestCode == 1213 && resultCode == RESULT_OK && null != data) {
+
+
+                mediaPath = data.getStringExtra(ImageSelectActivity.RESULT_FILE_PATH);
+                Bitmap selectedImage = BitmapFactory.decodeFile(mediaPath);
+                imgCustomer.setImageBitmap(selectedImage);
+
+                encodedImage = encodeImage(selectedImage);
+
+
+            }
+
+
+        } catch (Exception e) {
+            Toast.makeText(this, R.string.something_went_wrong, Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+
+    private String encodeImage(Bitmap bm) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] b = baos.toByteArray();
+        String encImage = Base64.encodeToString(b, Base64.DEFAULT);
+
+        return encImage;
     }
 
 

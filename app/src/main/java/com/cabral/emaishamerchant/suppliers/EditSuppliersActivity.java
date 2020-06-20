@@ -1,25 +1,35 @@
 package com.cabral.emaishamerchant.suppliers;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cabral.emaishamerchant.HomeActivity;
 import com.cabral.emaishamerchant.R;
+import com.cabral.emaishamerchant.customers.EditCustomersActivity;
 import com.cabral.emaishamerchant.database.DatabaseAccess;
 import com.cabral.emaishamerchant.utils.BaseActivity;
 
+import java.io.ByteArrayOutputStream;
+
 import es.dmoral.toasty.Toasty;
+import in.mayanknagwanshi.imagepicker.ImageSelectActivity;
 
 public class EditSuppliersActivity extends BaseActivity {
 
     EditText etxtSuppliersName, etxtSuppliersContactPerson, etxtSuppliersAddress, etxtSuppliersAddressTwo, etxtSuppliersCell, etxtSuppliersEmail;
-    TextView txtEditSuppliers, txtUpdateSuppliers;
+    ImageView imgSupplier;
+    String mediaPath, encodedImage = "N/A";
+    TextView txtEditSuppliers, txtUpdateSuppliers,txtChooseImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +47,37 @@ public class EditSuppliersActivity extends BaseActivity {
         etxtSuppliersEmail = findViewById(R.id.etxt_supplier_email);
         etxtSuppliersAddress = findViewById(R.id.etxt_supplier_address);
         etxtSuppliersAddressTwo = findViewById(R.id.etxt_supplier_address_two);
+        imgSupplier = findViewById(R.id.supplier_image);
+        txtChooseImage = findViewById(R.id.txt_choose_supplier_image);
 
         txtUpdateSuppliers = findViewById(R.id.txt_update_suppliers);
         txtEditSuppliers = findViewById(R.id.txt_edit_suppliers);
+
+        imgSupplier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(EditSuppliersActivity.this, ImageSelectActivity.class);
+                intent.putExtra(ImageSelectActivity.FLAG_COMPRESS, true);//default is true
+                intent.putExtra(ImageSelectActivity.FLAG_CAMERA, true);//default is true
+                intent.putExtra(ImageSelectActivity.FLAG_GALLERY, true);//default is true
+                startActivityForResult(intent, 1213);
+            }
+        });
+
+        txtChooseImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(EditSuppliersActivity.this, ImageSelectActivity.class);
+                intent.putExtra(ImageSelectActivity.FLAG_COMPRESS, true);//default is true
+                intent.putExtra(ImageSelectActivity.FLAG_CAMERA, true);//default is true
+                intent.putExtra(ImageSelectActivity.FLAG_GALLERY, true);//default is true
+                startActivityForResult(intent, 1213);
+            }
+        });
+
+
 
         String get_suppliers_id = getIntent().getExtras().getString("suppliers_id");
         String get_suppliers_name = getIntent().getExtras().getString("suppliers_name");
@@ -48,6 +86,7 @@ public class EditSuppliersActivity extends BaseActivity {
         String get_suppliers_email = getIntent().getExtras().getString("suppliers_email");
         String get_suppliers_address = getIntent().getExtras().getString("suppliers_address");
         String get_suppliers_address_two = getIntent().getExtras().getString("suppliers_address_two");
+       String get_supplier_image = getIntent().getExtras().getString("suppliers_image");
 
 
         etxtSuppliersName.setText(get_suppliers_name);
@@ -56,6 +95,20 @@ public class EditSuppliersActivity extends BaseActivity {
         etxtSuppliersEmail.setText(get_suppliers_email);
         etxtSuppliersAddress.setText(get_suppliers_address);
         etxtSuppliersAddressTwo.setText(get_suppliers_address_two);
+
+        if (get_supplier_image != null) {
+            if (get_supplier_image.length() < 6) {
+
+                imgSupplier.setImageResource(R.drawable.image_placeholder);
+            } else {
+
+
+                byte[] bytes = Base64.decode(get_supplier_image, Base64.DEFAULT);
+                imgSupplier.setImageBitmap(BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
+
+            }
+        }
+
 
         etxtSuppliersName.setEnabled(false);
         etxtSuppliersContactPerson.setEnabled(false);
@@ -130,7 +183,7 @@ public class EditSuppliersActivity extends BaseActivity {
                     DatabaseAccess databaseAccess = DatabaseAccess.getInstance(EditSuppliersActivity.this);
                     databaseAccess.open();
 
-                    boolean check = databaseAccess.updateSuppliers(get_suppliers_id, suppliers_name, suppliers_contact_person, suppliers_cell, suppliers_email, suppliers_address, suppliers_address_two);
+                    boolean check = databaseAccess.updateSuppliers(get_suppliers_id, suppliers_name, suppliers_contact_person, suppliers_cell, suppliers_email, suppliers_address, suppliers_address_two, encodedImage);
 
                     if (check) {
                         Toasty.success(EditSuppliersActivity.this, R.string.update_successfully, Toast.LENGTH_SHORT).show();
@@ -150,7 +203,40 @@ public class EditSuppliersActivity extends BaseActivity {
 
 
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try {
 
+            // When an Image is picked
+            if (requestCode == 1213 && resultCode == RESULT_OK && null != data) {
+
+
+                mediaPath = data.getStringExtra(ImageSelectActivity.RESULT_FILE_PATH);
+                Bitmap selectedImage = BitmapFactory.decodeFile(mediaPath);
+                imgSupplier.setImageBitmap(selectedImage);
+
+                encodedImage = encodeImage(selectedImage);
+
+
+            }
+
+
+        } catch (Exception e) {
+            Toast.makeText(this, R.string.something_went_wrong, Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+
+    private String encodeImage(Bitmap bm) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] b = baos.toByteArray();
+        String encImage = Base64.encodeToString(b, Base64.DEFAULT);
+
+        return encImage;
+    }
 
     //for back button
     @Override

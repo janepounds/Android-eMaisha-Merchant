@@ -208,12 +208,11 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/cart_product_image"
+                        android:id="@+id/customer_image"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
+                        android:layout_height="120dp"
                         android:layout_weight="1"
                         android:contentDescription="TODO"
-
                         android:scaleType="centerCrop"
                         app:srcCompat="@drawable/profile_icon"
                         tools:ignore="NestedWeights" />
@@ -236,6 +235,7 @@
                         android:textColor="#000" />
 
                     <TextView
+                        android:id="@+id/txt_choose_customer_image"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"

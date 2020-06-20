@@ -4,7 +4,10 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,12 +58,26 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.MyView
         String email=customerData.get(position).get("customer_email");
         String address=customerData.get(position).get("customer_address");
         String addressTwo=customerData.get(position).get("customer_address_two");
+        String base64Image = customerData.get(position).get("customer_image");
 
         holder.txtCustomerName.setText(name);
-        holder.txtCell.setText(context.getString(R.string.area_code)+cell);
+        holder.txtCell.setText(context.getString(R.string.area_code)+" "+cell);
         holder.txtEmail.setText(email);
         holder.txtAddress.setText(address);
         holder.txtAddressTwo.setText(addressTwo);
+
+        if (base64Image != null) {
+            if (base64Image.length() < 6) {
+                Log.d("64base", base64Image);
+                holder.imageCustomer.setImageResource(R.drawable.image_placeholder);
+            } else {
+
+
+                byte[] bytes = Base64.decode(base64Image, Base64.DEFAULT);
+                holder.imageCustomer.setImageBitmap(BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
+
+            }
+        }
 
 
         holder.imgCall.setOnClickListener(new View.OnClickListener() {
@@ -126,7 +143,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView txtCustomerName, txtCell, txtEmail, txtAddress, txtAddressTwo;
-        ImageView imgDelete,imgCall;
+        ImageView imgDelete,imgCall, imageCustomer;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -137,6 +154,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.MyView
             txtAddressTwo = itemView.findViewById(R.id.txt_address_two);
             imgDelete = itemView.findViewById(R.id.img_delete);
             imgCall = itemView.findViewById(R.id.img_call);
+            imageCustomer = itemView.findViewById(R.id.customer_image);
             itemView.setOnClickListener(this);
 
         }
@@ -150,6 +168,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.MyView
             i.putExtra("customer_email", customerData.get(getAdapterPosition()).get("customer_email"));
             i.putExtra("customer_address", customerData.get(getAdapterPosition()).get("customer_address"));
             i.putExtra("customer_address_two", customerData.get(getAdapterPosition()).get("customer_address_two"));
+            i.putExtra("customer_image", customerData.get(getAdapterPosition()).get("customer_image"));
             context.startActivity(i);
         }
     }

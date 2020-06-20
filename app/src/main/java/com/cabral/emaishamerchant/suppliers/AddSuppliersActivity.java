@@ -3,34 +3,43 @@ package com.cabral.emaishamerchant.suppliers;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ajts.androidmads.library.ExcelToSQLite;
 import com.cabral.emaishamerchant.HomeActivity;
 import com.cabral.emaishamerchant.R;
+import com.cabral.emaishamerchant.customers.AddCustomersActivity;
 import com.cabral.emaishamerchant.database.DatabaseAccess;
 import com.cabral.emaishamerchant.database.DatabaseOpenHelper;
 import com.cabral.emaishamerchant.utils.BaseActivity;
 import com.obsez.android.lib.filechooser.ChooserDialog;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 import es.dmoral.toasty.Toasty;
+import in.mayanknagwanshi.imagepicker.ImageSelectActivity;
 
 public class AddSuppliersActivity extends BaseActivity {
 
 
     ProgressDialog loading;
     EditText etxtSuppliersName,etxtSuppliersContactPerson,etxtSuppliersAddress,etxtSuppliersAddressTwo,etxtSuppliersCell,etxtSuppliersEmail;
-    TextView txtAddSuppliers;
+    ImageView imgSupplier;
+    String mediaPath, encodedImage = "N/A";
+    TextView txtAddSuppliers,txtChooseImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +56,33 @@ public class AddSuppliersActivity extends BaseActivity {
         etxtSuppliersEmail=findViewById(R.id.etxt_supplier_email);
         etxtSuppliersAddress=findViewById(R.id.etxt_supplier_address);
         etxtSuppliersAddressTwo = findViewById(R.id.etxt_supplier_address_two);
-
-
+        imgSupplier = findViewById(R.id.supplier_image);
+        txtChooseImage = findViewById(R.id.txt_choose_supplier_image);
         txtAddSuppliers=findViewById(R.id.txt_add_supplier);
+
+        txtChooseImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(AddSuppliersActivity.this, ImageSelectActivity.class);
+                intent.putExtra(ImageSelectActivity.FLAG_COMPRESS, true);//default is true
+                intent.putExtra(ImageSelectActivity.FLAG_CAMERA, true);//default is true
+                intent.putExtra(ImageSelectActivity.FLAG_GALLERY, true);//default is true
+                startActivityForResult(intent, 1213);
+            }
+        });
+
+        imgSupplier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(AddSuppliersActivity.this, ImageSelectActivity.class);
+                intent.putExtra(ImageSelectActivity.FLAG_COMPRESS, true);//default is true
+                intent.putExtra(ImageSelectActivity.FLAG_CAMERA, true);//default is true
+                intent.putExtra(ImageSelectActivity.FLAG_GALLERY, true);//default is true
+                startActivityForResult(intent, 1213);
+            }
+        });
 
 
         txtAddSuppliers.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +139,7 @@ public class AddSuppliersActivity extends BaseActivity {
                     DatabaseAccess databaseAccess = DatabaseAccess.getInstance(AddSuppliersActivity.this);
                     databaseAccess.open();
 
-                    boolean check=databaseAccess.addSuppliers(suppliers_name,suppliers_contact_person,suppliers_cell,suppliers_email,suppliers_address,suppliers_address_two);
+                    boolean check=databaseAccess.addSuppliers(suppliers_name,suppliers_contact_person,suppliers_cell,suppliers_email,suppliers_address,suppliers_address_two, encodedImage);
 
                     if (check)
                     {
@@ -230,6 +263,40 @@ public class AddSuppliersActivity extends BaseActivity {
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try {
+
+            // When an Image is picked
+            if (requestCode == 1213 && resultCode == RESULT_OK && null != data) {
+
+
+                mediaPath = data.getStringExtra(ImageSelectActivity.RESULT_FILE_PATH);
+                Bitmap selectedImage = BitmapFactory.decodeFile(mediaPath);
+                imgSupplier.setImageBitmap(selectedImage);
+
+                encodedImage = encodeImage(selectedImage);
+
+
+            }
+
+
+        } catch (Exception e) {
+            Toast.makeText(this, R.string.something_went_wrong, Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+
+    private String encodeImage(Bitmap bm) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] b = baos.toByteArray();
+        String encImage = Base64.encodeToString(b, Base64.DEFAULT);
+
+        return encImage;
+    }
 
     public void fileChooser() {
         new ChooserDialog(AddSuppliersActivity.this)

@@ -16,7 +16,7 @@
         android:foreground="?android:attr/selectableItemBackground"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="5dp"
-        app:cardElevation="10dp"
+        app:cardElevation="5dp"
         app:cardPreventCornerOverlap="false">
 
         <LinearLayout
@@ -27,28 +27,27 @@
             android:weightSum="10">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
+                android:layout_weight="3"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/cart_product_image"
+                    android:id="@+id/customer_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:contentDescription="TODO"
-                    android:padding="10dp"
-                    android:scaleType="centerCrop"
+                    android:padding="4dp"
+                    android:scaleType="fitXY"
                     app:srcCompat="@drawable/new_user_image" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_weight="8"
+                android:layout_weight="6"
+                android:paddingStart="10dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -95,7 +94,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
