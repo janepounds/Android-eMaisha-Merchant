@@ -5,7 +5,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -40,6 +43,9 @@ import java.util.List;
 import java.util.Locale;
 
 import es.dmoral.toasty.Toasty;
+import vpos.apipackage.PosApiHelper;
+import vpos.apipackage.Print;
+import vpos.apipackage.PrintInitException;
 
 public class ProductCart extends BaseActivity {
 
@@ -52,6 +58,13 @@ public class ProductCart extends BaseActivity {
 
     List<String> customerNames, orderTypeNames, paymentMethodNames;
     ArrayAdapter<String> customerAdapter, orderTypeAdapter, paymentMethodAdapter;
+
+    //pos variable for printing
+    int ret = -1;
+    private boolean m_bThreadFinished = true;
+    public String tag = "PrintActivity-M.J";
+    PosApiHelper posApiHelper = PosApiHelper.getInstance();
+    private int RESULT_CODE = 0;
 
 
     @Override
@@ -140,6 +153,7 @@ public class ProductCart extends BaseActivity {
             final List<HashMap<String, String>> lines;
             lines = databaseAccess.getCartProduct();
 
+
             if (lines.size() <= 0) {
                 Toasty.error(ProductCart.this, R.string.no_product_found, Toast.LENGTH_SHORT).show();
             } else {
@@ -157,15 +171,15 @@ public class ProductCart extends BaseActivity {
                 String timeStamp = tsLong.toString();
                 Log.d("Time", timeStamp);
 
-                final JSONObject obj = new JSONObject();
+                final JSONObject orderObj = new JSONObject();
                 try {
 
 
-                    obj.put("order_date", currentDate);
-                    obj.put("order_time", currentTime);
-                    obj.put("order_type", type);
-                    obj.put("order_payment_method", payment_method);
-                    obj.put("customer_name", customer_name);
+                    orderObj.put("order_date", currentDate);
+                    orderObj.put("order_time", currentTime);
+                    orderObj.put("order_type", type);
+                    orderObj.put("order_payment_method", payment_method);
+                    orderObj.put("customer_name", customer_name);
 
 
                     JSONArray array = new JSONArray();
@@ -196,15 +210,31 @@ public class ProductCart extends BaseActivity {
                         array.put(objp);
 
                     }
-                    obj.put("lines", array);
+                    orderObj.put("lines", array);
 
 
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Log.e("Error",e.getMessage());
                 }
-
-                saveOrderInOfflineDb(obj);
-
+                //Charge if payment method is Card
+                String orderNumber=saveOrderInOfflineDb(orderObj);
+                
+                databaseAccess.open();
+                final List<HashMap<String, String>> shopInfo;
+                shopInfo = databaseAccess.getShopInformation();
+                
+                if(orderNumber!=null){
+                    try {
+                        printThread = new Print_Thread(orderObj,shopInfo,orderNumber);//Print Invoice
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Log.e("Error", e.getMessage());
+                    }
+                    printThread.start();
+                }else{
+                    Toast.makeText(ProductCart.this,"Error while saving Order Info!",Toast.LENGTH_LONG).show();
+                }
 
             }
 
@@ -215,7 +245,7 @@ public class ProductCart extends BaseActivity {
 
 
     //for save data in offline
-    private void saveOrderInOfflineDb(final JSONObject obj) {
+    private String saveOrderInOfflineDb(final JSONObject obj) {
 
         //get current timestamp
         Long tsLong = System.currentTimeMillis() / 1000;
@@ -236,7 +266,7 @@ public class ProductCart extends BaseActivity {
         startActivity(intent);
         finish();
 
-
+        return timeStamp;
     }
 
 
@@ -564,5 +594,125 @@ public class ProductCart extends BaseActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
+    Print_Thread printThread = null;
+
+    public class Print_Thread extends Thread {
+
+        JSONArray comodityObjectArray;
+        List<HashMap<String, String>> shopData;
+        JSONObject orderDetails;
+        String order;
+
+        public boolean isThreadFinished() {
+            return m_bThreadFinished;
+        }
+
+        public Print_Thread(JSONObject orderObject, List<HashMap<String, String>> shopInfo, String orderNumber) throws JSONException {
+            this.comodityObjectArray = orderObject.getJSONArray("lines");
+            this.shopData = shopInfo;
+            this.orderDetails=orderObject;
+            this.order=orderNumber;
+        }
+
+        public void run() {
+            Log.e("M.J", "Print_Thread[ run ] run() begin");
+
+            synchronized (this) {
+
+                m_bThreadFinished = false;
+                ret = posApiHelper.PrintInit(4, (byte) 20, (byte) 20, (byte) 0x33);
+                Log.e(tag, "init code:" + ret);
+
+                RESULT_CODE = 0;
+
+                String shop_name = shopData.get(0).get("shop_name");
+                String shop_contact = shopData.get(0).get("shop_contact");
+                String shop_address = shopData.get(0).get("shop_address");
+                String shop_currency = shopData.get(0).get("shop_currency");
+                posApiHelper.PrintStr(""+shop_name.toUpperCase()+"  \n");
+
+                posApiHelper.PrintSetFont((byte) 24, (byte) 24, (byte) 0x00);
+                posApiHelper.PrintSetGray(3);
+                posApiHelper.PrintStr(shop_address.toUpperCase()+"\n");
+                posApiHelper.PrintStr(shop_contact.toUpperCase()+"\n");
+
+                posApiHelper.PrintSetFont((byte) 24, (byte) 24, (byte) 0x00);
+                posApiHelper.PrintSetGray(2);
+                posApiHelper.PrintStr("===============================\n\n");
+                double totalprice=0;
+                for (int i = 0; i < this.comodityObjectArray.length(); i++) {
+
+
+                    JSONObject objp = null;
+                    try {
+                        objp = (JSONObject) comodityObjectArray.get(i);
+                        objp.getString("product_price");
+                        posApiHelper.PrintStr(objp.getString("product_name")+" ("+objp.getString("product_qty")+") : UGX "+objp.getString("product_price")+" \n\n");
+                        totalprice+= Double.parseDouble(objp.getString("product_price"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+//                    objp.put("product_weight", lines.get(i).get("product_weight") + " " + weight_unit);
+//                    objp.put("product_order_date", currentDate);
+
+                }
+                String orderPayment= null,orderDate=null;
+                try {
+                    orderPayment = orderDetails.getString("order_payment_method");
+                    orderDate = orderDetails.getString("order_date");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                posApiHelper.PrintStr("Sub Total          UGX "+totalprice+"\n\n");
+                posApiHelper.PrintStr("===============================\n\n");
+                posApiHelper.PrintStr("Total To Pay       UGX "+totalprice+"\n\n");
+                posApiHelper.PrintStr(""+orderPayment+" Debit\n");
+                posApiHelper.PrintStr(orderDate+"    ORDER. "+order+" \n\n");
+                posApiHelper.PrintStr("===============================\n\n");
+                posApiHelper.PrintStr("         --IMPORTANT--         \n");
+                posApiHelper.PrintStr("Keep This Copy for your Records\n\n");
+                posApiHelper.PrintStr("THANKS FOR SHOPPING AT "+shop_name.toUpperCase()+"\n\n");
+                posApiHelper.PrintStr("                                         \n");
+                posApiHelper.PrintStr("                                         \n");
+                posApiHelper.PrintStr("                                         \n");
+
+                //SendMsg("Printing... ");
+                final long starttime_long = System.currentTimeMillis();
+                ret = posApiHelper.PrintStart();
+
+                Log.e(tag, "PrintStart ret = " + ret);
+
+
+                if (ret != 0) {
+                    RESULT_CODE = -1;
+                    Log.e("PrintError", "Lib_PrnStart fail, ret = " + ret);
+                    if (ret == -1) {
+                        Toast.makeText(ProductCart.this,"No Print Paper ", Toast.LENGTH_LONG).show();
+                    } else if(ret == -2) {
+                        Toast.makeText(ProductCart.this,"low hot  ", Toast.LENGTH_LONG).show();
+                    }else if(ret == -3) {
+                        Toast.makeText(ProductCart.this,"low voltage  ", Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(ProductCart.this,"Print fail ", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    RESULT_CODE = 0;
+                    Log.w("","Print Finish ");
+                }
+                final long endttime_long = System.currentTimeMillis();
+                final long totaltime_long = starttime_long - endttime_long;
+                Log.e("printtime", "Print Long Totaltimie " + totaltime_long +"Ms");
+
+
+                m_bThreadFinished = true;
+
+                Log.e(tag, "goToSleep2...");
+            }
+        }
+    }
+
 }
 
