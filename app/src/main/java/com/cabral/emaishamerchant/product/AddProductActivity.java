@@ -412,31 +412,31 @@ public class AddProductActivity extends BaseActivity {
                 String product_weight = etxtProductWeight.getText().toString();
 
 
-                if (product_name.isEmpty()) {
+                if (product_name==null || product_name.isEmpty()) {
                     etxtProductName.setError(getString(R.string.product_name_cannot_be_empty));
                     etxtProductName.requestFocus();
-                } else if (product_code.isEmpty()) {
+                } else if (product_code==null || product_code.isEmpty()) {
                     etxtProductCode.setError(getString(R.string.product_code_cannot_be_empty));
                     etxtProductCode.requestFocus();
-                } else if (product_category_name.isEmpty() || product_category_id.isEmpty()) {
+                } else if (product_category_name==null || product_category_id==null  || product_category_name.isEmpty() || product_category_id.isEmpty()) {
                     etxtProductCategory.setError(getString(R.string.product_category_cannot_be_empty));
                     etxtProductCategory.requestFocus();
-                } else if (product_description.isEmpty()) {
+                } else if (product_description==null || product_description.isEmpty()) {
                     etxtProductDescription.setError(getString(R.string.product_description_cannot_be_empty));
                     etxtProductDescription.requestFocus();
-                } else if (product_buy_price.isEmpty()) {
+                } else if (product_buy_price==null || product_buy_price.isEmpty()) {
                     etxtProductBuyPrice.setError(getString(R.string.product_buy_price_cannot_be_empty));
                     etxtProductBuyPrice.requestFocus();
-                } else if (product_sell_price.isEmpty()) {
+                } else if (product_sell_price==null || product_sell_price.isEmpty()) {
                     etxtProductSellPrice.setError(getString(R.string.product_sell_price_cannot_be_empty));
                     etxtProductSellPrice.requestFocus();
-                } else if (product_Weight_unit_name.isEmpty() || product_weight.isEmpty()) {
+                } else if (product_Weight_unit_name==null || product_weight==null || product_Weight_unit_name.isEmpty() || product_weight.isEmpty()) {
                     etxtProductWeight.setError(getString(R.string.product_weight_cannot_be_empty));
                     etxtProductWeight.requestFocus();
-                } else if (product_stock.isEmpty()) {
+                } else if ( product_stock==null || product_stock.isEmpty()) {
                     etxtProductStock.setError(getString(R.string.product_stock_cannot_be_empty));
                     etxtProductStock.requestFocus();
-                } else if (product_supplier_name.isEmpty() || product_supplier.isEmpty()) {
+                } else if ( product_supplier_name==null || product_supplier==null  || product_supplier_name.isEmpty() || product_supplier.isEmpty()) {
                     etxtProductSupplier.setError(getString(R.string.product_supplier_cannot_be_empty));
                     etxtProductSupplier.requestFocus();
                 } else {
