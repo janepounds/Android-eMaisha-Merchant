@@ -91,7 +91,7 @@
                     android:fontFamily="@font/montserrat"
                     android:paddingStart="15dp"
                     android:paddingBottom="10dp"
-                    android:text="$350"
+                    android:text="UGX 350"
                     android:textColor="@color/creditCardBackground"
                     android:textSize="18sp"
                     android:textStyle="bold" />

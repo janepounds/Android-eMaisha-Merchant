@@ -46,7 +46,6 @@ public class EditProductScannerViewActivity extends BaseActivity implements ZXin
 
     }
 
-
     @Override
     public void onResume() {
         super.onResume();
@@ -61,7 +60,6 @@ public class EditProductScannerViewActivity extends BaseActivity implements ZXin
         scannerView.stopCamera();
     }
 
-
     @Override
     public void handleResult(Result result) {
         final String myResult = result.getText();
@@ -75,7 +73,6 @@ public class EditProductScannerViewActivity extends BaseActivity implements ZXin
 
 
     }
-
 
     //Runtime permission
     private void requestCameraPermission() {
@@ -109,9 +106,6 @@ public class EditProductScannerViewActivity extends BaseActivity implements ZXin
                 }).check();
     }
 
-
-
-
     //for back button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -125,4 +119,5 @@ public class EditProductScannerViewActivity extends BaseActivity implements ZXin
                 return super.onOptionsItemSelected(item);
         }
     }
+    
 }

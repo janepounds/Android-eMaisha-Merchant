@@ -42,8 +42,6 @@ public class ScannerActivity extends BaseActivity implements ZXingScannerView.Re
         setContentView(scannerView);
         scannerView.startCamera();
         scannerView.setResultHandler(ScannerActivity.this);
-
-
     }
 
 
