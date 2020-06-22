@@ -176,7 +176,7 @@ public class EditSuppliersActivity extends BaseActivity {
                     etxtSuppliersAddress.requestFocus();
                 }else if (suppliers_address_two.isEmpty()) {
                     etxtSuppliersAddressTwo.setError(getString(R.string.enter_suppliers_address));
-                    etxtSuppliersAddress.requestFocus();
+                    etxtSuppliersAddressTwo.requestFocus();
                 }
                 else {
 

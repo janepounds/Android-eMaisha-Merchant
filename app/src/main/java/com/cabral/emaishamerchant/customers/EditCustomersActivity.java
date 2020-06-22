@@ -148,8 +148,8 @@ public class EditCustomersActivity extends BaseActivity {
                     etxtAddress.requestFocus();
                 }
                 else if (customer_address_two.isEmpty()) {
-                    etxtAddress.setError(getString(R.string.enter_customer_address));
-                    etxtAddress.requestFocus();
+                    etxtAdressTwo.setError(getString(R.string.enter_customer_address));
+                    etxtAdressTwo.requestFocus();
                 }else {
 
                     DatabaseAccess databaseAccess = DatabaseAccess.getInstance(EditCustomersActivity.this);
