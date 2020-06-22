@@ -16,7 +16,7 @@ import es.dmoral.toasty.Toasty;
 
 public class DatabaseOpenHelper extends SQLiteAssetHelper {
     public static final String DATABASE_NAME = "smart_pos.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 1;
     private Context mContext;
 
     public DatabaseOpenHelper(Context context) {
@@ -91,14 +91,18 @@ public class DatabaseOpenHelper extends SQLiteAssetHelper {
             e.printStackTrace();
         }
     }
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-        // If you need to add a new column
-        if (newVersion > oldVersion) {
-            db.execSQL("ALTER TABLE  suppliers ADD COLUMN suppliers_image INTEGER DEFAULT 0");
-        }
-    }
+//    @Override
+//    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+//
+//        // If you need to add a new column
+//        if (newVersion > oldVersion) {
+//
+//            db.execSQL("ALTER TABLE  suppliers ADD COLUMN suppliers_address_two TEXT");
+//            db.execSQL("ALTER TABLE  suppliers ADD COLUMN suppliers_image TEXT");
+//            db.execSQL("ALTER TABLE  customers ADD COLUMN customer_address_two TEXT");
+//            db.execSQL("ALTER TABLE  customers ADD COLUMN customer_image TEXT");
+//        }
+//    }
 
 
 }
