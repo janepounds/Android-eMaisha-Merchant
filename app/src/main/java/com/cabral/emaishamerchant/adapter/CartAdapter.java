@@ -74,7 +74,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         final String qty = cart_product.get(position).get("product_qty");
 
 
-        Log.d("unit_ID ", weight_unit_id);
+        Log.d("unit_ID ", weight_unit_id+" ");
 
         databaseAccess.open();
         String base64Image = databaseAccess.getProductImage(product_id);

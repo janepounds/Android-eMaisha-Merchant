@@ -91,7 +91,7 @@ public class PosProductAdapter extends RecyclerView.Adapter<PosProductAdapter.My
             public void onClick(View v) {
 
 
-                Log.d("w_id", weight_unit_id);
+                Log.d("w_id", weight_unit_id+" ");
                 databaseAccess.open();
 
                 int check = databaseAccess.addToCart(product_id, product_weight, weight_unit_id, product_price, 1);
