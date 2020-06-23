@@ -218,6 +218,13 @@ public class ProductCart extends BaseActivity {
                     Log.e("Error",e.getMessage());
                 }
                 //Charge if payment method is Card
+                try {
+                    if(orderObj.getString("order_payment_method").equalsIgnoreCase("CARD"))
+                        Toast.makeText(ProductCart.this,"Charge card!",Toast.LENGTH_LONG).show();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.e("Error",e.getMessage());
+                }
                 String orderNumber=saveOrderInOfflineDb(orderObj);
                 
                 databaseAccess.open();
