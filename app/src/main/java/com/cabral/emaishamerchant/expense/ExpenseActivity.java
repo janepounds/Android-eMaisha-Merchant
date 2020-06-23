@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,6 +36,8 @@ public class ExpenseActivity extends BaseActivity {
     ImageView imgNoProduct;
     EditText etxtSearch;
 
+    TextView total_expense;
+
     FloatingActionButton fabAdd;
 
     @Override
@@ -57,6 +60,8 @@ public class ExpenseActivity extends BaseActivity {
         recyclerView = findViewById(R.id.product_recyclerview);
         imgNoProduct = findViewById(R.id.image_no_product);
 
+        total_expense = findViewById(R.id.txt_total_expense);
+
         // set a GridLayoutManager with default vertical orientation and 3 number of columns
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager); // set LayoutManager to RecyclerView
@@ -70,10 +75,16 @@ public class ExpenseActivity extends BaseActivity {
             }
         });
 
-
-
-
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(ExpenseActivity.this);
+        databaseAccess.open();
+        String currency = databaseAccess.getCurrency();
+
+        databaseAccess.open();
+        total_expense.setText( currency +" "+ databaseAccess.getTotalExpense("total"));
+
+
+
+
         databaseAccess.open();
 
         //get data from local database
