@@ -256,6 +256,8 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
                         new LatLng(selectedLocation.latitude,
                                 selectedLocation.longitude), DEFAULT_ZOOM));
 
+                etxtShopAddress.setText(place.getAddress()+" "+ place.getName());
+
             }
 
 
@@ -267,35 +269,6 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
             }
         });
 
-        proceed_checkout_btn = findViewById(R.id.save_address_btn);
-        proceed_checkout_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Geocoder geocoder;
-                List<Address> addresses = null;
-                geocoder = new Geocoder(ShopInformationActivity.this, Locale.getDefault());
-                if(mCenterLatLong==null && map!=null){
-                    mCenterLatLong=map.getCameraPosition().target;
-                }
-
-                try {
-                    if(mCenterLatLong!=null)
-                        addresses = geocoder.getFromLocation(mCenterLatLong.latitude, mCenterLatLong.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Log.e(TAG,e.getMessage());
-                }
-
-                final String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-                final String city = addresses.get(0).getLocality();
-                //String state = addresses.get(0).getAdminArea();
-                //String country = addresses.get(0).getCountryName();
-                final String postalCode = addresses.get(0).getPostalCode();
-                final String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
-                //final String streetname = addresses.get(0).getThoroughfare()+", "+addresses.get(0).getSubThoroughfare();
-            }
-        });
 
 
     }
@@ -334,10 +307,29 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
             public void onCameraMove() {
                 cameraPosition= map.getCameraPosition();
                 Log.w("Camera postion change" + "", cameraPosition + "");
-                mCenterLatLong = cameraPosition.target;
+
 
                 //mGoogleMap.clear();
+                Geocoder geocoder;
+                List<Address> addresses = null;
+                geocoder = new Geocoder(ShopInformationActivity.this, Locale.getDefault());
+                if( map!=null){
+                    mCenterLatLong = cameraPosition.target;
+                }
 
+                try {
+                    if(mCenterLatLong!=null)
+                        addresses = geocoder.getFromLocation(mCenterLatLong.latitude, mCenterLatLong.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.e(TAG,e.getMessage());
+                }
+
+                final String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+                final String city = addresses.get(0).getLocality();
+                final String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
+                //final String streetname = addresses.get(0).getThoroughfare()+", "+addresses.get(0).getSubThoroughfare();
+                etxtShopAddress.setText( city+", "+ address);
 
             }
         });
