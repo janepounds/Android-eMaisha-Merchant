@@ -262,5 +262,6 @@
     <string name="mobile_number" translatable="false">Mobile Number</string>
     <string name="supplier_address_one" translatable="false">Address 1</string>
     <string name="supplier_address_two" translatable="false">Address 2</string>
+    <string name="emvTips" translatable="false">Please insert, Swipe or Tap your card ...</string>
 
 </resources>
