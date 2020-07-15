@@ -1140,6 +1140,8 @@ public class DatabaseAccess {
     //get customer data
     public ArrayList<HashMap<String, String>> getCustomers() {
         ArrayList<HashMap<String, String>> customer = new ArrayList<>();
+        this.database = openHelper.getWritableDatabase();
+        Log.d("Is Open", String.valueOf(database.isOpen()));
         Cursor cursor = database.rawQuery("SELECT * FROM customers ORDER BY customer_id DESC", null);
         if (cursor.moveToFirst()) {
             do {
@@ -1157,8 +1159,8 @@ public class DatabaseAccess {
                 customer.add(map);
             } while (cursor.moveToNext());
         }
-        cursor.close();
-        database.close();
+//        cursor.close();
+//        database.close();
         return customer;
     }
 
@@ -1268,7 +1270,7 @@ public class DatabaseAccess {
             do {
                 HashMap<String, String> map = new HashMap<String, String>();
 
-
+                map.put("shop_id", cursor.getString(0));
                 map.put("shop_name", cursor.getString(1));
                 map.put("shop_contact", cursor.getString(2));
                 map.put("shop_email", cursor.getString(3));

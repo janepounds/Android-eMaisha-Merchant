@@ -1,7 +1,11 @@
 package com.cabral.emaishamerchant;
 
 import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,6 +19,7 @@ import androidx.cardview.widget.CardView;
 
 import com.cabral.emaishamerchant.customers.CustomersActivity;
 import com.cabral.emaishamerchant.expense.ExpenseActivity;
+import com.cabral.emaishamerchant.network.NetworkStateChecker;
 import com.cabral.emaishamerchant.orders.OrdersActivity;
 import com.cabral.emaishamerchant.pos.PosActivity;
 import com.cabral.emaishamerchant.product.ProductActivity;
@@ -44,14 +49,12 @@ public class HomeActivity extends BaseActivity {
     private static long back_pressed;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-//        getSupportActionBar().setTitle(R.string.app_name);
-////        getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(R.drawable.actionbar_gradient));
-//        getSupportActionBar().setElevation(0);
+        registerReceiver(new NetworkStateChecker(), new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.custom_toolbar_home);

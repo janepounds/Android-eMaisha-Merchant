@@ -262,5 +262,7 @@
     <string name="mobile_number" translatable="false">Mobile Number</string>
     <string name="supplier_address_one" translatable="false">Address 1</string>
     <string name="supplier_address_two" translatable="false">Address 2</string>
+    <string name="searchShippingAddress">Search Your Shop Address</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>

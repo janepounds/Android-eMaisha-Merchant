@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -12,9 +16,16 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         ndk {
-            //abiFilters "arm64-v8a"
-            abiFilters  "armeabi-v7a"
+           // abiFilters "arm64-v8a"
+            //abiFilters  "armeabi-v7a"
+//                    abiFilters "x86"
         }
+        def secureProps = new Properties()
+        if (file("../apikey.properties").exists()) {
+            file("../apikey.properties")?.withInputStream { secureProps.load(it) }
+        }
+        resValue "string", "maps_api_key", (secureProps.getProperty("MAPS_API_KEY") ?: "")
+
     }
     buildTypes {
         release {
@@ -45,6 +56,7 @@ dependencies {
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     implementation 'com.karumi:dexter:6.0.2'
 
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
 
     //https://github.com/dm77/barcodescanner
     implementation 'me.dm7.barcodescanner:zxing:1.9'
@@ -54,6 +66,13 @@ dependencies {
 
     implementation 'com.itextpdf:itextg:5.5.10'
     implementation 'com.github.barteksc:android-pdf-viewer:3.1.0-beta.1'
+
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-places:17.0.0'
+    implementation 'com.google.android.libraries.places:places:2.3.0'
+    implementation 'com.intellij:annotations:+@jar'
+
 
     //Added by Jovan for POS CS10
     implementation(name: 'A26Library-1.7.0-Standard', ext: 'aar')
