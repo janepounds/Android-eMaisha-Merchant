@@ -33,7 +33,7 @@ public interface Api {
     @FormUrlEncoded
     @POST("postSuppliers")
     Call<ResponseBody> postSupplier(
-            @Field("shop_name") String shop_name,
+            @Field("shop_id") Integer shop_id,
             @Field("suppliers_id") String suppliers_id,
             @Field("suppliers_name") String suppliers_name,
             @Field("suppliers_contact_person") String suppliers_contact_person,
@@ -59,7 +59,7 @@ public interface Api {
     @FormUrlEncoded
     @POST("postProductCategories")
     Call<ResponseBody> postCategory(
-            @Field("shop_name") String shop_name,
+            @Field("shop_id") Integer shop_id,
             @Field("category_id") String category_id,
             @Field("category_name") String category_name
     );
@@ -67,7 +67,7 @@ public interface Api {
     @FormUrlEncoded
     @POST("postMerchantProducts")
     Call<ResponseBody> postProduct(
-            @Field("shop_name") String shop_name,
+            @Field("shop_id") Integer shop_id,
             @Field("product_id") String product_id,
             @Field("product_name") String product_name,
             @Field("product_code") String product_code,

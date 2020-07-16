@@ -1141,7 +1141,6 @@ public class DatabaseAccess {
     public ArrayList<HashMap<String, String>> getCustomers() {
         ArrayList<HashMap<String, String>> customer = new ArrayList<>();
         this.database = openHelper.getWritableDatabase();
-        Log.d("Is Open", String.valueOf(database.isOpen()));
         Cursor cursor = database.rawQuery("SELECT * FROM customers ORDER BY customer_id DESC", null);
         if (cursor.moveToFirst()) {
             do {
@@ -1290,6 +1289,7 @@ public class DatabaseAccess {
     //get product data
     public ArrayList<HashMap<String, String>> getProducts() {
         ArrayList<HashMap<String, String>> product = new ArrayList<>();
+        this.database = openHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM products ORDER BY product_id DESC", null);
         if (cursor.moveToFirst()) {
             do {
@@ -1354,6 +1354,7 @@ public class DatabaseAccess {
     //get product data
     public ArrayList<HashMap<String, String>> getAllExpense() {
         ArrayList<HashMap<String, String>> product = new ArrayList<>();
+        this.database = openHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM expense ORDER BY expense_id DESC", null);
         if (cursor.moveToFirst()) {
             do {
@@ -1380,6 +1381,7 @@ public class DatabaseAccess {
     //get product category data
     public ArrayList<HashMap<String, String>> getProductCategory() {
         ArrayList<HashMap<String, String>> product_category = new ArrayList<>();
+        this.database = openHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM product_category ORDER BY category_id DESC", null);
         if (cursor.moveToFirst()) {
             do {
