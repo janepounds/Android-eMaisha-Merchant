@@ -548,7 +548,7 @@ public class DatabaseAccess {
 
 
     //insert order in order list
-    public void insertOrder(String order_id, JSONObject obj) {
+    public boolean insertOrder(String order_id, JSONObject obj) {
 
         ContentValues values = new ContentValues();
         ContentValues values2 = new ContentValues();
@@ -589,7 +589,14 @@ public class DatabaseAccess {
                 String product_weight = jo.getString("product_weight");
                 String product_qty = jo.getString("product_qty");
                 String product_price = jo.getString("product_price");
-                String product_image = jo.getString("product_image");
+                String product_image=null;
+                try {
+
+                    product_image = jo.getString("product_image");
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
                 String product_order_date = jo.getString("product_order_date");
 
 
@@ -604,6 +611,7 @@ public class DatabaseAccess {
 
                 database.insert("order_details", null, values2);
 
+                return true;
             }
 
         } catch (JSONException e) {
@@ -611,6 +619,8 @@ public class DatabaseAccess {
         }
 
         database.close();
+
+        return false;
     }
 
 
