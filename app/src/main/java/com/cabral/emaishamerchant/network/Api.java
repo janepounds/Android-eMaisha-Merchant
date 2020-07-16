@@ -20,7 +20,7 @@ public interface Api {
     @FormUrlEncoded
     @POST("postCustomer")
     Call<ResponseBody> postCustomer(
-            @Field("shop_name") String shop_name,
+            @Field("shop_id") Integer shop_id,
             @Field("customer_id") String customer_id,
             @Field("customer_name") String customer_name,
             @Field("customer_cell") String customer_cell,
@@ -47,7 +47,7 @@ public interface Api {
     @FormUrlEncoded
     @POST("postExpenses")
     Call<ResponseBody> postExpense(
-            @Field("shop_name") String shop_name,
+            @Field("shop_id") Integer shop_id,
             @Field("expense_id") String expense_id,
             @Field("expense_name") String expense_name,
             @Field("expense_note") String expense_note,
@@ -105,7 +105,7 @@ public interface Api {
     @FormUrlEncoded
     @POST("postProductWeight")
     Call<ResponseBody> postWeight(
-            @Field("shop_name") String shop_name,
+            @Field("shop_id") Integer shop_id,
             @Field("weight_id") String weight_id,
             @Field("weight_unit") String weight_unit
     );

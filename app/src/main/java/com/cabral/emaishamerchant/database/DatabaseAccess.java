@@ -1484,6 +1484,7 @@ public class DatabaseAccess {
     //get product supplier data
     public ArrayList<HashMap<String, String>> getWeightUnit() {
         ArrayList<HashMap<String, String>> product_weight_unit = new ArrayList<>();
+        this.database = openHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM product_weight", null);
         if (cursor.moveToFirst()) {
             do {
@@ -1598,6 +1599,7 @@ public class DatabaseAccess {
     //get suppliers data
     public ArrayList<HashMap<String, String>> getSuppliers() {
         ArrayList<HashMap<String, String>> supplier = new ArrayList<>();
+        this.database = openHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM suppliers ORDER BY suppliers_id DESC", null);
         if (cursor.moveToFirst()) {
             do {
