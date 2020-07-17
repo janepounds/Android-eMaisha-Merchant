@@ -85,7 +85,7 @@ public interface Api {
     @FormUrlEncoded
     @POST("postPaymentMethod")
     Call<ResponseBody> postPaymentMethod(
-            @Field("shop_name") String shop_name,
+            @Field("shop_id") Integer shop_id,
             @Field("payment_method_id") String payment_method_id,
             @Field("payment_method_name") String payment_method_name
     );
@@ -93,7 +93,7 @@ public interface Api {
     @FormUrlEncoded
     @POST("postCart")
     Call<ResponseBody> postCart(
-            @Field("shop_name") String shop_name,
+            @Field("shop_id") Integer shop_id,
             @Field("cart_id") String cart_id,
             @Field("product_id") String product_id,
             @Field("product_weight") String product_weight,
@@ -114,7 +114,7 @@ public interface Api {
     @FormUrlEncoded
     @POST("postOrderList")
     Call<ResponseBody> postOrderList(
-            @Field("shop_name") String shop_name,
+            @Field("shop_id") Integer shop_id,
             @Field("order_id") String order_id,
             @Field("invoice_id") String invoice_id,
             @Field("order_date") String order_date,
@@ -127,24 +127,12 @@ public interface Api {
     @FormUrlEncoded
     @POST("postOrderType")
     Call<ResponseBody> postOrderType(
-            @Field("shop_name") String shop_name,
+            @Field("shop_id") Integer shop_id,
             @Field("order_type_id") String order_type_id,
             @Field("order_type_name") String order_type_name
     );
 
-    @FormUrlEncoded
-    @POST("postOrderDetail")
-    Call<ResponseBody> postOrderDetail(
-            @Field("shop_name") String shop_name,
-            @Field("order_details_id") String order_details_id,
-            @Field("invoice_id") String invoice_id,
-            @Field("product_name") String product_name,
-            @Field("product_weight") String product_weight,
-            @Field("product_qty") String product_qty,
-            @Field("product_price") String product_price,
-            @Field("product_image") String product_image,
-            @Field("product_order_date") String product_order_date
-    );
+
 
 
 

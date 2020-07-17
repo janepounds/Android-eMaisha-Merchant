@@ -523,6 +523,7 @@ public class DatabaseAccess {
     //get cart product
     public ArrayList<HashMap<String, String>> getCartProduct() {
         ArrayList<HashMap<String, String>> product = new ArrayList<>();
+        this.database = openHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM product_cart", null);
         if (cursor.moveToFirst()) {
             do {
@@ -626,6 +627,7 @@ public class DatabaseAccess {
 
     public ArrayList<HashMap<String, String>> getOrderList() {
         ArrayList<HashMap<String, String>> orderList = new ArrayList<>();
+        this.database = openHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM order_list ORDER BY order_id DESC", null);
         if (cursor.moveToFirst()) {
             do {
@@ -677,6 +679,7 @@ public class DatabaseAccess {
     //get order history data
     public ArrayList<HashMap<String, String>> getOrderDetailsList(String order_id) {
         ArrayList<HashMap<String, String>> orderDetailsList = new ArrayList<>();
+        this.database = openHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM order_details WHERE invoice_id='" + order_id + "' ORDER BY order_details_id DESC", null);
         if (cursor.moveToFirst()) {
             do {
@@ -1177,12 +1180,11 @@ public class DatabaseAccess {
     //get order type data
     public ArrayList<HashMap<String, String>> getOrderType() {
         ArrayList<HashMap<String, String>> order_type = new ArrayList<>();
+        this.database = openHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM order_type ORDER BY order_type_id DESC", null);
         if (cursor.moveToFirst()) {
             do {
                 HashMap<String, String> map = new HashMap<String, String>();
-
-
                 map.put("order_type_id", cursor.getString(0));
                 map.put("order_type_name", cursor.getString(1));
 
@@ -1199,6 +1201,7 @@ public class DatabaseAccess {
     //get order type data
     public ArrayList<HashMap<String, String>> getPaymentMethod() {
         ArrayList<HashMap<String, String>> payment_method = new ArrayList<>();
+        this.database = openHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM payment_method ORDER BY payment_method_id DESC", null);
         if (cursor.moveToFirst()) {
             do {
