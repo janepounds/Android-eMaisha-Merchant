@@ -1,5 +1,7 @@
 package com.cabral.emaishamerchant.network;
 
+import com.cabral.emaishamerchant.models.ShopResponse;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;

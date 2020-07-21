@@ -224,11 +224,11 @@ public class DatabaseAccess {
 
 
     //insert products
-    public boolean addProduct(String product_name, String product_code, String product_category, String product_description, String product_buy_price, String product_sell_price, String product_stock, String product_supplier, String product_image, String weight_unit_id, String product_weight) {
+    public boolean addProduct(String product_id,String product_name, String product_code, String product_category, String product_description, String product_buy_price, String product_sell_price, String product_stock, String product_supplier, String product_image, String weight_unit_id, String product_weight) {
 
         ContentValues values = new ContentValues();
 
-
+        values.put("product_id", product_id);
         values.put("product_name", product_name);
         values.put("product_code", product_code);
         values.put("product_category", product_category);
@@ -239,7 +239,6 @@ public class DatabaseAccess {
         values.put("product_image", product_image);
         values.put("product_stock", product_stock);
         values.put("product_weight_unit_id", weight_unit_id);
-
         values.put("product_weight", product_weight);
 
 

@@ -209,6 +209,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
                         address,
                         currency
                 );
+
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -216,6 +217,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
                     Log.d("Shop Sync", "Shop Synced");
                     try {
                         String s = response.body().string();
+                        Log.d("Response",s);
                         JSONObject jsonObject = new JSONObject(s);
                         SharedPrefManager.getInstance(context).saveShopId(jsonObject.getInt("shop_id"));
                     } catch (IOException | JSONException e) {
@@ -392,7 +394,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.d("Shop Sync Failure", "Shop Synced Failed");
+                Log.d("Supplier Sync Failure", "Supplier Synced Failed");
                 t.printStackTrace();
             }
         });
@@ -418,14 +420,14 @@ public class NetworkStateChecker extends BroadcastReceiver {
                     Log.d("Expense Sync", "Expense Synced");
 
                 } else {
-                    Log.d("Customer Sync Failure", "Customer Synced Failed");
+                    Log.d("Expense Sync Failure", "Expense Synced Failed");
                     Log.d("Error", String.valueOf(response));
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Log.d("Customer Sync Failure", "Customer Synced Failed");
+                Log.d("Expense Sync Failure", "Expense Synced Failed");
                 t.printStackTrace();
             }
         });

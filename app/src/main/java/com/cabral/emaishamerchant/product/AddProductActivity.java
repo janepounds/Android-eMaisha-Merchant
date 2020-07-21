@@ -29,17 +29,24 @@ import com.cabral.emaishamerchant.HomeActivity;
 import com.cabral.emaishamerchant.R;
 import com.cabral.emaishamerchant.database.DatabaseAccess;
 import com.cabral.emaishamerchant.database.DatabaseOpenHelper;
+import com.cabral.emaishamerchant.network.RetrofitClient;
+import com.cabral.emaishamerchant.storage.SharedPrefManager;
 import com.cabral.emaishamerchant.utils.BaseActivity;
 import com.obsez.android.lib.filechooser.ChooserDialog;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
 import in.mayanknagwanshi.imagepicker.ImageSelectActivity;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AddProductActivity extends BaseActivity {
 
@@ -53,7 +60,6 @@ public class AddProductActivity extends BaseActivity {
     String mediaPath, encodedImage = "N/A";
     ArrayAdapter<String> categoryAdapter, supplierAdapter, weightUnitAdapter;
     List<String> categoryNames, supplierNames, weightUnitNames;
-
     String selectedCategoryID, selectedSupplierID, selectedWeightUnitID;
 
 
@@ -395,8 +401,13 @@ public class AddProductActivity extends BaseActivity {
             public void onClick(View v) {
 
                 // Toasty.warning(AddProductActivity.this, "Add Product is disable in demo version. Please purchase from Codecanyon.Thank you ", Toast.LENGTH_SHORT).show();
-
-
+                DatabaseAccess databaseAccess = DatabaseAccess.getInstance(AddProductActivity.this);
+                databaseAccess.open();
+                List<HashMap<String, String>> shop_information = databaseAccess.getShopInformation();
+                Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                String shop_name = shop_information.get(0).get("shop_name");
+                Integer shop_id = SharedPrefManager.getInstance(AddProductActivity.this).getShopId();
+                String product_id = shop_name + "PDT" + timestamp.toString();
                 String product_name = etxtProductName.getText().toString();
                 String product_code = etxtProductCode.getText().toString();
                 String product_category_name = etxtProductCategory.getText().toString();
@@ -412,49 +423,97 @@ public class AddProductActivity extends BaseActivity {
                 String product_weight = etxtProductWeight.getText().toString();
 
 
-                if (product_name==null || product_name.isEmpty()) {
+                if (product_name == null || product_name.isEmpty()) {
                     etxtProductName.setError(getString(R.string.product_name_cannot_be_empty));
                     etxtProductName.requestFocus();
-                } else if (product_code==null || product_code.isEmpty()) {
+                } else if (product_code == null || product_code.isEmpty()) {
                     etxtProductCode.setError(getString(R.string.product_code_cannot_be_empty));
                     etxtProductCode.requestFocus();
-                } else if (product_category_name==null || product_category_id==null  || product_category_name.isEmpty() || product_category_id.isEmpty()) {
+                } else if (product_category_name == null || product_category_id == null || product_category_name.isEmpty() || product_category_id.isEmpty()) {
                     etxtProductCategory.setError(getString(R.string.product_category_cannot_be_empty));
                     etxtProductCategory.requestFocus();
-                } else if (product_description==null || product_description.isEmpty()) {
+                } else if (product_description == null || product_description.isEmpty()) {
                     etxtProductDescription.setError(getString(R.string.product_description_cannot_be_empty));
                     etxtProductDescription.requestFocus();
-                } else if (product_buy_price==null || product_buy_price.isEmpty()) {
+                } else if (product_buy_price == null || product_buy_price.isEmpty()) {
                     etxtProductBuyPrice.setError(getString(R.string.product_buy_price_cannot_be_empty));
                     etxtProductBuyPrice.requestFocus();
-                } else if (product_sell_price==null || product_sell_price.isEmpty()) {
+                } else if (product_sell_price == null || product_sell_price.isEmpty()) {
                     etxtProductSellPrice.setError(getString(R.string.product_sell_price_cannot_be_empty));
                     etxtProductSellPrice.requestFocus();
-                } else if (product_Weight_unit_name==null || product_weight==null || product_Weight_unit_name.isEmpty() || product_weight.isEmpty()) {
+                } else if (product_Weight_unit_name == null || product_weight == null || product_Weight_unit_name.isEmpty() || product_weight.isEmpty()) {
                     etxtProductWeight.setError(getString(R.string.product_weight_cannot_be_empty));
                     etxtProductWeight.requestFocus();
-                } else if ( product_stock==null || product_stock.isEmpty()) {
+                } else if (product_stock == null || product_stock.isEmpty()) {
                     etxtProductStock.setError(getString(R.string.product_stock_cannot_be_empty));
                     etxtProductStock.requestFocus();
-                } else if ( product_supplier_name==null || product_supplier==null  || product_supplier_name.isEmpty() || product_supplier.isEmpty()) {
+                } else if (product_supplier_name == null || product_supplier == null || product_supplier_name.isEmpty() || product_supplier.isEmpty()) {
                     etxtProductSupplier.setError(getString(R.string.product_supplier_cannot_be_empty));
                     etxtProductSupplier.requestFocus();
                 } else {
-                    DatabaseAccess databaseAccess = DatabaseAccess.getInstance(AddProductActivity.this);
-                    databaseAccess.open();
 
-                    boolean check = databaseAccess.addProduct(product_name, product_code, product_category_id, product_description, product_buy_price, product_sell_price, product_stock, product_supplier, encodedImage, product_weight_unit_id, product_weight);
+                    Call<ResponseBody> call = RetrofitClient
+                            .getInstance()
+                            .getApi()
+                            .postProduct(
+                                    shop_id,
+                                    product_id,
+                                    product_name,
+                                    product_code,
+                                    product_category_id,
+                                    product_description,
+                                    product_buy_price,
+                                    product_sell_price,
+                                    product_supplier,
+                                    product_stock,
+                                    encodedImage,
+                                    product_weight_unit_id,
+                                    product_weight
 
-                    if (check) {
-                        Toasty.success(AddProductActivity.this, R.string.product_successfully_added, Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(AddProductActivity.this, HomeActivity.class);
-                        startActivity(intent);
-                        finish();
-                    } else {
 
-                        Toasty.error(AddProductActivity.this, R.string.failed, Toast.LENGTH_SHORT).show();
+                            );
 
-                    }
+                    Log.d("Products", String.valueOf(call.request()));
+                    ProgressDialog progressDialog = new ProgressDialog(AddProductActivity.this);
+                    progressDialog.setMessage("Loading...");
+                    progressDialog.setTitle("Please Wait");
+                    progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    progressDialog.show();
+                    call.enqueue(new Callback<ResponseBody>() {
+                        @Override
+                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                            if (response.isSuccessful()) {
+                                progressDialog.dismiss();
+                                Log.d("Product Save", "Product successfully saved");
+                                DatabaseAccess databaseAccess = DatabaseAccess.getInstance(AddProductActivity.this);
+                                databaseAccess.open();
+                                boolean check = databaseAccess.addProduct(product_id, product_name, product_code, product_category_id, product_description, product_buy_price, product_sell_price, product_stock, product_supplier, encodedImage, product_weight_unit_id, product_weight);
+
+                                if (check) {
+                                    Toasty.success(AddProductActivity.this, R.string.product_successfully_added, Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(AddProductActivity.this, HomeActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+
+                                    Toasty.error(AddProductActivity.this, R.string.failed, Toast.LENGTH_SHORT).show();
+
+                                }
+                            } else {
+                                progressDialog.dismiss();
+                                Toast.makeText(AddProductActivity.this, "An error occurred", Toast.LENGTH_SHORT).show();
+                                Log.d("Product Save Failure", String.valueOf(response.errorBody()));
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                            progressDialog.dismiss();
+                            Toast.makeText(AddProductActivity.this, "An error occurred", Toast.LENGTH_SHORT).show();
+                            Log.e("Add Product Error:", t.getMessage());
+
+                        }
+                    });
 
 
                 }
