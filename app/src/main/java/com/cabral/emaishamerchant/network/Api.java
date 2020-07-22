@@ -1,7 +1,5 @@
 package com.cabral.emaishamerchant.network;
 
-import com.cabral.emaishamerchant.models.ShopResponse;
-
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -16,7 +14,29 @@ public interface Api {
             @Field("shop_contact") String shop_contact,
             @Field("shop_email") String shop_email,
             @Field("shop_address") String shop_address,
-            @Field("shop_currency") String shop_currency
+            @Field("shop_currency") String shop_currency,
+            @Field("latitude") String latitude,
+            @Field("longitude") String longitude
+    );
+
+    @FormUrlEncoded
+    @POST("registerMerchant")
+    Call<ResponseBody> registerShop(
+            @Field("shop_name") String shop_name,
+            @Field("shop_contact") String shop_contact,
+            @Field("shop_email") String shop_email,
+            @Field("shop_address") String shop_address,
+            @Field("shop_currency") String shop_currency,
+            @Field("latitude") String latitude,
+            @Field("longitude") String longitude,
+            @Field("password") String password
+    );
+
+    @FormUrlEncoded
+    @POST("loginMerchant")
+    Call<ResponseBody> loginShop(
+            @Field("shop_contact") String shop_contact,
+            @Field("password") String password
     );
 
     @FormUrlEncoded
@@ -29,7 +49,7 @@ public interface Api {
             @Field("customer_email") String customer_email,
             @Field("customer_address") String customer_address,
             @Field("customer_address_two") String customer_address_two,
-             @Field("customer_image") String customer_image
+            @Field("customer_image") String customer_image
     );
 
     @FormUrlEncoded
@@ -133,11 +153,6 @@ public interface Api {
             @Field("order_type_id") String order_type_id,
             @Field("order_type_name") String order_type_name
     );
-
-
-
-
-
 
 
 }

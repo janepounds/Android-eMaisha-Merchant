@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.cabral.emaishamerchant.auth.Registration;
 import com.cabral.emaishamerchant.network.NetworkStateChecker;
 
 public class SplashActivity extends AppCompatActivity {
@@ -27,7 +28,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
+                Intent intent = new Intent(SplashActivity.this, Registration.class);
                 startActivity(intent);
                 finish();
             }

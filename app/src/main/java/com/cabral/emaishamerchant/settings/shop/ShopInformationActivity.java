@@ -188,7 +188,7 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
                     DatabaseAccess databaseAccess = DatabaseAccess.getInstance(ShopInformationActivity.this);
                     databaseAccess.open();
 
-                    boolean check = databaseAccess.updateShopInformation(shop_name, shop_contact, shop_email, shop_address, shop_currency);
+                    boolean check = databaseAccess.updateShopInformation(shop_name, shop_contact, shop_email, shop_address, shop_currency,latitude,longitude);
 
                     if (check) {
                         Toasty.success(ShopInformationActivity.this, R.string.shop_information_updated_successfully, Toast.LENGTH_SHORT).show();
@@ -252,6 +252,8 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
                 // TODO: Get info about the selected place.
                 Log.w(TAG, "Place: " + place.getName() + ", " +place.getAddress() + ", " + place.getId());
                 LatLng selectedLocation= place.getLatLng();
+                latitude = selectedLocation.latitude+"";
+                longitude = selectedLocation.longitude+"";
                 map.moveCamera(CameraUpdateFactory.newLatLngZoom(
                         new LatLng(selectedLocation.latitude,
                                 selectedLocation.longitude), DEFAULT_ZOOM));
@@ -315,6 +317,8 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
                 geocoder = new Geocoder(ShopInformationActivity.this, Locale.getDefault());
                 if( map!=null){
                     mCenterLatLong = cameraPosition.target;
+                    latitude = mCenterLatLong.latitude+"";
+                    longitude = mCenterLatLong.longitude+"";
                 }
 
                 try {

@@ -187,7 +187,9 @@ public class NetworkStateChecker extends BroadcastReceiver {
                             shop_information.get(0).get("shop_contact"),
                             shop_information.get(0).get("shop_email"),
                             shop_information.get(0).get("shop_address"),
-                            shop_information.get(0).get("shop_currency")
+                            shop_information.get(0).get("shop_currency"),
+                            shop_information.get(0).get("latitude"),
+                            shop_information.get(0).get("longitude")
                     );
 
                 }
@@ -198,7 +200,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
 
     }
 
-    private void saveShop(String name, String contact, String email, String address, String currency) {
+    private void saveShop(String name, String contact, String email, String address, String currency,String latitude, String longitude) {
         Call<ResponseBody> call = RetrofitClient
                 .getInstance()
                 .getApi()
@@ -207,7 +209,9 @@ public class NetworkStateChecker extends BroadcastReceiver {
                         contact,
                         email,
                         address,
-                        currency
+                        currency,
+                        latitude,
+                        longitude
                 );
 
         call.enqueue(new Callback<ResponseBody>() {

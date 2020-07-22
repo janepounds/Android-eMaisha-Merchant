@@ -64,7 +64,7 @@ public class DatabaseAccess {
     }
 
     //insert customer
-    public boolean addCustomer(String customer_name, String customer_cell, String customer_email, String customer_address, String customer_address_two,String customer_image) {
+    public boolean addCustomer(String customer_name, String customer_cell, String customer_email, String customer_address, String customer_address_two, String customer_image) {
 
         ContentValues values = new ContentValues();
 
@@ -182,8 +182,8 @@ public class DatabaseAccess {
         values.put("customer_cell", customer_cell);
         values.put("customer_email", customer_email);
         values.put("customer_address", customer_address);
-        values.put("customer_address_two",customer_address_two);
-        values.put("customer_image",customer_image);
+        values.put("customer_address_two", customer_address_two);
+        values.put("customer_image", customer_image);
 
         long check = database.update("customers", values, " customer_id=? ", new String[]{customer_id});
         database.close();
@@ -198,7 +198,7 @@ public class DatabaseAccess {
 
 
     //update shop information
-    public boolean updateShopInformation(String shop_name, String shop_contact, String shop_email, String shop_address, String shop_currency) {
+    public boolean updateShopInformation(String shop_name, String shop_contact, String shop_email, String shop_address, String shop_currency, String latitude, String longitude) {
 
 
         String shop_id = "1";
@@ -210,6 +210,8 @@ public class DatabaseAccess {
         values.put("shop_email", shop_email);
         values.put("shop_address", shop_address);
         values.put("shop_currency", shop_currency);
+        values.put("latitude", latitude);
+        values.put("longitude", longitude);
 
         long check = database.update("shop", values, "shop_id=? ", new String[]{shop_id});
         database.close();
@@ -222,9 +224,33 @@ public class DatabaseAccess {
         }
     }
 
+    public boolean addShopInformation(String shop_name, String shop_contact, String shop_email, String shop_address, String shop_currency, String latitude, String longitude) {
+
+
+        ContentValues values = new ContentValues();
+        values.put("shop_id", 1);
+        values.put("shop_name", shop_name);
+        values.put("shop_contact", shop_contact);
+        values.put("shop_email", shop_email);
+        values.put("shop_address", shop_address);
+        values.put("shop_currency", shop_currency);
+        values.put("latitude", latitude);
+        values.put("longitude", longitude);
+
+        long check = database.insert("shop", null, values);
+        database.close();
+
+        //if data insert success, its return 1, if failed return -1
+        if (check == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
 
     //insert products
-    public boolean addProduct(String product_id,String product_name, String product_code, String product_category, String product_description, String product_buy_price, String product_sell_price, String product_stock, String product_supplier, String product_image, String weight_unit_id, String product_weight) {
+    public boolean addProduct(String product_id, String product_name, String product_code, String product_category, String product_description, String product_buy_price, String product_sell_price, String product_stock, String product_supplier, String product_image, String weight_unit_id, String product_weight) {
 
         ContentValues values = new ContentValues();
 
@@ -589,11 +615,11 @@ public class DatabaseAccess {
                 String product_weight = jo.getString("product_weight");
                 String product_qty = jo.getString("product_qty");
                 String product_price = jo.getString("product_price");
-                String product_image=null;
+                String product_image = null;
                 try {
 
                     product_image = jo.getString("product_image");
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
