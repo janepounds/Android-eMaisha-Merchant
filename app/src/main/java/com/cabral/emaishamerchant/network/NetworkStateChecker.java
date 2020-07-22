@@ -41,6 +41,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
         databaseAccess.open();
         shop_information = databaseAccess.getShopInformation();
+        Log.d("Shop information", String.valueOf(shop_information));
         shop_name = shop_information.get(0).get("shop_name");
         customers = databaseAccess.getCustomers();
         products = databaseAccess.getProducts();

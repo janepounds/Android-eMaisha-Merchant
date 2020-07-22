@@ -25,7 +25,6 @@ import com.cabral.emaishamerchant.Maps.PlacesFieldSelector;
 import com.cabral.emaishamerchant.R;
 import com.cabral.emaishamerchant.database.DatabaseAccess;
 import com.cabral.emaishamerchant.network.RetrofitClient;
-import com.cabral.emaishamerchant.product.AddProductActivity;
 import com.cabral.emaishamerchant.storage.SharedPrefManager;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -190,11 +189,12 @@ public class Registration extends AppCompatActivity implements GoogleApiClient.O
                             DatabaseAccess databaseAccess = DatabaseAccess.getInstance(Registration.this);
                             databaseAccess.open();
 
-                            boolean check = databaseAccess.updateShopInformation(name, contact, email, address, currency, latitude, longitude);
+                            boolean check = databaseAccess.addShopInformation(name, contact, email, address, currency, latitude, longitude);
 
                             if (check) {
                                 Toasty.success(Registration.this, "Shop Registered Successfully", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(Registration.this, Login.class);
+                                intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                                 finish();
                             } else {
@@ -477,6 +477,7 @@ public class Registration extends AppCompatActivity implements GoogleApiClient.O
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Toast.makeText(Registration.this, connectionResult.getErrorMessage() + "", Toast.LENGTH_SHORT).show();
     }
+
     @Override
     protected void onStart() {
         super.onStart();

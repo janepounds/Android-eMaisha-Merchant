@@ -81,6 +81,10 @@ public class Login extends AppCompatActivity {
                                 String s = response.body().string();
                                 JSONObject jsonObject = new JSONObject(s);
                                 SharedPrefManager.getInstance(Login.this).saveShopId(jsonObject.getInt("shop_id"));
+                                Toasty.error(Login.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(Login.this, HomeActivity.class);
+                                intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
                             } catch (IOException | JSONException e) {
                                 e.printStackTrace();
                             }
@@ -113,15 +117,5 @@ public class Login extends AppCompatActivity {
             }
         });
     }
-    @Override
-    protected void onStart() {
-        super.onStart();
 
-        if (SharedPrefManager.getInstance(this).isShopSynced()) {
-            Intent intent = new Intent(Login.this, HomeActivity.class);
-            intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-
-        }
-    }
 }
