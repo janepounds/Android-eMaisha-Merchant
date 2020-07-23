@@ -96,7 +96,7 @@ public interface Api {
     Call<ResponseBody> postProduct(
             @Field("id") String id,
             @Field("shop_id") Integer shop_id,
-            @Field("product_id") String product_id,
+            @Field("product_id") Integer product_id,
             // @Field("product_name") String product_name,
             // @Field("product_code") String product_code,
             //  @Field("product_category") String product_category,

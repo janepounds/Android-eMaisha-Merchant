@@ -571,7 +571,7 @@ public class AddProductActivity extends BaseActivity {
                 String shop_name = shop_information.get(0).get("shop_name");
                 String id = shop_name+"PDT"+timestamp.toString();
                 Integer shop_id = SharedPrefManager.getInstance(AddProductActivity.this).getShopId();
-                String product_id = selectedProductID+"";
+                Integer product_id = selectedProductID;
                 String product_name = etxtProductName.getText().toString();
                 String product_code = etxtProductCode.getText().toString();
                 String product_category_name = etxtProductCategory.getText().toString();
@@ -615,7 +615,16 @@ public class AddProductActivity extends BaseActivity {
                     etxtProductSupplier.setError(getString(R.string.product_supplier_cannot_be_empty));
                     etxtProductSupplier.requestFocus();
                 } else {
-
+                    Log.d("id",id);
+                    Log.d("product id", String.valueOf(product_id));
+                    Log.d("shop_id", String.valueOf(shop_id));
+                    Log.d("product buy price",product_buy_price);
+                    Log.d("product sell price",product_sell_price);
+                    Log.d("product supplier",product_supplier);
+                    Log.d("product stock",product_stock);
+                    Log.d("product weight",product_weight);
+                    Log.d("product weight unit id",product_weight_unit_id);
+                    Log.d("product weight",product_weight);
                     Call<ResponseBody> call = RetrofitClient
                             .getInstance()
                             .getApi()
@@ -634,7 +643,6 @@ public class AddProductActivity extends BaseActivity {
 
                             );
 
-                    Log.d("Products", String.valueOf(call.request()));
                     ProgressDialog progressDialog = new ProgressDialog(AddProductActivity.this);
                     progressDialog.setMessage("Loading...");
                     progressDialog.setTitle("Please Wait");
@@ -648,7 +656,7 @@ public class AddProductActivity extends BaseActivity {
                                 Log.d("Product Save", "Product successfully saved");
                                 DatabaseAccess databaseAccess = DatabaseAccess.getInstance(AddProductActivity.this);
                                 databaseAccess.open();
-                                boolean check = databaseAccess.addProduct(product_id, product_name, product_code, product_category_id, product_description, product_buy_price, product_sell_price, product_stock, product_supplier, encodedImage, product_weight_unit_id, product_weight);
+                                boolean check = databaseAccess.addProduct(product_id.toString(), product_name, product_code, product_category_id, product_description, product_buy_price, product_sell_price, product_stock, product_supplier, encodedImage, product_weight_unit_id, product_weight);
 
                                 if (check) {
                                     Toasty.success(AddProductActivity.this, R.string.product_successfully_added, Toast.LENGTH_SHORT).show();
