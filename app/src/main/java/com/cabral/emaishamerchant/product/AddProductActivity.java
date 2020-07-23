@@ -29,13 +29,21 @@ import com.cabral.emaishamerchant.HomeActivity;
 import com.cabral.emaishamerchant.R;
 import com.cabral.emaishamerchant.database.DatabaseAccess;
 import com.cabral.emaishamerchant.database.DatabaseOpenHelper;
+import com.cabral.emaishamerchant.models.CategoriesResponse;
+import com.cabral.emaishamerchant.models.Category;
+import com.cabral.emaishamerchant.models.Product;
+import com.cabral.emaishamerchant.models.ProductResponse;
 import com.cabral.emaishamerchant.network.RetrofitClient;
 import com.cabral.emaishamerchant.storage.SharedPrefManager;
 import com.cabral.emaishamerchant.utils.BaseActivity;
 import com.obsez.android.lib.filechooser.ChooserDialog;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,15 +60,23 @@ public class AddProductActivity extends BaseActivity {
 
 
     ProgressDialog loading;
+    private List<Category> categories;
+    private List<Product> products;
 
     public static EditText etxtProductCode;
     EditText etxtProductName, etxtProductCategory, etxtProductDescription, etxtProductBuyPrice, etxtProductSellPrice, etxtProductStock, etxtProductSupplier, etxtProdcutWeightUnit, etxtProductWeight;
     TextView txtAddProdcut, txtChooseImage;
     ImageView imgProduct, imgScanCode;
     String mediaPath, encodedImage = "N/A";
-    ArrayAdapter<String> categoryAdapter, supplierAdapter, weightUnitAdapter;
+    ArrayAdapter<String> categoryAdapter, supplierAdapter, weightUnitAdapter, productAdapter;
     List<String> categoryNames, supplierNames, weightUnitNames;
-    String selectedCategoryID, selectedSupplierID, selectedWeightUnitID;
+    Integer selectedCategoryID;
+    Integer selectedProductID;
+    String selectedSupplierID;
+    String selectedWeightUnitID;
+    private List<String> catNames;
+    private List<String> productNames;
+    String selectectedCategoryName, selectedProductName;
 
 
     @Override
@@ -88,6 +104,31 @@ public class AddProductActivity extends BaseActivity {
         imgProduct = findViewById(R.id.image_product);
         imgScanCode = findViewById(R.id.img_scan_code);
         txtChooseImage = findViewById(R.id.txt_choose_image);
+
+        Call<CategoriesResponse> call = RetrofitClient
+                .getInstance()
+                .getApi()
+                .getCategories();
+        call.enqueue(new Callback<CategoriesResponse>() {
+            @Override
+            public void onResponse(Call<CategoriesResponse> call, Response<CategoriesResponse> response) {
+                if (response.isSuccessful()) {
+                    categories = response.body().getCategories();
+                    saveList(categories);
+                    Log.d("Categories", String.valueOf(categories));
+
+                } else {
+                    Log.d("Failed", "Categories failed");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CategoriesResponse> call, Throwable t) {
+                t.printStackTrace();
+                Log.d("Failed", "Categories failed");
+
+            }
+        });
 
         imgScanCode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,8 +210,15 @@ public class AddProductActivity extends BaseActivity {
         etxtProductCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("Categories", String.valueOf(categories));
+                catNames= new ArrayList<>();
+                for (int i = 0; i < categories.size(); i++) {
+                    catNames.add(categories.get(i).getCategories_slug());
+                }
+
                 categoryAdapter = new ArrayAdapter<String>(AddProductActivity.this, R.layout.list_row);
-                categoryAdapter.addAll(categoryNames);
+                categoryAdapter.addAll(catNames);
+
 
                 AlertDialog.Builder dialog = new AlertDialog.Builder(AddProductActivity.this);
                 View dialogView = getLayoutInflater().inflate(R.layout.dialog_list_search, null);
@@ -223,20 +271,135 @@ public class AddProductActivity extends BaseActivity {
                         alertDialog.dismiss();
                         final String selectedItem = categoryAdapter.getItem(position);
 
-                        String category_id = "0";
+                        Integer category_id = 0;
+                        String category_name = "";
                         etxtProductCategory.setText(selectedItem);
 
 
-                        for (int i = 0; i < categoryNames.size(); i++) {
-                            if (categoryNames.get(i).equalsIgnoreCase(selectedItem)) {
+                        for (int i = 0; i < catNames.size(); i++) {
+                            if (catNames.get(i).equalsIgnoreCase(selectedItem)) {
                                 // Get the ID of selected Country
-                                category_id = productCategory.get(i).get("category_id");
+                                category_id = categories.get(i).getCategories_id();
+                                category_name = categories.get(i).getCategories_slug();
                             }
                         }
 
+                        Call<ProductResponse> call = RetrofitClient
+                                .getInstance()
+                                .getApi()
+                                .getProducts(
+                                        category_id
+                                );
+                        call.enqueue(new Callback<ProductResponse>() {
+                            @Override
+                            public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
+                                if (response.isSuccessful()) {
+                                    products = response.body().getProducts();
+                                    savePtdList(products);
+                                    Log.d("Products", String.valueOf(products));
+
+                                } else {
+                                    Log.d("Product Fetch", "Product Fetch failed");
+
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<ProductResponse> call, Throwable t) {
+                                t.printStackTrace();
+                            }
+                        });
+
 
                         selectedCategoryID = category_id;
-                        Log.d("category_id", category_id);
+                        selectectedCategoryName = category_name;
+
+                        Log.d("category_id", String.valueOf(category_id));
+                    }
+                });
+            }
+        });
+
+        etxtProductName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                productNames = new ArrayList<>();
+                Log.d("Products", String.valueOf(products));
+                for (int i = 0; i < products.size(); i++) {
+                    productNames.add(products.get(i).getProducts_slug());
+                }
+
+                productAdapter = new ArrayAdapter<String>(AddProductActivity.this, R.layout.list_row);
+                productAdapter.addAll(productNames);
+
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(AddProductActivity.this);
+                View dialogView = getLayoutInflater().inflate(R.layout.dialog_list_search, null);
+                dialog.setView(dialogView);
+                dialog.setCancelable(false);
+
+                Button dialog_button = dialogView.findViewById(R.id.dialog_button);
+                EditText dialog_input = dialogView.findViewById(R.id.dialog_input);
+                TextView dialog_title = dialogView.findViewById(R.id.dialog_title);
+                ListView dialog_list = dialogView.findViewById(R.id.dialog_list);
+
+
+                dialog_title.setText("Products");
+                dialog_list.setVerticalScrollBarEnabled(true);
+                dialog_list.setAdapter(productAdapter);
+
+
+                dialog_input.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+                        productAdapter.getFilter().filter(charSequence);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                });
+
+
+                final AlertDialog alertDialog = dialog.create();
+
+                dialog_button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+
+                alertDialog.show();
+
+
+                dialog_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        alertDialog.dismiss();
+                        final String selectedItem = productAdapter.getItem(position);
+
+                        Integer product_id = 0;
+                        String product_name = "";
+                        etxtProductName.setText(selectedItem);
+
+
+                        for (int i = 0; i < productNames.size(); i++) {
+                            if (productNames.get(i).equalsIgnoreCase(selectedItem)) {
+                                // Get the ID of selected Country
+                                product_id = products.get(i).getProducts_id();
+                                product_name = products.get(i).getProducts_slug();
+                            }
+                        }
+
+                        selectedProductID = product_id;
+                        selectedProductName = product_name;
+                        Log.d("Product ID", String.valueOf(product_id));
                     }
                 });
             }
@@ -406,12 +569,13 @@ public class AddProductActivity extends BaseActivity {
                 List<HashMap<String, String>> shop_information = databaseAccess.getShopInformation();
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                 String shop_name = shop_information.get(0).get("shop_name");
+                String id = shop_name+"PDT"+timestamp.toString();
                 Integer shop_id = SharedPrefManager.getInstance(AddProductActivity.this).getShopId();
-                String product_id = shop_name + "PDT" + timestamp.toString();
+                String product_id = selectedProductID+"";
                 String product_name = etxtProductName.getText().toString();
                 String product_code = etxtProductCode.getText().toString();
                 String product_category_name = etxtProductCategory.getText().toString();
-                String product_category_id = selectedCategoryID;
+                String product_category_id = selectedCategoryID + "";
                 String product_description = etxtProductDescription.getText().toString();
                 String product_buy_price = etxtProductBuyPrice.getText().toString();
                 String product_sell_price = etxtProductSellPrice.getText().toString();
@@ -456,12 +620,9 @@ public class AddProductActivity extends BaseActivity {
                             .getInstance()
                             .getApi()
                             .postProduct(
+                                    id,
                                     shop_id,
                                     product_id,
-                                    product_name,
-                                    product_code,
-                                    product_category_id,
-                                    product_description,
                                     product_buy_price,
                                     product_sell_price,
                                     product_supplier,
@@ -496,13 +657,31 @@ public class AddProductActivity extends BaseActivity {
                                     finish();
                                 } else {
 
+
                                     Toasty.error(AddProductActivity.this, R.string.failed, Toast.LENGTH_SHORT).show();
 
                                 }
                             } else {
                                 progressDialog.dismiss();
-                                Toast.makeText(AddProductActivity.this, "An error occurred", Toast.LENGTH_SHORT).show();
-                                Log.d("Product Save Failure", String.valueOf(response.errorBody()));
+                                String s = null;
+                                if(s!=null){
+                                    try {
+                                         s = response.errorBody().string();
+                                        Log.d("Response",s);
+                                        JSONObject jsonObject = new JSONObject(s);
+                                        Toasty.error(AddProductActivity.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                                        Log.d("Error Response", jsonObject.getString("message"));
+                                    } catch (IOException | JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                }else{
+                                    Toasty.error(AddProductActivity.this, "An error Occurred", Toast.LENGTH_SHORT).show();
+                                    Log.d("Error Response", String.valueOf(response.errorBody()));
+                                    Log.d("Error Response Code", String.valueOf(response.code()));
+                                }
+
+
                             }
                         }
 
@@ -682,6 +861,38 @@ public class AddProductActivity extends BaseActivity {
                 })
                 .build()
                 .show();
+    }
+
+    public void getCategories() {
+        Call<CategoriesResponse> call = RetrofitClient
+                .getInstance()
+                .getApi()
+                .getCategories();
+        call.enqueue(new Callback<CategoriesResponse>() {
+            @Override
+            public void onResponse(Call<CategoriesResponse> call, Response<CategoriesResponse> response) {
+                if (response.isSuccessful()) {
+                    categories = response.body().getCategories();
+                    Log.d("Categories", String.valueOf(categories));
+
+                } else {
+                    Log.d("Failed", "Categories failed");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CategoriesResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void saveList(List<Category> categories) {
+        this.categories = categories;
+    }
+
+    public void savePtdList(List<Product> products) {
+        this.products = products;
     }
 
 

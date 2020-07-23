@@ -1,10 +1,15 @@
 package com.cabral.emaishamerchant.network;
 
+import com.cabral.emaishamerchant.models.CategoriesResponse;
+import com.cabral.emaishamerchant.models.ProductResponse;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface Api {
     @FormUrlEncoded
@@ -87,14 +92,15 @@ public interface Api {
     );
 
     @FormUrlEncoded
-    @POST("postMerchantProducts")
+    @POST("stockMerchantProduct")
     Call<ResponseBody> postProduct(
+            @Field("id") String id,
             @Field("shop_id") Integer shop_id,
             @Field("product_id") String product_id,
-            @Field("product_name") String product_name,
-            @Field("product_code") String product_code,
-            @Field("product_category") String product_category,
-            @Field("product_description") String product_description,
+            // @Field("product_name") String product_name,
+            // @Field("product_code") String product_code,
+            //  @Field("product_category") String product_category,
+            // @Field("product_description") String product_description,
             @Field("product_buy_price") String product_buy_price,
             @Field("product_sell_price") String product_sell_price,
             @Field("product_supplier") String product_supplier,
@@ -153,6 +159,15 @@ public interface Api {
             @Field("order_type_id") String order_type_id,
             @Field("order_type_name") String order_type_name
     );
+
+    @GET("getCategories")
+    Call<CategoriesResponse> getCategories();
+
+    @GET("getProductsByCategory/{id}")
+    Call<ProductResponse> getProducts(
+            @Path("id") int id
+    );
+
 
 
 }
