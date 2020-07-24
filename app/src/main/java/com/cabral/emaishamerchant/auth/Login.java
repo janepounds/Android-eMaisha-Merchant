@@ -50,10 +50,10 @@ public class Login extends AppCompatActivity {
         txtLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String contact = etxtContact.toString().trim();
-                String password = etxtPassword.toString().toString().trim();
+                String shop_contact = etxtContact.getText().toString().trim();
+                String password = etxtPassword.getText().toString().trim();
 
-                if (contact.isEmpty()) {
+                if (shop_contact.isEmpty()) {
                     etxtContact.setError("Phone is customer");
                     etxtContact.requestFocus();
                     return;
@@ -63,13 +63,13 @@ public class Login extends AppCompatActivity {
                     etxtPassword.requestFocus();
                     return;
                 }
-                Log.d("Phone", contact);
+                Log.d("Phone", shop_contact);
                 Log.d("Password", password);
                 Call<ResponseBody> call = RetrofitClient
                         .getInstance()
                         .getApi()
                         .loginShop(
-                                contact,
+                                shop_contact,
                                 password
                         );
 
@@ -86,22 +86,28 @@ public class Login extends AppCompatActivity {
                         String s = null;
                         if (response.isSuccessful()) {
                             progressDialog.dismiss();
-                            if (s != null) {
                                 try {
                                     s = response.body().string();
-                                    JSONObject jsonObject = new JSONObject(s);
-                                    SharedPrefManager.getInstance(Login.this).saveShopId(jsonObject.getInt("shop_id"));
-                                    DatabaseAccess databaseAccess = DatabaseAccess.getInstance(Login.this);
-                                    databaseAccess.open();
-                                    boolean check = databaseAccess.addShopInformation(jsonObject.getJSONObject("data").getString("shop_name"), jsonObject.getJSONObject("data").getString("shop_contact"), jsonObject.getJSONObject("data").getString("shop_email"), jsonObject.getJSONObject("data").getString("shop_address"), jsonObject.getJSONObject("data").getString("shop_currency"), jsonObject.getJSONObject("data").getString("latitude"), jsonObject.getJSONObject("data").getString("longitude"));
+                                    if (s != null) {
+                                        JSONObject jsonObject = new JSONObject(s);
+                                        SharedPrefManager.getInstance(Login.this).saveShopId(jsonObject.getInt("shop_id"));
+                                        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(Login.this);
+                                        databaseAccess.open();
+                                        boolean check = databaseAccess.addShopInformation(jsonObject.getJSONObject("data").getString("shop_name"), jsonObject.getJSONObject("data").getString("shop_contact"), jsonObject.getJSONObject("data").getString("shop_email"), jsonObject.getJSONObject("data").getString("shop_address"), jsonObject.getJSONObject("data").getString("shop_currency"), jsonObject.getJSONObject("data").getString("latitude"), jsonObject.getJSONObject("data").getString("longitude"));
 
-                                    if (check) {
-                                        Toasty.success(Login.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(Login.this, HomeActivity.class);
-                                        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
+                                        if (check) {
+                                            Toasty.success(Login.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(Login.this, HomeActivity.class);
+                                            intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(intent);
+                                            finish();
+                                        } else {
+                                            Toasty.error(Login.this, R.string.failed, Toast.LENGTH_SHORT).show();
+
+                                        }
+
+                                    }else{
+                                        Log.d("Error", String.valueOf(response));
                                         Toasty.error(Login.this, R.string.failed, Toast.LENGTH_SHORT).show();
 
                                     }
@@ -109,13 +115,10 @@ public class Login extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
 
-                            } else {
-                                Toasty.error(Login.this, R.string.failed, Toast.LENGTH_SHORT).show();
-
-                            }
 
                         } else {
                             progressDialog.dismiss();
+                            Log.d("Error", String.valueOf(response));
                             Toasty.error(Login.this, R.string.failed, Toast.LENGTH_SHORT).show();
 
                         }
