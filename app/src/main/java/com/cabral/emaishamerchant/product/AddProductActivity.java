@@ -611,6 +611,9 @@ public class AddProductActivity extends BaseActivity {
                 } else if (product_stock == null || product_stock.isEmpty()) {
                     etxtProductStock.setError(getString(R.string.product_stock_cannot_be_empty));
                     etxtProductStock.requestFocus();
+                }else if (Integer.parseInt(product_stock)<=0) {
+                    etxtProductStock.setError("Stock should be greater than zero");
+                    etxtProductStock.requestFocus();
                 } else if (product_supplier_name == null || product_supplier == null || product_supplier_name.isEmpty() || product_supplier.isEmpty()) {
                     etxtProductSupplier.setError(getString(R.string.product_supplier_cannot_be_empty));
                     etxtProductSupplier.requestFocus();
