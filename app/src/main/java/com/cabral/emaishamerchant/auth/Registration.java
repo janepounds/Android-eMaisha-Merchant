@@ -182,26 +182,14 @@ public class Registration extends AppCompatActivity implements GoogleApiClient.O
                                 Log.d("Response", s);
                                 JSONObject jsonObject = new JSONObject(s);
                                 SharedPrefManager.getInstance(Registration.this).saveShopId(jsonObject.getInt("shop_id"));
-                            } catch (IOException | JSONException e) {
-                                e.printStackTrace();
-                            }
-
-                            DatabaseAccess databaseAccess = DatabaseAccess.getInstance(Registration.this);
-                            databaseAccess.open();
-
-                            boolean check = databaseAccess.addShopInformation(name, contact, email, address, currency, latitude, longitude);
-
-                            if (check) {
                                 Toasty.success(Registration.this, "Shop Registered Successfully", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(Registration.this, Login.class);
                                 intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
-                                finish();
-                            } else {
-
-                                Toasty.error(Registration.this, R.string.failed, Toast.LENGTH_SHORT).show();
-
+                            } catch (IOException | JSONException e) {
+                                e.printStackTrace();
                             }
+
                         } else {
                             progressDialog.dismiss();
                             try {

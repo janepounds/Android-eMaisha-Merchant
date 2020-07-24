@@ -1,12 +1,14 @@
 package com.cabral.emaishamerchant.models;
 
 public class ShopResponse {
-    Integer shop_id;
-    String message;
+    private Integer shop_id;
+    private String message;
+    private  Shop data;
 
-    public ShopResponse(Integer shop_id, String message) {
+    public ShopResponse(Integer shop_id, String message, Shop data) {
         this.shop_id = shop_id;
         this.message = message;
+        this.data = data;
     }
 
     public Integer getShop_id() {
@@ -15,5 +17,9 @@ public class ShopResponse {
 
     public String getMessage() {
         return message;
+    }
+
+    public Shop getData() {
+        return data;
     }
 }
