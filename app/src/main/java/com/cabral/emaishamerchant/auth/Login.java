@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.cabral.emaishamerchant.HomeActivity;
 import com.cabral.emaishamerchant.R;
+import com.cabral.emaishamerchant.SplashActivity;
 import com.cabral.emaishamerchant.network.RetrofitClient;
 import com.cabral.emaishamerchant.storage.SharedPrefManager;
 
@@ -28,7 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
-    private TextView txtLogin;
+    private TextView txtLogin,signupText;
     private EditText etxtContact, etxtPassword;
 
     @Override
@@ -42,6 +43,7 @@ public class Login extends AppCompatActivity {
         etxtPassword = findViewById(R.id.etxt_merchant_password);
 
         txtLogin = findViewById(R.id.txt_shop_login);
+        signupText = findViewById(R.id.login_signupText);
 
         txtLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +115,14 @@ public class Login extends AppCompatActivity {
                     }
                 });
                 Intent intent = new Intent(Login.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        signupText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login.this, Registration.class);
                 startActivity(intent);
             }
         });

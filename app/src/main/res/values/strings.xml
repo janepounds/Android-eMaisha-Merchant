@@ -265,5 +265,7 @@
     <string name="emvTips" translatable="false">Please insert, Swipe or Tap your card ...</string>
     <string name="searchShippingAddress">Search Your Shop Address</string>
     <string name="title_activity_maps">Map</string>
+    <string name="not_a_member">Not a Member?</string>
+    <string name="signup">Sign Up</string>
 
 </resources>

@@ -84,7 +84,7 @@ public class Registration extends AppCompatActivity implements GoogleApiClient.O
     // [START maps_current_place_state_keys]
     public static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
-    private LatLng mCenterLatLong;
+    private LatLng mCenterLatLong= new LatLng(0.347596, 32.582520);//kampala
     PlacesFieldSelector fieldSelector;
 
     @Override
