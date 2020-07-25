@@ -1313,6 +1313,8 @@ public class DatabaseAccess {
                 map.put("shop_email", cursor.getString(3));
                 map.put("shop_address", cursor.getString(4));
                 map.put("shop_currency", cursor.getString(5));
+                map.put("latitude", cursor.getString(6));
+                map.put("longitude", cursor.getString(7));
 
 
                 shop_info.add(map);

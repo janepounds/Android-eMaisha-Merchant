@@ -119,6 +119,7 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
         String shop_email = shopData.get(0).get("shop_email");
         String shop_address = shopData.get(0).get("shop_address");
         String shop_currency = shopData.get(0).get("shop_currency");
+        mCenterLatLong= new LatLng(Double.parseDouble(shopData.get(0).get("latitude")), Double.parseDouble(shopData.get(0).get("longitude")) );
 
         etxtShopName.setText(shop_name);
         etxtShopContact.setText(shop_contact);
@@ -345,9 +346,14 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
 
         // Turn on the My Location layer and the related control on the map.
         updateLocationUI();
-
-        // Get the current location of the device and set the position of the map.
-        getDeviceLocation();
+        if(mCenterLatLong==null){
+            // Get the current location of the device and set the position of the map.
+            getDeviceLocation();
+        }else {
+            map.moveCamera(CameraUpdateFactory
+                    .newLatLngZoom(mCenterLatLong, DEFAULT_ZOOM));
+            map.getUiSettings().setMyLocationButtonEnabled(false);
+        }
     }
 
     @Override

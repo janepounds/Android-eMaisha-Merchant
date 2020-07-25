@@ -638,8 +638,8 @@ public class AddProductActivity extends BaseActivity {
                                     product_buy_price,
                                     product_sell_price,
                                     product_supplier,
-                                    product_stock,
                                     encodedImage,
+                                    Integer.parseInt(product_stock),
                                     product_weight_unit_id,
                                     product_weight
 

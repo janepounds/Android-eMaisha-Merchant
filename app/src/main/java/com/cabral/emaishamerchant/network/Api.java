@@ -106,7 +106,7 @@ public interface Api {
             @Field("product_sell_price") String product_sell_price,
             @Field("product_supplier") String product_supplier,
             @Field("product_image") String product_image,
-            @Field("product_stock") String product_stock,
+            @Field("product_stock") int product_stock,
             @Field("product_weight_unit_id") String product_weight_unit_id,
             @Field("product_weight") String weight
     );
