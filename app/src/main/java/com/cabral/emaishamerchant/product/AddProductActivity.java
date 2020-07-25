@@ -572,19 +572,19 @@ public class AddProductActivity extends BaseActivity {
                 String id = shop_name+"PDT"+timestamp.toString();
                 Integer shop_id = SharedPrefManager.getInstance(AddProductActivity.this).getShopId();
                 Integer product_id = selectedProductID;
-                String product_name = etxtProductName.getText().toString();
-                String product_code = etxtProductCode.getText().toString();
-                String product_category_name = etxtProductCategory.getText().toString();
+                String product_name = etxtProductName.getText().toString().trim();
+                String product_code = etxtProductCode.getText().toString().trim();
+                String product_category_name = etxtProductCategory.getText().toString().trim();
                 String product_category_id = selectedCategoryID + "";
-                String product_description = etxtProductDescription.getText().toString();
-                String product_buy_price = etxtProductBuyPrice.getText().toString();
-                String product_sell_price = etxtProductSellPrice.getText().toString();
-                String product_stock = etxtProductStock.getText().toString();
-                String product_supplier_name = etxtProductSupplier.getText().toString();
+                String product_description = etxtProductDescription.getText().toString().trim();
+                String product_buy_price = etxtProductBuyPrice.getText().toString().trim();
+                String product_sell_price = etxtProductSellPrice.getText().toString().trim();
+                String product_stock = etxtProductStock.getText().toString().trim();
+                String product_supplier_name = etxtProductSupplier.getText().toString().trim();
                 String product_supplier = selectedSupplierID;
-                String product_Weight_unit_name = etxtProdcutWeightUnit.getText().toString();
+                String product_Weight_unit_name = etxtProdcutWeightUnit.getText().toString().trim();
                 String product_weight_unit_id = selectedWeightUnitID;
-                String product_weight = etxtProductWeight.getText().toString();
+                String product_weight = etxtProductWeight.getText().toString().trim();
 
 
                 if (product_name == null || product_name.isEmpty()) {

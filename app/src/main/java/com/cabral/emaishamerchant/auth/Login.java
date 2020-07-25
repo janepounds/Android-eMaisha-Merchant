@@ -144,4 +144,16 @@ public class Login extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (SharedPrefManager.getInstance(this).isShopSynced()) {
+            Intent intent = new Intent(Login.this, HomeActivity.class);
+            intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+
+        }
+    }
+
 }
