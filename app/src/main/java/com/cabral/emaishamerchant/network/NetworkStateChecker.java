@@ -92,7 +92,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
                     for (int i = 0; i < weights.size(); i++) {
                         saveWeights(
                                 shop_id,
-                                shop_name + "WHT" + shop_id + weights.get(i).get("weight_id"),
+                                 shop_id  +"_"+ weights.get(i).get("weight_id"),
                                 weights.get(i).get("weight_unit")
                         );
                     }
