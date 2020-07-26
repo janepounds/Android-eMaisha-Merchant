@@ -211,7 +211,7 @@ public class AddProductActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Categories", String.valueOf(categories));
-                catNames= new ArrayList<>();
+                catNames = new ArrayList<>();
                 for (int i = 0; i < categories.size(); i++) {
                     catNames.add(categories.get(i).getCategories_slug());
                 }
@@ -569,7 +569,7 @@ public class AddProductActivity extends BaseActivity {
                 List<HashMap<String, String>> shop_information = databaseAccess.getShopInformation();
                 Timestamp timestamp = new Timestamp(System.currentTimeMillis());
                 String shop_name = shop_information.get(0).get("shop_name");
-                String id = shop_name+"PDT"+timestamp.toString();
+                String id = shop_name.replaceAll(" ", "") + "PDT" + timestamp.toString().replaceAll(" ", "");
                 Integer shop_id = SharedPrefManager.getInstance(AddProductActivity.this).getShopId();
                 Integer product_id = selectedProductID;
                 String product_name = etxtProductName.getText().toString().trim();
@@ -611,23 +611,23 @@ public class AddProductActivity extends BaseActivity {
                 } else if (product_stock == null || product_stock.isEmpty()) {
                     etxtProductStock.setError(getString(R.string.product_stock_cannot_be_empty));
                     etxtProductStock.requestFocus();
-                }else if (Integer.parseInt(product_stock)<=0) {
+                } else if (Integer.parseInt(product_stock) <= 0) {
                     etxtProductStock.setError("Stock should be greater than zero");
                     etxtProductStock.requestFocus();
                 } else if (product_supplier_name == null || product_supplier == null || product_supplier_name.isEmpty() || product_supplier.isEmpty()) {
                     etxtProductSupplier.setError(getString(R.string.product_supplier_cannot_be_empty));
                     etxtProductSupplier.requestFocus();
                 } else {
-                    Log.d("id",id);
+                    Log.d("id", id);
                     Log.d("product id", String.valueOf(product_id));
                     Log.d("shop_id", String.valueOf(shop_id));
-                    Log.d("product buy price",product_buy_price);
-                    Log.d("product sell price",product_sell_price);
-                    Log.d("product supplier",product_supplier);
-                    Log.d("product stock",product_stock);
-                    Log.d("product weight",product_weight);
-                    Log.d("product weight unit id",product_weight_unit_id);
-                    Log.d("product weight",product_weight);
+                    Log.d("product buy price", product_buy_price);
+                    Log.d("product sell price", product_sell_price);
+                    Log.d("product supplier", product_supplier);
+                    Log.d("product stock", product_stock);
+                    Log.d("product weight", product_weight);
+                    Log.d("product weight unit id", product_weight_unit_id);
+                    Log.d("product weight", product_weight);
                     Call<ResponseBody> call = RetrofitClient
                             .getInstance()
                             .getApi()
@@ -675,10 +675,10 @@ public class AddProductActivity extends BaseActivity {
                             } else {
                                 progressDialog.dismiss();
                                 String s = null;
-                                if(s!=null){
+                                if (s != null) {
                                     try {
-                                         s = response.errorBody().string();
-                                        Log.d("Response",s);
+                                        s = response.errorBody().string();
+                                        Log.d("Response", s);
                                         JSONObject jsonObject = new JSONObject(s);
                                         Toasty.error(AddProductActivity.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                                         Log.d("Error Response", jsonObject.getString("message"));
@@ -686,7 +686,7 @@ public class AddProductActivity extends BaseActivity {
                                         e.printStackTrace();
                                     }
 
-                                }else{
+                                } else {
                                     Toasty.error(AddProductActivity.this, "An error Occurred", Toast.LENGTH_SHORT).show();
                                     Log.d("Error Response", String.valueOf(response.errorBody()));
                                     Log.d("Error Response Code", String.valueOf(response.code()));
