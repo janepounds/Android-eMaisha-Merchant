@@ -55,7 +55,6 @@ public class NetworkStateChecker extends BroadcastReceiver {
         orderTypes = databaseAccess.getOrderType();
 
 
-
         if (activeNetwork != null && activeNetwork.isConnected()) {
             if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI || activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE) {
                 Log.d("Check Connection", "Network is connected");
@@ -84,7 +83,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
                     for (int i = 0; i < categories.size(); i++) {
                         saveCategories(
                                 shop_id,
-                                shop_name + "CAT" + shop_id + categories.get(i).get("category_id"),
+                                shop_name.replaceAll(" ", "") + "CAT" + shop_id + categories.get(i).get("category_id"),
                                 categories.get(i).get("category_name")
                         );
                     }
@@ -92,7 +91,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
                     for (int i = 0; i < weights.size(); i++) {
                         saveWeights(
                                 shop_id,
-                                shop_name + "WHT" + shop_id + weights.get(i).get("weight_id"),
+                                shop_name.replaceAll(" ", "") + "WT" + shop_id + weights.get(i).get("weight_id"),
                                 weights.get(i).get("weight_unit")
                         );
                     }
@@ -100,7 +99,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
                     for (int i = 0; i < customers.size(); i++) {
                         saveCustomer(
                                 shop_id,
-                                shop_name + "CST" + shop_id + customers.get(i).get("customer_id"),
+                                shop_name.replaceAll(" ", "") + "CT" + shop_id + customers.get(i).get("customer_id"),
                                 customers.get(i).get("customer_name"),
                                 customers.get(i).get("customer_cell"),
                                 customers.get(i).get("customer_email"),
@@ -113,7 +112,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
                     for (int i = 0; i < suppliers.size(); i++) {
                         saveSupplier(
                                 shop_id,
-                                shop_name + "SUP" + shop_id + suppliers.get(i).get("suppliers_id"),
+                                shop_name.replaceAll(" ", "") + "SUP" + shop_id + suppliers.get(i).get("suppliers_id"),
                                 suppliers.get(i).get("suppliers_name"),
                                 suppliers.get(i).get("suppliers_contact_person"),
                                 suppliers.get(i).get("suppliers_cell"),
@@ -129,7 +128,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
                     for (int i = 0; i < expenses.size(); i++) {
                         saveExpense(
                                 shop_id,
-                                shop_name + "EXP" + shop_id + expenses.get(i).get("expense_id"),
+                                shop_name.replaceAll(" ", "") + "EX" + shop_id + expenses.get(i).get("expense_id"),
                                 expenses.get(i).get("expense_name"),
                                 expenses.get(i).get("expense_note"),
                                 expenses.get(i).get("expense_amount"),
@@ -143,7 +142,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
                     for (int i = 0; i < carts.size(); i++) {
                         saveCart(
                                 shop_id,
-                                shop_name + "CART" + shop_id + carts.get(i).get("cart_id"),
+                                shop_name.replaceAll(" ", "") + "CT" + shop_id + carts.get(i).get("cart_id"),
                                 carts.get(i).get("product_id"),
                                 carts.get(i).get("product_weight"),
                                 carts.get(i).get("product_weight_unit"),
@@ -155,7 +154,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
                     for (int i = 0; i < payment_methods.size(); i++) {
                         savePayment(
                                 shop_id,
-                                shop_name + "PAYMENT" + shop_id + payment_methods.get(i).get("payment_method_id"),
+                                shop_name.replaceAll(" ", "") + "PT" + shop_id + payment_methods.get(i).get("payment_method_id"),
                                 payment_methods.get(i).get("payment_method_name")
 
                         );
@@ -164,7 +163,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
                     for (int i = 0; i < orderList.size(); i++) {
                         saveOrderList(
                                 shop_id,
-                                shop_name + "ORDER" + shop_id + orderList.get(i).get("order_id"),
+                                shop_name.replaceAll(" ", "") + "ORDER" + shop_id + orderList.get(i).get("order_id"),
                                 orderList.get(i).get("invoice_id"),
                                 orderList.get(i).get("order_date"),
                                 orderList.get(i).get("order_time"),
@@ -177,7 +176,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
                     for (int i = 0; i < orderTypes.size(); i++) {
                         saveOrderTypes(
                                 shop_id,
-                                shop_name + "WHT" + shop_id + orderTypes.get(i).get("order_type_id"),
+                                shop_name.replaceAll(" ", "") + "WHT" + shop_id + orderTypes.get(i).get("order_type_id"),
                                 orderTypes.get(i).get("order_type_name")
                         );
                     }
@@ -201,7 +200,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
 
     }
 
-    private void saveShop(String name, String contact, String email, String address, String currency,String latitude, String longitude) {
+    private void saveShop(String name, String contact, String email, String address, String currency, String latitude, String longitude) {
         Call<ResponseBody> call = RetrofitClient
                 .getInstance()
                 .getApi()
@@ -222,7 +221,7 @@ public class NetworkStateChecker extends BroadcastReceiver {
                     Log.d("Shop Sync", "Shop Synced");
                     try {
                         String s = response.body().string();
-                        Log.d("Response",s);
+                        Log.d("Response", s);
                         JSONObject jsonObject = new JSONObject(s);
                         SharedPrefManager.getInstance(context).saveShopId(jsonObject.getInt("shop_id"));
                     } catch (IOException | JSONException e) {
