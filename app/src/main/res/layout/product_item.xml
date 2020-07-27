@@ -9,9 +9,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="2dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="2dp"
         android:layout_marginBottom="10dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="5dp"
@@ -21,7 +21,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginLeft="1dp"
             android:baselineAligned="false"
             android:weightSum="10"
             android:orientation="horizontal">
@@ -32,24 +33,36 @@
                 android:layout_weight="2.5"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/product_image"
-                    android:layout_width="100dp"
+                <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:contentDescription="TODO"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/new_product" />
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/product_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="TODO"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/new_product" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/rectangular_boarder">
+
+                    </LinearLayout>
+
+                </FrameLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_weight="6.6"
+                android:layout_weight="6.5"
                 android:orientation="vertical"
-                android:paddingLeft="10dp">
+                android:paddingLeft="5dp">
 
                 <TextView
                     android:id="@+id/txt_product_name"
@@ -58,10 +71,10 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Product Name"
                     android:textColor="@color/creditCardBackground"
-                    android:textSize="16sp" />
+                    android:textSize="12sp" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2"
@@ -73,7 +86,8 @@
                         android:fontFamily="@font/montserrat"
                         android:layout_weight="1"
                         android:text="@string/supplier"
-                        android:textColor="#000" />
+                        android:textColor="#000"
+                        android:textSize="12sp" />
                     <TextView
                         android:id="@+id/txt_product_supplier_value"
                         android:layout_width="match_parent"
@@ -82,11 +96,12 @@
                         android:fontFamily="@font/montserrat"
                         android:layout_weight="1"
                         android:text="@string/supplier_value"
-                        android:textColor="#000" />
+                        android:textColor="#000"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2"
@@ -98,7 +113,8 @@
                         android:fontFamily="@font/montserrat"
                         android:layout_weight="1"
                         android:text="@string/buy_price"
-                        android:textColor="#000" />
+                        android:textColor="#000"
+                        android:textSize="12sp" />
                     <TextView
                         android:id="@+id/txt_product_buy_price_value"
                         android:layout_width="wrap_content"
@@ -107,24 +123,26 @@
                         android:fontFamily="@font/montserrat"
                         android:layout_weight="1"
                         android:text="@string/buy_price_value"
-                        android:textColor="#000" />
+                        android:textColor="#000"
+                        android:textSize="12sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:weightSum="2"
                     >
                     <TextView
-                    android:id="@+id/txt_product_sell_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:layout_weight="1"
-                    android:text="@string/sell_price"
-                    android:textColor="#000" />
+                        android:id="@+id/txt_product_sell_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:layout_weight="1"
+                        android:text="@string/sell_price"
+                        android:textSize="12sp"
+                        android:textColor="#000" />
                     <TextView
                         android:id="@+id/txt_product_sell_price_value"
                         android:layout_width="match_parent"
@@ -133,6 +151,36 @@
                         android:fontFamily="@font/montserrat"
                         android:layout_weight="1"
                         android:text="@string/buy_sell_value"
+                        android:textColor="#000"
+                        android:textSize="12sp"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    >
+                    <TextView
+                        android:id="@+id/txt_product_stock"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:layout_weight="1"
+                        android:text="@string/productstock"
+                        android:textSize="12sp"
+                        android:textColor="#000" />
+                    <TextView
+                        android:id="@+id/txt_product_stock_value"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:fontFamily="@font/montserrat"
+                        android:layout_weight="1"
+                        android:text="@string/stock_value"
+                        android:textSize="12sp"
                         android:textColor="#000" />
 
 
@@ -143,29 +191,42 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:gravity="center"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <LinearLayout
+
+                <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="right"
+                    android:layout_height="match_parent"
+                    android:padding="0dp"
                     android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/img_delete"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:paddingRight="10dp"
+                        android:layout_gravity="center"
+                        android:paddingRight="5dp"
+                        android:paddingLeft="5dp"
                         app:srcCompat="@drawable/new_delete"
                         tools:ignore="VectorDrawableCompat" />
-                </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/img_delete_shadow"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="0dp"
+                        android:alpha="0.5"
+                        android:visibility="gone"
+                        android:background="@drawable/rectangular_background_danger"
+                        android:orientation="horizontal"></LinearLayout>
+
+                </FrameLayout>
+
 
 
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
 </RelativeLayout>

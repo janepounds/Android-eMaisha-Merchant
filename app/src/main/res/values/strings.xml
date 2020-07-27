@@ -263,9 +263,11 @@
     <string name="supplier_address_one" translatable="false">Address 1</string>
     <string name="supplier_address_two" translatable="false">Address 2</string>
     <string name="emvTips" translatable="false">Please insert, Swipe or Tap your card ...</string>
-    <string name="searchShippingAddress">Search Your Shop Address</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="not_a_member">Not a Member?</string>
-    <string name="signup">Sign Up</string>
+    <string name="searchShippingAddress" translatable="false">Search Your Shop Address</string>
+    <string name="title_activity_maps" translatable="false">Map</string>
+    <string name="not_a_member" translatable="false">Not a Member?</string>
+    <string name="signup" translatable="false">Sign Up</string>
+    <string name="stock_value" translatable="false">00</string>
+    <string name="productstock">Product Stock :</string>
 
 </resources>

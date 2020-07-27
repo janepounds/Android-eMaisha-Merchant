@@ -8,9 +8,11 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -59,6 +61,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         String buy_price = productData.get(position).get("product_buy_price");
         String sell_price = productData.get(position).get("product_sell_price");
         String base64Image = productData.get(position).get("product_image");
+        String productstock= productData.get(position).get("product_stock");
 
         databaseAccess.open();
         String currency = databaseAccess.getCurrency();
@@ -67,6 +70,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         String supplier_name = databaseAccess.getSupplierName(supplier_id);
 
         holder.txtProductName.setText(name);
+        holder.txt_product_stock.setText(productstock);
         holder.txtSupplierName.setText(supplier_name);
         holder.txtBuyPrice.setText( currency +" "+ buy_price);
         holder.txtSellPrice.setText(currency + " "+sell_price);
@@ -85,6 +89,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             }
         }
 
+        holder.imgDelete.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                holder.img_delete_shadow.setVisibility(View.VISIBLE);
+                return false;
+            }
+        });
 
         holder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,8 +145,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView txtProductName, txtSupplierName, txtBuyPrice, txtSellPrice;
+        TextView txtProductName, txtSupplierName, txtBuyPrice, txtSellPrice,txt_product_stock;
         ImageView imgDelete, product_image;
+        LinearLayout img_delete_shadow;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -144,6 +156,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
             txtSupplierName = itemView.findViewById(R.id.txt_product_supplier_value);
             txtBuyPrice = itemView.findViewById(R.id.txt_product_buy_price_value);
             txtSellPrice = itemView.findViewById(R.id.txt_product_sell_price_value);
+            txt_product_stock = itemView.findViewById(R.id.txt_product_stock_value);
+            img_delete_shadow = itemView.findViewById(R.id.img_delete_shadow);
 
             imgDelete = itemView.findViewById(R.id.img_delete);
             product_image = itemView.findViewById(R.id.product_image);

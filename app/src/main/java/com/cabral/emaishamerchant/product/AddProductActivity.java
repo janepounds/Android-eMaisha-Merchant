@@ -663,7 +663,7 @@ public class AddProductActivity extends BaseActivity {
 
                                 if (check) {
                                     Toasty.success(AddProductActivity.this, R.string.product_successfully_added, Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(AddProductActivity.this, HomeActivity.class);
+                                    Intent intent = new Intent(AddProductActivity.this, ProductActivity.class);
                                     startActivity(intent);
                                     finish();
                                 } else {

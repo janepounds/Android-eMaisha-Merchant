@@ -10,6 +10,7 @@
     <color name="transparent">#00FFFFFF</color>
     <color name="textColorSecondaryLight">#666666</color>
     <color name="deleteIconColor">#DF0456</color>
+    <color name="faintred">#FFCCCB</color>
 
     <color name="windowBackground">#eeeeee</color>
 
