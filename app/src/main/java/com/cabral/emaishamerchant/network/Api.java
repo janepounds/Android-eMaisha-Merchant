@@ -1,6 +1,7 @@
 package com.cabral.emaishamerchant.network;
 
 import com.cabral.emaishamerchant.models.CategoriesResponse;
+import com.cabral.emaishamerchant.models.ManufacturersResponse;
 import com.cabral.emaishamerchant.models.ProductResponse;
 import com.cabral.emaishamerchant.models.ShopResponse;
 
@@ -98,17 +99,10 @@ public interface Api {
             @Field("id") String id,
             @Field("shop_id") Integer shop_id,
             @Field("product_id") Integer product_id,
-            // @Field("product_name") String product_name,
-            // @Field("product_code") String product_code,
-            //  @Field("product_category") String product_category,
-            // @Field("product_description") String product_description,
             @Field("product_buy_price") String product_buy_price,
             @Field("product_sell_price") String product_sell_price,
             @Field("product_supplier") String product_supplier,
-            @Field("product_image") String product_image,
-            @Field("product_stock") int product_stock,
-            @Field("product_weight_unit_id") String product_weight_unit_id,
-            @Field("product_weight") String weight
+            @Field("product_stock") int product_stock
     );
 
     @FormUrlEncoded
@@ -164,10 +158,14 @@ public interface Api {
     @GET("getCategories")
     Call<CategoriesResponse> getCategories();
 
-    @GET("getProductsByCategory/{id}")
+    @GET("getProductsByCategoryAndManufacturer/{category_id}/{manufacturer_id}")
     Call<ProductResponse> getProducts(
-            @Path("id") int id
+            @Path("category_id") int category_id,
+            @Path("manufacturer_id") int manufacturer_id
     );
+
+    @GET("getManufacturers")
+    Call<ManufacturersResponse> getManufacturers();
 
 
 

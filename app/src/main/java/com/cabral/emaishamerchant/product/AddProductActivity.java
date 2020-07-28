@@ -31,6 +31,8 @@ import com.cabral.emaishamerchant.database.DatabaseAccess;
 import com.cabral.emaishamerchant.database.DatabaseOpenHelper;
 import com.cabral.emaishamerchant.models.CategoriesResponse;
 import com.cabral.emaishamerchant.models.Category;
+import com.cabral.emaishamerchant.models.Manufacturer;
+import com.cabral.emaishamerchant.models.ManufacturersResponse;
 import com.cabral.emaishamerchant.models.Product;
 import com.cabral.emaishamerchant.models.ProductResponse;
 import com.cabral.emaishamerchant.network.RetrofitClient;
@@ -64,19 +66,22 @@ public class AddProductActivity extends BaseActivity {
     private List<Product> products;
 
     public static EditText etxtProductCode;
-    EditText etxtProductName, etxtProductCategory, etxtProductDescription, etxtProductBuyPrice, etxtProductSellPrice, etxtProductStock, etxtProductSupplier, etxtProdcutWeightUnit, etxtProductWeight;
-    TextView txtAddProdcut, txtChooseImage;
-    ImageView imgProduct, imgScanCode;
+    EditText etxtProductName, etxtProductCategory, etxtProductDescription, etxtProductBuyPrice, etxtProductSellPrice, etxtProductStock, etxtProductSupplier, etxtProdcutWeightUnit, etxtProductWeight,etxtProductManufucturer;
+    TextView txtAddProdcut;
+    ImageView  imgScanCode;
     String mediaPath, encodedImage = "N/A";
-    ArrayAdapter<String> categoryAdapter, supplierAdapter, weightUnitAdapter, productAdapter;
+    ArrayAdapter<String> categoryAdapter, supplierAdapter, productAdapter,manufacturersAdapter;
     List<String> categoryNames, supplierNames, weightUnitNames;
     Integer selectedCategoryID;
+    Integer selectedManufacturersID;
     Integer selectedProductID;
     String selectedSupplierID;
     String selectedWeightUnitID;
     private List<String> catNames;
+    private List<Manufacturer> manufacturers;
     private List<String> productNames;
-    String selectectedCategoryName, selectedProductName;
+    private List<String> manufacturersNames;
+    String selectectedCategoryName, selectedProductName,selectedManufacturerName;
 
 
     @Override
@@ -97,13 +102,36 @@ public class AddProductActivity extends BaseActivity {
         etxtProductSellPrice = findViewById(R.id.etxt_product_sell_price);
         etxtProductStock = findViewById(R.id.etxt_product_stock);
         etxtProductSupplier = findViewById(R.id.etxt_supplier);
-        etxtProdcutWeightUnit = findViewById(R.id.etxt_product_weight_unit);
-        etxtProductWeight = findViewById(R.id.etxt_product_weight);
+        etxtProductManufucturer = findViewById(R.id.etxt_product_manufucturer);
 
         txtAddProdcut = findViewById(R.id.txt_add_product);
-        imgProduct = findViewById(R.id.image_product);
-        imgScanCode = findViewById(R.id.img_scan_code);
-        txtChooseImage = findViewById(R.id.txt_choose_image);
+
+
+        Call<ManufacturersResponse> call1 = RetrofitClient
+                .getInstance()
+                .getApi()
+                .getManufacturers();
+        call1.enqueue(new Callback<ManufacturersResponse>() {
+            @Override
+            public void onResponse(Call<ManufacturersResponse> call, Response<ManufacturersResponse> response) {
+                if(response.isSuccessful()){
+                    manufacturers = response.body().getManufacturers();
+                    saveManufacturersList(manufacturers);
+                    Log.d("Categories", String.valueOf(categories));
+
+                }else{
+                    Log.d("Failed", "Manufacturers Fetch failed");
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ManufacturersResponse> call, Throwable t) {
+                t.printStackTrace();
+                Log.d("Failed", "Manufacturers Fetch failed");
+
+            }
+        });
 
         Call<CategoriesResponse> call = RetrofitClient
                 .getInstance()
@@ -130,38 +158,8 @@ public class AddProductActivity extends BaseActivity {
             }
         });
 
-        imgScanCode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(AddProductActivity.this, ScannerViewActivity.class);
-                startActivity(intent);
-            }
-        });
 
 
-        txtChooseImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(AddProductActivity.this, ImageSelectActivity.class);
-                intent.putExtra(ImageSelectActivity.FLAG_COMPRESS, true);//default is true
-                intent.putExtra(ImageSelectActivity.FLAG_CAMERA, true);//default is true
-                intent.putExtra(ImageSelectActivity.FLAG_GALLERY, true);//default is true
-                startActivityForResult(intent, 1213);
-            }
-        });
-
-        imgProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(AddProductActivity.this, ImageSelectActivity.class);
-                intent.putExtra(ImageSelectActivity.FLAG_COMPRESS, true);//default is true
-                intent.putExtra(ImageSelectActivity.FLAG_CAMERA, true);//default is true
-                intent.putExtra(ImageSelectActivity.FLAG_GALLERY, true);//default is true
-                startActivityForResult(intent, 1213);
-            }
-        });
 
 
         categoryNames = new ArrayList<>();
@@ -206,6 +204,94 @@ public class AddProductActivity extends BaseActivity {
 
         }
 
+        etxtProductManufucturer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Categories", String.valueOf(categories));
+                manufacturersNames = new ArrayList<>();
+                for (int i = 0; i < manufacturers.size(); i++) {
+                    manufacturersNames.add(manufacturers.get(i).getManufacturer_name());
+                }
+
+                manufacturersAdapter = new ArrayAdapter<String>(AddProductActivity.this, R.layout.list_row);
+                manufacturersAdapter.addAll(manufacturersNames);
+
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(AddProductActivity.this);
+                View dialogView = getLayoutInflater().inflate(R.layout.dialog_list_search, null);
+                dialog.setView(dialogView);
+                dialog.setCancelable(false);
+
+                Button dialog_button = dialogView.findViewById(R.id.dialog_button);
+                EditText dialog_input = dialogView.findViewById(R.id.dialog_input);
+                TextView dialog_title = dialogView.findViewById(R.id.dialog_title);
+                ListView dialog_list = dialogView.findViewById(R.id.dialog_list);
+
+
+                dialog_title.setText("Manufacturers");
+                dialog_list.setVerticalScrollBarEnabled(true);
+                dialog_list.setAdapter(manufacturersAdapter);
+
+                dialog_input.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+                        manufacturersAdapter.getFilter().filter(charSequence);
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                    }
+                });
+
+
+                final AlertDialog alertDialog = dialog.create();
+
+                dialog_button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+
+                alertDialog.show();
+
+
+                dialog_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        alertDialog.dismiss();
+                        final String selectedItem = manufacturersAdapter.getItem(position);
+
+                        Integer manufacturers_id = 0;
+                        String manufacturers_name = "";
+                        etxtProductManufucturer.setText(selectedItem);
+
+
+                        for (int i = 0; i < manufacturersNames.size(); i++) {
+                            if (manufacturersNames.get(i).equalsIgnoreCase(selectedItem)) {
+                                // Get the ID of selected Country
+                                manufacturers_id = manufacturers.get(i).getManufacturers_id();
+                                manufacturers_name = manufacturers.get(i).getManufacturer_name();
+                            }
+                        }
+
+
+                        selectedManufacturersID = manufacturers_id;
+                        selectedManufacturerName = manufacturers_name;
+
+                        Log.d("Manufucturer_id", String.valueOf(manufacturers_id));
+                    }
+                });
+
+
+
+            }
+        });
 
         etxtProductCategory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -288,7 +374,8 @@ public class AddProductActivity extends BaseActivity {
                                 .getInstance()
                                 .getApi()
                                 .getProducts(
-                                        category_id
+                                        category_id,
+                                        selectedManufacturersID
                                 );
                         call.enqueue(new Callback<ProductResponse>() {
                             @Override
@@ -482,82 +569,6 @@ public class AddProductActivity extends BaseActivity {
         });
 
 
-        etxtProdcutWeightUnit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                weightUnitAdapter = new ArrayAdapter<String>(AddProductActivity.this, R.layout.list_row);
-                weightUnitAdapter.addAll(weightUnitNames);
-
-                AlertDialog.Builder dialog = new AlertDialog.Builder(AddProductActivity.this);
-                View dialogView = getLayoutInflater().inflate(R.layout.dialog_list_search, null);
-                dialog.setView(dialogView);
-                dialog.setCancelable(false);
-
-                Button dialog_button = (Button) dialogView.findViewById(R.id.dialog_button);
-                EditText dialog_input = (EditText) dialogView.findViewById(R.id.dialog_input);
-                TextView dialog_title = (TextView) dialogView.findViewById(R.id.dialog_title);
-                ListView dialog_list = (ListView) dialogView.findViewById(R.id.dialog_list);
-
-//                dialog_title.setText(getString(R.string.zone));
-                dialog_title.setText(R.string.product_weight_unit);
-                dialog_list.setVerticalScrollBarEnabled(true);
-                dialog_list.setAdapter(weightUnitAdapter);
-
-                dialog_input.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
-                        weightUnitAdapter.getFilter().filter(charSequence);
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                    }
-                });
-
-
-                final AlertDialog alertDialog = dialog.create();
-
-                dialog_button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
-
-                alertDialog.show();
-
-
-                dialog_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                        alertDialog.dismiss();
-                        final String selectedItem = weightUnitAdapter.getItem(position);
-
-                        String weight_unit_id = "0";
-                        etxtProdcutWeightUnit.setText(selectedItem);
-
-
-                        for (int i = 0; i < weightUnitNames.size(); i++) {
-                            if (weightUnitNames.get(i).equalsIgnoreCase(selectedItem)) {
-                                // Get the ID of selected Country
-                                weight_unit_id = weightUnit.get(i).get("weight_id");
-                            }
-                        }
-
-
-                        selectedWeightUnitID = weight_unit_id;
-
-                        Log.d("weight_unit", selectedWeightUnitID);
-                    }
-                });
-            }
-        });
-
 
         txtAddProdcut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -576,15 +587,11 @@ public class AddProductActivity extends BaseActivity {
                 String product_code = etxtProductCode.getText().toString().trim();
                 String product_category_name = etxtProductCategory.getText().toString().trim();
                 String product_category_id = selectedCategoryID + "";
-                String product_description = etxtProductDescription.getText().toString().trim();
                 String product_buy_price = etxtProductBuyPrice.getText().toString().trim();
                 String product_sell_price = etxtProductSellPrice.getText().toString().trim();
                 String product_stock = etxtProductStock.getText().toString().trim();
                 String product_supplier_name = etxtProductSupplier.getText().toString().trim();
                 String product_supplier = selectedSupplierID;
-                String product_Weight_unit_name = etxtProdcutWeightUnit.getText().toString().trim();
-                String product_weight_unit_id = selectedWeightUnitID;
-                String product_weight = etxtProductWeight.getText().toString().trim();
 
 
                 if (product_name == null || product_name.isEmpty()) {
@@ -596,18 +603,12 @@ public class AddProductActivity extends BaseActivity {
                 } else if (product_category_name == null || product_category_id == null || product_category_name.isEmpty() || product_category_id.isEmpty()) {
                     etxtProductCategory.setError(getString(R.string.product_category_cannot_be_empty));
                     etxtProductCategory.requestFocus();
-                } else if (product_description == null || product_description.isEmpty()) {
-                    etxtProductDescription.setError(getString(R.string.product_description_cannot_be_empty));
-                    etxtProductDescription.requestFocus();
                 } else if (product_buy_price == null || product_buy_price.isEmpty()) {
                     etxtProductBuyPrice.setError(getString(R.string.product_buy_price_cannot_be_empty));
                     etxtProductBuyPrice.requestFocus();
                 } else if (product_sell_price == null || product_sell_price.isEmpty()) {
                     etxtProductSellPrice.setError(getString(R.string.product_sell_price_cannot_be_empty));
                     etxtProductSellPrice.requestFocus();
-                } else if (product_Weight_unit_name == null || product_weight == null || product_Weight_unit_name.isEmpty() || product_weight.isEmpty()) {
-                    etxtProductWeight.setError(getString(R.string.product_weight_cannot_be_empty));
-                    etxtProductWeight.requestFocus();
                 } else if (product_stock == null || product_stock.isEmpty()) {
                     etxtProductStock.setError(getString(R.string.product_stock_cannot_be_empty));
                     etxtProductStock.requestFocus();
@@ -618,16 +619,7 @@ public class AddProductActivity extends BaseActivity {
                     etxtProductSupplier.setError(getString(R.string.product_supplier_cannot_be_empty));
                     etxtProductSupplier.requestFocus();
                 } else {
-                    Log.d("id", id);
-                    Log.d("product id", String.valueOf(product_id));
-                    Log.d("shop_id", String.valueOf(shop_id));
-                    Log.d("product buy price", product_buy_price);
-                    Log.d("product sell price", product_sell_price);
-                    Log.d("product supplier", product_supplier);
-                    Log.d("product stock", product_stock);
-                    Log.d("product weight", product_weight);
-                    Log.d("product weight unit id", product_weight_unit_id);
-                    Log.d("product weight", product_weight);
+
                     Call<ResponseBody> call = RetrofitClient
                             .getInstance()
                             .getApi()
@@ -638,12 +630,7 @@ public class AddProductActivity extends BaseActivity {
                                     product_buy_price,
                                     product_sell_price,
                                     product_supplier,
-                                    encodedImage,
-                                    Integer.parseInt(product_stock),
-                                    product_weight_unit_id,
-                                    product_weight
-
-
+                                    Integer.parseInt(product_stock)
                             );
 
                     ProgressDialog progressDialog = new ProgressDialog(AddProductActivity.this);
@@ -659,38 +646,32 @@ public class AddProductActivity extends BaseActivity {
                                 Log.d("Product Save", "Product successfully saved");
                                 DatabaseAccess databaseAccess = DatabaseAccess.getInstance(AddProductActivity.this);
                                 databaseAccess.open();
-                                boolean check = databaseAccess.addProduct(product_id.toString(), product_name, product_code, product_category_id, product_description, product_buy_price, product_sell_price, product_stock, product_supplier, encodedImage, product_weight_unit_id, product_weight);
-
-                                if (check) {
-                                    Toasty.success(AddProductActivity.this, R.string.product_successfully_added, Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(AddProductActivity.this, ProductActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-
-
-                                    Toasty.error(AddProductActivity.this, R.string.failed, Toast.LENGTH_SHORT).show();
-
-                                }
-                            } else {
-                                progressDialog.dismiss();
                                 String s = null;
-                                if (s != null) {
-                                    try {
-                                        s = response.errorBody().string();
-                                        Log.d("Response", s);
+                                try {
+                                    s = response.body().string();
+                                    if(s!=null) {
                                         JSONObject jsonObject = new JSONObject(s);
-                                        Toasty.error(AddProductActivity.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                                        Log.d("Error Response", jsonObject.getString("message"));
-                                    } catch (IOException | JSONException e) {
-                                        e.printStackTrace();
+                                        boolean check = databaseAccess.addProduct(product_id.toString(), product_name, product_code, product_category_id,jsonObject.getJSONObject("data").getString("product_description"), product_buy_price, product_sell_price, product_stock, product_supplier, jsonObject.getJSONObject("data").getString("product_image"), jsonObject.getJSONObject("data").getString("product_weight_unit"),jsonObject.getJSONObject("data").getString("products_weight"));
+
+                                        if (check) {
+                                            Toasty.success(AddProductActivity.this, R.string.product_successfully_added, Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(AddProductActivity.this, ProductActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        } else {
+                                            Toasty.error(AddProductActivity.this, R.string.failed, Toast.LENGTH_SHORT).show();
+
+                                        }
                                     }
 
-                                } else {
-                                    Toasty.error(AddProductActivity.this, "An error Occurred", Toast.LENGTH_SHORT).show();
-                                    Log.d("Error Response", String.valueOf(response.errorBody()));
-                                    Log.d("Error Response Code", String.valueOf(response.code()));
+                                } catch (IOException | JSONException e) {
+                                    e.printStackTrace();
                                 }
+
+
+                            } else {
+                                progressDialog.dismiss();
+                                Toasty.error(AddProductActivity.this, "Failed", Toast.LENGTH_SHORT).show();
 
 
                             }
@@ -725,7 +706,7 @@ public class AddProductActivity extends BaseActivity {
 
                 mediaPath = data.getStringExtra(ImageSelectActivity.RESULT_FILE_PATH);
                 Bitmap selectedImage = BitmapFactory.decodeFile(mediaPath);
-                imgProduct.setImageBitmap(selectedImage);
+
 
                 encodedImage = encodeImage(selectedImage);
 
@@ -874,29 +855,7 @@ public class AddProductActivity extends BaseActivity {
                 .show();
     }
 
-    public void getCategories() {
-        Call<CategoriesResponse> call = RetrofitClient
-                .getInstance()
-                .getApi()
-                .getCategories();
-        call.enqueue(new Callback<CategoriesResponse>() {
-            @Override
-            public void onResponse(Call<CategoriesResponse> call, Response<CategoriesResponse> response) {
-                if (response.isSuccessful()) {
-                    categories = response.body().getCategories();
-                    Log.d("Categories", String.valueOf(categories));
 
-                } else {
-                    Log.d("Failed", "Categories failed");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<CategoriesResponse> call, Throwable t) {
-
-            }
-        });
-    }
 
     public void saveList(List<Category> categories) {
         this.categories = categories;
@@ -905,6 +864,8 @@ public class AddProductActivity extends BaseActivity {
     public void savePtdList(List<Product> products) {
         this.products = products;
     }
+
+    public void saveManufacturersList(List<Manufacturer> manufacturers){this.manufacturers = manufacturers;}
 
 
 }

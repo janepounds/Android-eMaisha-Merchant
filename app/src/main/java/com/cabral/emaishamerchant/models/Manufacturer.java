@@ -1,10 +1,10 @@
 package com.cabral.emaishamerchant.models;
 
-public class Manufacturers {
+public class Manufacturer {
     private Integer manufacturers_id;
     private String manufacturer_name;
 
-    public Manufacturers(Integer manufacturers_id, String manufacturer_name) {
+    public Manufacturer(Integer manufacturers_id, String manufacturer_name) {
         this.manufacturers_id = manufacturers_id;
         this.manufacturer_name = manufacturer_name;
     }
