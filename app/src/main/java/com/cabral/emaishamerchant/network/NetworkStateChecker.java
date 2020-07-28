@@ -64,13 +64,6 @@ public class NetworkStateChecker extends BroadcastReceiver {
                     Integer shop_id = SharedPrefManager.getInstance(context).getShopId();
 
 
-                    for (int i = 0; i < categories.size(); i++) {
-                        saveCategories(
-                                shop_id,
-                                shop_name.replaceAll(" ", "") + "CAT" + shop_id + categories.get(i).get("category_id"),
-                                categories.get(i).get("category_name")
-                        );
-                    }
 
                     for (int i = 0; i < weights.size(); i++) {
                         saveWeights(

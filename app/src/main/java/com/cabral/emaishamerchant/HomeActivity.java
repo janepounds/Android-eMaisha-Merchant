@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,14 +18,20 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.cabral.emaishamerchant.customers.AddCustomersActivity;
 import com.cabral.emaishamerchant.customers.CustomersActivity;
+import com.cabral.emaishamerchant.database.DatabaseAccess;
 import com.cabral.emaishamerchant.expense.ExpenseActivity;
 import com.cabral.emaishamerchant.network.NetworkStateChecker;
+import com.cabral.emaishamerchant.network.RetrofitClient;
 import com.cabral.emaishamerchant.orders.OrdersActivity;
 import com.cabral.emaishamerchant.pos.PosActivity;
+import com.cabral.emaishamerchant.product.AddProductActivity;
 import com.cabral.emaishamerchant.product.ProductActivity;
 import com.cabral.emaishamerchant.report.ReportActivity;
 import com.cabral.emaishamerchant.settings.SettingsActivity;
+import com.cabral.emaishamerchant.storage.SharedPrefManager;
+import com.cabral.emaishamerchant.suppliers.AddSuppliersActivity;
 import com.cabral.emaishamerchant.suppliers.SuppliersActivity;
 import com.cabral.emaishamerchant.utils.BaseActivity;
 import com.cabral.emaishamerchant.utils.LocaleManager;
@@ -36,9 +43,19 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.PermissionRequestErrorListener;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeActivity extends BaseActivity {
 
@@ -47,6 +64,7 @@ public class HomeActivity extends BaseActivity {
     //for double back press to exit
     private static final int TIME_DELAY = 2000;
     private static long back_pressed;
+    private List<HashMap<String, String>> customers, products, categories, weights, suppliers, expenses, carts, payment_methods, orderList, orderTypes;
 
 
 
@@ -54,7 +72,7 @@ public class HomeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        registerReceiver(new NetworkStateChecker(), new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+//        registerReceiver(new NetworkStateChecker(), new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.custom_toolbar_home);
@@ -75,6 +93,125 @@ public class HomeActivity extends BaseActivity {
 
         }
 
+        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(HomeActivity.this);
+        databaseAccess.open();
+        customers = databaseAccess.getCustomers();
+        products = databaseAccess.getProducts();
+        categories = databaseAccess.getProductCategory();
+        weights = databaseAccess.getWeightUnit();
+        suppliers = databaseAccess.getSuppliers();
+        expenses = databaseAccess.getAllExpense();
+        carts = databaseAccess.getCartProduct();
+        payment_methods = databaseAccess.getPaymentMethod();
+        orderList = databaseAccess.getOrderList();
+        orderTypes = databaseAccess.getOrderType();
+        Integer shop_id = SharedPrefManager.getInstance(HomeActivity.this).getShopId();
+
+
+        Call<ResponseBody> call = RetrofitClient
+                .getInstance()
+                .getApi()
+                .getBackup(
+                        shop_id
+                );
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if(response.isSuccessful()){
+                    String s = null;
+                    try {
+                        s = response.body().string();
+                        if(s!=null){
+                            JSONObject jsonObject = new JSONObject(s);
+                            JSONArray my_customers = null;
+                            JSONArray my_products = null;
+                            JSONArray my_cart = null;
+                            JSONArray my_suppliers = null;
+                            JSONArray my_expenses = null;
+
+                            if(customers.size() <= 0){
+                                my_customers = jsonObject.getJSONArray("customers");
+                                if(my_customers.length()>0) {
+                                    for (int i = 0; i < my_customers.length(); i++) {
+
+                                        boolean check = databaseAccess.addCustomer(my_customers.getJSONObject(i).getString("customer_name"), my_customers.getJSONObject(i).getString("customer_cell"), my_customers.getJSONObject(i).getString("customer_email"), my_customers.getJSONObject(i).getString("customer_address"), my_customers.getJSONObject(i).getString("customer_address_two"), my_customers.getJSONObject(i).getString("customer_image"));
+
+                                        if (check) {
+                                            Log.d("Customer Insert", "Customer Inserted Successfully");
+                                        } else {
+
+                                            Log.d("Customer Failure", "Customer Insertion Failed");
+
+                                        }
+                                    }
+                                }else{
+                                    Log.d("Customer Length ","No Customers Backed up");
+                                }
+                            }
+
+                            if(suppliers.size() <= 0){
+                                my_suppliers = jsonObject.getJSONArray("suppliers");
+                                if(my_suppliers.length() >0) {
+                                    for (int i = 0; i < my_suppliers.length(); i++) {
+                                        boolean check = databaseAccess.addSuppliers(my_suppliers.getJSONObject(i).getString("suppliers_name"), my_suppliers.getJSONObject(i).getString("suppliers_contact_person"), my_suppliers.getJSONObject(i).getString("suppliers_cell"), my_suppliers.getJSONObject(i).getString("suppliers_email"), my_suppliers.getJSONObject(i).getString("suppliers_address"), my_suppliers.getJSONObject(i).getString("suppliers_address_two"), my_suppliers.getJSONObject(i).getString("suppliers_image"));
+
+                                        if (check) {
+                                            Log.d("Suppliers Insert", "Customer Inserted Successfully");
+                                        } else {
+
+                                            Log.d("Suppliers Failure", "Customer Insertion Failed");
+
+                                        }
+
+                                    }
+                                }else{
+                                    Log.d("No Suppliers", "Shop Has No Suppliers Backed Up");
+                                }
+
+                            }
+
+                            if(products.size() <= 0){
+                                my_products = jsonObject.getJSONArray("products");
+                                if(my_products.length()>0){
+                                    for(int i = 0; i< my_products.length(); i++){
+                                        boolean check = databaseAccess.addProduct(my_products.getJSONObject(i).getString("product_id"), my_products.getJSONObject(i).getString("product_name"), my_products.getJSONObject(i).getString("product_code"), my_products.getJSONObject(i).getString("product_category"),my_products.getJSONObject(i).getString("product_description"),my_products.getJSONObject(i).getString("product_buy_price"), my_products.getJSONObject(i).getString("product_sell_price"), my_products.getJSONObject(i).getString("product_stock"),my_products.getJSONObject(i).getString("product_supplier"), my_products.getJSONObject(i).getString("product_image"), my_products.getJSONObject(i).getString("product_weight_unit"),my_products.getJSONObject(i).getString("product_weight"));
+
+                                        if (check) {
+                                            Log.d("Products Insert", "Product Inserted Successfully");
+                                        } else {
+                                            Log.d("Product Insert", "product Inserted Successfully");
+
+                                        }
+
+                                    }
+                                }else{
+                                    Log.d("No Products", "Shop Has No Products Backed Up");
+
+                                }
+                            }
+
+
+                        }
+
+                    }catch (IOException | JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }else{
+                    Log.d("Error Occurred","Error Occurred");
+                    Log.d("Error response", String.valueOf(response));
+                    Log.d("Error Code", String.valueOf(response.code()));
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                t.printStackTrace();
+                Log.d("Error Occurred","Error Occurred");
+
+            }
+        });
 
         cardCustomers.setOnClickListener(new View.OnClickListener() {
             @Override

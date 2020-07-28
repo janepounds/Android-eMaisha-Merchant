@@ -167,6 +167,12 @@ public interface Api {
     @GET("getManufacturers")
     Call<ManufacturersResponse> getManufacturers();
 
+    @GET("getBackup/{shop_id}")
+    Call<ResponseBody> getBackup(
+            @Path("shop_id") int id
+    );
+
+
 
 
 }
