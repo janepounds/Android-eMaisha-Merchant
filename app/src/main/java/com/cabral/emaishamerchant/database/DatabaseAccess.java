@@ -572,6 +572,55 @@ public class DatabaseAccess {
         return product;
     }
 
+    private int getID(String id){
+        this.database = openHelper.getWritableDatabase();
+        Cursor c = database.query("order_list",new String[]{"invoice_id"} ,"invoice_id =? ",new String[]{id},null,null,null,null);
+        if (c.moveToFirst()) //if the row exist then return the id
+            return c.getInt(c.getColumnIndex("invoice_id"));
+
+        c.close();
+        return -1;
+    }
+
+    public boolean addOrder(JSONObject obj){
+        this.database = openHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        try {
+            String order_id =  obj.getString("order_id");
+            String order_date = obj.getString("order_date");
+            String order_time = obj.getString("order_time");
+            String order_type = obj.getString("order_type");
+            String order_payment_method = obj.getString("order_payment_method");
+            String customer_name = obj.getString("customer_name");
+
+
+            values.put("invoice_id", order_id);
+            values.put("order_date", order_date);
+            values.put("order_time", order_time);
+            values.put("order_type", order_type);
+            values.put("order_payment_method", order_payment_method);
+            values.put("customer_name", customer_name);
+
+            int id = getID(order_id);
+            Log.d("Check result", String.valueOf(id));
+            if(id==-1)
+                database.insert("order_list", null, values);
+            else
+                database.update("order_list", values, "invoice_id=?", new String[]{order_id});
+
+            database.delete("product_cart", null, null);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        database.close();
+
+        return false;
+
+    }
+
 
     //insert order in order list
     public boolean insertOrder(String order_id, JSONObject obj) {
