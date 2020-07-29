@@ -1346,7 +1346,7 @@ public class DatabaseAccess {
                 map.put("product_supplier", cursor.getString(7));
                 map.put("product_image", cursor.getString(8));
                 map.put("product_stock", cursor.getString(9));
-                map.put("product_weight_unit_id", cursor.getString(10));
+                map.put("product_weight_unit", cursor.getString(10));
                 map.put("product_weight", cursor.getString(11));
 
 
