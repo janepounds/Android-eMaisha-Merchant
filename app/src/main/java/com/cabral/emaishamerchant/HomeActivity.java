@@ -226,7 +226,7 @@ public class HomeActivity extends BaseActivity {
                                 Log.d("Order", String.valueOf(order_array.getJSONObject(i)));
                                 boolean check = databaseAccess.addOrder(order_array.getJSONObject(i));
                                 if(check){
-                                    Log.d("Update Status", "New Order inserted or update");
+                                    Log.d("Update Status", "New Order inserted or updated Successfully");
                                 }else{
                                     Log.d("Update Failure", "New Order insertion failed");
                                 }

@@ -585,6 +585,7 @@ public class DatabaseAccess {
     public boolean addOrder(JSONObject obj){
         this.database = openHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
+        long check = -1;
         try {
             String order_id =  obj.getString("order_id");
             String order_date = obj.getString("order_date");
@@ -602,11 +603,15 @@ public class DatabaseAccess {
             values.put("customer_name", customer_name);
 
             int id = getID(order_id);
-            Log.d("Check result", String.valueOf(id));
-            if(id==-1)
-                database.insert("order_list", null, values);
-            else
-                database.update("order_list", values, "invoice_id=?", new String[]{order_id});
+
+
+            if(id==-1) {
+                check = database.insert("order_list", null, values);
+            }
+            else {
+               check =  database.update("order_list", values, "invoice_id=?", new String[]{order_id});
+
+            }
 
             database.delete("product_cart", null, null);
 
@@ -617,7 +622,11 @@ public class DatabaseAccess {
 
         database.close();
 
-        return false;
+        if (check == -1) {
+            return false;
+        } else {
+            return true;
+        }
 
     }
 
