@@ -1,11 +1,7 @@
 package com.cabral.emaishamerchant;
 
 import android.Manifest;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,20 +14,16 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.cabral.emaishamerchant.customers.AddCustomersActivity;
 import com.cabral.emaishamerchant.customers.CustomersActivity;
 import com.cabral.emaishamerchant.database.DatabaseAccess;
 import com.cabral.emaishamerchant.expense.ExpenseActivity;
-import com.cabral.emaishamerchant.network.NetworkStateChecker;
 import com.cabral.emaishamerchant.network.RetrofitClient;
 import com.cabral.emaishamerchant.orders.OrdersActivity;
 import com.cabral.emaishamerchant.pos.PosActivity;
-import com.cabral.emaishamerchant.product.AddProductActivity;
 import com.cabral.emaishamerchant.product.ProductActivity;
 import com.cabral.emaishamerchant.report.ReportActivity;
 import com.cabral.emaishamerchant.settings.SettingsActivity;
 import com.cabral.emaishamerchant.storage.SharedPrefManager;
-import com.cabral.emaishamerchant.suppliers.AddSuppliersActivity;
 import com.cabral.emaishamerchant.suppliers.SuppliersActivity;
 import com.cabral.emaishamerchant.utils.BaseActivity;
 import com.cabral.emaishamerchant.utils.LocaleManager;
@@ -65,7 +57,6 @@ public class HomeActivity extends BaseActivity {
     private static final int TIME_DELAY = 2000;
     private static long back_pressed;
     private List<HashMap<String, String>> customers, products, categories, weights, suppliers, expenses, carts, payment_methods, orderList, orderTypes;
-
 
 
     @Override
@@ -118,11 +109,11 @@ public class HomeActivity extends BaseActivity {
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     String s = null;
                     try {
                         s = response.body().string();
-                        if(s!=null){
+                        if (s != null) {
                             JSONObject jsonObject = new JSONObject(s);
                             JSONArray my_customers = null;
                             JSONArray my_products = null;
@@ -130,9 +121,9 @@ public class HomeActivity extends BaseActivity {
                             JSONArray my_suppliers = null;
                             JSONArray my_expenses = null;
 
-                            if(customers.size() <= 0){
+                            if (customers.size() <= 0) {
                                 my_customers = jsonObject.getJSONArray("customers");
-                                if(my_customers.length()>0) {
+                                if (my_customers.length() > 0) {
                                     for (int i = 0; i < my_customers.length(); i++) {
 
                                         boolean check = databaseAccess.addCustomer(my_customers.getJSONObject(i).getString("customer_name"), my_customers.getJSONObject(i).getString("customer_cell"), my_customers.getJSONObject(i).getString("customer_email"), my_customers.getJSONObject(i).getString("customer_address"), my_customers.getJSONObject(i).getString("customer_address_two"), my_customers.getJSONObject(i).getString("customer_image"));
@@ -145,14 +136,14 @@ public class HomeActivity extends BaseActivity {
 
                                         }
                                     }
-                                }else{
-                                    Log.d("Customer Length ","No Customers Backed up");
+                                } else {
+                                    Log.d("Customer Length ", "No Customers Backed up");
                                 }
                             }
 
-                            if(suppliers.size() <= 0){
+                            if (suppliers.size() <= 0) {
                                 my_suppliers = jsonObject.getJSONArray("suppliers");
-                                if(my_suppliers.length() >0) {
+                                if (my_suppliers.length() > 0) {
                                     for (int i = 0; i < my_suppliers.length(); i++) {
                                         boolean check = databaseAccess.addSuppliers(my_suppliers.getJSONObject(i).getString("suppliers_name"), my_suppliers.getJSONObject(i).getString("suppliers_contact_person"), my_suppliers.getJSONObject(i).getString("suppliers_cell"), my_suppliers.getJSONObject(i).getString("suppliers_email"), my_suppliers.getJSONObject(i).getString("suppliers_address"), my_suppliers.getJSONObject(i).getString("suppliers_address_two"), my_suppliers.getJSONObject(i).getString("suppliers_image"));
 
@@ -165,13 +156,13 @@ public class HomeActivity extends BaseActivity {
                                         }
 
                                     }
-                                }else{
+                                } else {
                                     Log.d("No Suppliers", "Shop Has No Suppliers Backed Up");
                                 }
 
                             }
 
-                            if(products.size() <= 0){
+                            if (products.size() <= 0) {
                                 my_products = jsonObject.getJSONArray("products");
                                 if(my_products.length()>0){
                                     Log.w("ProductSize",my_products.length()+"---------------------");
@@ -186,7 +177,7 @@ public class HomeActivity extends BaseActivity {
                                         }
 
                                     }
-                                }else{
+                                } else {
                                     Log.d("No Products", "Shop Has No Products Backed Up");
 
                                 }
@@ -195,12 +186,12 @@ public class HomeActivity extends BaseActivity {
 
                         }
 
-                    }catch (IOException | JSONException e) {
+                    } catch (IOException | JSONException e) {
                         e.printStackTrace();
                     }
 
-                }else{
-                    Log.d("Error Occurred","Error Occurred");
+                } else {
+                    Log.d("Error Occurred", "Error Occurred");
                     Log.d("Error response", String.valueOf(response));
                     Log.d("Error Code", String.valueOf(response.code()));
 
@@ -210,8 +201,57 @@ public class HomeActivity extends BaseActivity {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 t.printStackTrace();
-                Log.d("Error Occurred","Error Occurred");
+                Log.d("Error Occurred", "Error Occurred");
 
+            }
+        });
+
+        Call<ResponseBody> call1 = RetrofitClient
+                .getInstance()
+                .getApi()
+                .getOrders(
+                        shop_id
+                );
+
+        call1.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    String s = null;
+                    try {
+                        s = response.body().string();
+                        if (s != null) {
+                            JSONObject jsonObject = new JSONObject(s);
+                            Log.d("Order Fetch", String.valueOf(jsonObject.getJSONArray("orders")));
+                            JSONArray order_array = jsonObject.getJSONArray("orders");
+                            for(int i = 0; i<order_array.length(); i++){
+                                Log.d("Order", String.valueOf(order_array.getJSONObject(i)));
+                                boolean check = databaseAccess.addOrder(order_array.getJSONObject(i));
+                                if(check){
+                                    Log.d("Update Status", "New Order inserted or updated Successfully");
+                                }else{
+                                    Log.d("Update Failure", "New Order insertion failed");
+                                }
+
+                            }
+                        } else {
+
+                            Log.d("Order Fetch", "Response is Empty");
+                        }
+
+                    } catch (IOException | JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }else{
+                    Log.d("Order Fetch", "Response is an Error");
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                    t.printStackTrace();
             }
         });
 
@@ -352,9 +392,6 @@ public class HomeActivity extends BaseActivity {
         }
         back_pressed = System.currentTimeMillis();
     }
-
-
-
 
 
     private void requestPermission() {

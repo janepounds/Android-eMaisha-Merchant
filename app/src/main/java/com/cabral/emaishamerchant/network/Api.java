@@ -172,6 +172,11 @@ public interface Api {
             @Path("shop_id") int id
     );
 
+    @GET("getEMaishaAppOrders/{shop_id}")
+    Call<ResponseBody> getOrders(
+            @Path("shop_id") int id
+    );
+
 
 
 
