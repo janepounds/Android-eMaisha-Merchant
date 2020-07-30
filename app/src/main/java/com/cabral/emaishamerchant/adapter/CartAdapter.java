@@ -69,18 +69,18 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
 
         final String price = cart_product.get(position).get("product_price");
-        final String weight_unit_id = cart_product.get(position).get("product_weight_unit");
+        final String weight_unit_name = cart_product.get(position).get("product_weight_unit");
         final String weight = cart_product.get(position).get("product_weight");
         final String qty = cart_product.get(position).get("product_qty");
 
 
-        Log.d("unit_ID ", weight_unit_id+" ");
+//        Log.d("unit_ID ", weight_unit_id+" ");
 
         databaseAccess.open();
         String base64Image = databaseAccess.getProductImage(product_id);
 
         databaseAccess.open();
-        String weight_unit_name = databaseAccess.getWeightUnitName(weight_unit_id);
+//        String weight_unit_name = databaseAccess.getWeightUnitName(weight_unit_id);
 
 
         databaseAccess.open();
