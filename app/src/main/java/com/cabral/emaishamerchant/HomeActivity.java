@@ -105,6 +105,7 @@ public class HomeActivity extends BaseActivity {
         payment_methods = databaseAccess.getPaymentMethod();
         orderList = databaseAccess.getOrderList();
         orderTypes = databaseAccess.getOrderType();
+        databaseAccess.close();
         Integer shop_id = SharedPrefManager.getInstance(HomeActivity.this).getShopId();
 
 
@@ -137,10 +138,10 @@ public class HomeActivity extends BaseActivity {
                                         boolean check = databaseAccess.addCustomer(my_customers.getJSONObject(i).getString("customer_name"), my_customers.getJSONObject(i).getString("customer_cell"), my_customers.getJSONObject(i).getString("customer_email"), my_customers.getJSONObject(i).getString("customer_address"), my_customers.getJSONObject(i).getString("customer_address_two"), my_customers.getJSONObject(i).getString("customer_image"));
 
                                         if (check) {
-                                            Log.d("Customer Insert", "Customer Inserted Successfully");
+                                            Log.w("Customer Insert", "Customer Inserted Successfully");
                                         } else {
 
-                                            Log.d("Customer Failure", "Customer Insertion Failed");
+                                            Log.e("Customer Failure", "Customer Insertion Failed");
 
                                         }
                                     }
@@ -156,10 +157,10 @@ public class HomeActivity extends BaseActivity {
                                         boolean check = databaseAccess.addSuppliers(my_suppliers.getJSONObject(i).getString("suppliers_name"), my_suppliers.getJSONObject(i).getString("suppliers_contact_person"), my_suppliers.getJSONObject(i).getString("suppliers_cell"), my_suppliers.getJSONObject(i).getString("suppliers_email"), my_suppliers.getJSONObject(i).getString("suppliers_address"), my_suppliers.getJSONObject(i).getString("suppliers_address_two"), my_suppliers.getJSONObject(i).getString("suppliers_image"));
 
                                         if (check) {
-                                            Log.d("Suppliers Insert", "Customer Inserted Successfully");
+                                            Log.w("Suppliers Insert", "Customer Inserted Successfully");
                                         } else {
 
-                                            Log.d("Suppliers Failure", "Customer Insertion Failed");
+                                            Log.e("Suppliers Failure", "Customer Insertion Failed");
 
                                         }
 
@@ -173,13 +174,14 @@ public class HomeActivity extends BaseActivity {
                             if(products.size() <= 0){
                                 my_products = jsonObject.getJSONArray("products");
                                 if(my_products.length()>0){
+                                    Log.w("ProductSize",my_products.length()+"---------------------");
                                     for(int i = 0; i< my_products.length(); i++){
-                                        boolean check = databaseAccess.addProduct(my_products.getJSONObject(i).getString("product_id"), my_products.getJSONObject(i).getString("product_name"), my_products.getJSONObject(i).getString("product_code"), my_products.getJSONObject(i).getString("product_category"),my_products.getJSONObject(i).getString("product_description"),my_products.getJSONObject(i).getString("product_buy_price"), my_products.getJSONObject(i).getString("product_sell_price"), my_products.getJSONObject(i).getString("product_stock"),my_products.getJSONObject(i).getString("product_supplier"), my_products.getJSONObject(i).getString("product_image"), my_products.getJSONObject(i).getString("product_weight_unit"),my_products.getJSONObject(i).getString("product_weight"));
+                                        boolean check= databaseAccess.addProduct(my_products.getJSONObject(i).getString("product_id"), my_products.getJSONObject(i).getString("product_name"), my_products.getJSONObject(i).getString("product_code"), my_products.getJSONObject(i).getString("product_category"),my_products.getJSONObject(i).getString("product_description"),my_products.getJSONObject(i).getString("product_buy_price"), my_products.getJSONObject(i).getString("product_sell_price"), my_products.getJSONObject(i).getString("product_stock"),my_products.getJSONObject(i).getString("product_supplier"), my_products.getJSONObject(i).getString("product_image"), my_products.getJSONObject(i).getString("product_weight_unit"),my_products.getJSONObject(i).getString("product_weight"));
 
                                         if (check) {
-                                            Log.d("Products Insert", "Product Inserted Successfully");
+                                            Log.w("Products Insert", "Product Inserted Successfully");
                                         } else {
-                                            Log.d("Product Insert", "product Inserted Successfully");
+                                            Log.e("Product Insert", "product Insertion failed");
 
                                         }
 
