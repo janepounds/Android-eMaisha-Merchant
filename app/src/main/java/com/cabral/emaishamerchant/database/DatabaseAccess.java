@@ -267,7 +267,6 @@ public class DatabaseAccess {
         values.put("product_weight_unit", weight_unit);
         values.put("product_weight", product_weight);
 
-
         long check = database.insert("products", null, values);
         database.close();
 
