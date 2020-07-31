@@ -584,14 +584,18 @@ public class DatabaseAccess {
     public boolean addOrder(JSONObject obj){
         this.database = openHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
+        ContentValues values2 = new ContentValues();
         long check = -1;
+        String order_id = null;
         try {
-            String order_id =  obj.getString("order_id");
+             order_id =  obj.getString("order_id");
             String order_date = obj.getString("order_date");
             String order_time = obj.getString("order_time");
             String order_type = obj.getString("order_type");
             String order_payment_method = obj.getString("order_payment_method");
             String customer_name = obj.getString("customer_name");
+            String storage_status = obj.getString("storage_status");
+            String order_status = obj.getString("order_status");
 
 
             values.put("invoice_id", order_id);
@@ -600,6 +604,8 @@ public class DatabaseAccess {
             values.put("order_type", order_type);
             values.put("order_payment_method", order_payment_method);
             values.put("customer_name", customer_name);
+            values.put("storage_status", storage_status);
+            values.put("order_status", order_status);
 
             int id = getID(order_id);
 
@@ -614,6 +620,45 @@ public class DatabaseAccess {
 
             database.delete("product_cart", null, null);
 
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        try {
+
+            JSONArray result = obj.getJSONArray("products");
+
+            for (int i = 0; i < result.length(); i++) {
+                JSONObject jo = result.getJSONObject(i);
+                String product_name = jo.getString("product_name"); //ref
+                String product_weight = jo.getString("product_weight");
+                String product_qty = jo.getString("product_qty");
+                String product_price = jo.getString("product_price");
+                String product_image = null;
+                try {
+
+                    product_image = jo.getString("product_image");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                String product_order_date = jo.getString("product_order_date");
+
+
+                values2.put("invoice_id", order_id);
+                values2.put("product_name", product_name);
+                values2.put("product_weight", product_weight);
+                values2.put("product_qty", product_qty);
+                values2.put("product_price", product_price);
+                values2.put("product_image", product_image);
+                values2.put("product_order_date", product_order_date);
+
+
+                database.insert("order_details", null, values2);
+
+                return true;
+            }
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -722,6 +767,8 @@ public class DatabaseAccess {
                 map.put("order_type", cursor.getString(4));
                 map.put("order_payment_method", cursor.getString(5));
                 map.put("customer_name", cursor.getString(6));
+                map.put("storage_status", cursor.getString(7));
+                map.put("order_status", cursor.getString(9));
 
 
                 orderList.add(map);
@@ -1165,8 +1212,8 @@ public class DatabaseAccess {
         if (cursor.moveToFirst()) {
             do {
 
-                double price = Double.parseDouble(cursor.getString(4));
-                int qty = Integer.parseInt(cursor.getString(5));
+                double price = Double.parseDouble(cursor.getString(5));
+                int qty = Integer.parseInt(cursor.getString(4));
                 double sub_total = price * qty;
                 total_price = total_price + sub_total;
 

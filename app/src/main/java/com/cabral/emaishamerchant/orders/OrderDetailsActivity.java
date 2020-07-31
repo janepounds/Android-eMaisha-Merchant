@@ -29,7 +29,7 @@ public class OrderDetailsActivity extends BaseActivity {
     private OrderDetailsAdapter orderDetailsAdapter;
 
     ImageView imgNoProduct;
-    TextView txtNoProducts, txtTotalPrice,txtPdfReceipt;
+    TextView txtNoProducts, txtTotalPrice,txtPdfReceipt,txtApprove;
     String order_id, order_date, order_time, customer_name;
     double total_price;
 
@@ -37,7 +37,7 @@ public class OrderDetailsActivity extends BaseActivity {
     //headers and get clients para meter must be equal
     private String[] header = {"Description", "Price"};
 
-    String longText, shortText;
+    String longText, shortText,order_status,storage_status;
 
     private TemplatePDF templatePDF;
     String currency;
@@ -52,12 +52,15 @@ public class OrderDetailsActivity extends BaseActivity {
         imgNoProduct = findViewById(R.id.image_no_product);
         txtTotalPrice = findViewById(R.id.txt_total_price);
         txtPdfReceipt=findViewById(R.id.txt_pdf_receipt);
+        txtApprove = findViewById(R.id.txt_approve);
 
         txtNoProducts = findViewById(R.id.txt_no_products);
         order_id = getIntent().getExtras().getString("order_id");
         order_date = getIntent().getExtras().getString("order_date");
         order_time = getIntent().getExtras().getString("order_time");
         customer_name = getIntent().getExtras().getString("customer_name");
+        order_status = getIntent().getExtras().getString("order_status");
+        storage_status = getIntent().getExtras().getString("storage_status");
 
         imgNoProduct.setVisibility(View.GONE);
         txtNoProducts.setVisibility(View.GONE);
@@ -65,6 +68,11 @@ public class OrderDetailsActivity extends BaseActivity {
         getSupportActionBar().setHomeButtonEnabled(true); //for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
         getSupportActionBar().setTitle(R.string.order_details);
+
+        if(order_status.equals("Pending") && storage_status.equals("online")){
+            txtPdfReceipt.setVisibility(View.GONE);
+            txtApprove.setVisibility(View.VISIBLE);
+        }
 
 
         // set a GridLayoutManager with default vertical orientation and 3 number of columns
