@@ -60,12 +60,12 @@ public class PosProductAdapter extends RecyclerView.Adapter<PosProductAdapter.My
         String name = productData.get(position).get("product_name");
         final String product_weight = productData.get(position).get("product_weight");
         final String product_price = productData.get(position).get("product_sell_price");
-        final String weight_unit_id = productData.get(position).get("product_weight_unit_id");
+        final String weight_unit_name = productData.get(position).get("product_weight_unit");
         String base64Image = productData.get(position).get("product_image");
 
 
         databaseAccess.open();
-        final String weight_unit_name = databaseAccess.getWeightUnitName(weight_unit_id);
+//        final String weight_unit_name = databaseAccess.getWeightUnitName(weight_unit_id);
 
         holder.txtProductName.setText(name);
         holder.txtWeight.setText(product_weight + " " + weight_unit_name);
@@ -91,10 +91,10 @@ public class PosProductAdapter extends RecyclerView.Adapter<PosProductAdapter.My
             public void onClick(View v) {
 
 
-                Log.d("w_id", weight_unit_id+" ");
+//                Log.d("w_id", weight_unit_i+" ");
                 databaseAccess.open();
 
-                int check = databaseAccess.addToCart(product_id, product_weight, weight_unit_id, product_price, 1);
+                int check = databaseAccess.addToCart(product_id, product_weight, weight_unit_name, product_price, 1);
 
                 if (check == 1) {
                     Toasty.success(context, R.string.product_added_to_cart, Toast.LENGTH_SHORT).show();
