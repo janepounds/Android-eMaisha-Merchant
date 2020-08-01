@@ -571,9 +571,9 @@ public class DatabaseAccess {
         return product;
     }
 
-    private int getID(String id){
+    private int getID(String id) {
         this.database = openHelper.getWritableDatabase();
-        Cursor c = database.query("order_list",new String[]{"invoice_id"} ,"invoice_id =? ",new String[]{id},null,null,null,null);
+        Cursor c = database.query("order_list", new String[]{"invoice_id"}, "invoice_id =? ", new String[]{id}, null, null, null, null);
         if (c.moveToFirst()) //if the row exist then return the id
             return c.getInt(c.getColumnIndex("invoice_id"));
 
@@ -581,14 +581,14 @@ public class DatabaseAccess {
         return -1;
     }
 
-    public boolean addOrder(JSONObject obj){
+    public boolean addOrder(JSONObject obj) {
         this.database = openHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         ContentValues values2 = new ContentValues();
         long check = -1;
         String order_id = null;
         try {
-             order_id =  obj.getString("order_id");
+            order_id = obj.getString("order_id");
             String order_date = obj.getString("order_date");
             String order_time = obj.getString("order_time");
             String order_type = obj.getString("order_type");
@@ -610,11 +610,10 @@ public class DatabaseAccess {
             int id = getID(order_id);
 
 
-            if(id==-1) {
+            if (id == -1) {
                 check = database.insert("order_list", null, values);
-            }
-            else {
-               check =  database.update("order_list", values, "invoice_id=?", new String[]{order_id});
+            } else {
+                check = database.update("order_list", values, "invoice_id=?", new String[]{order_id});
 
             }
 
@@ -756,6 +755,32 @@ public class DatabaseAccess {
         ArrayList<HashMap<String, String>> orderList = new ArrayList<>();
         this.database = openHelper.getWritableDatabase();
         Cursor cursor = database.rawQuery("SELECT * FROM order_list ORDER BY order_id DESC", null);
+        if (cursor.moveToFirst()) {
+            do {
+                HashMap<String, String> map = new HashMap<String, String>();
+
+
+                map.put("invoice_id", cursor.getString(1));
+                map.put("order_date", cursor.getString(2));
+                map.put("order_time", cursor.getString(3));
+                map.put("order_type", cursor.getString(4));
+                map.put("order_payment_method", cursor.getString(5));
+                map.put("customer_name", cursor.getString(6));
+                map.put("storage_status", cursor.getString(7));
+                map.put("order_status", cursor.getString(9));
+
+
+                orderList.add(map);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        database.close();
+        return orderList;
+    }
+    public ArrayList<HashMap<String, String>> getOnlineOrderList() {
+        ArrayList<HashMap<String, String>> orderList = new ArrayList<>();
+        this.database = openHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("SELECT * FROM order_list WHERE order_status LIKE'Pending%' AND storage_status LIKE '%online%' ORDER BY order_id DESC", null);
         if (cursor.moveToFirst()) {
             do {
                 HashMap<String, String> map = new HashMap<String, String>();
@@ -1070,6 +1095,20 @@ public class DatabaseAccess {
         long check = database.update("product_cart", values, "cart_id=?", new String[]{id});
 
 
+    }
+
+    public boolean updateOrder(String id, String status) {
+        this.database = openHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("order_status", status);
+
+        long check = database.update("order_list", values, "invoice_id=?", new String[]{id});
+
+        if (check == -1) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 

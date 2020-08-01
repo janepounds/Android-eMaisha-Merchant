@@ -18,6 +18,7 @@ import com.cabral.emaishamerchant.customers.CustomersActivity;
 import com.cabral.emaishamerchant.database.DatabaseAccess;
 import com.cabral.emaishamerchant.expense.ExpenseActivity;
 import com.cabral.emaishamerchant.network.RetrofitClient;
+import com.cabral.emaishamerchant.orders.OnlineOrders;
 import com.cabral.emaishamerchant.orders.OrdersActivity;
 import com.cabral.emaishamerchant.pos.PosActivity;
 import com.cabral.emaishamerchant.product.ProductActivity;
@@ -258,7 +259,7 @@ public class HomeActivity extends BaseActivity {
         cardCustomers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, CustomersActivity.class);
+                Intent intent = new Intent(HomeActivity.this, OnlineOrders.class);
                 startActivity(intent);
 
 

@@ -284,7 +284,7 @@
                                     android:layout_marginTop="5dp"
                                     android:layout_marginBottom="10dp"
                                     android:fontFamily="@font/montserrat"
-                                    android:text="@string/customers"
+                                    android:text="Orders"
                                     android:textColor="#000"
                                     android:textSize="16sp" />
 
@@ -641,7 +641,7 @@
                                     android:layout_marginTop="5dp"
                                     android:layout_marginBottom="10dp"
                                     android:fontFamily="@font/montserrat"
-                                    android:text="@string/all_orders"
+                                    android:text="Sales"
                                     android:textColor="#000"
                                     android:textSize="16sp" />
 

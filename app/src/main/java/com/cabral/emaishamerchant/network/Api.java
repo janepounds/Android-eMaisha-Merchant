@@ -177,6 +177,12 @@ public interface Api {
             @Path("shop_id") int id
     );
 
+    @FormUrlEncoded
+    @POST("updatestatus")
+    Call<ResponseBody> updateOrderStatus(
+            @Field("orders_id") String order_id
+    );
+
 
 
 
