@@ -4,6 +4,7 @@ import com.cabral.emaishamerchant.models.CategoriesResponse;
 import com.cabral.emaishamerchant.models.ManufacturersResponse;
 import com.cabral.emaishamerchant.models.ProductResponse;
 import com.cabral.emaishamerchant.models.ShopResponse;
+import com.cabral.emaishamerchant.models.UserData;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -184,6 +185,16 @@ public interface Api {
     );
 
 
+    @POST("registermerchantdevices")
+    Call<UserData> registerDeviceToFCM(@Field("device_id") String device_id,
+                                       @Field("device_type") String device_type,
+                                       @Field("ram") String ram,
+                                       @Field("processor") String processor,
+                                       @Field("device_os") String device_os,
+                                       @Field("location") String location,
+                                       @Field("device_model") String device_model,
+                                       @Field("manufacturer") String manufacturer,
+                                       @Field("shop_id") String shop_id);
 
 
 }

@@ -1,6 +1,7 @@
 package com.cabral.emaishamerchant;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import androidx.cardview.widget.CardView;
 import com.cabral.emaishamerchant.customers.CustomersActivity;
 import com.cabral.emaishamerchant.database.DatabaseAccess;
 import com.cabral.emaishamerchant.expense.ExpenseActivity;
+import com.cabral.emaishamerchant.network.NetworkStateChecker;
 import com.cabral.emaishamerchant.network.RetrofitClient;
 import com.cabral.emaishamerchant.orders.OnlineOrders;
 import com.cabral.emaishamerchant.orders.OrdersActivity;
@@ -58,6 +60,7 @@ public class HomeActivity extends BaseActivity {
     private static final int TIME_DELAY = 2000;
     private static long back_pressed;
     private List<HashMap<String, String>> customers, products, categories, weights, suppliers, expenses, carts, payment_methods, orderList, orderTypes;
+    public static Context context;
 
 
     @Override
@@ -68,7 +71,7 @@ public class HomeActivity extends BaseActivity {
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.custom_toolbar_home);
-
+        context = this.getApplicationContext();
         cardCustomers = findViewById(R.id.card_customers);
         cardSupplier = findViewById(R.id.card_suppliers);
         cardProducts = findViewById(R.id.card_products);
@@ -84,6 +87,7 @@ public class HomeActivity extends BaseActivity {
             requestPermission();
 
         }
+        //NetworkStateChecker.RegisterDeviceForFCM(HomeActivity.this);
 
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(HomeActivity.this);
         databaseAccess.open();
@@ -97,7 +101,7 @@ public class HomeActivity extends BaseActivity {
         payment_methods = databaseAccess.getPaymentMethod();
         orderList = databaseAccess.getOrderList();
         orderTypes = databaseAccess.getOrderType();
-        databaseAccess.close();
+
         Integer shop_id = SharedPrefManager.getInstance(HomeActivity.this).getShopId();
 
 
