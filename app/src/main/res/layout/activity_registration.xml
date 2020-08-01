@@ -58,17 +58,23 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="35dp">
 
-                <EditText
+                <com.cabral.emaishamerchant.utils.OtpEdittext
                     android:id="@+id/etxt_shop_contact"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:fontFamily="@font/montserrat"
-                    android:hint="@string/shop_contact_number"
-                    android:inputType="text"
-                    android:padding="8dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:visibility="visible"
+                    android:gravity="start|center_vertical"
+                    android:hint="@string/contact_format"
+                    android:inputType="phone"
+                    android:textAlignment="viewStart"
+                    android:tag="+256 "
                     android:textColor="#000"
-                    android:textSize="16sp" />
+                    android:fontFamily="@font/montserrat"
+                    android:textColorHint="@color/textColorPrimaryDark"
+                    android:background="@color/white"
+                    />
 
             </androidx.cardview.widget.CardView>
 

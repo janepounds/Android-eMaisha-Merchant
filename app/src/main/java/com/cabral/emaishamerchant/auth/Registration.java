@@ -1,5 +1,7 @@
 package com.cabral.emaishamerchant.auth;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -9,6 +11,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,6 +20,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -39,11 +43,19 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.TaskExecutors;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -53,6 +65,9 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+
+import javax.xml.validation.Validator;
 
 import es.dmoral.toasty.Toasty;
 import okhttp3.ResponseBody;
@@ -87,6 +102,14 @@ public class Registration extends AppCompatActivity implements GoogleApiClient.O
     private LatLng mCenterLatLong= new LatLng(0.347596, 32.582520);//kampala
     PlacesFieldSelector fieldSelector;
 
+    //Custom Dialog Vies
+    Dialog dialogOTP;
+    EditText ed_otp;
+    //It is the verification id that will be sent to the user
+    private String mVerificationId;
+    //firebase auth object
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,7 +127,8 @@ public class Registration extends AppCompatActivity implements GoogleApiClient.O
 
         txtRegister = findViewById(R.id.txt_shop_register);
 
-
+        //initializing objects
+        mAuth = FirebaseAuth.getInstance();
         txtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -154,66 +178,14 @@ public class Registration extends AppCompatActivity implements GoogleApiClient.O
                 Log.d("Latitude", latitude);
                 Log.d("Latitude", longitude);
 
-                Call<ResponseBody> call = RetrofitClient
-                        .getInstance()
-                        .getApi()
-                        .registerShop(
-                                name,
-                                contact,
-                                email,
-                                address,
-                                currency,
-                                latitude,
-                                longitude,
-                                password
-                        );
-                ProgressDialog progressDialog = new ProgressDialog(Registration.this);
-                progressDialog.setMessage("Loading...");
-                progressDialog.setTitle("Please Wait");
-                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                progressDialog.show();
-                call.enqueue(new Callback<ResponseBody>() {
-                    @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        if (response.isSuccessful()) {
-                            progressDialog.dismiss();
-                            try {
-                                String s = response.body().string();
-                                Log.d("Response", s);
-                                JSONObject jsonObject = new JSONObject(s);
-                                SharedPrefManager.getInstance(Registration.this).saveShopId(jsonObject.getInt("shop_id"));
-                                Toasty.success(Registration.this, "Shop Registered Successfully", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(Registration.this, Login.class);
-                                intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
-                            } catch (IOException | JSONException e) {
-                                e.printStackTrace();
-                            }
-
-                        } else {
-                            progressDialog.dismiss();
-                            try {
-                                String s = response.errorBody().string();
-                                JSONObject jsonObject = new JSONObject(s);
-                                Toasty.error(Registration.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-
-                            } catch (IOException | JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        progressDialog.dismiss();
-                        Toasty.error(Registration.this, "An Error Occurred", Toast.LENGTH_SHORT).show();
-                        t.printStackTrace();
-                    }
-                });
+                sendVerificationCode(getResources().getString(R.string.ugandan_code)+etxtShopContact.getText().toString().trim());
 
 
             }
+
+
         });
+
 
 
         fieldSelector = new PlacesFieldSelector();
@@ -284,6 +256,206 @@ public class Registration extends AppCompatActivity implements GoogleApiClient.O
 
     }
 
+    /// Custom dialog for OTP
+    public void showOTPDialog(Activity activity, String msg) {
+        dialogOTP = new Dialog(activity);
+        dialogOTP.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialogOTP.setCancelable(false);
+        dialogOTP.setContentView(R.layout.dialog_otp);
+
+        ed_otp = dialogOTP.findViewById(R.id.ed_otp);
+        AppCompatButton btn_resend, btn_submit;
+        btn_resend = dialogOTP.findViewById(R.id.btn_resend);
+        btn_submit = dialogOTP.findViewById(R.id.btn_submit);
+
+        btn_resend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendVerificationCode(getResources().getString(R.string.ugandan_code)+etxtShopContact.getText().toString().trim());
+            }
+        });
+
+        btn_submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!ed_otp.getText().toString().trim().isEmpty()) {
+                    verifyVerificationCode(ed_otp.getText().toString().trim());
+                }
+            }
+        });
+
+        dialogOTP.show();
+    }
+
+    //the method is sending verification code
+    //the country id is concatenated
+    //you can take the country id as user input as well
+    private void sendVerificationCode(String mobile) {
+        Log.w("Mobile fomart Errpr: ",mobile);
+        showOTPDialog(Registration.this, "");
+
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                mobile,
+                60,
+                TimeUnit.SECONDS,
+                TaskExecutors.MAIN_THREAD,
+                mCallbacks);
+
+    }
+
+
+    //the callback to detect the verification status
+    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+        @Override
+        public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
+
+            //Getting the code sent by SMS
+            String code = phoneAuthCredential.getSmsCode();
+
+            //sometime the code is not detected automatically
+            //in this case the code will be null
+            //so user has to manually enter the code
+            if (code != null) {
+
+                ed_otp.setText(code);
+                //verifying the code
+                verifyVerificationCode(code);
+            }
+        }
+
+        @Override
+        public void onVerificationFailed(FirebaseException e) {
+            Toast.makeText(Registration.this, e.getMessage(), Toast.LENGTH_LONG).show();
+            Log.e("Error : ", e.getMessage());
+            dialogOTP.dismiss();
+        }
+
+        @Override
+        public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+            super.onCodeSent(s, forceResendingToken);
+            Log.w("Error", "  verification id  is :"+s);
+            //storing the verification id that is sent to the user
+            mVerificationId = s;
+        }
+    };
+
+
+    private void verifyVerificationCode(String code) {
+        //creating the credential
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, code);
+
+        //signing the user
+        signInWithPhoneAuthCredential(credential);
+    }
+
+    //*********** This method is invoked for every call on requestPermissions(Activity, String[], int) ********//
+
+    private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(Registration.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            //verification successful we will start the profile activity
+                            dialogOTP.dismiss();
+                            String name = etxtShopName.getText().toString().trim();
+                            String contact = etxtShopContact.getText().toString().trim();
+                            String email = etxtShopEmail.getText().toString().trim();
+                            String address = etxtShopAddress.getText().toString().trim();
+                            String currency = etxtShopCurrency.getText().toString().trim();
+                            String password = etxtPassword.getText().toString().trim();
+
+                            registerShop(
+                                    name,
+                                    contact,
+                                    email,
+                                    address,
+                                    currency,
+                                    latitude,
+                                    longitude,
+                                    password
+                            );
+
+                        } else {
+                            //verification unsuccessful.. display an error message
+                            String message = "Somthing is wrong, we will fix it soon...";
+                            if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
+                                message = "Invalid code entered...";
+                            }
+                            Snackbar snackbar = Snackbar.make(findViewById(R.id.parent), message, Snackbar.LENGTH_LONG);
+                            snackbar.setAction("Dismiss", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+
+                                }
+                            });
+                            snackbar.show();
+                        }
+                    }
+                });
+    }
+
+    // [END maps_current_place_on_save_instance_state]
+    private void registerShop(String name, String contact, String email, String address, String currency, String latitude, String longitude, String password) {
+        Call<ResponseBody> call = RetrofitClient
+                .getInstance()
+                .getApi()
+                .registerShop(
+                        name,
+                        contact,
+                        email,
+                        address,
+                        currency,
+                        latitude,
+                        longitude,
+                        password
+                );
+        ProgressDialog progressDialog = new ProgressDialog(Registration.this);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setTitle("Please Wait");
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.show();
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful()) {
+                    progressDialog.dismiss();
+                    try {
+                        String s = response.body().string();
+                        Log.d("Response", s);
+                        JSONObject jsonObject = new JSONObject(s);
+                        SharedPrefManager.getInstance(Registration.this).saveShopId(jsonObject.getInt("shop_id"));
+                        Toasty.success(Registration.this, "Shop Registered Successfully", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Registration.this, Login.class);
+                        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    } catch (IOException | JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                } else {
+                    progressDialog.dismiss();
+                    try {
+                        String s = response.errorBody().string();
+                        JSONObject jsonObject = new JSONObject(s);
+                        Toasty.error(Registration.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+
+                    } catch (IOException | JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                progressDialog.dismiss();
+                Toasty.error(Registration.this, "An Error Occurred", Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
+            }
+        });
+    }
+
+
     @Override
     public void onSaveInstanceState(Bundle outState) {
         if (map != null) {
@@ -292,9 +464,6 @@ public class Registration extends AppCompatActivity implements GoogleApiClient.O
         }
         super.onSaveInstanceState(outState);
     }
-    // [END maps_current_place_on_save_instance_state]
-
-
     @Override
     public void onMapReady(final GoogleMap map) {
         this.map = map;
