@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.cabral.emaishamerchant.HomeActivity;
+import com.cabral.emaishamerchant.orders.OrdersActivity;
 import com.cabral.emaishamerchant.utils.NotificationHelper;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
@@ -45,7 +46,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         notificationBitmap = getBitmapFromUrl(notification_image);
 
 
-        Intent notificationIntent = new Intent(getApplicationContext(), HomeActivity.class);
+        Intent notificationIntent = new Intent(getApplicationContext(), OrdersActivity.class);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         NotificationHelper.showNewNotification
