@@ -3,12 +3,21 @@ package com.cabral.emaishamerchant.network;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.cabral.emaishamerchant.HomeActivity;
 import com.cabral.emaishamerchant.database.DatabaseAccess;
+import com.cabral.emaishamerchant.models.DeviceInfo;
+import com.cabral.emaishamerchant.models.UserData;
 import com.cabral.emaishamerchant.storage.SharedPrefManager;
+import com.cabral.emaishamerchant.utils.Utilities;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,11 +31,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class NetworkStateChecker extends BroadcastReceiver {
     private Context context;
     private String shop_name;
     private List<HashMap<String, String>> shop_information, customers, products, categories, weights, suppliers, expenses, carts, payment_methods, orderList, orderTypes;
+
+
 
 
     @Override
@@ -497,6 +510,70 @@ public class NetworkStateChecker extends BroadcastReceiver {
         });
     }
 
+    //*********** Register Device to Admin Panel with the Device's Info ********//
+
+    public static void RegisterDeviceForFCM(final Context context) {
+        DeviceInfo device = Utilities.getDeviceInfo(context);
+
+        String shop_id = SharedPrefManager.getInstance(context).getShopId()+"";
+
+
+            FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+                @Override
+                public void onSuccess(InstanceIdResult instanceIdResult) {
+                    String deviceID =instanceIdResult.getToken();
+                    Log.w("NEWTOKEN",deviceID);
+
+                    Call<UserData> call = RetrofitClient.getInstance().getApi()
+                            .registerDeviceToFCM
+                                    (
+                                            deviceID,
+                                            device.getDeviceType(),
+                                            device.getDeviceRAM(),
+                                            device.getDeviceProcessors(),
+                                            device.getDeviceAndroidOS(),
+                                            device.getDeviceLocation(),
+                                            device.getDeviceModel(),
+                                            device.getDeviceManufacturer(),
+                                            shop_id
+                                    );
+
+                    call.enqueue(new Callback<UserData>() {
+                        @Override
+                        public void onResponse(Call<UserData> call, retrofit2.Response<UserData> response) {
+
+                            if (response.isSuccessful()) {
+                                if (response.body().getSuccess().equalsIgnoreCase("1")) {
+
+                                    Log.i("notification", response.body().getMessage());
+//                        Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_LONG).show();
+
+                                }
+                                else {
+
+                                    Log.i("notification", response.body().getMessage());
+                                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            }
+                            else {
+                                Log.i("notification", response.errorBody().toString());
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<UserData> call, Throwable t) {
+//                Toast.makeText(context, "NetworkCallFailure : "+t, Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+                }
+            });
+
+
+
+
+
+    }
 
 }
 

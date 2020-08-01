@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.cabral.emaishamerchant.HomeActivity;
 import com.cabral.emaishamerchant.R;
 import com.cabral.emaishamerchant.database.DatabaseAccess;
+import com.cabral.emaishamerchant.network.NetworkStateChecker;
 import com.cabral.emaishamerchant.network.RetrofitClient;
 import com.cabral.emaishamerchant.storage.SharedPrefManager;
 
@@ -97,6 +98,7 @@ public class Login extends AppCompatActivity {
 
                                         if (check) {
                                             Toasty.success(Login.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                                            NetworkStateChecker.RegisterDeviceForFCM(getApplicationContext());
                                             Intent intent = new Intent(Login.this, HomeActivity.class);
                                             intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             startActivity(intent);

@@ -11,8 +11,8 @@ import android.net.Uri;
 
 import androidx.core.app.NotificationManagerCompat;
 
-import com.cabral.emaisha.R;
-import com.cabral.emaisha.activities.MainActivity;
+import com.cabral.emaishamerchant.R;
+import com.cabral.emaishamerchant.HomeActivity;
 
 
 /**
@@ -37,7 +37,7 @@ public class NotificationHelper {
             notificationIntent = intent;
         }
         else {
-            notificationIntent = new Intent(context.getApplicationContext(), MainActivity.class);
+            notificationIntent = new Intent(context.getApplicationContext(), HomeActivity.class);
             notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }
 
@@ -57,7 +57,7 @@ public class NotificationHelper {
                 .setContentTitle(title)
                 .setContentText(msg)
                 .setTicker(context.getString(R.string.app_name))
-                .setSmallIcon(R.drawable.ic_logo)
+                .setSmallIcon(R.drawable.logo)
                 .setSound(notificationSound)
                 .setLights(Color.RED, 3000, 3000)
                 .setVibrate(new long[] { 1000, 1000 })

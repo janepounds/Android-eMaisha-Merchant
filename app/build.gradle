@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 def apikeyPropertiesFile = rootProject.file("apikey.properties")
 def apikeyProperties = new Properties()
@@ -75,6 +76,8 @@ dependencies {
     implementation 'com.google.android.libraries.places:places:2.3.0'
     implementation 'com.intellij:annotations:+@jar'
 
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    implementation 'com.google.firebase:firebase-messaging:20.2.4'
 
     //Added by Jovan for POS CS10
     implementation(name: 'A26Library-1.7.0-Standard', ext: 'aar')

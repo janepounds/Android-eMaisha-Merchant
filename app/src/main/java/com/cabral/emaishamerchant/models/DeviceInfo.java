@@ -1,9 +1,5 @@
-package com.cabral.emaisha.models.device_model;
+package com.cabral.emaishamerchant.models;
 
-
-/**
- * Created by muneeb.vectorcoder@gmail.com on 10-Sep-2017.
- */
 
 public class DeviceInfo {
 
