@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchant.orders;
+package com.cabral.emaishamerchantsapp.orders;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,10 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cabral.emaishamerchant.R;
+import com.cabral.emaishamerchantsapp.R;
 import com.cabral.emaishamerchant.adapter.OnlineOrdersAdapter;
-import com.cabral.emaishamerchant.adapter.OrderAdapter;
-import com.cabral.emaishamerchant.database.DatabaseAccess;
+import com.cabral.emaishamerchantsapp.adapter.OrderAdapter;
+import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
 
 import java.util.HashMap;
 import java.util.List;
