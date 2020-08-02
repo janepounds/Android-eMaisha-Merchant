@@ -34,7 +34,7 @@
         android:layout_marginBottom="15dp"
         android:orientation="vertical" >
 
-        <com.cabral.emaishamerchant.utils.OtpEdittext
+        <com.cabral.emaishamerchantsapp.utils.OtpEdittext
             android:id="@+id/dialog_input"
             android:layout_width="match_parent"
             android:layout_height="45dp"

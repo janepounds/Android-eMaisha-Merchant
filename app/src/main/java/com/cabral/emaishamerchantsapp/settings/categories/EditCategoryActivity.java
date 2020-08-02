@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.settings.categories;
+package com.cabral.emaishamerchantsapp.settings.categories;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -9,9 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.database.DatabaseAccess;
-import com.cabral.emaishamerchantApp.utils.BaseActivity;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
+import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 
 import es.dmoral.toasty.Toasty;
 

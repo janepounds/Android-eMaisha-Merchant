@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.settings.backup;
+package com.cabral.emaishamerchantsapp.settings.backup;
 
 import android.Manifest;
 import android.app.ProgressDialog;
@@ -14,9 +14,9 @@ import android.widget.Toast;
 import androidx.cardview.widget.CardView;
 
 import com.ajts.androidmads.library.SQLiteToExcel;
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.database.DatabaseOpenHelper;
-import com.cabral.emaishamerchantApp.utils.BaseActivity;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.database.DatabaseOpenHelper;
+import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;

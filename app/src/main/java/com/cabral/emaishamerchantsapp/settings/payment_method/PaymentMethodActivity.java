@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.settings.payment_method;
+package com.cabral.emaishamerchantsapp.settings.payment_method;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,10 +14,10 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.adapter.PaymentMethodAdapter;
-import com.cabral.emaishamerchantApp.database.DatabaseAccess;
-import com.cabral.emaishamerchantApp.utils.BaseActivity;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.adapter.PaymentMethodAdapter;
+import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
+import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.HashMap;

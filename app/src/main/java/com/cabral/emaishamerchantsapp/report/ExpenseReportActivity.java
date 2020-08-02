@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.report;
+package com.cabral.emaishamerchantsapp.report;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,11 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ajts.androidmads.library.SQLiteToExcel;
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.adapter.ExpenseAdapter;
-import com.cabral.emaishamerchantApp.database.DatabaseAccess;
-import com.cabral.emaishamerchantApp.database.DatabaseOpenHelper;
-import com.cabral.emaishamerchantApp.utils.BaseActivity;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.adapter.ExpenseAdapter;
+import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
+import com.cabral.emaishamerchantsapp.database.DatabaseOpenHelper;
+import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 import com.obsez.android.lib.filechooser.ChooserDialog;
 
 import java.io.File;

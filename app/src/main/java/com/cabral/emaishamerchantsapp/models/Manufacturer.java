@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.models;
+package com.cabral.emaishamerchantsapp.models;
 
 public class Manufacturer {
     private Integer manufacturers_id;

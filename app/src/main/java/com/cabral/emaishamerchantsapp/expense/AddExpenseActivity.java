@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.expense;
+package com.cabral.emaishamerchantsapp.expense;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -12,10 +12,10 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.cabral.emaishamerchantApp.HomeActivity;
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.database.DatabaseAccess;
-import com.cabral.emaishamerchantApp.utils.BaseActivity;
+import com.cabral.emaishamerchantsapp.HomeActivity;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
+import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

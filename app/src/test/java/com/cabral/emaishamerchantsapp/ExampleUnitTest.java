@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp;
+package com.cabral.emaishamerchantsapp;
 
 import org.junit.Test;
 

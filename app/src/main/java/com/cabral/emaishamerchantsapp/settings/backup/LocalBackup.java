@@ -1,5 +1,5 @@
 
-package com.cabral.emaishamerchantApp.settings.backup;
+package com.cabral.emaishamerchantsapp.settings.backup;
 
 import android.os.Environment;
 import android.view.LayoutInflater;
@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.database.DatabaseOpenHelper;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.database.DatabaseOpenHelper;
 
 import java.io.File;
 

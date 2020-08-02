@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.utils;
+package com.cabral.emaishamerchantsapp.utils;
 
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -11,8 +11,8 @@ import android.net.Uri;
 
 import androidx.core.app.NotificationManagerCompat;
 
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.HomeActivity;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.HomeActivity;
 
 
 /**

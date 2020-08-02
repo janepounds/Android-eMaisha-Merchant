@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.utils;
+package com.cabral.emaishamerchantsapp.utils;
 
 import android.Manifest;
 import android.content.pm.PackageManager;

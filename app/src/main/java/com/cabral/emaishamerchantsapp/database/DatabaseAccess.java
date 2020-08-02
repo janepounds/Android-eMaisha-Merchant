@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.database;
+package com.cabral.emaishamerchantsapp.database;
 
 import android.content.ContentValues;
 import android.content.Context;

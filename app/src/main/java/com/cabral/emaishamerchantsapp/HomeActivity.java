@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp;
+package com.cabral.emaishamerchantsapp;
 
 import android.Manifest;
 import android.content.Context;
@@ -15,19 +15,19 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.cabral.emaishamerchantApp.customers.CustomersActivity;
-import com.cabral.emaishamerchantApp.database.DatabaseAccess;
-import com.cabral.emaishamerchantApp.expense.ExpenseActivity;
-import com.cabral.emaishamerchantApp.network.RetrofitClient;
-import com.cabral.emaishamerchantApp.orders.OrdersActivity;
-import com.cabral.emaishamerchantApp.pos.PosActivity;
-import com.cabral.emaishamerchantApp.product.ProductActivity;
-import com.cabral.emaishamerchantApp.report.ReportActivity;
-import com.cabral.emaishamerchantApp.settings.SettingsActivity;
-import com.cabral.emaishamerchantApp.storage.SharedPrefManager;
-import com.cabral.emaishamerchantApp.suppliers.SuppliersActivity;
-import com.cabral.emaishamerchantApp.utils.BaseActivity;
-import com.cabral.emaishamerchantApp.utils.LocaleManager;
+import com.cabral.emaishamerchantsapp.customers.CustomersActivity;
+import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
+import com.cabral.emaishamerchantsapp.expense.ExpenseActivity;
+import com.cabral.emaishamerchantsapp.network.RetrofitClient;
+import com.cabral.emaishamerchantsapp.orders.OrdersActivity;
+import com.cabral.emaishamerchantsapp.pos.PosActivity;
+import com.cabral.emaishamerchantsapp.product.ProductActivity;
+import com.cabral.emaishamerchantsapp.report.ReportActivity;
+import com.cabral.emaishamerchantsapp.settings.SettingsActivity;
+import com.cabral.emaishamerchantsapp.storage.SharedPrefManager;
+import com.cabral.emaishamerchantsapp.suppliers.SuppliersActivity;
+import com.cabral.emaishamerchantsapp.utils.BaseActivity;
+import com.cabral.emaishamerchantsapp.utils.LocaleManager;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;

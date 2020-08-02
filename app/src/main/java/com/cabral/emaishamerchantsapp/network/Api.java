@@ -1,9 +1,9 @@
-package com.cabral.emaishamerchantApp.network;
+package com.cabral.emaishamerchantsapp.network;
 
-import com.cabral.emaishamerchantApp.models.CategoriesResponse;
-import com.cabral.emaishamerchantApp.models.ManufacturersResponse;
-import com.cabral.emaishamerchantApp.models.ProductResponse;
-import com.cabral.emaishamerchantApp.models.UserData;
+import com.cabral.emaishamerchantsapp.models.CategoriesResponse;
+import com.cabral.emaishamerchantsapp.models.ManufacturersResponse;
+import com.cabral.emaishamerchantsapp.models.ProductResponse;
+import com.cabral.emaishamerchantsapp.models.UserData;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.adapter;
+package com.cabral.emaishamerchantsapp.adapter;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -14,9 +14,9 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.database.DatabaseAccess;
-import com.cabral.emaishamerchantApp.orders.OrderDetailsActivity;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
+import com.cabral.emaishamerchantsapp.orders.OrderDetailsActivity;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.product;
+package com.cabral.emaishamerchantsapp.product;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -25,19 +25,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ajts.androidmads.library.ExcelToSQLite;
-import com.cabral.emaishamerchantApp.HomeActivity;
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.database.DatabaseAccess;
-import com.cabral.emaishamerchantApp.database.DatabaseOpenHelper;
-import com.cabral.emaishamerchantApp.models.CategoriesResponse;
-import com.cabral.emaishamerchantApp.models.Category;
-import com.cabral.emaishamerchantApp.models.Manufacturer;
-import com.cabral.emaishamerchantApp.models.ManufacturersResponse;
-import com.cabral.emaishamerchantApp.models.Product;
-import com.cabral.emaishamerchantApp.models.ProductResponse;
-import com.cabral.emaishamerchantApp.network.RetrofitClient;
-import com.cabral.emaishamerchantApp.storage.SharedPrefManager;
-import com.cabral.emaishamerchantApp.utils.BaseActivity;
+import com.cabral.emaishamerchantsapp.HomeActivity;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
+import com.cabral.emaishamerchantsapp.database.DatabaseOpenHelper;
+import com.cabral.emaishamerchantsapp.models.CategoriesResponse;
+import com.cabral.emaishamerchantsapp.models.Category;
+import com.cabral.emaishamerchantsapp.models.Manufacturer;
+import com.cabral.emaishamerchantsapp.models.ManufacturersResponse;
+import com.cabral.emaishamerchantsapp.models.Product;
+import com.cabral.emaishamerchantsapp.models.ProductResponse;
+import com.cabral.emaishamerchantsapp.network.RetrofitClient;
+import com.cabral.emaishamerchantsapp.storage.SharedPrefManager;
+import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 import com.obsez.android.lib.filechooser.ChooserDialog;
 
 import org.json.JSONException;

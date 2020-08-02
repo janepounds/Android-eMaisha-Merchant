@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.report;
+package com.cabral.emaishamerchantsapp.report;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,8 +7,8 @@ import android.view.View;
 
 import androidx.cardview.widget.CardView;
 
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.utils.BaseActivity;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 
 public class ReportActivity extends BaseActivity {
 

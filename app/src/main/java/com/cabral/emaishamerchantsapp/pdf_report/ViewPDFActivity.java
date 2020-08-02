@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.pdf_report;
+package com.cabral.emaishamerchantsapp.pdf_report;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,8 +20,8 @@ import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
 
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.utils.BaseActivity;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 import com.github.barteksc.pdfviewer.PDFView;
 
 import java.io.File;

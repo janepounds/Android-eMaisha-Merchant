@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.adapter;
+package com.cabral.emaishamerchantsapp.adapter;
 
 import android.content.Context;
 import android.graphics.BitmapFactory;
@@ -16,8 +16,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.database.DatabaseAccess;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
 
 import java.util.HashMap;
 import java.util.List;

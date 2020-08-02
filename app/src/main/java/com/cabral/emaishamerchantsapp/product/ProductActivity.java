@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.product;
+package com.cabral.emaishamerchantsapp.product;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -18,11 +18,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ajts.androidmads.library.SQLiteToExcel;
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.adapter.ProductAdapter;
-import com.cabral.emaishamerchantApp.database.DatabaseAccess;
-import com.cabral.emaishamerchantApp.database.DatabaseOpenHelper;
-import com.cabral.emaishamerchantApp.utils.BaseActivity;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.adapter.ProductAdapter;
+import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
+import com.cabral.emaishamerchantsapp.database.DatabaseOpenHelper;
+import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.obsez.android.lib.filechooser.ChooserDialog;
 

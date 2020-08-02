@@ -58,7 +58,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="35dp">
 
-                <com.cabral.emaishamerchant.utils.OtpEdittext
+                <com.cabral.emaishamerchantsapp.utils.OtpEdittext
                     android:id="@+id/etxt_shop_contact"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"

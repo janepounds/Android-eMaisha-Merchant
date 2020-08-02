@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.utils;
+package com.cabral.emaishamerchantsapp.utils;
 
 import android.annotation.SuppressLint;
 import android.app.ActivityManager;
@@ -34,8 +34,8 @@ import androidx.annotation.ColorRes;
 import androidx.core.content.FileProvider;
 import androidx.core.graphics.drawable.DrawableCompat;
 
-import com.cabral.emaishamerchantApp.BuildConfig;
-import com.cabral.emaishamerchantApp.models.DeviceInfo;
+import com.cabral.emaishamerchantsapp.BuildConfig;
+import com.cabral.emaishamerchantsapp.models.DeviceInfo;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

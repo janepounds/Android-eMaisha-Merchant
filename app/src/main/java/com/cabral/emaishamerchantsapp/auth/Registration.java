@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.auth;
+package com.cabral.emaishamerchantsapp.auth;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -24,11 +24,11 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.cabral.emaishamerchantApp.HomeActivity;
-import com.cabral.emaishamerchantApp.Maps.PlacesFieldSelector;
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.network.RetrofitClient;
-import com.cabral.emaishamerchantApp.storage.SharedPrefManager;
+import com.cabral.emaishamerchantsapp.HomeActivity;
+import com.cabral.emaishamerchantsapp.Maps.PlacesFieldSelector;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.network.RetrofitClient;
+import com.cabral.emaishamerchantsapp.storage.SharedPrefManager;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Status;

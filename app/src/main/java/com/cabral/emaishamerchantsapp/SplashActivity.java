@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp;
+package com.cabral.emaishamerchantsapp;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.cabral.emaishamerchantApp.auth.Login;
+import com.cabral.emaishamerchantsapp.auth.Login;
 
 public class SplashActivity extends AppCompatActivity {
 

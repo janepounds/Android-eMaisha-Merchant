@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.pos;
+package com.cabral.emaishamerchantsapp.pos;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,10 +15,10 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.adapter.PosProductAdapter;
-import com.cabral.emaishamerchantApp.database.DatabaseAccess;
-import com.cabral.emaishamerchantApp.utils.BaseActivity;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.adapter.PosProductAdapter;
+import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
+import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 
 import java.util.HashMap;
 import java.util.List;

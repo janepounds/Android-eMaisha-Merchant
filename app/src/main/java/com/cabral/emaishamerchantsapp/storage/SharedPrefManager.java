@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.storage;
+package com.cabral.emaishamerchantsapp.storage;
 
 import android.content.Context;
 import android.content.SharedPreferences;

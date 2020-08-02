@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.network;
+package com.cabral.emaishamerchantsapp.network;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -8,11 +8,11 @@ import android.net.NetworkInfo;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.cabral.emaishamerchantApp.database.DatabaseAccess;
-import com.cabral.emaishamerchantApp.models.DeviceInfo;
-import com.cabral.emaishamerchantApp.models.UserData;
-import com.cabral.emaishamerchantApp.storage.SharedPrefManager;
-import com.cabral.emaishamerchantApp.utils.Utilities;
+import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
+import com.cabral.emaishamerchantsapp.models.DeviceInfo;
+import com.cabral.emaishamerchantsapp.models.UserData;
+import com.cabral.emaishamerchantsapp.storage.SharedPrefManager;
+import com.cabral.emaishamerchantsapp.utils.Utilities;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;

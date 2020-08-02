@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.network;
+package com.cabral.emaishamerchantsapp.network;
 
 import android.util.Log;
 

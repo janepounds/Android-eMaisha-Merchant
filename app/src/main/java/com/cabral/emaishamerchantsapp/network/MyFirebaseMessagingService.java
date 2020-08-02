@@ -1,13 +1,13 @@
-package com.cabral.emaishamerchantApp.network;
+package com.cabral.emaishamerchantsapp.network;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 
-import com.cabral.emaishamerchantApp.HomeActivity;
-import com.cabral.emaishamerchantApp.orders.OrdersActivity;
-import com.cabral.emaishamerchantApp.utils.NotificationHelper;
+import com.cabral.emaishamerchantsapp.HomeActivity;
+import com.cabral.emaishamerchantsapp.orders.OrdersActivity;
+import com.cabral.emaishamerchantsapp.utils.NotificationHelper;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -31,6 +31,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Bitmap notificationBitmap = null;
         String notification_title, notification_message, notification_image = "";
 
+        Log.w("Firebase", "From: " + remoteMessage.getFrom());
 
         if (remoteMessage.getData().size() > 0) {
             notification_title = remoteMessage.getData().get("title");

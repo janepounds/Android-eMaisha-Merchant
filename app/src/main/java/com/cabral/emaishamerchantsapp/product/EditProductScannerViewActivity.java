@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.product;
+package com.cabral.emaishamerchantsapp.product;
 
 import android.Manifest;
 import android.os.Build;
@@ -7,8 +7,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.utils.BaseActivity;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 import com.google.zxing.Result;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;

@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.Maps;
+package com.cabral.emaishamerchantsapp.Maps;
 
 import android.content.Context;
 import android.view.View;

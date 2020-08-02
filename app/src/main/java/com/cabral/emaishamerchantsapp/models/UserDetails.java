@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.models;
+package com.cabral.emaishamerchantsapp.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

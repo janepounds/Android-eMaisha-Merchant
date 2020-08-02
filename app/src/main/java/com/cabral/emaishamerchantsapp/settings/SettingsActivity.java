@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.settings;
+package com.cabral.emaishamerchantsapp.settings;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,12 +7,12 @@ import android.view.View;
 
 import androidx.cardview.widget.CardView;
 
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.settings.backup.BackupActivity;
-import com.cabral.emaishamerchantApp.settings.categories.CategoriesActivity;
-import com.cabral.emaishamerchantApp.settings.payment_method.PaymentMethodActivity;
-import com.cabral.emaishamerchantApp.settings.shop.ShopInformationActivity;
-import com.cabral.emaishamerchantApp.utils.BaseActivity;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.settings.backup.BackupActivity;
+import com.cabral.emaishamerchantsapp.settings.categories.CategoriesActivity;
+import com.cabral.emaishamerchantsapp.settings.payment_method.PaymentMethodActivity;
+import com.cabral.emaishamerchantsapp.settings.shop.ShopInformationActivity;
+import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 
 public class SettingsActivity extends BaseActivity {
 

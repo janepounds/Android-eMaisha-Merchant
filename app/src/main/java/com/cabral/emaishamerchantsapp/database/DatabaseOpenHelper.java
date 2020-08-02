@@ -1,9 +1,9 @@
-package com.cabral.emaishamerchantApp.database;
+package com.cabral.emaishamerchantsapp.database;
 
 import android.content.Context;
 import android.widget.Toast;
 
-import com.cabral.emaishamerchantApp.R;
+import com.cabral.emaishamerchantsapp.R;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
 import java.io.File;

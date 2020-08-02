@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.pdf_report;
+package com.cabral.emaishamerchantsapp.pdf_report;
 
 import android.content.Context;
 import android.content.Intent;

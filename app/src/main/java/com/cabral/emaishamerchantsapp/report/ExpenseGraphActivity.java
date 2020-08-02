@@ -1,12 +1,12 @@
-package com.cabral.emaishamerchantApp.report;
+package com.cabral.emaishamerchantsapp.report;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.database.DatabaseAccess;
-import com.cabral.emaishamerchantApp.utils.BaseActivity;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
+import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;

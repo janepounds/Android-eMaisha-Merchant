@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.suppliers;
+package com.cabral.emaishamerchantsapp.suppliers;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -18,11 +18,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ajts.androidmads.library.ExcelToSQLite;
-import com.cabral.emaishamerchantApp.HomeActivity;
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.database.DatabaseAccess;
-import com.cabral.emaishamerchantApp.database.DatabaseOpenHelper;
-import com.cabral.emaishamerchantApp.utils.BaseActivity;
+import com.cabral.emaishamerchantsapp.HomeActivity;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
+import com.cabral.emaishamerchantsapp.database.DatabaseOpenHelper;
+import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 import com.obsez.android.lib.filechooser.ChooserDialog;
 
 import java.io.ByteArrayOutputStream;

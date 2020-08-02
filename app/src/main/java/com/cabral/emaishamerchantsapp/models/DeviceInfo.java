@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.models;
+package com.cabral.emaishamerchantsapp.models;
 
 
 public class DeviceInfo {

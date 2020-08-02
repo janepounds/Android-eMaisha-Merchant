@@ -1,4 +1,4 @@
-package com.cabral.emaishamerchantApp.settings.shop;
+package com.cabral.emaishamerchantsapp.settings.shop;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -20,11 +20,11 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.cabral.emaishamerchantApp.Maps.PlacesFieldSelector;
-import com.cabral.emaishamerchantApp.R;
-import com.cabral.emaishamerchantApp.database.DatabaseAccess;
-import com.cabral.emaishamerchantApp.settings.SettingsActivity;
-import com.cabral.emaishamerchantApp.utils.BaseActivity;
+import com.cabral.emaishamerchantsapp.Maps.PlacesFieldSelector;
+import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
+import com.cabral.emaishamerchantsapp.settings.SettingsActivity;
+import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Status;
