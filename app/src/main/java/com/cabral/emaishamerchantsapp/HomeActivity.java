@@ -28,6 +28,21 @@ import com.cabral.emaishamerchantsapp.storage.SharedPrefManager;
 import com.cabral.emaishamerchantsapp.suppliers.SuppliersActivity;
 import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 import com.cabral.emaishamerchantsapp.utils.LocaleManager;
+import com.cabral.emaishamerchant.customers.CustomersActivity;
+import com.cabral.emaishamerchant.database.DatabaseAccess;
+import com.cabral.emaishamerchant.expense.ExpenseActivity;
+import com.cabral.emaishamerchant.network.NetworkStateChecker;
+import com.cabral.emaishamerchant.network.RetrofitClient;
+import com.cabral.emaishamerchant.orders.OnlineOrders;
+import com.cabral.emaishamerchant.orders.OrdersActivity;
+import com.cabral.emaishamerchant.pos.PosActivity;
+import com.cabral.emaishamerchant.product.ProductActivity;
+import com.cabral.emaishamerchant.report.ReportActivity;
+import com.cabral.emaishamerchant.settings.SettingsActivity;
+import com.cabral.emaishamerchant.storage.SharedPrefManager;
+import com.cabral.emaishamerchant.suppliers.SuppliersActivity;
+import com.cabral.emaishamerchant.utils.BaseActivity;
+import com.cabral.emaishamerchant.utils.LocaleManager;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -261,7 +276,7 @@ public class HomeActivity extends BaseActivity {
         cardCustomers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, CustomersActivity.class);
+                Intent intent = new Intent(HomeActivity.this, OnlineOrders.class);
                 startActivity(intent);
 
 

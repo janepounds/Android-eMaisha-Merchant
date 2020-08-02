@@ -178,6 +178,12 @@ public interface Api {
     );
 
     @FormUrlEncoded
+    @POST("updatestatus")
+    Call<ResponseBody> updateOrderStatus(
+            @Field("orders_id") String order_id
+    );
+
+
     @POST("registermerchantdevices")
     Call<UserData> registerDeviceToFCM(@Field("device_id") String device_id,
                                        @Field("device_type") String device_type,
