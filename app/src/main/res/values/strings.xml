@@ -273,5 +273,5 @@
     <string name="ugandan_code" translatable="false" >+256 </string>
     <string name="contact_no" translatable="false"  > Contact </string>
     <string name="veryfynumbertxt"  translatable="false" > Please enter verification code sent in your text message. </string>
-    <string name="send">send</string>
+    <string name="send" translatable="false">send</string>
 </resources>

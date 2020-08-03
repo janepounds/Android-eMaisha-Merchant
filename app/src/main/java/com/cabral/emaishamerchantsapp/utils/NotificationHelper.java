@@ -1,6 +1,8 @@
 package com.cabral.emaishamerchantsapp.utils;
 
 import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +10,9 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 
+import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.cabral.emaishamerchantsapp.R;
@@ -27,6 +31,7 @@ public class NotificationHelper {
     
     //*********** Used to create Notifications ********//
     
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public static void showNewNotification(Context context, Intent intent, String title, String msg, Bitmap bitmap) {
 
         Uri notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -45,9 +50,19 @@ public class NotificationHelper {
     
     
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-    
-        
-        Notification.Builder builder = new Notification.Builder(context);
+        Notification.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String id = "e01", name =context.getString(R.string.app_name);
+            String desc = context.getString(R.string.app_name);
+
+            NotificationChannel channel = new NotificationChannel(id, name, NotificationManager.IMPORTANCE_HIGH);
+            channel.setDescription(desc);
+            notificationManager.createNotificationChannel(channel);
+            builder = new Notification.Builder(context , id);
+        }
+        else
+            builder = new Notification.Builder(context);
+
         if (bitmap != null)
             builder.setStyle(new Notification.BigPictureStyle().bigPicture(bitmap));
     
@@ -57,17 +72,17 @@ public class NotificationHelper {
                 .setContentTitle(title)
                 .setContentText(msg)
                 .setTicker(context.getString(R.string.app_name))
-                .setSmallIcon(R.drawable.logo)
+                .setSmallIcon(R.drawable.emaisha_logo)
                 .setSound(notificationSound)
                 .setLights(Color.RED, 3000, 3000)
                 .setVibrate(new long[] { 1000, 1000 })
                 .setWhen(System.currentTimeMillis())
                 .setDefaults(Notification.DEFAULT_SOUND)
-                .setAutoCancel(true)
+                .setAutoCancel(true).setColor(Color.GREEN)
                 .setContentIntent(pendingIntent)
                 .build();
 
-    
+
         notificationManager.notify(NOTIFICATION_REQUEST_CODE, notification);
         
     }
