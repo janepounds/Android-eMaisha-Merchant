@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cabral.emaishamerchantsapp.R;
-import com.cabral.emaishamerchant.adapter.OnlineOrdersAdapter;
+import com.cabral.emaishamerchantsapp.adapter.OnlineOrdersAdapter;
 import com.cabral.emaishamerchantsapp.adapter.OrderAdapter;
 import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
 

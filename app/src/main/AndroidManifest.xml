@@ -34,8 +34,7 @@
         <activity android:name="com.cabral.emaishamerchantsapp.auth.Login"></activity>
         <activity android:name="com.cabral.emaishamerchantsapp.auth.Registration" />
         <activity android:name=".orders.OnlineOrders"></activity>
-        <activity android:name=".auth.Login" />
-        <activity android:name=".auth.Registration" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -118,7 +117,7 @@
         </service>
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/logo" />
+            android:resource="@drawable/emaisha_logo" />
 
 
     </application>
