@@ -27,6 +27,7 @@ import androidx.core.content.ContextCompat;
 import com.cabral.emaishamerchantsapp.HomeActivity;
 import com.cabral.emaishamerchantsapp.Maps.PlacesFieldSelector;
 import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.network.NetworkStateChecker;
 import com.cabral.emaishamerchantsapp.network.RetrofitClient;
 import com.cabral.emaishamerchantsapp.storage.SharedPrefManager;
 import com.google.android.gms.common.ConnectionResult;
@@ -364,7 +365,7 @@ public class Registration extends AppCompatActivity implements GoogleApiClient.O
 
                             registerShop(
                                     name,
-                                    contact,
+                                    getString(R.string.ugandan_code)+contact,
                                     email,
                                     address,
                                     currency,
@@ -422,8 +423,9 @@ public class Registration extends AppCompatActivity implements GoogleApiClient.O
                         Log.d("Response", s);
                         JSONObject jsonObject = new JSONObject(s);
                         SharedPrefManager.getInstance(Registration.this).saveShopId(jsonObject.getInt("shop_id"));
+                        NetworkStateChecker.RegisterDeviceForFCM(getApplicationContext());
                         Toasty.success(Registration.this, "Shop Registered Successfully", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(Registration.this, Login.class);
+                        Intent intent = new Intent(Registration.this, HomeActivity.class);
                         intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     } catch (IOException | JSONException e) {
