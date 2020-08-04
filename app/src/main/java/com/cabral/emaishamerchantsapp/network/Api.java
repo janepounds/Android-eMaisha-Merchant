@@ -183,7 +183,7 @@ public interface Api {
             @Field("orders_id") String order_id
     );
 
-
+    @FormUrlEncoded
     @POST("registermerchantdevices")
     Call<UserData> registerDeviceToFCM(@Field("device_id") String device_id,
                                        @Field("device_type") String device_type,

@@ -3,9 +3,11 @@ package com.cabral.emaishamerchantsapp.network;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.util.Log;
 
 import com.cabral.emaishamerchantsapp.HomeActivity;
+import com.cabral.emaishamerchantsapp.R;
 import com.cabral.emaishamerchantsapp.orders.OrdersActivity;
 import com.cabral.emaishamerchantsapp.utils.NotificationHelper;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -35,30 +37,32 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         if (remoteMessage.getData().size() > 0) {
             notification_title = remoteMessage.getData().get("title");
-            notification_message = remoteMessage.getData().get("message");
-            notification_image = remoteMessage.getData().get("image");
+            notification_message = remoteMessage.getData().get("body");
+
         } else {
             notification_title = remoteMessage.getNotification().getTitle();
             notification_message = remoteMessage.getNotification().getBody();
         }
-
-
-        notificationBitmap = getBitmapFromUrl(notification_image);
+        Log.w("Firebase", notification_title+" Meassage: " + notification_message);
+        notificationBitmap = BitmapFactory.decodeResource(this.getResources(),
+                R.drawable.emaisha_logo);
 
 
         Intent notificationIntent = new Intent(getApplicationContext(), OrdersActivity.class);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-        NotificationHelper.showNewNotification
-                (
-                        getApplicationContext(),
-                        notificationIntent,
-                        notification_title,
-                        notification_message,
-                        notificationBitmap
-                );
 
-    }
+            NotificationHelper.showNewNotification
+                    (
+                            getApplicationContext(),
+                            notificationIntent,
+                            notification_title,
+                            notification_message,
+                            notificationBitmap
+                    );
+        }
+
+
 
 
     public Bitmap getBitmapFromUrl(String imageUrl) {
