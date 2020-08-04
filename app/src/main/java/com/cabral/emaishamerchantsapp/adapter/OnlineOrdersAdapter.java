@@ -1,6 +1,7 @@
 package com.cabral.emaishamerchantsapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.orders.OnlineOrderDetailsActivity;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,12 +36,11 @@ public class OnlineOrdersAdapter extends RecyclerView.Adapter<OnlineOrdersAdapte
     @Override
     public void onBindViewHolder(@NonNull OnlineOrdersAdapter.MyViewHolder holder, int position) {
         String customer_name = orderData.get(position).get("customer_name");
-        String storage_status = orderData.get(position).get("storage_status");
         String order_status = orderData.get(position).get("order_status");
 
 
-            holder.txt_customer_name.setText(customer_name);
-            holder.txt_order_status.setText(order_status);
+        holder.txt_customer_name.setText(customer_name);
+        holder.txt_order_status.setText(order_status);
 
 
     }
@@ -68,14 +69,14 @@ public class OnlineOrdersAdapter extends RecyclerView.Adapter<OnlineOrdersAdapte
 
         @Override
         public void onClick(View view) {
-//            Intent i = new Intent(context, OrderDetailsActivity.class);
-//            i.putExtra("order_id",orderData.get(getAdapterPosition()).get("invoice_id"));
-//            i.putExtra("customer_name",orderData.get(getAdapterPosition()).get("customer_name"));
-//            i.putExtra("order_date",orderData.get(getAdapterPosition()).get("order_date"));
-//            i.putExtra("order_time",orderData.get(getAdapterPosition()).get("order_time"));
-//            i.putExtra("order_status",orderData.get(getAdapterPosition()).get("order_status"));
-//            i.putExtra("storage_status",orderData.get(getAdapterPosition()).get("storage_status"));
-//            context.startActivity(i);
+            Intent i = new Intent(context, OnlineOrderDetailsActivity.class);
+            i.putExtra("order_id", orderData.get(getAdapterPosition()).get("invoice_id"));
+            i.putExtra("customer_name", orderData.get(getAdapterPosition()).get("customer_name"));
+            i.putExtra("order_date", orderData.get(getAdapterPosition()).get("order_date"));
+            i.putExtra("order_time", orderData.get(getAdapterPosition()).get("order_time"));
+            i.putExtra("order_status", orderData.get(getAdapterPosition()).get("order_status"));
+            i.putExtra("storage_status", orderData.get(getAdapterPosition()).get("storage_status"));
+            context.startActivity(i);
         }
     }
 }

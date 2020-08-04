@@ -1,4 +1,3 @@
-
 package com.cabral.emaishamerchantsapp.settings.backup;
 
 import android.os.Environment;
@@ -30,8 +29,7 @@ public class LocalBackup {
     public void performBackup(final DatabaseOpenHelper db, final String outFileName) {
 
 
-
-        File folder = new File(Environment.getExternalStorageDirectory() + File.separator +"SmartPos/" );
+        File folder = new File(Environment.getExternalStorageDirectory() + File.separator + "SmartPos/");
 
         boolean success = true;
         if (!folder.exists())
@@ -54,10 +52,10 @@ public class LocalBackup {
                 @Override
                 public void onClick(View v) {
 
-                            String m_Text = input.getText().toString();
-                            String out = outFileName + m_Text ;
-                            db.backup(out);
-                            alertDialog.cancel();;
+                    String m_Text = input.getText().toString();
+                    String out = outFileName + m_Text;
+                    db.backup(out);
+                    alertDialog.cancel();
 
                 }
             });
@@ -70,7 +68,7 @@ public class LocalBackup {
     public void performRestore(final DatabaseOpenHelper db) {
 
 
-        File folder = new File(Environment.getExternalStorageDirectory() + File.separator + "SmartPos/" );
+        File folder = new File(Environment.getExternalStorageDirectory() + File.separator + "SmartPos/");
         if (folder.exists()) {
 
             final File[] files = folder.listFiles();

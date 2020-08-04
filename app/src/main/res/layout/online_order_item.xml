@@ -7,97 +7,97 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         android:foreground="?android:attr/selectableItemBackground"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="5dp"
         app:cardElevation="10dp"
         app:cardPreventCornerOverlap="false">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
-
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="2dp"
-            android:weightSum="10">
+            android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="0dp"
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:src="@drawable/new_delete" />
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:padding="2dp"
+                android:weightSum="10">
 
-            <TextView
-                android:id="@+id/txt_order_customer_name"
-                android:layout_width="0dp"
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:src="@drawable/new_delete" />
+
+                <TextView
+                    android:id="@+id/txt_order_customer_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Zimula John"
+                    android:textColor="@color/creditCardBackground"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="8"
-                android:fontFamily="@font/montserrat"
-                android:text="Zimula John"
-                android:textColor="@color/creditCardBackground"
-                android:textSize="18dp" />
+                android:orientation="horizontal"
+                android:padding="2dp"
+                android:weightSum="10">
 
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:src="@drawable/new_delete" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="2dp"
-            android:weightSum="10">
+                <TextView
+                    android:id="@+id/txt_order_customer_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Nansana, Wakiso"
+                    android:textColor="#000"
+                    android:textSize="18dp" />
 
-            <ImageView
-                android:layout_width="0dp"
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:src="@drawable/new_delete" />
+                android:orientation="horizontal"
+                android:padding="2dp"
+                android:weightSum="10">
 
-            <TextView
-                android:id="@+id/txt_order_customer_address"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="8"
-                android:fontFamily="@font/montserrat"
-                android:text="Nansana, Wakiso"
-                android:textColor="#000"
-                android:textSize="18dp" />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:src="@drawable/new_delete" />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/txt_order_status"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Pending"
+                    android:textColor="#000"
+                    android:textSize="18dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="2dp"
-            android:weightSum="10">
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:src="@drawable/new_delete" />
-
-            <TextView
-                android:id="@+id/txt_order_status"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="8"
-                android:fontFamily="@font/montserrat"
-                android:text="Pending"
-                android:textColor="#000"
-                android:textSize="18dp" />
-
-        </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
