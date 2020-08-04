@@ -3,6 +3,7 @@ package com.cabral.emaishamerchantsapp.network;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.util.Log;
 
 import com.cabral.emaishamerchantsapp.HomeActivity;
@@ -50,16 +51,18 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Intent notificationIntent = new Intent(getApplicationContext(), OrdersActivity.class);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-        NotificationHelper.showNewNotification
-                (
-                        getApplicationContext(),
-                        notificationIntent,
-                        notification_title,
-                        notification_message,
-                        notificationBitmap
-                );
 
-    }
+            NotificationHelper.showNewNotification
+                    (
+                            getApplicationContext(),
+                            notificationIntent,
+                            notification_title,
+                            notification_message,
+                            notificationBitmap
+                    );
+        }
+
+
 
 
     public Bitmap getBitmapFromUrl(String imageUrl) {

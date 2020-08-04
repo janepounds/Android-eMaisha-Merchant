@@ -31,7 +31,7 @@ public class NotificationHelper {
     
     //*********** Used to create Notifications ********//
     
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+
     public static void showNewNotification(Context context, Intent intent, String title, String msg, Bitmap bitmap) {
 
         Uri notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -55,7 +55,7 @@ public class NotificationHelper {
             String id = "e01", name =context.getString(R.string.app_name);
             String desc = context.getString(R.string.app_name);
 
-            NotificationChannel channel = new NotificationChannel(id, name, NotificationManager.IMPORTANCE_HIGH);
+            NotificationChannel channel = new NotificationChannel(id, name, NotificationManager.IMPORTANCE_DEFAULT);
             channel.setDescription(desc);
             notificationManager.createNotificationChannel(channel);
             builder = new Notification.Builder(context , id);
@@ -65,22 +65,38 @@ public class NotificationHelper {
 
         if (bitmap != null)
             builder.setStyle(new Notification.BigPictureStyle().bigPicture(bitmap));
-    
-        
-        // Create Notification
-        Notification notification = builder
-                .setContentTitle(title)
-                .setContentText(msg)
-                .setTicker(context.getString(R.string.app_name))
-                .setSmallIcon(R.drawable.emaisha_logo)
-                .setSound(notificationSound)
-                .setLights(Color.RED, 3000, 3000)
-                .setVibrate(new long[] { 1000, 1000 })
-                .setWhen(System.currentTimeMillis())
-                .setDefaults(Notification.DEFAULT_SOUND)
-                .setAutoCancel(true).setColor(Color.GREEN)
-                .setContentIntent(pendingIntent)
-                .build();
+
+        Notification notification;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            // Create Notification
+             notification = builder
+                    .setContentTitle(title)
+                    .setContentText(msg)
+                    .setTicker(context.getString(R.string.app_name))
+                    .setSmallIcon(R.drawable.emaisha_logo)
+                    .setSound(notificationSound)
+                    .setLights(Color.WHITE, 3000, 3000)
+                    .setVibrate(new long[]{1000, 1000})
+                    .setWhen(System.currentTimeMillis())
+                    .setDefaults(Notification.DEFAULT_SOUND)
+                    .setAutoCancel(true).setColor(Color.GREEN)
+                    .setContentIntent(pendingIntent)
+                    .build();
+        }else {
+             notification = builder
+                    .setContentTitle(title)
+                    .setContentText(msg)
+                    .setTicker(context.getString(R.string.app_name))
+                    .setSmallIcon(R.drawable.emaisha_logo)
+                    .setSound(notificationSound)
+                    .setLights(Color.WHITE, 3000, 3000)
+                    .setVibrate(new long[]{1000, 1000})
+                    .setWhen(System.currentTimeMillis())
+                    .setDefaults(Notification.DEFAULT_SOUND)
+                    .setAutoCancel(true)
+                    .setContentIntent(pendingIntent)
+                    .build();
+        }
 
 
         notificationManager.notify(NOTIFICATION_REQUEST_CODE, notification);
