@@ -46,7 +46,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:src="@drawable/new_delete" />
+                        android:scaleType="center"
+                        android:src="@drawable/pending_one" />
 
                     <TextView
                         android:id="@+id/txt_online_order_status"
@@ -56,7 +57,7 @@
                         android:fontFamily="@font/montserrat"
                         android:text="Pending"
                         android:textColor="#000"
-                        android:textSize="18dp" />
+                        android:textSize="16dp" />
 
                 </LinearLayout>
 
@@ -80,7 +81,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:src="@drawable/new_delete" />
+                        android:src="@drawable/user_one" />
 
                     <TextView
                         android:id="@+id/txt_online_order_customer_name"
@@ -90,7 +91,7 @@
                         android:fontFamily="@font/montserrat"
                         android:text="Zimula John"
                         android:textColor="#000"
-                        android:textSize="18dp" />
+                        android:textSize="16dp" />
 
                 </LinearLayout>
 
@@ -113,7 +114,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:src="@drawable/new_delete" />
+                        android:src="@drawable/phone_call_one" />
 
                     <TextView
                         android:id="@+id/txt_online_order_customer_phone"
@@ -123,7 +124,7 @@
                         android:fontFamily="@font/montserrat"
                         android:text="0704843426"
                         android:textColor="#000"
-                        android:textSize="18dp" />
+                        android:textSize="16dp" />
 
                 </LinearLayout>
 
@@ -147,7 +148,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:src="@drawable/new_delete" />
+                        android:src="@drawable/mail_order" />
 
                     <TextView
                         android:id="@+id/txt_online_order_customer_email"
@@ -157,7 +158,7 @@
                         android:fontFamily="@font/montserrat"
                         android:text="Zimula@gmail.com"
                         android:textColor="#000"
-                        android:textSize="18dp" />
+                        android:textSize="16dp" />
 
                 </LinearLayout>
 
