@@ -59,6 +59,12 @@ public class Login extends AppCompatActivity {
                     etxtContact.requestFocus();
                     return;
                 }
+                if(shop_contact.charAt(0)=='0'){
+                    shop_contact=shop_contact.substring(1,shop_contact.length());
+                    shop_contact=getString(R.string.ugandan_code)+shop_contact;
+                    Log.w("contact",shop_contact);
+                }
+
                 if (password.isEmpty()) {
                     etxtPassword.setError("Password is required");
                     etxtPassword.requestFocus();
