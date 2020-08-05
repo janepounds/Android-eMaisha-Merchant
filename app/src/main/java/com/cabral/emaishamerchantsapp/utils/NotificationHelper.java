@@ -55,7 +55,7 @@ public class NotificationHelper {
             String id = "e01", name =context.getString(R.string.app_name);
             String desc = context.getString(R.string.app_name);
 
-            NotificationChannel channel = new NotificationChannel(id, name, NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel = new NotificationChannel(id, name, NotificationManager.IMPORTANCE_HIGH);
             channel.setDescription(desc);
             notificationManager.createNotificationChannel(channel);
             builder = new Notification.Builder(context , id);
