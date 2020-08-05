@@ -612,6 +612,44 @@ public class DatabaseAccess {
 
             if (id == -1) {
                 check = database.insert("order_list", null, values);
+                try {
+
+                    JSONArray result = obj.getJSONArray("products");
+
+                    for (int i = 0; i < result.length(); i++) {
+                        JSONObject jo = result.getJSONObject(i);
+                        String product_name = jo.getString("product_name"); //ref
+                        String product_weight = jo.getString("product_weight");
+                        String product_qty = jo.getString("product_qty");
+                        String product_price = jo.getString("product_price");
+                        String product_image = null;
+                        try {
+
+                            product_image = jo.getString("product_image");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        String product_order_date = jo.getString("product_order_date");
+
+
+                        values2.put("invoice_id", order_id);
+                        values2.put("product_name", product_name);
+                        values2.put("product_weight", product_weight);
+                        values2.put("product_qty", product_qty);
+                        values2.put("product_price", product_price);
+                        values2.put("product_image", product_image);
+                        values2.put("product_order_date", product_order_date);
+
+
+                        database.insert("order_details", null, values2);
+
+                        return true;
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             } else {
                 check = database.update("order_list", values, "invoice_id=?", new String[]{order_id});
 
@@ -624,44 +662,7 @@ public class DatabaseAccess {
             e.printStackTrace();
         }
 
-        try {
 
-            JSONArray result = obj.getJSONArray("products");
-
-            for (int i = 0; i < result.length(); i++) {
-                JSONObject jo = result.getJSONObject(i);
-                String product_name = jo.getString("product_name"); //ref
-                String product_weight = jo.getString("product_weight");
-                String product_qty = jo.getString("product_qty");
-                String product_price = jo.getString("product_price");
-                String product_image = null;
-                try {
-
-                    product_image = jo.getString("product_image");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                String product_order_date = jo.getString("product_order_date");
-
-
-                values2.put("invoice_id", order_id);
-                values2.put("product_name", product_name);
-                values2.put("product_weight", product_weight);
-                values2.put("product_qty", product_qty);
-                values2.put("product_price", product_price);
-                values2.put("product_image", product_image);
-                values2.put("product_order_date", product_order_date);
-
-
-                database.insert("order_details", null, values2);
-
-                return true;
-            }
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
         database.close();
 
@@ -803,6 +804,32 @@ public class DatabaseAccess {
         database.close();
         return orderList;
     }
+
+//    public ArrayList<HashMap<String, String>> searchCustomer(String s) {
+//        ArrayList<HashMap<String, String>> orderList = new ArrayList<>();
+//        Cursor cursor = database.rawQuery("SELECT * FROM customer WHERE customer_name LIKE '%" + s + "%'", null);
+//        if (cursor.moveToFirst()) {
+//            do {
+//                HashMap<String, String> map = new HashMap<String, String>();
+//
+//
+//                map.put("invoice_id", cursor.getString(1));
+//                map.put("order_date", cursor.getString(2));
+//                map.put("order_time", cursor.getString(3));
+//                map.put("order_type", cursor.getString(4));
+//                map.put("order_payment_method", cursor.getString(5));
+//                map.put("customer_name", cursor.getString(6));
+//
+//
+//                orderList.add(map);
+//            } while (cursor.moveToNext());
+//        }
+//        cursor.close();
+//        database.close();
+//        return orderList;
+//    }
+
+
 
 
     public ArrayList<HashMap<String, String>> searchOrderList(String s) {
