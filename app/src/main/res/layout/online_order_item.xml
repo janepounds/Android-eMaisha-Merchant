@@ -28,14 +28,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
-                android:padding="2dp"
+                android:padding="5dp"
                 android:weightSum="10">
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:src="@drawable/new_delete" />
+                    android:src="@drawable/user_two" />
 
                 <TextView
                     android:id="@+id/txt_order_customer_name"
@@ -53,14 +53,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="2dp"
+                android:padding="5dp"
                 android:weightSum="10">
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:src="@drawable/new_delete" />
+                    android:src="@drawable/location_order" />
 
                 <TextView
                     android:id="@+id/txt_order_customer_address"
@@ -78,14 +78,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="2dp"
+                android:padding="5dp"
                 android:weightSum="10">
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:src="@drawable/new_delete" />
+                    android:src="@drawable/pending_order" />
 
                 <TextView
                     android:id="@+id/txt_order_status"
