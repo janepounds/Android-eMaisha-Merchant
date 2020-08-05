@@ -268,16 +268,10 @@
     <string name="not_a_member" translatable="false">Not a Member?</string>
     <string name="signup" translatable="false">Sign Up</string>
     <string name="stock_value" translatable="false">00</string>
-    <string name="productstock" translatable="false">Product Stock :</string>
-    <string name="contact_format" translatable="false">xxxxxxxxx</string>
-    <string name="ugandan_code" translatable="false">+256 </string>
-    <string name="contact_no" translatable="false"> Contact </string>
-    <string name="veryfynumbertxt" translatable="false"> Please enter verification code sent in your text message. </string>
-    <string name="send">send</string>
-    <string name="productstock" translatable="false" >Product Stock :</string>
     <string name="contact_format" translatable="false" >xxxxxxxxx</string>
     <string name="ugandan_code" translatable="false" >+256 </string>
     <string name="contact_no" translatable="false"  > Contact </string>
     <string name="veryfynumbertxt"  translatable="false" > Please enter verification code sent in your text message. </string>
     <string name="send" translatable="false">send</string>
+    <string name="productstock">Product Stock</string>
 </resources>
