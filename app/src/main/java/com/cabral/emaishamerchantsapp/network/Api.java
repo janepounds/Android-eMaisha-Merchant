@@ -178,9 +178,13 @@ public interface Api {
     );
 
     @FormUrlEncoded
-    @POST("updatestatus")
+    @POST("updatestatus_merchant")
     Call<ResponseBody> updateOrderStatus(
-            @Field("orders_id") String order_id
+            @Field("orders_id") String order_id,
+             @Field("comment") String comment,
+            @Field("statuscode") Integer statuscode
+
+
     );
 
     @FormUrlEncoded

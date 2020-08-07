@@ -35,7 +35,7 @@ public class OrderDetailsActivity extends BaseActivity {
     private OrderDetailsAdapter orderDetailsAdapter;
 
     ImageView imgNoProduct;
-    TextView txtNoProducts, txtTotalPrice, txtPdfReceipt, txtApprove;
+    TextView txtNoProducts, txtTotalPrice, txtPdfReceipt;
     String order_id, order_date, order_time, customer_name;
     double total_price;
 
@@ -58,7 +58,7 @@ public class OrderDetailsActivity extends BaseActivity {
         imgNoProduct = findViewById(R.id.image_no_product);
         txtTotalPrice = findViewById(R.id.txt_total_price);
         txtPdfReceipt = findViewById(R.id.txt_pdf_receipt);
-        txtApprove = findViewById(R.id.txt_approve);
+
 
         txtNoProducts = findViewById(R.id.txt_no_products);
         order_id = getIntent().getExtras().getString("order_id");
@@ -75,10 +75,7 @@ public class OrderDetailsActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
         getSupportActionBar().setTitle(R.string.order_details);
 
-        if (order_status.equals("Pending") && storage_status.equals("online")) {
-            txtPdfReceipt.setVisibility(View.GONE);
-            txtApprove.setVisibility(View.VISIBLE);
-        }
+
 
 
         // set a GridLayoutManager with default vertical orientation and 3 number of columns
@@ -154,55 +151,7 @@ public class OrderDetailsActivity extends BaseActivity {
             }
         });
 
-        txtApprove.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Call<ResponseBody> call = RetrofitClient
-                        .getInstance()
-                        .getApi()
-                        .updateOrderStatus(
-                                order_id
-                        );
-                ProgressDialog progressDialog = new ProgressDialog(OrderDetailsActivity.this);
-                progressDialog.setMessage("Loading...");
-                progressDialog.setTitle("Please Wait");
-                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                progressDialog.show();
 
-                call.enqueue(new Callback<ResponseBody>() {
-                    @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                        if (response.isSuccessful()) {
-
-                            DatabaseAccess databaseAccess = DatabaseAccess.getInstance(OrderDetailsActivity.this);
-                            databaseAccess.open();
-                            boolean check = databaseAccess.updateOrder(order_id, "Completed");
-                            if (check) {
-                                progressDialog.dismiss();
-                                txtPdfReceipt.setVisibility(View.VISIBLE);
-                                txtApprove.setVisibility(View.GONE);
-                                Toasty.success(OrderDetailsActivity.this, "Order Succesfully Approved", Toast.LENGTH_SHORT).show();
-                            } else {
-                                progressDialog.dismiss();
-                                Toasty.error(OrderDetailsActivity.this, "Order Approval failed", Toast.LENGTH_SHORT).show();
-                            }
-
-                        } else {
-                            progressDialog.dismiss();
-                            Toasty.error(OrderDetailsActivity.this, "Order Approval failed", Toast.LENGTH_SHORT).show();
-
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        progressDialog.dismiss();
-                        t.printStackTrace();
-                        Toasty.error(OrderDetailsActivity.this, "Order Approval failed", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        });
 
     }
 

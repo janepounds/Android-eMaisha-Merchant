@@ -594,6 +594,10 @@ public class DatabaseAccess {
             String order_type = obj.getString("order_type");
             String order_payment_method = obj.getString("order_payment_method");
             String customer_name = obj.getString("customer_name");
+            String customer_address = obj.getString("customer_address");
+            String customer_email = obj.getString("customer_email");
+            String customer_cell = obj.getString("customer_cell");
+            String delivery_fee = obj.getString("delivery_fee");
             String storage_status = obj.getString("storage_status");
             String order_status = obj.getString("order_status");
 
@@ -606,6 +610,12 @@ public class DatabaseAccess {
             values.put("customer_name", customer_name);
             values.put("storage_status", storage_status);
             values.put("order_status", order_status);
+            values.put("customer_address", customer_address);
+            values.put("customer_cell", customer_cell);
+            values.put("delivery_fee", delivery_fee);
+            values.put("customer_email", customer_email);
+
+
 
             int id = getID(order_id);
 
@@ -769,6 +779,10 @@ public class DatabaseAccess {
                 map.put("customer_name", cursor.getString(6));
                 map.put("storage_status", cursor.getString(7));
                 map.put("order_status", cursor.getString(9));
+                map.put("customer_address", cursor.getString(10));
+                map.put("customer_cell", cursor.getString(11));
+                map.put("delivery_fee", cursor.getString(12));
+                map.put("customer_email", cursor.getString(13));
 
 
                 orderList.add(map);
@@ -795,6 +809,10 @@ public class DatabaseAccess {
                 map.put("customer_name", cursor.getString(6));
                 map.put("storage_status", cursor.getString(7));
                 map.put("order_status", cursor.getString(9));
+                map.put("customer_address", cursor.getString(10));
+                map.put("customer_cell", cursor.getString(11));
+                map.put("delivery_fee", cursor.getString(12));
+                map.put("customer_email", cursor.getString(13));
 
 
                 orderList.add(map);

@@ -34,7 +34,7 @@ import retrofit2.Response;
 public class OnlineOrderDetailsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private OnlineOrderDetailsAdapter onlineOrderDetailsAdapter;
-    String order_id,customer_name,order_status,currency;
+    String order_id,customer_name,order_status,currency,customer_email,customer_cell,customer_address,delivery_fee;
     double total_price;
     TextView txtSubTotal,txtCustomerName,txtOrderStatus, txtApprove, txtReject,txtDelivery,txtCustomerPhone,txtCustomerEmail, txtOverallTotal;
 
@@ -51,6 +51,10 @@ public class OnlineOrderDetailsActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler);
         order_id = getIntent().getExtras().getString("order_id");
         customer_name = getIntent().getExtras().getString("customer_name");
+        customer_email = getIntent().getExtras().getString("customer_email");
+        customer_cell = getIntent().getExtras().getString("customer_cell");
+        customer_address = getIntent().getExtras().getString("customer_address");
+        delivery_fee = getIntent().getExtras().getString("delivery_fee");
         order_status = getIntent().getExtras().getString("order_status");
         txtSubTotal = findViewById(R.id.txt_online_total_price);
         txtOrderStatus = findViewById(R.id.txt_online_order_status);
@@ -65,6 +69,9 @@ public class OnlineOrderDetailsActivity extends AppCompatActivity {
 
         txtOrderStatus.setText(order_status);
         txtCustomerName.setText(customer_name);
+        txtCustomerEmail.setText(customer_email);
+        txtCustomerPhone.setText(customer_cell);
+        txtDelivery.setText(delivery_fee);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(OnlineOrderDetailsActivity.this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager); // set LayoutManager to RecyclerView
@@ -94,9 +101,11 @@ public class OnlineOrderDetailsActivity extends AppCompatActivity {
 
         databaseAccess.open();
         total_price = databaseAccess.totalOrderPrice(order_id);
-        Double total = total_price + Double.parseDouble(txtDelivery.getText().toString().trim());
-        txtSubTotal.setText(currency+ " "+total);
-//        txtTotalPrice.setText(currency + total_price);
+        Double delivery_cost =  Double.parseDouble(txtDelivery.getText().toString());
+        Log.d("Delivery Cost", String.valueOf(delivery_cost));
+        Double total = total_price + delivery_cost;
+        txtSubTotal.setText(currency +" "+ total_price);
+        txtOverallTotal.setText(currency +" "+ total);
 
         txtReject.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +127,57 @@ public class OnlineOrderDetailsActivity extends AppCompatActivity {
                         alertDialog.cancel();
                     }
                 });
+
+                txt_reject_order.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Call<ResponseBody> call = RetrofitClient
+                                .getInstance()
+                                .getApi()
+                                .updateOrderStatus(
+                                        order_id,
+                                       input.getText().toString().trim(),
+                                        3
+                                );
+                        ProgressDialog progressDialog = new ProgressDialog(OnlineOrderDetailsActivity.this);
+                        progressDialog.setMessage("Loading...");
+                        progressDialog.setTitle("Please Wait");
+                        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                        progressDialog.show();
+
+                        call.enqueue(new Callback<ResponseBody>() {
+                            @Override
+                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                if (response.isSuccessful()) {
+
+                                    DatabaseAccess databaseAccess = DatabaseAccess.getInstance(OnlineOrderDetailsActivity.this);
+                                    databaseAccess.open();
+                                    boolean check = databaseAccess.updateOrder(order_id, "Cancelled");
+                                    if (check) {
+                                        progressDialog.dismiss();
+
+                                        Toasty.success(OnlineOrderDetailsActivity.this, "Order Succesfully Rejected", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        progressDialog.dismiss();
+                                        Toasty.error(OnlineOrderDetailsActivity.this, "Order Rejection failed", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                } else {
+                                    progressDialog.dismiss();
+                                    Toasty.error(OnlineOrderDetailsActivity.this, "Order Rejection failed", Toast.LENGTH_SHORT).show();
+
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                progressDialog.dismiss();
+                                t.printStackTrace();
+                                Toasty.error(OnlineOrderDetailsActivity.this, "Order Rejection failed", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
             }
         });
 
@@ -130,7 +190,9 @@ public class OnlineOrderDetailsActivity extends AppCompatActivity {
                         .getInstance()
                         .getApi()
                         .updateOrderStatus(
-                                order_id
+                                order_id,
+                                " ",
+                                2
                         );
                 ProgressDialog progressDialog = new ProgressDialog(OnlineOrderDetailsActivity.this);
                 progressDialog.setMessage("Loading...");

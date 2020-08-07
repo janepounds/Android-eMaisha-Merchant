@@ -37,10 +37,13 @@ public class OnlineOrdersAdapter extends RecyclerView.Adapter<OnlineOrdersAdapte
     public void onBindViewHolder(@NonNull OnlineOrdersAdapter.MyViewHolder holder, int position) {
         String customer_name = orderData.get(position).get("customer_name");
         String order_status = orderData.get(position).get("order_status");
+        String customer_address = orderData.get(position).get("customer_address");
 
 
         holder.txt_customer_name.setText(customer_name);
         holder.txt_order_status.setText(order_status);
+        holder.txt_customer_address.setText(customer_address);
+
 
 
     }
@@ -76,6 +79,10 @@ public class OnlineOrdersAdapter extends RecyclerView.Adapter<OnlineOrdersAdapte
             i.putExtra("order_time", orderData.get(getAdapterPosition()).get("order_time"));
             i.putExtra("order_status", orderData.get(getAdapterPosition()).get("order_status"));
             i.putExtra("storage_status", orderData.get(getAdapterPosition()).get("storage_status"));
+            i.putExtra("customer_address", orderData.get(getAdapterPosition()).get("customer_address"));
+            i.putExtra("customer_cell", orderData.get(getAdapterPosition()).get("customer_cell"));
+            i.putExtra("customer_email", orderData.get(getAdapterPosition()).get("customer_email"));
+            i.putExtra("delivery_fee", orderData.get(getAdapterPosition()).get("delivery_fee"));
             context.startActivity(i);
         }
     }
