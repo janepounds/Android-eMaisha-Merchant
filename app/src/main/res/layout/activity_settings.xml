@@ -69,7 +69,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginBottom="20dp"
-                                    android:fontFamily="@font/montserrat"
+                                    android:fontFamily="@font/josefin_sans"
                                     android:text="@string/shop_information"
                                     android:textColor="#000"
                                     android:textSize="18sp" />
@@ -133,7 +133,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginBottom="20dp"
-                                    android:fontFamily="@font/montserrat"
+                                    android:fontFamily="@font/josefin_sans"
                                     android:text="@string/categories"
                                     android:textColor="#000"
                                     android:textSize="18sp" />
@@ -198,7 +198,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginBottom="20dp"
-                                    android:fontFamily="@font/montserrat"
+                                    android:fontFamily="@font/josefin_sans"
                                     android:text="@string/payment_methods"
                                     android:textColor="#000"
                                     android:textSize="18sp" />
@@ -264,7 +264,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginBottom="20dp"
-                                    android:fontFamily="@font/montserrat"
+                                    android:fontFamily="@font/josefin_sans"
                                     android:text="@string/data_backup"
                                     android:textColor="#000"
                                     android:textSize="18sp" />

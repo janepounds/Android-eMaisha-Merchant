@@ -1,8 +1,5 @@
 package com.cabral.emaishamerchantsapp.pos;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +23,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.cabral.emaishamerchantsapp.R;
 import com.cabral.emaishamerchantsapp.adapter.CartAdapter;
@@ -69,8 +69,8 @@ public class ProductCart extends BaseActivity {
     public String tag = "PrintActivity-M.J";
     PosApiHelper posApiHelper = PosApiHelper.getInstance();
     private int RESULT_CODE = 0;
-    private  final static int PRINT_SERVICE=2;
-    private  final static int PAYMENT_SERVICE=1;
+    private final static int PRINT_SERVICE = 2;
+    private final static int PAYMENT_SERVICE = 1;
     //pos variables for payments
     private EMVCOHelper emvcoHelper = EMVCOHelper.getInstance();
     byte[] capkbuf0_M = {};
@@ -90,15 +90,15 @@ public class ProductCart extends BaseActivity {
 
     byte[] Visaaid7 = {};
     byte[] Visaaid8 = {};
-    String AID_input0 =  "9F0607A0000000031010DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04000000009F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF180101DF1906000000000000DF2006000009999999DF2106000000005000";//"9F0607A0000000031010DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04999999999F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF1906000000011000DF2006000000020000DF2106000000010000";
+    String AID_input0 = "9F0607A0000000031010DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04000000009F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF180101DF1906000000000000DF2006000009999999DF2106000000005000";//"9F0607A0000000031010DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04999999999F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF1906000000011000DF2006000000020000DF2106000000010000";
     //String AID_input1 =  "9F0607A0000000031020DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04000000009F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF180101DF1906000000000000DF2006000009999999DF2106000000005000";//"9F0607A0000000031020DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04999999999F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF1906000000011000DF2006000000020000DF2106000000010000";
     //String AID_input2 =  "9F0607A0000000999090DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04000000009F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF180101DF1906000000000000DF2006000009999999DF2106000000005000";//"9F0607A0000000999090DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04999999999F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF1906000000011000DF2006000000020000DF2106000000010000";
     //String AID_input3 =  "9F0607A0000000032010DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04000000009F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF180101DF1906000000000000DF2006000009999999DF2106000000005000";//"9F0607A0000000032010DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04999999999F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF1906000000011000DF2006000000020000DF2106000000010000";
     //String AID_input4 =  "9F0607A0000000038010DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04000000009F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF180101DF1906000000000000DF2006000009999999DF2106000000005000";//"9F0607A0000000038010DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04999999999F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF1906000000011000DF2006000000020000DF2106000000010000";
     //String AID_input5 =  "9F0607A0000000032020DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04000000009F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF180101DF1906000000000000DF2006000009999999DF2106000000005000";//"9F0607A0000000032020DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04999999999F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF1906000000011000DF2006000000020000DF2106000000010000";
     //String AID_input6 =  "9F0607A0000000034010DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04000000009F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF180101DF1906000000000000DF2006000009999999DF2106000000005000";//"9F0607A0000000034010DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04999999999F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF1906000000011000DF2006000000020000DF2106000000010000";
-    String AID_input7 =  "9F0608A000000003101001DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04000000009F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF180101DF1906000000000000DF2006000009999999DF2106000000005000";//"9F0608A000000003101001DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04999999999F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF1906000000011000DF2006000000020000DF2106000000010000";
-    String AID_input8 =  "9F0608A000000003101002DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04000000009F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF180101DF1906000000000000DF2006000009999999DF2106000000005000";//"9F0608A000000003101002DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04999999999F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF1906000000011000DF2006000000020000DF2106000000010000";
+    String AID_input7 = "9F0608A000000003101001DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04000000009F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF180101DF1906000000000000DF2006000009999999DF2106000000005000";//"9F0608A000000003101001DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04999999999F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF1906000000011000DF2006000000020000DF2106000000010000";
+    String AID_input8 = "9F0608A000000003101002DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04000000009F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF180101DF1906000000000000DF2006000009999999DF2106000000005000";//"9F0608A000000003101002DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04999999999F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF1906000000011000DF2006000000020000DF2106000000010000";
     //String AID_input9 =  "9F0608A000000003101003DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04000000009F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF180101DF1906000000000000DF2006000009999999DF2106000000005000";// "9F0608A000000003101003DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04999999999F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF1906000000011000DF2006000000020000DF2106000000010000";
     //String AID_input10 = "9F0608A000000003101004DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04000000009F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF180101DF1906000000000000DF2006000009999999DF2106000000005000";// "9F0608A000000003101004DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04999999999F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF1906000000011000DF2006000000020000DF2106000000010000";
     //String AID_input11 = "9F0608A000000003101005DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04000000009F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF180101DF1906000000000000DF2006000009999999DF2106000000005000";// "9F0608A000000003101005DF010101DF1105DC4000A800DF1205DC4004F800DF13050010000000DF14039F3704DF150400000000DF160100DF1701009F1B04999999999F090200209F150227019F160F3030303030303030303030303030309F4E085465726D696E616C9F1C084261636B393631329F1D01015F3601029F3C020840DF81010208409F3D0102DF8102099F1A0295059A039C015F2A0208409F01060012345678919F7B06000000010000DF1906000000011000DF2006000000020000DF2106000000010000";
@@ -226,7 +226,7 @@ public class ProductCart extends BaseActivity {
                 //makePayment();
             }
         });
-       // makePayment();
+        // makePayment();
 
     }
 
@@ -239,7 +239,6 @@ public class ProductCart extends BaseActivity {
         super.onResume();
         //isOpen = false;
     }
-
 
 
     @Override
@@ -270,6 +269,7 @@ public class ProductCart extends BaseActivity {
         }
 
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -294,7 +294,6 @@ public class ProductCart extends BaseActivity {
     }
 
 
-
     //for save data in offline
     private boolean saveOrderInOfflineDb(final JSONObject obj, String orderNumber) {
 
@@ -304,17 +303,19 @@ public class ProductCart extends BaseActivity {
         /*
         timestamp used for un sync order and make it unique id
          */
-       return databaseAccess.insertOrder(orderNumber, obj);
+        return databaseAccess.insertOrder(orderNumber, obj);
 
     }
-    private String generateOrderNumber(){
+
+    private String generateOrderNumber() {
         //get current timestamp
         Long tsLong = System.currentTimeMillis() / 1000;
         return tsLong.toString();
     }
+
     AlertDialog alertDialog;
 
-    String order_type ,order_payment_method , customer_name ;
+    String order_type, order_payment_method, customer_name;
 
     //dialog for taking otp code
     public void dialog() {
@@ -387,7 +388,7 @@ public class ProductCart extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-                paymentMethodAdapter = new ArrayAdapter<String>(ProductCart.this,R.layout.list_row);
+                paymentMethodAdapter = new ArrayAdapter<String>(ProductCart.this, R.layout.list_row);
                 paymentMethodAdapter.addAll(paymentMethodNames);
 
                 AlertDialog.Builder dialog = new AlertDialog.Builder(ProductCart.this);
@@ -605,10 +606,10 @@ public class ProductCart extends BaseActivity {
                 Log.d("customer name", customer_name);
 
                 alertDialog.dismiss();
-                String order=generateOrderNumber();
+                String order = generateOrderNumber();
 
-                printThread = new Pos_Thread(order,PRINT_SERVICE);
-                paymentThread = new Pos_Thread(order,PAYMENT_SERVICE);
+                printThread = new Pos_Thread(order, PRINT_SERVICE);
+                paymentThread = new Pos_Thread(order, PAYMENT_SERVICE);
                 paymentThread.start();
 
                 try {
@@ -641,7 +642,6 @@ public class ProductCart extends BaseActivity {
         });
 
 
-
     }
 
 
@@ -664,9 +664,10 @@ public class ProductCart extends BaseActivity {
         public void handleMessage(Message msg) {
             Bundle b = msg.getData();
             String strInfo = b.getString("MSG");
-            Toast.makeText(ProductCart.this,strInfo, Toast.LENGTH_LONG).show();
+            Toast.makeText(ProductCart.this, strInfo, Toast.LENGTH_LONG).show();
         }
     };
+
     public void SendMsg(String strInfo) {
         Message msg = new Message();
         Bundle b = new Bundle();
@@ -674,6 +675,7 @@ public class ProductCart extends BaseActivity {
         msg.setData(b);
         mHandler.sendMessage(msg);
     }
+
     interface IBackFinish {
         void isBack();
     }
@@ -705,9 +707,9 @@ public class ProductCart extends BaseActivity {
             return m_bThreadFinished;
         }
 
-        public Pos_Thread(String order, int Service){
-            this.order=order;
-            this.SERVICE=Service;
+        public Pos_Thread(String order, int Service) {
+            this.order = order;
+            this.SERVICE = Service;
         }
 
         public void run() {
@@ -729,7 +731,7 @@ public class ProductCart extends BaseActivity {
                         final JSONArray comodityObjectArray = new JSONArray();
                         //get data from local database //Products being sold
                         databaseAccess.open();
-                        final List<HashMap<String, String>> lines= databaseAccess.getCartProduct();
+                        final List<HashMap<String, String>> lines = databaseAccess.getCartProduct();
                         //Get Shop information
                         databaseAccess.open();
                         final List<HashMap<String, String>> shopInfo = databaseAccess.getShopInformation();
@@ -757,8 +759,6 @@ public class ProductCart extends BaseActivity {
                                     orderObj.put("order_type", order_type);
                                     orderObj.put("order_payment_method", order_payment_method);
                                     orderObj.put("customer_name", customer_name);
-
-
 
 
                                     for (int i = 0; i < lines.size(); i++) {
@@ -791,20 +791,18 @@ public class ProductCart extends BaseActivity {
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
-                                    Log.e("Error",e.getMessage());
+                                    Log.e("Error", e.getMessage());
                                 }
-
 
 
                             }
 
-                        }
-                        else {
+                        } else {
                             Toasty.error(ProductCart.this, R.string.no_product_in_cart, Toast.LENGTH_SHORT).show();
                         }
 
 
-                        if(saveOrderInOfflineDb(orderObj, order)){
+                        if (saveOrderInOfflineDb(orderObj, order)) {
                             ret = posApiHelper.PrintInit(4, (byte) 20, (byte) 20, (byte) 0x33);
                             Log.e(tag, "init code:" + ret);
 
@@ -814,17 +812,17 @@ public class ProductCart extends BaseActivity {
                             String shop_contact = shopInfo.get(0).get("shop_contact");
                             String shop_address = shopInfo.get(0).get("shop_address");
                             String shop_currency = shopInfo.get(0).get("shop_currency");
-                            posApiHelper.PrintStr(""+shop_name.toUpperCase()+"  \n");
+                            posApiHelper.PrintStr("" + shop_name.toUpperCase() + "  \n");
 
                             posApiHelper.PrintSetFont((byte) 24, (byte) 24, (byte) 0x00);
                             posApiHelper.PrintSetGray(3);
-                            posApiHelper.PrintStr(shop_address.toUpperCase()+"\n");
-                            posApiHelper.PrintStr(shop_contact.toUpperCase()+"\n");
+                            posApiHelper.PrintStr(shop_address.toUpperCase() + "\n");
+                            posApiHelper.PrintStr(shop_contact.toUpperCase() + "\n");
 
                             posApiHelper.PrintSetFont((byte) 24, (byte) 24, (byte) 0x00);
                             posApiHelper.PrintSetGray(2);
                             posApiHelper.PrintStr("===============================\n\n");
-                            double totalprice=0;
+                            double totalprice = 0;
                             for (int i = 0; i < comodityObjectArray.length(); i++) {
 
 
@@ -832,30 +830,30 @@ public class ProductCart extends BaseActivity {
                                 try {
                                     objp = (JSONObject) comodityObjectArray.get(i);
                                     objp.getString("product_price");
-                                    posApiHelper.PrintStr(objp.getString("product_name")+" ("+objp.getString("product_qty")+") : UGX "+objp.getString("product_price")+" \n\n");
-                                    totalprice+= Double.parseDouble(objp.getString("product_price"));
+                                    posApiHelper.PrintStr(objp.getString("product_name") + " (" + objp.getString("product_qty") + ") : UGX " + objp.getString("product_price") + " \n\n");
+                                    totalprice += Double.parseDouble(objp.getString("product_price"));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
 
 
                             }
-                            String orderPayment= null,orderDate=null;
+                            String orderPayment = null, orderDate = null;
                             try {
                                 orderPayment = orderObj.getString("order_payment_method");
                                 orderDate = orderObj.getString("order_date");
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            posApiHelper.PrintStr("Sub Total          UGX "+totalprice+"\n\n");
+                            posApiHelper.PrintStr("Sub Total          UGX " + totalprice + "\n\n");
                             posApiHelper.PrintStr("===============================\n\n");
-                            posApiHelper.PrintStr("Total To Pay       UGX "+totalprice+"\n\n");
-                            posApiHelper.PrintStr(""+orderPayment+" Debit\n");
-                            posApiHelper.PrintStr(orderDate+"    ORDER. "+order+" \n\n");
+                            posApiHelper.PrintStr("Total To Pay       UGX " + totalprice + "\n\n");
+                            posApiHelper.PrintStr("" + orderPayment + " Debit\n");
+                            posApiHelper.PrintStr(orderDate + "    ORDER. " + order + " \n\n");
                             posApiHelper.PrintStr("===============================\n\n");
                             posApiHelper.PrintStr("         --IMPORTANT--         \n");
                             posApiHelper.PrintStr("Keep This Copy for your Records\n\n");
-                            posApiHelper.PrintStr("THANKS FOR SHOPPING AT "+shop_name.toUpperCase()+"\n\n");
+                            posApiHelper.PrintStr("THANKS FOR SHOPPING AT " + shop_name.toUpperCase() + "\n\n");
                             posApiHelper.PrintStr("                                         \n");
                             posApiHelper.PrintStr("                                         \n");
                             posApiHelper.PrintStr("                                         \n");
@@ -868,26 +866,25 @@ public class ProductCart extends BaseActivity {
 
 
                             if (ret != 0) {
-                                    RESULT_CODE = -1;
-                                    Log.e("PrintError", "Lib_PrnStart fail, ret = " + ret);
-                                    if (ret == -1) {
-                                        SendMsg("No Print Paper  ");
-                                    } else if(ret == -2) {
-                                        SendMsg("low hot ");
-                                    }else if(ret == -3) {
-                                        SendMsg("low voltage  ");
-                                    }
-                                    else{
-                                       SendMsg("Print fail ");
-                                    }
+                                RESULT_CODE = -1;
+                                Log.e("PrintError", "Lib_PrnStart fail, ret = " + ret);
+                                if (ret == -1) {
+                                    SendMsg("No Print Paper  ");
+                                } else if (ret == -2) {
+                                    SendMsg("low hot ");
+                                } else if (ret == -3) {
+                                    SendMsg("low voltage  ");
+                                } else {
+                                    SendMsg("Print fail ");
+                                }
 
                             } else {
                                 RESULT_CODE = 0;
-                                Log.w("","Print Finish ");
+                                Log.w("", "Print Finish ");
                             }
                             final long endttime_long = System.currentTimeMillis();
                             final long totaltime_long = starttime_long - endttime_long;
-                            Log.w("printtime", "Print Long Totaltimie " + totaltime_long +"Ms");
+                            Log.w("printtime", "Print Long Totaltimie " + totaltime_long + "Ms");
 
                         }
 
@@ -969,10 +966,10 @@ public class ProductCart extends BaseActivity {
                             int index = 0;
                             String CheckCard_data = "";
                             mCardType = PosApiHelper.getInstance().EntryPoint_Detect();
-                            Log.e("VPOS", "EntryPoint_Detect mCardType== "+mCardType);
-                            if (mCardType >= 0){
+                            Log.e("VPOS", "EntryPoint_Detect mCardType== " + mCardType);
+                            if (mCardType >= 0) {
                                 break;
-                            }else {
+                            } else {
                                 Log.e("VPOS", "*************loop detecting return ");
 
                                 PosApiHelper.getInstance().EntryPoint_Close();
@@ -987,14 +984,13 @@ public class ProductCart extends BaseActivity {
                         Log.e("VPOS", "*************loop detecting return11 ");
 
 
-
                         if (mCardType == -1) {
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     if (bIsBack) {
-                                        Toast.makeText(ProductCart.this, R.string.emvTips,Toast.LENGTH_LONG).show();
+                                        Toast.makeText(ProductCart.this, R.string.emvTips, Toast.LENGTH_LONG).show();
                                     } else {
-                                        Toast.makeText(ProductCart.this, "timeOut~",Toast.LENGTH_LONG).show();
+                                        Toast.makeText(ProductCart.this, "timeOut~", Toast.LENGTH_LONG).show();
                                     }
                                 }
                             });
@@ -1031,14 +1027,14 @@ public class ProductCart extends BaseActivity {
                             runOnUiThread(new Runnable() {
                                 public void run() {
                                     Toast.makeText(ProductCart.this, "MCR:  " + McrData, Toast.LENGTH_LONG).show();
-                                    Log.w( "MCR:  " ,"......."+McrData);
+                                    Log.w("MCR:  ", "......." + McrData);
                                 }
                             });
                         } else
                             ///*******************-----EMV contact---******************************///
                             if (mCardType == 1) {
                                 Tag5A_data = "";
-                                Log.w("EMV","...............EMV Contact pay Process begin......................");
+                                Log.w("EMV", "...............EMV Contact pay Process begin......................");
                                 PosApiHelper.getInstance().SysLogSwitch(1);
                                 emvcoHelper.EmvEnvParaInit();  // 1
                                 emvcoHelper.EmvClearAllCapks();// 2
@@ -1065,23 +1061,23 @@ public class ProductCart extends BaseActivity {
 
                                 // AID + TermPara
                                 emvcoHelper.EmvAddOneAIDS(Master0, Master0.length);
-                                emvcoHelper.EmvSaveTermParas(TermParabuf, TermParabuf.length,0);
+                                emvcoHelper.EmvSaveTermParas(TermParabuf, TermParabuf.length, 0);
                                 //   ret = emvcoHelper.EmvGetErrCode();
-                                Log.e("VPOS", "ERROR    : EmvGetErrCode = "+ret);
+                                Log.e("VPOS", "ERROR    : EmvGetErrCode = " + ret);
 
                                 emvcoHelper.EmvAddOneAIDS(Visaaid0, Visaaid0.length);
-                                emvcoHelper.EmvSaveTermParas(TermParabuf, TermParabuf.length,0);
+                                emvcoHelper.EmvSaveTermParas(TermParabuf, TermParabuf.length, 0);
 
                                 emvcoHelper.EmvAddOneAIDS(Visaaid7, Visaaid7.length);
-                                emvcoHelper.EmvSaveTermParas(TermParabuf, TermParabuf.length,0);
+                                emvcoHelper.EmvSaveTermParas(TermParabuf, TermParabuf.length, 0);
 
                                 emvcoHelper.EmvAddOneAIDS(Visaaid8, Visaaid8.length);
-                                emvcoHelper.EmvSaveTermParas(TermParabuf, TermParabuf.length,0);
+                                emvcoHelper.EmvSaveTermParas(TermParabuf, TermParabuf.length, 0);
 
                                 ret = emvcoHelper.EmvKeyPadInit(ProductCart.this);
                                 emvcoHelper.SetPinPadTime(20);  //set pinpad timeout is 20 seconds
 
-                                Log.w("Error","Loading keypad............"+ret);
+                                Log.w("Error", "Loading keypad............" + ret);
                                 if (ret != 0) {
                                     m_bThreadFinished = true;
                                     return;
@@ -1095,7 +1091,7 @@ public class ProductCart extends BaseActivity {
                                 int PinData_len, KsnData_len;
                                 byte PinData[] = new byte[56];
                                 byte KsnData[] = new byte[56];
-                                 //emvcoHelper.SetPinPadType(0);
+                                //emvcoHelper.SetPinPadType(0);
                                 emvcoHelper.SetPinPadType(1);
                                 emvcoHelper.EmvKernelInit();
 
@@ -1103,21 +1099,21 @@ public class ProductCart extends BaseActivity {
                                 emvcoHelper.EmvSetTransAmount(100);
                                 emvcoHelper.EmvSetCardType(1);
                                 emvcoHelper.SetAutoAddKSNPIN(1, 2);
-                                try{
+                                try {
                                     ret = emvcoHelper.EmvProcess(1, 0);  //The FLOWTYPE value is 1- simplifies the process
-                                }catch (Exception e){
-                                    Log.e("VPOS Error", "EmvProcess exception --->"+e.getMessage());
+                                } catch (Exception e) {
+                                    Log.e("VPOS Error", "EmvProcess exception --->" + e.getMessage());
                                 }
                                 Log.e("VPOS MJ", "EmvProcess ret = " + ret);
 //*/
                                 //        ret = emvcoHelper.EmvGetErrCode();
-                                Log.e("VPOS MJ", "EmvGetErrCode = "+ret);
+                                Log.e("VPOS MJ", "EmvGetErrCode = " + ret);
 
                                 if (ret < 0) {
                                     runOnUiThread(new Runnable() {
                                         public void run() {
                                             strEmvStatus = "EMV Termination";
-                                            Toast.makeText(ProductCart.this, strEmvStatus,Toast.LENGTH_LONG).show();
+                                            Toast.makeText(ProductCart.this, strEmvStatus, Toast.LENGTH_LONG).show();
                                         }
                                     });
                                     m_bThreadFinished = true;
@@ -1140,13 +1136,13 @@ public class ProductCart extends BaseActivity {
                                 }
                                 PinData_len = emvcoHelper.EmvGetTagData(PinData, 56, TagPIN);
                                 final String TagPin_data = ByteUtil.bytearrayToHexString(PinData, PinData_len);
-                                KsnData_len =  emvcoHelper.EmvGetTagData(KsnData, 56, TagKSN);
+                                KsnData_len = emvcoHelper.EmvGetTagData(KsnData, 56, TagKSN);
                                 final String Ksn_data = ByteUtil.bytearrayToHexString(KsnData, KsnData_len);
                                 final int bypass = emvcoHelper.EmvPinbyPass();
                                 runOnUiThread(new Runnable() {
                                     public void run() {
 
-                                        Toast.makeText(ProductCart.this, strEmvStatus + "\nCardNO:" + Tag5A_data + "\n" + "PIN0:" + TagPin_data + "\n" + "KSN0:" + Ksn_data,Toast.LENGTH_LONG).show();
+                                        Toast.makeText(ProductCart.this, strEmvStatus + "\nCardNO:" + Tag5A_data + "\n" + "PIN0:" + TagPin_data + "\n" + "KSN0:" + Ksn_data, Toast.LENGTH_LONG).show();
                                         //  tvEmvMsg.setText("\n\nPinbypass:" + bypass);
                                         //   tvEmvMsg.setText("EMV Test complete");
                                     }
@@ -1155,7 +1151,7 @@ public class ProductCart extends BaseActivity {
 
                                 emvcoHelper.EmvFinal();
 
-                                Log.w("EMV","...............EMV Contact pay Process end......................");
+                                Log.w("EMV", "...............EMV Contact pay Process end......................");
                             }
                             ///*******************----Contactless-Quics and PayWave---******************************///
                             else if (mCardType == 3) {
@@ -1192,7 +1188,7 @@ public class ProductCart extends BaseActivity {
                                     runOnUiThread(new Runnable() {
                                         public void run() {
                                             strEmvStatus = "EMV Termination";
-                                            Toast.makeText(ProductCart.this, strEmvStatus,Toast.LENGTH_LONG).show();
+                                            Toast.makeText(ProductCart.this, strEmvStatus, Toast.LENGTH_LONG).show();
                                             emvcoHelper.PayWaveFinal();
                                         }
                                     });
@@ -1205,13 +1201,13 @@ public class ProductCart extends BaseActivity {
                                             strEmvStatus = "EMV  GOONLINE";
                                         }
                                     });
-                                }else if (ret == 101) {
+                                } else if (ret == 101) {
                                     runOnUiThread(new Runnable() {
                                         public void run() {
                                             strEmvStatus = "EMV_ACCEPTED_OFFLINE";
                                         }
                                     });
-                                }else if (ret == 102) {
+                                } else if (ret == 102) {
                                     runOnUiThread(new Runnable() {
                                         public void run() {
                                             strEmvStatus = "EMV_DENIALED_OFFLINE";
@@ -1228,7 +1224,7 @@ public class ProductCart extends BaseActivity {
 
                                 //     ret = emvcoHelper.EmvGetPinBlock(ProductCart.this, 1, pinkey_n0, card_no0, mode0, pin_block0, timeout_s0);
 
-                                Log.e("Robert EmvGetPinBlock", "EmvGetPinBlock ret=  " +ret);
+                                Log.e("Robert EmvGetPinBlock", "EmvGetPinBlock ret=  " + ret);
 
                                 TagCardNo_len = emvcoHelper.PayWaveGetTagData(CardNoData, 56, TagCardNo);
                                 for (int i = 0; i < TagCardNo_len; i++) {
@@ -1249,7 +1245,7 @@ public class ProductCart extends BaseActivity {
                                     Tag95_data += ByteUtil.byteToHexString(TVRData[i] /*& 0xFF*/);
                                 }
                                 if (TagTVR_len % 2 != 0) {
-                                    Tag95_data = Tag95_data.substring(0, TagTVR_len * 2 );
+                                    Tag95_data = Tag95_data.substring(0, TagTVR_len * 2);
                                 }
                                 Log.e("Tag95", "-Tag95_data=----" + Tag95_data);
 
@@ -1266,14 +1262,10 @@ public class ProductCart extends BaseActivity {
 
                                 runOnUiThread(new Runnable() {
                                     public void run() {
-                                        Toast.makeText(ProductCart.this, strEmvStatus + "\n\nCardNO:" + PAN + "\n\n" + "TVR:" + Tag95_data,Toast.LENGTH_LONG).show();
+                                        Toast.makeText(ProductCart.this, strEmvStatus + "\n\nCardNO:" + PAN + "\n\n" + "TVR:" + Tag95_data, Toast.LENGTH_LONG).show();
                                     }
                                 });
                                 Log.e("EMV PinData", "-TagPin_data=----" + TagPin_data);
-
-
-
-
 
 
                                 emvcoHelper.PayWaveFinal();
@@ -1285,10 +1277,10 @@ public class ProductCart extends BaseActivity {
                                 Log.e("Paypass", "Paypass Kernel Test");
                                 int TagName = 0xDF8129;
 
-                                int result  = emvcoHelper.PaypassProcess();
+                                int result = emvcoHelper.PaypassProcess();
                                 Log.e("Paypass", "Paypass PaypassProcess ret->" + result);
 
-                                int Data_len  = emvcoHelper.PaypassGetTagValue(PaypassTagBuff, 1024, TagName );
+                                int Data_len = emvcoHelper.PaypassGetTagValue(PaypassTagBuff, 1024, TagName);
                                 Log.e("Paypass", "Paypass PaypassGetTagValue" + Data_len);
                                 for (int i = 0; i < Data_len; i++) {
                                     Log.e("CardNoData ", "i = " + i + "  " + PaypassTagBuff[i]);
@@ -1296,22 +1288,22 @@ public class ProductCart extends BaseActivity {
                                 }
 
                                 if (Data_len / 2 != 0) {
-                                    PaypssTag57_data = PaypssTag57_data.substring(0, Data_len * 2 );
+                                    PaypssTag57_data = PaypssTag57_data.substring(0, Data_len * 2);
                                 }
 
 
                                 emvcoHelper.PaypassFinal();
                                 runOnUiThread(new Runnable() {
                                     public void run() {
-                                        Toast.makeText(ProductCart.this, PaypssTag57_data,Toast.LENGTH_LONG).show();
+                                        Toast.makeText(ProductCart.this, PaypssTag57_data, Toast.LENGTH_LONG).show();
                                     }
                                 });
                                 emvcoHelper.EmvFinal();
                             }
 
 
-                            m_bThreadFinished = true;
-                            Log.w("EMV","...............EMV  pay Process end......................"+m_bThreadFinished);
+                        m_bThreadFinished = true;
+                        Log.w("EMV", "...............EMV  pay Process end......................" + m_bThreadFinished);
                         break;
                     default:
                         break;
@@ -1322,6 +1314,7 @@ public class ProductCart extends BaseActivity {
             }
         }
     }
+
     private static final Pattern track2Pattern = Pattern.compile("^([0-9]{1,19})(?:[=Dd])([0-9]{4}|=)([0-9]{3}|=).*$");
     private static final Pattern track1Pattern = Pattern.compile("^.*?([0-9]{10,19})\\^([^^]{2,26})\\^([0-9]{4}|\\^)([0-9]{3}|\\^)[^;]*(;([^?]*)\\?.*)?$");
 

@@ -19,7 +19,7 @@
             android:background="@drawable/round_border"
             android:drawableLeft="@drawable/ic_search"
             android:ems="10"
-            android:fontFamily="@font/montserrat"
+            android:fontFamily="@font/josefin_sans"
             android:hint="@string/search_here"
             android:inputType="textPersonName"
             android:padding="10dp" />
@@ -78,7 +78,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:paddingStart="15dp"
                 android:paddingBottom="5dp"
                 android:text="TOTAL EXPENSE"
@@ -89,7 +89,7 @@
                 android:id="@+id/txt_total_expense"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:paddingStart="15dp"
                 android:paddingBottom="10dp"
                 android:text="$ 350000"

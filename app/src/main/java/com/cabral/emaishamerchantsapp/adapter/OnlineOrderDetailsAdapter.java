@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cabral.emaishamerchantsapp.R;
-import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
 
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +34,7 @@ public class OnlineOrderDetailsAdapter extends RecyclerView.Adapter<OnlineOrderD
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
-        holder.txt_product_name.setText(orderData.get(position).get("product_qty")+" x "+orderData.get(position).get("product_name"));
+        holder.txt_product_name.setText(orderData.get(position).get("product_qty") + " x " + orderData.get(position).get("product_name"));
 
     }
 

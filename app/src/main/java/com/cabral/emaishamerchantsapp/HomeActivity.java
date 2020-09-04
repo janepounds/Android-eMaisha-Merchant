@@ -43,6 +43,7 @@ import com.cabral.emaishamerchantsapp.storage.SharedPrefManager;
 import com.cabral.emaishamerchantsapp.suppliers.SuppliersActivity;
 import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 import com.cabral.emaishamerchantsapp.utils.LocaleManager;
+import com.cabral.emaishamerchantsapp.wallet.WalletActivity;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -68,7 +69,7 @@ import retrofit2.Response;
 public class HomeActivity extends BaseActivity {
 
 
-    CardView cardCustomers, cardProducts, cardSupplier, cardPos, cardOrderList, cardReport, cardSettings, cardExpense;
+    CardView cardCustomers, cardProducts, cardSupplier, cardPos, cardOrderList, cardReport, cardSettings, cardExpense, cardWallet;
     //for double back press to exit
     private static final int TIME_DELAY = 2000;
     private static long back_pressed;
@@ -93,6 +94,7 @@ public class HomeActivity extends BaseActivity {
         cardReport = findViewById(R.id.card_report);
         cardSettings = findViewById(R.id.card_settings);
         cardExpense = findViewById(R.id.card_expense);
+        cardWallet = findViewById(R.id.card_wallet);
 
 
         if (Build.VERSION.SDK_INT >= 23) //Android MarshMellow Version or above
@@ -279,6 +281,15 @@ public class HomeActivity extends BaseActivity {
                 Intent intent = new Intent(HomeActivity.this, OnlineOrders.class);
                 startActivity(intent);
 
+
+            }
+        });
+
+        cardWallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, WalletActivity.class);
+                startActivity(intent);
 
             }
         });

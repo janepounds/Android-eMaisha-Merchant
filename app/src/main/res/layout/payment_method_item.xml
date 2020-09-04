@@ -39,7 +39,7 @@
                     android:id="@+id/txt_payment_method_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:text="@string/payment_method"
                     android:textColor="#000000"
                     android:textSize="20sp" />

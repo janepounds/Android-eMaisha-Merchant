@@ -10,7 +10,7 @@
     </style>
     <style name="TextAppearance.AppCompat.Widget.ActionBar.Title" parent="@android:style/TextAppearance">
         <item name="android:textSize">18dp</item>
-        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:fontFamily">@font/josefin_sans</item>
         <item name="android:textColor">@color/title_color</item>
         <item name="android:gravity">center_horizontal</item>
     </style>
@@ -23,6 +23,10 @@
         <item name="mrl_rippleColor">#80FFFFFF</item>
         <item name="mrl_rippleHover">true</item>
         <item name="mrl_rippleAlpha">0.2</item>
+    </style>
+    <style name="bottom_nav">
+        <item name="android:fontFamily">@font/josefin_sans_bold</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="ButtonBorder" parent="Widget.AppCompat.Button.Colored"/>

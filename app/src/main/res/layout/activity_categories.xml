@@ -20,7 +20,7 @@
             android:background="@drawable/round_border"
             android:drawableLeft="@drawable/ic_search"
             android:ems="10"
-            android:fontFamily="@font/montserrat"
+            android:fontFamily="@font/josefin_sans"
             android:hint="@string/search_here"
             android:inputType="textPersonName"
             android:padding="10dp" />

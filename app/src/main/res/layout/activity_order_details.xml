@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey_5"
-    android:weightSum="10"
-    >
+    android:orientation="vertical"
+    android:weightSum="10">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8.5"
-        >
+        android:layout_weight="8.5">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler"
@@ -53,31 +50,31 @@
 
         </LinearLayout>
     </ScrollView>
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1.5"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:layout_weight="1.5">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="10"
-            >
+            android:weightSum="10">
 
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_weight="6"
+                android:orientation="vertical"
                 android:paddingTop="10dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:paddingStart="15dp"
                     android:paddingBottom="5dp"
                     android:text="TOTAL PRICE"
@@ -88,7 +85,7 @@
                     android:id="@+id/txt_total_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:paddingStart="15dp"
                     android:paddingBottom="10dp"
                     android:text="$350000"
@@ -101,13 +98,13 @@
                 android:id="@+id/txt_pdf_receipt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="18dp"
+                android:layout_weight="4"
                 android:background="@drawable/balance_cards"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="PDF RECEIPT"

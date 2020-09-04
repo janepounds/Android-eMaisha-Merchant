@@ -18,7 +18,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:padding="5dp"
                 android:text="@string/shop_name"
                 android:textColor="@color/creditCardBackground" />
@@ -34,7 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:hint="@string/shop_name"
                     android:inputType="text"
                     android:padding="8dp"
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:padding="5dp"
                 android:text="@string/shop_contact_number"
                 android:textColor="@color/creditCardBackground" />
@@ -71,7 +71,7 @@
                     android:textAlignment="viewStart"
                     android:tag="+256 "
                     android:textColor="#000"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:textColorHint="@color/textColorPrimaryDark"
                     android:background="@color/white"
                     />
@@ -83,7 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:padding="5dp"
                 android:text="@string/shop_email"
                 android:textColor="@color/creditCardBackground" />
@@ -99,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:hint="@string/shop_email"
                     android:inputType="text"
                     android:padding="8dp"
@@ -113,7 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:padding="5dp"
                 android:text="@string/currency_symbol"
                 android:textColor="@color/creditCardBackground" />
@@ -129,7 +129,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:hint="@string/shop_currency"
                     android:inputType="text"
                     android:padding="8dp"
@@ -142,7 +142,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:padding="5dp"
                 android:text="@string/shop_address"
                 android:textColor="@color/creditCardBackground" />
@@ -217,7 +217,7 @@
                         android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:fontFamily="@font/montserrat" />
+                        android:fontFamily="@font/josefin_sans" />
 
                 </LinearLayout>
 
@@ -235,7 +235,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:hint="@string/supplier_address_one"
                     android:inputType="text"
                     android:padding="8dp"
@@ -247,7 +247,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:padding="5dp"
                 android:text="Shop Password"
                 android:textColor="@color/creditCardBackground" />
@@ -263,7 +263,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:hint="Password"
                     android:inputType="textPassword"
                     android:padding="8dp"
@@ -274,7 +274,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:padding="5dp"
                 android:text="Confirm Shop Password"
                 android:textColor="@color/creditCardBackground" />
@@ -290,7 +290,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:hint="Confirm Password"
                     android:inputType="textPassword"
                     android:padding="8dp"
@@ -308,7 +308,7 @@
                 android:layout_marginEnd="35dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/balance_cards"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="Register"

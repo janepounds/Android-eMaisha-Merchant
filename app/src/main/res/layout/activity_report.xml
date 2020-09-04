@@ -69,7 +69,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginBottom="20dp"
-                                    android:fontFamily="@font/montserrat"
+                                    android:fontFamily="@font/josefin_sans"
                                     android:text="@string/all_sales_report"
                                     android:textColor="#000"
                                     android:textSize="18sp" />
@@ -136,7 +136,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginBottom="20dp"
-                                    android:fontFamily="@font/montserrat"
+                                    android:fontFamily="@font/josefin_sans"
                                     android:text="@string/all_expense_report"
                                     android:textColor="#000"
                                     android:textSize="18sp" />
@@ -200,7 +200,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginBottom="20dp"
-                                    android:fontFamily="@font/montserrat"
+                                    android:fontFamily="@font/josefin_sans"
                                     android:text="@string/monthly_sales_graph"
                                     android:textColor="#000"
                                     android:textSize="18sp" />
@@ -265,7 +265,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginBottom="20dp"
-                                    android:fontFamily="@font/montserrat"
+                                    android:fontFamily="@font/josefin_sans"
                                     android:text="@string/monthly_expense_graph"
                                     android:textColor="#000"
                                     android:textSize="18sp" />

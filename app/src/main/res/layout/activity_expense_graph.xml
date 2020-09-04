@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/josefin_sans"
         android:gravity="center"
         android:padding="10dp"
         android:text="@string/year_2020" />
@@ -53,7 +53,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:paddingStart="15dp"
                 android:paddingBottom="5dp"
                 android:text="TOTAL EXPENSES"
@@ -64,7 +64,7 @@
                 android:id="@+id/txt_total_sales"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:paddingStart="15dp"
                 android:paddingBottom="5dp"
                 android:text="$350000"

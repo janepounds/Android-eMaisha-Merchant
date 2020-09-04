@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_transaction"
+        android:icon="@drawable/ic_wallet"
+        android:title="Transactions" />
+    <item
+        android:id="@+id/navigation_accept_payments"
+        android:icon="@drawable/ic_account_balance"
+        android:title="Accept Payment" />
+    <item
+        android:id="@+id/navigation_settlements"
+        android:icon="@drawable/ic_baseline_queue"
+        android:title="Settlements" />
+</menu>

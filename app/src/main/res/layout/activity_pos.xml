@@ -23,7 +23,7 @@
             android:background="@drawable/round_border"
             android:drawableLeft="@drawable/ic_search"
             android:ems="10"
-            android:fontFamily="@font/sailec_regular"
+            android:fontFamily="@font/josefin_sans"
             android:hint="@string/search_here"
             android:inputType="textPersonName"
             android:padding="10dp" />
@@ -75,7 +75,7 @@
                     android:text="@string/no_product_found"
                     android:textColor="@color/colorPrimary"
                     android:textSize="24sp"
-                    app:fontFamily="@font/sailec_regular" />
+                    app:fontFamily="@font/josefin_sans" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

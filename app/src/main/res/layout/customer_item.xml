@@ -54,7 +54,7 @@
                     android:id="@+id/txt_customer_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:text="Customer Name"
                     android:textColor="@color/creditCardBackground"
                     android:textSize="16sp" />
@@ -63,7 +63,7 @@
                     android:id="@+id/txt_cell"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:text="@string/user_phone"
                     android:textColor="#000" />
 
@@ -71,7 +71,7 @@
                     android:id="@+id/txt_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:text="@string/user_email"
                     android:textColor="#000" />
 
@@ -79,7 +79,7 @@
                     android:id="@+id/txt_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:text="@string/user_address_one"
                     android:textColor="#000" />
 
@@ -87,7 +87,7 @@
                     android:id="@+id/txt_address_two"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:text="@string/user_address_two"
                     android:textColor="#000" />
 

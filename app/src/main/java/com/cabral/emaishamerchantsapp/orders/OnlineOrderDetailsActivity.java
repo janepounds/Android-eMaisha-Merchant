@@ -1,10 +1,5 @@
 package com.cabral.emaishamerchantsapp.orders;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,9 +11,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.cabral.emaishamerchantsapp.R;
 import com.cabral.emaishamerchantsapp.adapter.OnlineOrderDetailsAdapter;
-import com.cabral.emaishamerchantsapp.adapter.OrderDetailsAdapter;
 import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
 import com.cabral.emaishamerchantsapp.network.RetrofitClient;
 
@@ -34,9 +33,9 @@ import retrofit2.Response;
 public class OnlineOrderDetailsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private OnlineOrderDetailsAdapter onlineOrderDetailsAdapter;
-    String order_id,customer_name,order_status,currency,customer_email,customer_cell,customer_address,delivery_fee;
+    String order_id, customer_name, order_status, currency, customer_email, customer_cell, customer_address, delivery_fee;
     double total_price;
-    TextView txtSubTotal,txtCustomerName,txtOrderStatus, txtApprove, txtReject,txtDelivery,txtCustomerPhone,txtCustomerEmail, txtOverallTotal;
+    TextView txtSubTotal, txtCustomerName, txtOrderStatus, txtApprove, txtReject, txtDelivery, txtCustomerPhone, txtCustomerEmail, txtOverallTotal;
 
 
     @Override
@@ -101,11 +100,11 @@ public class OnlineOrderDetailsActivity extends AppCompatActivity {
 
         databaseAccess.open();
         total_price = databaseAccess.totalOrderPrice(order_id);
-        Double delivery_cost =  Double.parseDouble(txtDelivery.getText().toString());
+        Double delivery_cost = Double.parseDouble(txtDelivery.getText().toString());
         Log.d("Delivery Cost", String.valueOf(delivery_cost));
         Double total = total_price + delivery_cost;
-        txtSubTotal.setText(currency +" "+ total_price);
-        txtOverallTotal.setText(currency +" "+ total);
+        txtSubTotal.setText(currency + " " + total_price);
+        txtOverallTotal.setText(currency + " " + total);
 
         txtReject.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,7 +135,7 @@ public class OnlineOrderDetailsActivity extends AppCompatActivity {
                                 .getApi()
                                 .updateOrderStatus(
                                         order_id,
-                                       input.getText().toString().trim(),
+                                        input.getText().toString().trim(),
                                         3
                                 );
                         ProgressDialog progressDialog = new ProgressDialog(OnlineOrderDetailsActivity.this);
@@ -180,7 +179,6 @@ public class OnlineOrderDetailsActivity extends AppCompatActivity {
                 });
             }
         });
-
 
 
         txtApprove.setOnClickListener(new View.OnClickListener() {

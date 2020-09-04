@@ -86,4 +86,9 @@ dependencies {
     //Added by Jovan for POS CS10
     implementation(name: 'A26Library-1.7.0-Standard', ext: 'aar')
 
+    //Material Bottom nav
+    implementation 'com.google.android.material:material:1.1.0-alpha10'
+    implementation 'com.kofigyan.stateprogressbar:stateprogressbar:1.0.0'
+
+
 }

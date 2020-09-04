@@ -56,7 +56,7 @@
                     android:id="@+id/txt_supplier_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:text="Supplier Name"
                     android:textColor="@color/creditCardBackground"
                     android:textSize="16sp" />
@@ -65,7 +65,7 @@
                     android:id="@+id/txt_contact_person"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:text="@string/contact_person"
                     android:textColor="#000" />
 
@@ -73,7 +73,7 @@
                     android:id="@+id/txt_supplier_cell"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:text="@string/mobile_number"
                     android:textColor="#000" />
 
@@ -81,7 +81,7 @@
                     android:id="@+id/txt_supplier_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:text="Email "
                     android:textColor="#000" />
 
@@ -89,14 +89,14 @@
                     android:id="@+id/txt_supplier_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:text="@string/supplier_address_one"
                     android:textColor="#000" />
                 <TextView
                     android:id="@+id/txt_supplier_address_two"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:text="@string/supplier_address_two"
                     android:textColor="#000" />
 

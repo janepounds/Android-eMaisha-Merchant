@@ -17,7 +17,7 @@
             android:background="@drawable/round_border"
             android:drawableStart="@drawable/ic_search"
             android:ems="10"
-            android:fontFamily="@font/montserrat"
+            android:fontFamily="@font/josefin_sans"
             android:hint="@string/search_here"
             android:inputType="textPersonName"
             android:padding="10dp" />
@@ -56,7 +56,7 @@
                         android:id="@+id/txt_no_products"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
+                        android:fontFamily="@font/josefin_sans"
                         android:gravity="center"
                         android:text="@string/no_order_found"
                         android:textColor="@color/colorPrimary"

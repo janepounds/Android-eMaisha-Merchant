@@ -15,6 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
+            android:fontFamily="@font/josefin_sans"
             android:gravity="center"
             android:text="Validate OTP"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
@@ -28,8 +29,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
+        android:fontFamily="@font/josefin_sans"
         android:text="@string/veryfynumbertxt"
-        android:textSize="16sp" />
+        android:textSize="20sp" />
 
     <!--Edittext-->
     <EditText
@@ -39,6 +41,7 @@
         android:padding="14dp"
         android:hint="OTP Code"
         android:textColorHint="@color/textColorPrimaryDark"
+        android:fontFamily="@font/josefin_sans"
         android:background="@drawable/outline_primary"
         android:inputType="number"
         android:layout_width="match_parent"
@@ -58,6 +61,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:layout_weight="1"
+            android:textSize="20sp"
+            android:fontFamily="@font/josefin_sans"
             android:textColor="@color/white"
             android:drawableTint="@color/creditCardBackground"
             android:text="Resend" />
@@ -69,6 +74,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:layout_weight="1"
+            android:fontFamily="@font/josefin_sans"
+            android:textSize="20sp"
             android:textColor="@color/white"
             android:drawableTint="@color/colorPrimary"
             android:text="Submit" />

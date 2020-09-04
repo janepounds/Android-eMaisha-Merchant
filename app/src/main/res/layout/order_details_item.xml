@@ -55,7 +55,7 @@
                     android:id="@+id/txt_product_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:text="Product Name"
                     android:textColor="@color/creditCardBackground"
                     android:textSize="16sp" />
@@ -64,7 +64,7 @@
                     android:id="@+id/txt_qty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:padding="2dp"
                     android:text="Qty"
                     android:textColor="#000" />
@@ -73,7 +73,7 @@
                     android:id="@+id/txt_weight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:padding="2dp"
                     android:text="Weight"
                     android:textColor="#000" />
@@ -89,7 +89,7 @@
                         android:id="@+id/txt_price"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
+                        android:fontFamily="@font/josefin_sans"
                         android:layout_weight="2"
                         android:padding="2dp"
                         android:text="@string/price"
@@ -101,7 +101,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:layout_weight="8"
-                        android:fontFamily="@font/montserrat"
+                        android:fontFamily="@font/josefin_sans"
                         android:text="Total Cost"
                         android:textColor="#000" />
                 </LinearLayout>

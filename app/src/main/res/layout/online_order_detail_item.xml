@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="8"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/josefin_sans"
         android:padding="5dp"
         android:text="2 x Weed Master"
         android:textColor="#000"

@@ -19,7 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:fontFamily="@font/montserrat"
+            android:fontFamily="@font/josefin_sans"
+            android:textSize="18sp"
             android:paddingTop="10dp"
             android:text="@string/payment_method_name"
             android:textColor="@color/creditCardBackground" />
@@ -36,12 +37,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:hint="@string/payment_method_name"
                 android:inputType="text"
                 android:padding="8dp"
                 android:textColor="#000"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
         </androidx.cardview.widget.CardView>
 
@@ -55,12 +56,12 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/balance_cards"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/josefin_sans"
         android:gravity="center"
         android:padding="10dp"
         android:text="@string/add_payment_method"
         android:textColor="#ffffff"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

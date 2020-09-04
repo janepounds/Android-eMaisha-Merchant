@@ -1,6 +1,5 @@
 package com.cabral.emaishamerchantsapp.orders;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cabral.emaishamerchantsapp.R;
 import com.cabral.emaishamerchantsapp.adapter.OrderDetailsAdapter;
 import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
-import com.cabral.emaishamerchantsapp.network.RetrofitClient;
 import com.cabral.emaishamerchantsapp.pdf_report.TemplatePDF;
 import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 
@@ -23,10 +21,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class OrderDetailsActivity extends BaseActivity {
 
@@ -74,8 +68,6 @@ public class OrderDetailsActivity extends BaseActivity {
         getSupportActionBar().setHomeButtonEnabled(true); //for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
         getSupportActionBar().setTitle(R.string.order_details);
-
-
 
 
         // set a GridLayoutManager with default vertical orientation and 3 number of columns
@@ -150,7 +142,6 @@ public class OrderDetailsActivity extends BaseActivity {
                 templatePDF.viewPDF();
             }
         });
-
 
 
     }

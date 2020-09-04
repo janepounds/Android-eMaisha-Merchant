@@ -17,9 +17,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:textColor="@color/creditCardBackground"
                 android:paddingTop="10dp"
+                android:textSize="20sp"
                 android:text="@string/expense_name" />
 
             <androidx.cardview.widget.CardView
@@ -34,7 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:hint="@string/expense_name"
                     android:inputType="text"
                     android:padding="8dp"
@@ -47,8 +48,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:paddingTop="10dp"
+                android:textSize="20sp"
                 android:textColor="@color/creditCardBackground"
                 android:text="@string/expense_amount" />
 
@@ -64,7 +66,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:hint="@string/expense_amount"
                     android:inputType="number"
                     android:padding="8dp"
@@ -77,9 +79,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:textColor="@color/creditCardBackground"
                 android:paddingTop="10dp"
+                android:textSize="20sp"
                 android:text="@string/expense_date" />
 
             <androidx.cardview.widget.CardView
@@ -94,10 +97,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:hint="@string/expense_date"
                     android:inputType="date"
                     android:padding="8dp"
+
                     android:textColor="#000"
                     android:textSize="16sp" />
 
@@ -107,9 +111,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:textColor="@color/creditCardBackground"
                 android:paddingTop="10dp"
+                android:textSize="20sp"
                 android:text="@string/expense_time" />
 
             <androidx.cardview.widget.CardView
@@ -124,7 +129,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:hint="@string/expense_time"
                     android:inputType="number|time"
                     android:padding="8dp"
@@ -137,7 +142,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
+                android:textSize="20sp"
                 android:textColor="@color/creditCardBackground"
                 android:paddingTop="10dp"
                 android:text="@string/expense_note_if_any" />
@@ -154,7 +160,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/josefin_sans"
                     android:hint="@string/expense_note"
                     android:inputType="text"
                     android:padding="8dp"
@@ -172,7 +178,7 @@
                 android:layout_marginEnd="40dp"
                 android:layout_marginBottom="18dp"
                 android:background="@drawable/balance_cards"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="@string/edit"
@@ -189,7 +195,7 @@
                 android:layout_marginEnd="40dp"
                 android:layout_marginBottom="18dp"
                 android:background="@drawable/balance_cards"
-                android:fontFamily="@font/montserrat"
+                android:fontFamily="@font/josefin_sans"
                 android:gravity="center"
                 android:padding="10dp"
                 android:text="@string/update_information"

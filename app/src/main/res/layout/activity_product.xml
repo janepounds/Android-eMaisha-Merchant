@@ -18,7 +18,7 @@
             android:layout_margin="10dp"
             android:background="@drawable/round_border"
             android:ems="10"
-            android:fontFamily="@font/montserrat"
+            android:fontFamily="@font/josefin_sans"
             android:drawableLeft="@drawable/ic_search"
             android:hint="@string/search_here"
             android:inputType="textPersonName"
