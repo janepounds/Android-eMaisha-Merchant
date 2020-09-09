@@ -33,7 +33,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".wallet.AccountOpeningActivity"></activity>
+        <activity android:name=".wallet.DepositDetails"></activity>
+        <activity android:name=".wallet.DepositsActivity" />
+        <activity android:name=".wallet.CardDetail" />
+        <activity android:name=".wallet.AccountOpeningActivity" />
         <activity android:name=".wallet.WalletActivity" />
         <activity android:name=".orders.OnlineOrderDetailsActivity" />
         <activity android:name=".auth.Login" />

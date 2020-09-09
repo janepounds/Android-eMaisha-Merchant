@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import com.cabral.emaishamerchantsapp.HomeActivity;
 import com.cabral.emaishamerchantsapp.R;
 import com.cabral.emaishamerchantsapp.wallet.AccountOpeningActivity;
+import com.cabral.emaishamerchantsapp.wallet.DepositsActivity;
 import com.cabral.emaishamerchantsapp.wallet.WalletActivity;
 
 public class TransactionsFragment extends Fragment {
@@ -27,12 +28,22 @@ public class TransactionsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         CardView account_opening = view.findViewById(R.id.card_account_opening);
+        CardView deposits = view.findViewById(R.id.card_deposists);
 
         account_opening.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AccountOpeningActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        deposits.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DepositsActivity.class);
+                startActivity(intent);
+
             }
         });
     }

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.cabral.emaishamerchantsapp.R;
 import com.kofigyan.stateprogressbar.StateProgressBar;
@@ -30,20 +31,20 @@ public class IdentityProof extends Fragment {
         stateProgressBar.setStateDescriptionTypeface("font/josefin_sans.xml");
         stateProgressBar.setStateNumberTypeface("font/josefin_sans.xml");
 
-        TextView next = view.findViewById(R.id.txt_next_four);
+        TextView next = view.findViewById(R.id.txt_next_submit);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                openFragment(new IdentityProof());
+                openFragment(new FingerprintAuthentication());
             }
         });
 
     }
 
-//    public void openFragment(Fragment fragment) {
-//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-//        transaction.replace(R.id.open_container, fragment);
-//        transaction.addToBackStack(null);
-//        transaction.commit();
-//    }
+    public void openFragment(Fragment fragment) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.open_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 }

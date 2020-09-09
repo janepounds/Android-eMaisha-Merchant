@@ -10,23 +10,22 @@
         android:id="@+id/heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter Personal Details"
         android:fontFamily="@font/josefin_sans"
-        android:textColor="@color/black"
-        android:textSize="22sp"
-        android:paddingBottom="10sp"
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
-        android:textStyle="bold"
-        />
+        android:paddingBottom="10sp"
+        android:text="Enter Personal Details"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
 
     <!-- Main content -->
     <com.kofigyan.stateprogressbar.StateProgressBar
-        android:layout_below="@+id/heading"
         android:id="@+id/your_state_progress_bar_personal_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/heading"
         android:layout_gravity="center_horizontal"
         android:textAlignment="center"
         app:layout_constraintTop_toTopOf="parent"
@@ -41,6 +40,95 @@
         app:spb_stateNumberBackgroundColor="#808080"
         app:spb_stateNumberForegroundColor="#eeeeee"
         tools:layout_editor_absoluteX="10dp" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/your_state_progress_bar_personal_details">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/etxt_fullname"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="50dp"
+                android:fontFamily="@font/josefin_sans"
+                android:hint="Full Name"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColor="#000"
+                android:background="@drawable/round_shape"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/etxt_middlename"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="50dp"
+                android:fontFamily="@font/josefin_sans"
+                android:hint="Middle Name"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColor="#000"
+                android:background="@drawable/round_shape"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/etxt_lastname"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="50dp"
+                android:fontFamily="@font/josefin_sans"
+                android:hint="Last Name"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColor="#000"
+                android:background="@drawable/round_shape"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/etxt_gender"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="50dp"
+                android:fontFamily="@font/josefin_sans"
+                android:hint="Gender"
+                android:drawableRight="@drawable/drop_down"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColor="#000"
+                android:background="@drawable/round_shape"
+                android:textSize="16sp" />
+            <EditText
+                android:id="@+id/etxt_date_of_birth"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="50dp"
+                android:fontFamily="@font/josefin_sans"
+                android:hint="Date of birth"
+                android:drawableRight="@drawable/drop_down"
+                android:inputType="text"
+                android:padding="8dp"
+                android:textColor="#000"
+                android:background="@drawable/round_shape"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
 
     <TextView
         android:id="@+id/txt_next_two"
