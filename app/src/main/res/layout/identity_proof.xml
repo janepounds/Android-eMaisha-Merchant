@@ -147,7 +147,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="3"
-                android:layout_height="47dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="10.5dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="-15dp"
@@ -186,7 +186,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="3"
-                    android:layout_height="47dp"
+                    android:layout_height="50dp"
                     android:layout_marginTop="10.5dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="-15dp"
@@ -225,7 +225,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="3"
-                    android:layout_height="47dp"
+                    android:layout_height="50dp"
                     android:layout_marginTop="10.5dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="-15dp"
