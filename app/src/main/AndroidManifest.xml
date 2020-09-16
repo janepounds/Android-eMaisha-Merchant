@@ -33,7 +33,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".wallet.DepositDetails"></activity>
+        <activity android:name=".wallet.BalanceInquiryActivity"></activity>
+        <activity android:name=".wallet.SettlementDetailsActivity" />
+        <activity android:name=".wallet.SettlementActivity" />
+        <activity android:name=".wallet.WithdrawDetailsActivity" />
+        <activity android:name=".wallet.WithdrawActivity" />
+        <activity android:name=".wallet.TransferDetailsActivity" />
+        <activity android:name=".wallet.TransferFundsActivity" />
+        <activity android:name=".wallet.DepositDetails" />
         <activity android:name=".wallet.DepositsActivity" />
         <activity android:name=".wallet.CardDetail" />
         <activity android:name=".wallet.AccountOpeningActivity" />

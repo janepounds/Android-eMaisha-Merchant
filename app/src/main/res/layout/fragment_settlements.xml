@@ -1,6 +1,671 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginBottom="30dp"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/upper_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:weightSum="4">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:fontFamily="@font/josefin_sans_bold"
+                            android:text="FROM"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/etxt_next_of_kin_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/round_shape"
+                            android:fontFamily="@font/josefin_sans"
+                            android:inputType="text"
+                            android:padding="8dp"
+                            android:textColor="#000"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="vertical"
+                       >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:fontFamily="@font/josefin_sans_bold"
+                            android:text="TO"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/etxt_next_of_kin_second_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/round_shape"
+                            android:fontFamily="@font/josefin_sans"
+                            android:inputType="text"
+                            android:padding="8dp"
+                            android:textColor="#000"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_below="@+id/upper_card"
+                android:id="@+id/your_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Account"
+                android:textSize="20sp"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/josefin_sans_bold"
+                />
+            <androidx.cardview.widget.CardView
+                android:layout_below="@+id/your_account"
+                android:id="@+id/account_card"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                app:cardCornerRadius="7dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="4"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:text="Transfers"
+                            android:fontFamily="@font/josefin_sans"
+                            android:textSize="16sp"
+                            />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:textAlignment="textEnd"
+                            android:paddingRight="10dp"
+                            android:layout_height="wrap_content"
+                            android:text="UGX 180,000"
+                            android:fontFamily="@font/josefin_sans_bold"
+                            android:textSize="16sp"
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="4"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:text="Settlements"
+                            android:fontFamily="@font/josefin_sans"
+                            android:textSize="16sp"
+                            />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:textAlignment="textEnd"
+                            android:paddingRight="10dp"
+                            android:layout_height="wrap_content"
+                            android:text="UGX 170,000"
+                            android:fontFamily="@font/josefin_sans_bold"
+                            android:textSize="16sp"
+                            />
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#BBBBBB" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="4"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:text="Holding Balance"
+                            android:textColor="@color/creditCardBackground"
+                            android:fontFamily="@font/josefin_sans_bold"
+                            android:textSize="16sp"
+                            />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:textAlignment="textEnd"
+                            android:paddingRight="10dp"
+                            android:layout_height="wrap_content"
+                            android:text="UGX 850,000"
+                            android:fontFamily="@font/josefin_sans_bold"
+                            android:textSize="16sp"
+                            />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_below="@+id/account_card"
+                android:id="@+id/your_settlements"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your Settlements"
+                android:textSize="20sp"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:fontFamily="@font/josefin_sans_bold"
+                />
+            <androidx.cardview.widget.CardView
+                android:layout_below="@+id/your_settlements"
+                android:id="@+id/settlements_card_one"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                app:cardCornerRadius="7dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="4"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:text="Aug 22, 2020 | 8:24"
+                            android:textColor="@color/creditCardBackground"
+                            android:fontFamily="@font/josefin_sans_bold"
+                            android:textSize="16sp"
+                            />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:textAlignment="textEnd"
+                            android:paddingRight="10dp"
+                            android:layout_height="wrap_content"
+                            android:text="UGX 110,000"
+                            android:fontFamily="@font/josefin_sans_bold"
+                            android:textSize="16sp"
+                            />
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#BBBBBB" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/josefin_sans_bold"
+                        android:textSize="16sp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:text="KIWANUKA PETER(success)"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="10"
+                        android:orientation="horizontal"
+                        >
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="0.2"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5dp"
+                            android:background="#CCCCCC" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="9.8"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            >
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:weightSum="4"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:orientation="horizontal"
+                                >
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="10dp"
+                                    android:text="Bank"
+                                    android:fontFamily="@font/josefin_sans"
+                                    android:textSize="16sp"
+                                    />
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:textAlignment="textEnd"
+                                    android:paddingRight="10dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="DTB Uganda"
+                                    android:fontFamily="@font/josefin_sans_bold"
+                                    android:textSize="16sp"
+                                    />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:weightSum="4"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="5dp"
+                                android:orientation="horizontal"
+                                >
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="10dp"
+                                    android:text="Reference"
+                                    android:fontFamily="@font/josefin_sans"
+                                    android:textSize="16sp"
+                                    />
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:textAlignment="textEnd"
+                                    android:paddingRight="10dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="SM - 346181"
+                                    android:fontFamily="@font/josefin_sans_bold"
+                                    android:textSize="16sp"
+                                    />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:weightSum="4"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:orientation="horizontal"
+                                >
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="10dp"
+                                    android:text="Account No"
+                                    android:fontFamily="@font/josefin_sans"
+                                    android:textSize="16sp"
+                                    />
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:textAlignment="textEnd"
+                                    android:paddingRight="10dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="04889992928"
+                                    android:fontFamily="@font/josefin_sans_bold"
+                                    android:textSize="16sp"
+                                    />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:weightSum="4"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:orientation="horizontal"
+                                >
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="10dp"
+                                    android:text="Tnx Fee"
+                                    android:fontFamily="@font/josefin_sans"
+                                    android:textSize="16sp"
+                                    />
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:textAlignment="textEnd"
+                                    android:paddingRight="10dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="UGX 45,000"
+                                    android:fontFamily="@font/josefin_sans_bold"
+                                    android:textSize="16sp"
+                                    />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_below="@+id/settlements_card_one"
+                android:id="@+id/settlements_card_two"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                app:cardCornerRadius="7dp"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="4"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:orientation="horizontal"
+                        >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
+                            android:text="Aug 22, 2020 | 8:24"
+                            android:textColor="@color/creditCardBackground"
+                            android:fontFamily="@font/josefin_sans_bold"
+                            android:textSize="16sp"
+                            />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="2"
+                            android:textAlignment="textEnd"
+                            android:paddingRight="10dp"
+                            android:layout_height="wrap_content"
+                            android:text="UGX 110,000"
+                            android:fontFamily="@font/josefin_sans_bold"
+                            android:textSize="16sp"
+                            />
+
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#BBBBBB" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/josefin_sans_bold"
+                        android:textSize="16sp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:text="PETER MUGWANYA(success)"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:weightSum="10"
+                        android:orientation="horizontal"
+                        >
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_weight="0.2"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="5dp"
+                            android:background="#CCCCCC" />
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="9.8"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            >
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:weightSum="4"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:orientation="horizontal"
+                                >
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="10dp"
+                                    android:text="Mobile Money"
+                                    android:fontFamily="@font/josefin_sans"
+                                    android:textSize="16sp"
+                                    />
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:textAlignment="textEnd"
+                                    android:paddingRight="10dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="0750532902"
+                                    android:fontFamily="@font/josefin_sans_bold"
+                                    android:textSize="16sp"
+                                    />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:weightSum="4"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="5dp"
+                                android:orientation="horizontal"
+                                >
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="10dp"
+                                    android:text="Reference"
+                                    android:fontFamily="@font/josefin_sans"
+                                    android:textSize="16sp"
+                                    />
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:textAlignment="textEnd"
+                                    android:paddingRight="10dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="SM - 346181"
+                                    android:fontFamily="@font/josefin_sans_bold"
+                                    android:textSize="16sp"
+                                    />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:weightSum="4"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:orientation="horizontal"
+                                >
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="10dp"
+                                    android:text="Account No"
+                                    android:fontFamily="@font/josefin_sans"
+                                    android:textSize="16sp"
+                                    />
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:textAlignment="textEnd"
+                                    android:paddingRight="10dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="04889992928"
+                                    android:fontFamily="@font/josefin_sans_bold"
+                                    android:textSize="16sp"
+                                    />
+
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:weightSum="4"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="5dp"
+                                android:orientation="horizontal"
+                                >
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="10dp"
+                                    android:text="Tnx Fee"
+                                    android:fontFamily="@font/josefin_sans"
+                                    android:textSize="16sp"
+                                    />
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_weight="2"
+                                    android:textAlignment="textEnd"
+                                    android:paddingRight="10dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="UGX 45,000"
+                                    android:fontFamily="@font/josefin_sans_bold"
+                                    android:textSize="16sp"
+                                    />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

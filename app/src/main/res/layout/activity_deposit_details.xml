@@ -33,7 +33,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/josefin_sans"
                         android:text="Customer"
-                        android:textColor="@color/creditCardBackground"
+                        android:textColor="#929292"
                         android:textSize="20sp" />
 
                     <TextView
@@ -66,7 +66,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/josefin_sans"
                         android:text="Phone Number"
-                        android:textColor="@color/creditCardBackground"
+                        android:textColor="#929292"
                         android:textSize="20sp" />
 
                     <TextView
@@ -99,7 +99,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/josefin_sans"
                         android:text="Deposit Amount"
-                        android:textColor="@color/creditCardBackground"
+                        android:textColor="#929292"
                         android:textSize="20sp" />
 
                     <TextView
@@ -132,7 +132,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/josefin_sans"
                         android:text="Transaction Charge"
-                        android:textColor="@color/creditCardBackground"
+                        android:textColor="#929292"
                         android:textSize="20sp" />
 
                     <TextView
@@ -165,7 +165,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/josefin_sans"
                         android:text="Total Amount"
-                        android:textColor="@color/creditCardBackground"
+                        android:textColor="#929292"
                         android:textSize="20sp" />
 
                     <TextView

@@ -10,29 +10,28 @@ import android.widget.TextView;
 
 import com.cabral.emaishamerchantsapp.R;
 
-public class TransferFundsActivity extends AppCompatActivity {
+public class SettlementActivity extends AppCompatActivity {
     TextView txtSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_transfer_funds);
+        setContentView(R.layout.activity_settlement);
         getSupportActionBar().setHomeButtonEnabled(true); //for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
-        getSupportActionBar().setTitle("Transfer Funds");
+        getSupportActionBar().setTitle("Settlement");
 
-        txtSubmit = findViewById(R.id.txt_transfer_submit);
-
+        txtSubmit = findViewById(R.id.txt_settle_submit);
         txtSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intent = new Intent(TransferFundsActivity.this, TransferDetailsActivity.class);
+                Intent intent = new Intent(SettlementActivity.this, SettlementDetailsActivity.class);
                 startActivity(intent);
-
             }
         });
+
     }
+
 
     //for back button
     @Override

@@ -153,6 +153,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linear_transfer"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -179,6 +180,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linear_settle"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"

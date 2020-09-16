@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_transaction"
-        android:icon="@drawable/ic_wallet"
+        android:icon="@drawable/ic_transaction_svg"
         android:title="Transactions" />
     <item
         android:id="@+id/navigation_accept_payments"
-        android:icon="@drawable/ic_account_balance"
+        android:icon="@drawable/ic_accept_payment_svg"
         android:title="Accept Payment" />
     <item
         android:id="@+id/navigation_settlements"
-        android:icon="@drawable/ic_baseline_queue"
+        android:icon="@drawable/ic_settlement_svg"
         android:title="Settlements" />
 </menu>

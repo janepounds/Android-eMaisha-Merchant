@@ -40,7 +40,7 @@
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/josefin_sans"
                         android:text="Enter Phone Number"
-                        android:textColor="@color/creditCardBackground"
+                        android:textColor="#929292"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -100,7 +100,7 @@
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/josefin_sans"
                         android:text="Customer Account"
-                        android:textColor="@color/creditCardBackground"
+                        android:textColor="#929292"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 
@@ -149,7 +149,7 @@
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/josefin_sans"
                         android:text="Enter Ammount"
-                        android:textColor="@color/creditCardBackground"
+                        android:textColor="#929292"
                         android:textSize="20sp"
                         android:textStyle="bold" />
 

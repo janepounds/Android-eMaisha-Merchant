@@ -1,11 +1,11 @@
 package com.cabral.emaishamerchantsapp.wallet;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
-import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.cabral.emaishamerchantsapp.Fragments.AcceptPaymentsFragment;
 import com.cabral.emaishamerchantsapp.Fragments.SettlementsFragment;
@@ -22,6 +22,8 @@ public class WalletActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wallet);
+        getSupportActionBar().setHomeButtonEnabled(true); //for back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//fo
         getSupportActionBar().setTitle("Wallet");
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
@@ -38,7 +40,8 @@ public class WalletActivity extends AppCompatActivity {
 
     BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()) {
                         case R.id.navigation_transaction:
                             openFragment(new TransactionsFragment());
@@ -53,4 +56,18 @@ public class WalletActivity extends AppCompatActivity {
                     return false;
                 }
             };
+
+    //for back button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+                // app icon in action bar clicked; goto parent activity.
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

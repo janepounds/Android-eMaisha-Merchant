@@ -45,7 +45,7 @@ public class DepositDetails extends AppCompatActivity {
                         startActivity(intent);
                         AlertDialog.Builder builder = new AlertDialog.Builder(DepositDetails.this);
                         ViewGroup viewGroup = findViewById(android.R.id.content);
-                        View dialogView = LayoutInflater.from(DepositDetails.this).inflate(R.layout.custom_dialog_pin_sucess, viewGroup, false);
+                        View dialogView = LayoutInflater.from(DepositDetails.this).inflate(R.layout.custom_dialog_agent_deposit_success, viewGroup, false);
                         builder.setView(dialogView);
                         AlertDialog alertSuccessDialog = builder.create();
                         alertSuccessDialog.show();
