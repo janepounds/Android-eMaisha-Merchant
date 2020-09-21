@@ -28,6 +28,7 @@ public class WalletActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Wallet");
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
+        bottomNavigation.setItemIconTintList(null);
         openFragment(new HomeFragment());
 
     }

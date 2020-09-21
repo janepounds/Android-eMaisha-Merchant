@@ -7,7 +7,7 @@
     <color name="title_color">#000</color>
     <color name="textColorPrimaryDark">#757575</color>
     <color name="creditCardBackground">#557F5F</color>
-    <color name="transparent">#00FFFFFF</color>
+    <color name="transparent">#00000000</color>
     <color name="textColorSecondaryLight">#666666</color>
     <color name="deleteIconColor">#DF0456</color>
     <color name="faintred">#FFCCCB</color>
