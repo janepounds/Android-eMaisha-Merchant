@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_transaction_svg"
+        android:title="@string/home" />
+
+    <item
         android:id="@+id/navigation_transaction"
         android:icon="@drawable/ic_transaction_svg"
-        android:title="Transactions" />
+        android:title="@string/transactions" />
     <item
         android:id="@+id/navigation_accept_payments"
         android:icon="@drawable/ic_accept_payment_svg"
-        android:title="Accept Payment" />
+        android:title="@string/accept_payment" />
     <item
         android:id="@+id/navigation_settlements"
         android:icon="@drawable/ic_settlement_svg"
-        android:title="Settlements" />
+        android:title="@string/settlements" />
 </menu>

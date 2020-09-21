@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.cabral.emaishamerchantsapp.Fragments.AcceptPaymentsFragment;
+import com.cabral.emaishamerchantsapp.Fragments.HomeFragment;
 import com.cabral.emaishamerchantsapp.Fragments.SettlementsFragment;
 import com.cabral.emaishamerchantsapp.Fragments.TransactionsFragment;
 import com.cabral.emaishamerchantsapp.R;
@@ -27,7 +28,7 @@ public class WalletActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Wallet");
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
-        openFragment(new TransactionsFragment());
+        openFragment(new HomeFragment());
 
     }
 
@@ -43,6 +44,9 @@ public class WalletActivity extends AppCompatActivity {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()) {
+                        case R.id.navigation_home:
+                            openFragment(new HomeFragment());
+                            return true;
                         case R.id.navigation_transaction:
                             openFragment(new TransactionsFragment());
                             return true;

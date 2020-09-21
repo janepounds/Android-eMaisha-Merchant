@@ -24,9 +24,8 @@
         <item name="mrl_rippleHover">true</item>
         <item name="mrl_rippleAlpha">0.2</item>
     </style>
-    <style name="bottom_nav">
-        <item name="android:fontFamily">@font/josefin_sans_bold</item>
-        <item name="android:textStyle">bold</item>
+    <style name="bottom_nav" parent="@android:style/TextAppearance">
+        <item name="android:fontFamily">@font/josefin_sans</item>
     </style>
 
     <style name="ButtonBorder" parent="Widget.AppCompat.Button.Colored"/>
