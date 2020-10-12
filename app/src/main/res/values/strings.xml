@@ -278,4 +278,5 @@
     <string name="accept_payment">Accept Payment</string>
     <string name="transactions">Transactions</string>
     <string name="home">Home</string>
+    <string name="district">District</string>
 </resources>
