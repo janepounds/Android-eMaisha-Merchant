@@ -11,10 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.cabral.emaishamerchantsapp.HomeActivity;
 import com.cabral.emaishamerchantsapp.R;
 import com.cabral.emaishamerchantsapp.wallet.CardDetail;
-import com.cabral.emaishamerchantsapp.wallet.WalletActivity;
 
 public class FingerprintAuthentication extends Fragment {
 

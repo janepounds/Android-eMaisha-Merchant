@@ -11,25 +11,25 @@ import androidx.appcompat.widget.AppCompatEditText;
  */
 public class OtpEdittext extends AppCompatEditText {
     float originalLeftPadding = -1;
-    
+
     public OtpEdittext(Context context) {
         super(context);
     }
-    
+
     public OtpEdittext(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
-    
+
     public OtpEdittext(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
-    
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         calculatePrefix();
     }
-    
+
     private void calculatePrefix() {
         if (originalLeftPadding == -1) {
             String prefix = (String) getTag();
@@ -45,7 +45,7 @@ public class OtpEdittext extends AppCompatEditText {
                     getPaddingBottom());
         }
     }
-    
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -13,16 +12,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:textColor="@color/creditCardBackground"
                 android:padding="5dp"
-                android:text="@string/shop_name" />
+                android:text="@string/shop_name"
+                android:textColor="@color/creditCardBackground" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -49,9 +48,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:textColor="@color/creditCardBackground"
                 android:padding="5dp"
-                android:text="@string/shop_contact_number" />
+                android:text="@string/shop_contact_number"
+                android:textColor="@color/creditCardBackground" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -79,9 +78,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:textColor="@color/creditCardBackground"
                 android:padding="5dp"
-                android:text="@string/shop_email" />
+                android:text="@string/shop_email"
+                android:textColor="@color/creditCardBackground" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -109,9 +108,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:textColor="@color/creditCardBackground"
                 android:padding="5dp"
-                android:text="@string/currency_symbol" />
+                android:text="@string/currency_symbol"
+                android:textColor="@color/creditCardBackground" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -124,8 +123,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:fontFamily="@font/josefin_sans"
                     android:drawableRight="@drawable/drop_down"
+                    android:fontFamily="@font/josefin_sans"
                     android:hint="@string/shop_currency"
                     android:inputType="text"
                     android:padding="8dp"
@@ -134,33 +133,28 @@
             </androidx.cardview.widget.CardView>
 
 
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:textColor="@color/creditCardBackground"
                 android:padding="5dp"
-                android:text="@string/shop_address" />
+                android:text="@string/shop_address"
+                android:textColor="@color/creditCardBackground" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                app:layout_constraintTop_toTopOf="@+id/parent"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toTopOf="@+id/autocomplete_fragmentlaout"
-                android:orientation="vertical" >
-
+                app:layout_constraintTop_toTopOf="@+id/parent">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
-
-
+                    android:layout_height="match_parent">
 
 
                     <fragment
@@ -177,8 +171,7 @@
                         android:layout_gravity="center"
                         android:layout_marginBottom="20dp"
                         android:gravity="center"
-                        android:orientation="vertical" >
-
+                        android:orientation="vertical">
 
 
                         <ImageView
@@ -188,7 +181,6 @@
                             android:src="@drawable/add_marker" />
 
                     </LinearLayout>
-
 
 
                 </FrameLayout>
@@ -201,11 +193,10 @@
                 android:id="@+id/autocomplete_fragmentlaout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                app:layout_constraintBottom_toBottomOf="@+id/parent"
                 android:background="@color/white"
-                android:orientation="vertical">
-
+                android:orientation="vertical"
+                android:paddingTop="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/parent">
 
 
                 <LinearLayout
@@ -213,16 +204,15 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:background="@drawable/rounded_corners_button_green"
                     android:layout_marginBottom="20dp"
-                    >
+                    android:background="@drawable/rounded_corners_button_green">
 
-                    <fragment android:id="@+id/autocomplete_fragment"
+                    <fragment
+                        android:id="@+id/autocomplete_fragment"
+                        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
-                        android:fontFamily="@font/josefin_sans"
-                        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
-                        />
+                        android:fontFamily="@font/josefin_sans" />
 
                 </LinearLayout>
 
@@ -247,7 +237,6 @@
                     android:textColor="#000"
                     android:textSize="16sp" />
             </androidx.cardview.widget.CardView>
-
 
 
             <TextView

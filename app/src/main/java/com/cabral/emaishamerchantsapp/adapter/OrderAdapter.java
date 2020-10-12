@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.cabral.emaishamerchantsapp.R;
 import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
 import com.cabral.emaishamerchantsapp.orders.OrderDetailsActivity;
@@ -45,21 +44,19 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
 
-        String customer_name=orderData.get(position).get("customer_name");
-        String invoice_id=orderData.get(position).get("invoice_id");
-        String order_date=orderData.get(position).get("order_date");
-        String order_time=orderData.get(position).get("order_time");
-        String payment_method=orderData.get(position).get("order_payment_method");
-        String order_type=orderData.get(position).get("order_type");
-
-
+        String customer_name = orderData.get(position).get("customer_name");
+        String invoice_id = orderData.get(position).get("invoice_id");
+        String order_date = orderData.get(position).get("order_date");
+        String order_time = orderData.get(position).get("order_time");
+        String payment_method = orderData.get(position).get("order_payment_method");
+        String order_type = orderData.get(position).get("order_type");
 
 
         holder.txt_customer_name.setText(customer_name);
         holder.txt_order_id.setText(invoice_id);
         holder.txt_order_staus.setText(payment_method);
         holder.txt_order_type.setText(order_type);
-        holder.txt_date.setText(order_time+" "+order_date);
+        holder.txt_date.setText(order_time + " " + order_date);
 
         holder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,10 +71,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
 
                                 DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
                                 databaseAccess.open();
-                                boolean delete_order=databaseAccess.deleteOrder(invoice_id);
+                                boolean delete_order = databaseAccess.deleteOrder(invoice_id);
 
-                                if (delete_order)
-                                {
+                                if (delete_order) {
                                     Toasty.error(context, R.string.order_deleted, Toast.LENGTH_SHORT).show();
 
                                     orderData.remove(holder.getAdapterPosition());
@@ -85,10 +81,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
                                     // Notify that item at position has been removed
                                     notifyItemRemoved(holder.getAdapterPosition());
 
-                                }
-
-                                else
-                                {
+                                } else {
                                     Toast.makeText(context, R.string.failed, Toast.LENGTH_SHORT).show();
                                 }
                                 dialog.cancel();
@@ -106,9 +99,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
         });
 
 
-
-
-
     }
 
     @Override
@@ -118,7 +108,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView txt_customer_name,txt_order_id,txt_order_type,txt_order_staus,txt_date;
+        TextView txt_customer_name, txt_order_id, txt_order_type, txt_order_staus, txt_date;
         ImageView imgDelete;
 
         public MyViewHolder(View itemView) {
@@ -126,10 +116,10 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
 
             txt_customer_name = itemView.findViewById(R.id.txt_customer_name);
             txt_order_id = itemView.findViewById(R.id.txt_order_id_value);
-            txt_order_type= itemView.findViewById(R.id.txt_order_type_value);
+            txt_order_type = itemView.findViewById(R.id.txt_order_type_value);
             txt_order_staus = itemView.findViewById(R.id.txt_order_payment_method);
-            txt_date= itemView.findViewById(R.id.txt_date);
-            imgDelete=itemView.findViewById(R.id.img_delete);
+            txt_date = itemView.findViewById(R.id.txt_date);
+            imgDelete = itemView.findViewById(R.id.img_delete);
 
             itemView.setOnClickListener(this);
 
@@ -139,17 +129,15 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
         @Override
         public void onClick(View view) {
             Intent i = new Intent(context, OrderDetailsActivity.class);
-            i.putExtra("order_id",orderData.get(getAdapterPosition()).get("invoice_id"));
-            i.putExtra("customer_name",orderData.get(getAdapterPosition()).get("customer_name"));
-            i.putExtra("order_date",orderData.get(getAdapterPosition()).get("order_date"));
-            i.putExtra("order_time",orderData.get(getAdapterPosition()).get("order_time"));
-            i.putExtra("order_status",orderData.get(getAdapterPosition()).get("order_status"));
-            i.putExtra("storage_status",orderData.get(getAdapterPosition()).get("storage_status"));
+            i.putExtra("order_id", orderData.get(getAdapterPosition()).get("invoice_id"));
+            i.putExtra("customer_name", orderData.get(getAdapterPosition()).get("customer_name"));
+            i.putExtra("order_date", orderData.get(getAdapterPosition()).get("order_date"));
+            i.putExtra("order_time", orderData.get(getAdapterPosition()).get("order_time"));
+            i.putExtra("order_status", orderData.get(getAdapterPosition()).get("order_status"));
+            i.putExtra("storage_status", orderData.get(getAdapterPosition()).get("storage_status"));
             context.startActivity(i);
         }
     }
-
-
 
 
 }

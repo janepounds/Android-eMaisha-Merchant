@@ -13,18 +13,18 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
+        android:foreground="?android:attr/selectableItemBackground"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="5dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardPreventCornerOverlap="false"
-        app:cardElevation="10dp">
+        app:cardElevation="10dp"
+        app:cardPreventCornerOverlap="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:baselineAligned="false"
-            android:weightSum="10"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="10">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -96,8 +96,8 @@
                         android:paddingLeft="10dp"
                         android:paddingTop="5dp"
                         android:paddingRight="10dp"
-                        android:textColor="@color/creditCardBackground"
                         android:paddingBottom="5dp"
+                        android:textColor="@color/creditCardBackground"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 

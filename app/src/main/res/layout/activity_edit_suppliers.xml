@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <ScrollView
@@ -13,16 +13,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:textColor="@color/creditCardBackground"
                 android:paddingTop="10dp"
-                android:text="@string/supplier_name" />
+                android:text="@string/supplier_name"
+                android:textColor="@color/creditCardBackground" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -44,14 +44,15 @@
                     android:textSize="16sp" />
 
             </androidx.cardview.widget.CardView>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:textColor="@color/creditCardBackground"
                 android:paddingTop="10dp"
-                android:text="@string/supplier_contact_person" />
+                android:text="@string/supplier_contact_person"
+                android:textColor="@color/creditCardBackground" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -79,9 +80,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:textColor="@color/creditCardBackground"
                 android:paddingTop="10dp"
-                android:text="@string/supplier_cell" />
+                android:text="@string/supplier_cell"
+                android:textColor="@color/creditCardBackground" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -144,9 +146,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:textColor="@color/creditCardBackground"
                 android:paddingTop="10dp"
-                android:text="@string/supplier_email" />
+                android:text="@string/supplier_email"
+                android:textColor="@color/creditCardBackground" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -174,9 +176,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:textColor="@color/creditCardBackground"
                 android:paddingTop="10dp"
-                android:text="@string/supplier_address" />
+                android:text="@string/supplier_address"
+                android:textColor="@color/creditCardBackground" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -296,8 +298,6 @@
                         tools:ignore="VectorDrawableCompat" />
                 </LinearLayout>
             </LinearLayout>
-
-
 
 
             <TextView

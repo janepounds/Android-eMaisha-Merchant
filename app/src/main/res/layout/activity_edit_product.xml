@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -13,7 +12,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
@@ -43,6 +42,7 @@
                     android:textSize="16sp" />
 
             </androidx.cardview.widget.CardView>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -334,10 +334,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 android:layout_marginEnd="20dp"
                 android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:weightSum="12">
 
                 <LinearLayout
@@ -353,8 +353,7 @@
                         android:layout_height="120dp"
                         android:contentDescription="TODO"
                         android:scaleType="centerCrop"
-                        app:srcCompat="@drawable/new_produc_picture"
-                        />
+                        app:srcCompat="@drawable/new_produc_picture" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -404,12 +403,9 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:paddingBottom="5dp"
-                        app:srcCompat="@drawable/new_delete"
-                        />
+                        app:srcCompat="@drawable/new_delete" />
                 </LinearLayout>
             </LinearLayout>
-
-
 
 
             <TextView

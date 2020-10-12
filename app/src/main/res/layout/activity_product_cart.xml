@@ -63,15 +63,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="10"
-            >
+            android:weightSum="10">
 
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_weight="6"
+                android:orientation="vertical"
                 android:paddingTop="10dp">
 
                 <TextView
@@ -101,11 +100,11 @@
                 android:id="@+id/btn_submit_order"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="18dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="18dp"
+                android:layout_weight="4"
                 android:background="@drawable/balance_cards"
                 android:fontFamily="@font/josefin_sans"
                 android:gravity="center"

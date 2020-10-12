@@ -85,7 +85,6 @@ public class AddCustomersActivity extends BaseActivity {
         });
 
 
-
         txtAddCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,18 +102,13 @@ public class AddCustomersActivity extends BaseActivity {
                 } else if (customer_cell.isEmpty()) {
                     etxtCustomerCell.setError(getString(R.string.enter_customer_cell));
                     etxtCustomerCell.requestFocus();
-                }
-
-                else if (customer_email.isEmpty() || !customer_email.contains("@") || !customer_email.contains(".")) {
+                } else if (customer_email.isEmpty() || !customer_email.contains("@") || !customer_email.contains(".")) {
                     etxtCustomerEmail.setError(getString(R.string.enter_valid_email));
                     etxtCustomerEmail.requestFocus();
-                }
-
-                else if (customer_address.isEmpty()) {
+                } else if (customer_address.isEmpty()) {
                     etxtAddress.setError(getString(R.string.enter_customer_address));
                     etxtAddress.requestFocus();
-                }
-                else if (customer_address_two.isEmpty()) {
+                } else if (customer_address_two.isEmpty()) {
                     etxtAddress.setError(getString(R.string.enter_customer_address));
                     etxtAddress.requestFocus();
                 } else {
@@ -122,7 +116,7 @@ public class AddCustomersActivity extends BaseActivity {
                     DatabaseAccess databaseAccess = DatabaseAccess.getInstance(AddCustomersActivity.this);
                     databaseAccess.open();
 
-                    boolean check = databaseAccess.addCustomer(customer_name, customer_cell, customer_email, customer_address, customer_address_two,encodedImage);
+                    boolean check = databaseAccess.addCustomer(customer_name, customer_cell, customer_email, customer_address, customer_address_two, encodedImage);
 
                     if (check) {
                         Toasty.success(AddCustomersActivity.this, R.string.customer_successfully_added, Toast.LENGTH_SHORT).show();
@@ -141,7 +135,6 @@ public class AddCustomersActivity extends BaseActivity {
         });
 
     }
-
 
 
     @Override
@@ -166,8 +159,6 @@ public class AddCustomersActivity extends BaseActivity {
 
                 fileChooser();
                 return true;
-
-
 
 
             default:
@@ -242,7 +233,6 @@ public class AddCustomersActivity extends BaseActivity {
     }
 
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -277,7 +267,6 @@ public class AddCustomersActivity extends BaseActivity {
 
         return encImage;
     }
-
 
 
     public void fileChooser() {

@@ -63,18 +63,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:visibility="visible"
+                    android:background="@color/white"
+                    android:fontFamily="@font/josefin_sans"
                     android:gravity="start|center_vertical"
                     android:hint="@string/contact_format"
                     android:inputType="phone"
-                    android:textAlignment="viewStart"
+                    android:paddingLeft="10dp"
                     android:tag="+256 "
+                    android:textAlignment="viewStart"
                     android:textColor="#000"
-                    android:fontFamily="@font/josefin_sans"
                     android:textColorHint="@color/textColorPrimaryDark"
-                    android:background="@color/white"
-                    />
+                    android:visibility="visible" />
 
             </androidx.cardview.widget.CardView>
 
@@ -270,6 +269,7 @@
                     android:textColor="#000"
                     android:textSize="16sp" />
             </androidx.cardview.widget.CardView>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

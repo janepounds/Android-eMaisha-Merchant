@@ -30,7 +30,7 @@ public class EditCustomersActivity extends BaseActivity {
     TextView txtEditCustomer, txtUpdateInformation;
     ImageView imgCustomer;
     String mediaPath, encodedImage = "N/A";
-    String get_customer_id, get_customer_name, get_customer_cell, get_customer_email, get_customer_address,  get_customer_address_two,get_customer_image;
+    String get_customer_id, get_customer_name, get_customer_cell, get_customer_email, get_customer_address, get_customer_address_two, get_customer_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +86,6 @@ public class EditCustomersActivity extends BaseActivity {
                 startActivityForResult(intent, 1213);
             }
         });
-
 
 
         txtEditCustomer.setOnClickListener(new View.OnClickListener() {
@@ -146,16 +145,15 @@ public class EditCustomersActivity extends BaseActivity {
                 } else if (customer_address.isEmpty()) {
                     etxtAddress.setError(getString(R.string.enter_customer_address));
                     etxtAddress.requestFocus();
-                }
-                else if (customer_address_two.isEmpty()) {
+                } else if (customer_address_two.isEmpty()) {
                     etxtAdressTwo.setError(getString(R.string.enter_customer_address));
                     etxtAdressTwo.requestFocus();
-                }else {
+                } else {
 
                     DatabaseAccess databaseAccess = DatabaseAccess.getInstance(EditCustomersActivity.this);
                     databaseAccess.open();
 
-                    boolean check = databaseAccess.updateCustomer(get_customer_id, customer_name, customer_cell, customer_email, customer_address,customer_address_two, encodedImage);
+                    boolean check = databaseAccess.updateCustomer(get_customer_id, customer_name, customer_cell, customer_email, customer_address, customer_address_two, encodedImage);
 
                     if (check) {
                         Toasty.success(EditCustomersActivity.this, R.string.update_successfully, Toast.LENGTH_SHORT).show();

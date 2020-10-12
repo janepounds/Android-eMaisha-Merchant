@@ -37,7 +37,7 @@ public class EditProductActivity extends BaseActivity {
 
     public static EditText etxtProductCode;
     EditText etxtProductName, etxtProductCategory, etxtProductDescription, etxtProductBuyPrice, etxtProductSellPrice, etxtProductStock, etxtProductSupplier, etxtProdcutWeightUnit, etxtProductWeight;
-    TextView txtUpdate,txtChooseImage;
+    TextView txtUpdate, txtChooseImage;
     ImageView imgProduct, imgScanCode;
     String mediaPath, encodedImage = "N/A";
     ArrayAdapter<String> categoryAdapter, supplierAdapter, weightUnitAdapter;
@@ -65,7 +65,7 @@ public class EditProductActivity extends BaseActivity {
         etxtProductWeight = findViewById(R.id.etxt_product_weight);
 
         txtUpdate = findViewById(R.id.txt_update);
-        txtChooseImage=findViewById(R.id.txt_choose_image);
+        txtChooseImage = findViewById(R.id.txt_choose_image);
         imgProduct = findViewById(R.id.image_product);
         imgScanCode = findViewById(R.id.img_scan_code);
 

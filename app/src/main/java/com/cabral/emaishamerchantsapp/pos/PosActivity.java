@@ -26,12 +26,12 @@ import java.util.List;
 public class PosActivity extends BaseActivity {
 
 
-    private RecyclerView recyclerView;
+    public static EditText etxtSearch;
     PosProductAdapter productAdapter;
     TextView txtNoProducts;
 
-    ImageView imgNoProduct,imgScanner;
-    public static EditText etxtSearch;
+    ImageView imgNoProduct, imgScanner;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class PosActivity extends BaseActivity {
         recyclerView = findViewById(R.id.recycler);
         imgNoProduct = findViewById(R.id.image_no_product);
         txtNoProducts = findViewById(R.id.txt_no_products);
-        imgScanner=findViewById(R.id.img_scanner);
+        imgScanner = findViewById(R.id.img_scanner);
 
 
         //for interstitial ads show
@@ -57,7 +57,7 @@ public class PosActivity extends BaseActivity {
         imgScanner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(PosActivity.this,ScannerActivity.class);
+                Intent intent = new Intent(PosActivity.this, ScannerActivity.class);
                 startActivity(intent);
             }
         });
@@ -152,7 +152,6 @@ public class PosActivity extends BaseActivity {
 
 
         });
-
 
 
     }

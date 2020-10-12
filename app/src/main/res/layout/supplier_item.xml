@@ -13,18 +13,18 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="5dp"
         android:layout_marginBottom="10dp"
+        android:foreground="?android:attr/selectableItemBackground"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="5dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardPreventCornerOverlap="false"
-        app:cardElevation="10dp">
+        app:cardElevation="10dp"
+        app:cardPreventCornerOverlap="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:baselineAligned="false"
-            android:weightSum="10"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="10">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -37,11 +37,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:padding="4dp"
                     android:contentDescription="TODO"
+                    android:padding="4dp"
                     android:scaleType="fitXY"
-                    app:srcCompat="@drawable/new_user_image"
-                     />
+                    app:srcCompat="@drawable/new_user_image" />
             </LinearLayout>
 
             <LinearLayout
@@ -49,8 +48,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_weight="6"
-                android:paddingLeft="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="10dp">
 
                 <TextView
                     android:id="@+id/txt_supplier_name"
@@ -92,6 +91,7 @@
                     android:fontFamily="@font/josefin_sans"
                     android:text="@string/supplier_address_one"
                     android:textColor="#000" />
+
                 <TextView
                     android:id="@+id/txt_supplier_address_two"
                     android:layout_width="match_parent"

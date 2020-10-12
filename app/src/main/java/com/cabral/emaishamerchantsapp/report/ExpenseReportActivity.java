@@ -1,8 +1,5 @@
 package com.cabral.emaishamerchantsapp.report;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,6 +10,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.ajts.androidmads.library.SQLiteToExcel;
 import com.cabral.emaishamerchantsapp.R;
@@ -32,14 +32,12 @@ public class ExpenseReportActivity extends BaseActivity {
 
 
     ProgressDialog loading;
-    private RecyclerView recyclerView;
-    private ExpenseAdapter expenseAdapter;
-
     ImageView imgNoProduct;
     TextView txtNoProducts, txtTotalPrice;
     List<HashMap<String, String>> expenseList;
     double total_price;
-
+    private RecyclerView recyclerView;
+    private ExpenseAdapter expenseAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,11 +93,11 @@ public class ExpenseReportActivity extends BaseActivity {
         }
 
         databaseAccess.open();
-        String currency=databaseAccess.getCurrency();
+        String currency = databaseAccess.getCurrency();
 
         databaseAccess.open();
         total_price = databaseAccess.getTotalExpense("all");
-        txtTotalPrice.setText(currency +" "+ total_price);
+        txtTotalPrice.setText(currency + " " + total_price);
 
 
     }
@@ -189,13 +187,12 @@ public class ExpenseReportActivity extends BaseActivity {
         }
 
         databaseAccess.open();
-        String currency=databaseAccess.getCurrency();
+        String currency = databaseAccess.getCurrency();
 
         databaseAccess.open();
         total_price = databaseAccess.getTotalExpense(type);
-        txtTotalPrice.setText(getString(R.string.total_expense)+currency + total_price);
+        txtTotalPrice.setText(getString(R.string.total_expense) + currency + total_price);
     }
-
 
 
     public void folderChooser() {
@@ -209,17 +206,13 @@ public class ExpenseReportActivity extends BaseActivity {
                     @Override
                     public void onChoosePath(String path, File pathFile) {
                         onExport(path);
-                        Log.d("path",path);
+                        Log.d("path", path);
 
                     }
                 })
                 .build()
                 .show();
     }
-
-
-
-
 
 
     public void onExport(String path) {
@@ -252,7 +245,6 @@ public class ExpenseReportActivity extends BaseActivity {
 
                         loading.dismiss();
                         Toasty.success(ExpenseReportActivity.this, R.string.data_successfully_exported, Toast.LENGTH_SHORT).show();
-
 
 
                     }

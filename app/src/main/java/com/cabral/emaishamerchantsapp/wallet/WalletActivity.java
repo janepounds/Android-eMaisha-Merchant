@@ -1,6 +1,7 @@
 package com.cabral.emaishamerchantsapp.wallet;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,34 +13,13 @@ import com.cabral.emaishamerchantsapp.Fragments.HomeFragment;
 import com.cabral.emaishamerchantsapp.Fragments.SettlementsFragment;
 import com.cabral.emaishamerchantsapp.Fragments.TransactionsFragment;
 import com.cabral.emaishamerchantsapp.R;
+import com.cabral.emaishamerchantsapp.storage.SharedPrefManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import io.reactivex.annotations.NonNull;
 
 public class WalletActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigation;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wallet);
-        getSupportActionBar().setHomeButtonEnabled(true); //for back button
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//fo
-        getSupportActionBar().setTitle("Wallet");
-        bottomNavigation = findViewById(R.id.bottom_navigation);
-        bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
-        bottomNavigation.setItemIconTintList(null);
-        openFragment(new HomeFragment());
-
-    }
-
-    public void openFragment(Fragment fragment) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.container, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
-
     BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -62,6 +42,30 @@ public class WalletActivity extends AppCompatActivity {
                 }
             };
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_wallet);
+        getSupportActionBar().setHomeButtonEnabled(true); //for back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//fo
+        getSupportActionBar().setTitle("Wallet");
+        bottomNavigation = findViewById(R.id.bottom_navigation);
+        Log.d("Token", SharedPrefManager.getInstance(WalletActivity.this).getToken());
+        bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
+        bottomNavigation.setItemIconTintList(null);
+        openFragment(new HomeFragment());
+
+    }
+
+    public void openFragment(Fragment fragment) {
+        if (fragment != null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }
+    }
+
     //for back button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -73,6 +77,15 @@ public class WalletActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() == 1) {
+            moveTaskToBack(false);
+        } else {
+            super.onBackPressed();
         }
     }
 }

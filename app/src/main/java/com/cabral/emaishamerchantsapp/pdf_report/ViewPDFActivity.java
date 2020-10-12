@@ -207,7 +207,6 @@ public class ViewPDFActivity extends BaseActivity {
                     }
 
 
-
                     PrintDocumentInfo pdi = new PrintDocumentInfo.Builder("Name of file").setContentType(PrintDocumentInfo.CONTENT_TYPE_DOCUMENT).build();
 
                     callback.onLayoutFinished(pdi, true);
@@ -226,7 +225,7 @@ public class ViewPDFActivity extends BaseActivity {
 
 
     protected void attachBaseContext(Context base) {
-        primaryBaseActivity=base;
+        primaryBaseActivity = base;
         super.attachBaseContext(base);
     }
 

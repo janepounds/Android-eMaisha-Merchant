@@ -28,7 +28,7 @@ public class EditSuppliersActivity extends BaseActivity {
     EditText etxtSuppliersName, etxtSuppliersContactPerson, etxtSuppliersAddress, etxtSuppliersAddressTwo, etxtSuppliersCell, etxtSuppliersEmail;
     ImageView imgSupplier;
     String mediaPath, encodedImage = "N/A";
-    TextView txtEditSuppliers, txtUpdateSuppliers,txtChooseImage;
+    TextView txtEditSuppliers, txtUpdateSuppliers, txtChooseImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +77,6 @@ public class EditSuppliersActivity extends BaseActivity {
         });
 
 
-
         String get_suppliers_id = getIntent().getExtras().getString("suppliers_id");
         String get_suppliers_name = getIntent().getExtras().getString("suppliers_name");
         String get_suppliers_contact_person = getIntent().getExtras().getString("suppliers_contact_person");
@@ -85,7 +84,7 @@ public class EditSuppliersActivity extends BaseActivity {
         String get_suppliers_email = getIntent().getExtras().getString("suppliers_email");
         String get_suppliers_address = getIntent().getExtras().getString("suppliers_address");
         String get_suppliers_address_two = getIntent().getExtras().getString("suppliers_address_two");
-       String get_supplier_image = getIntent().getExtras().getString("suppliers_image");
+        String get_supplier_image = getIntent().getExtras().getString("suppliers_image");
 
 
         etxtSuppliersName.setText(get_suppliers_name);
@@ -173,11 +172,10 @@ public class EditSuppliersActivity extends BaseActivity {
                 } else if (suppliers_address.isEmpty()) {
                     etxtSuppliersAddress.setError(getString(R.string.enter_suppliers_address));
                     etxtSuppliersAddress.requestFocus();
-                }else if (suppliers_address_two.isEmpty()) {
+                } else if (suppliers_address_two.isEmpty()) {
                     etxtSuppliersAddressTwo.setError(getString(R.string.enter_suppliers_address));
                     etxtSuppliersAddressTwo.requestFocus();
-                }
-                else {
+                } else {
 
                     DatabaseAccess databaseAccess = DatabaseAccess.getInstance(EditSuppliersActivity.this);
                     databaseAccess.open();
@@ -202,6 +200,7 @@ public class EditSuppliersActivity extends BaseActivity {
 
 
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

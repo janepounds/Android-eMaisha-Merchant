@@ -12,11 +12,10 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 
-import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationManagerCompat;
 
-import com.cabral.emaishamerchantsapp.R;
 import com.cabral.emaishamerchantsapp.HomeActivity;
+import com.cabral.emaishamerchantsapp.R;
 
 
 /**
@@ -24,13 +23,13 @@ import com.cabral.emaishamerchantsapp.HomeActivity;
  **/
 
 public class NotificationHelper {
-    
-    
+
+
     public static final int NOTIFICATION_REQUEST_CODE = 100;
-    
-    
+
+
     //*********** Used to create Notifications ********//
-    
+
 
     public static void showNewNotification(Context context, Intent intent, String title, String msg, Bitmap bitmap) {
 
@@ -40,27 +39,25 @@ public class NotificationHelper {
 
         if (intent != null) {
             notificationIntent = intent;
-        }
-        else {
+        } else {
             notificationIntent = new Intent(context.getApplicationContext(), HomeActivity.class);
             notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         }
 
-        PendingIntent pendingIntent = PendingIntent.getActivity((context), 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT| PendingIntent.FLAG_ONE_SHOT);
-    
-    
+        PendingIntent pendingIntent = PendingIntent.getActivity((context), 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_ONE_SHOT);
+
+
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
         Notification.Builder builder;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            String id = "e01", name =context.getString(R.string.app_name);
+            String id = "e01", name = context.getString(R.string.app_name);
             String desc = context.getString(R.string.app_name);
 
             NotificationChannel channel = new NotificationChannel(id, name, NotificationManager.IMPORTANCE_HIGH);
             channel.setDescription(desc);
             notificationManager.createNotificationChannel(channel);
-            builder = new Notification.Builder(context , id);
-        }
-        else
+            builder = new Notification.Builder(context, id);
+        } else
             builder = new Notification.Builder(context);
 
         if (bitmap != null)
@@ -69,7 +66,7 @@ public class NotificationHelper {
         Notification notification;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             // Create Notification
-             notification = builder
+            notification = builder
                     .setContentTitle(title)
                     .setContentText(msg)
                     .setTicker(context.getString(R.string.app_name))
@@ -82,8 +79,8 @@ public class NotificationHelper {
                     .setAutoCancel(true).setColor(Color.GREEN)
                     .setContentIntent(pendingIntent)
                     .build();
-        }else {
-             notification = builder
+        } else {
+            notification = builder
                     .setContentTitle(title)
                     .setContentText(msg)
                     .setTicker(context.getString(R.string.app_name))
@@ -100,9 +97,9 @@ public class NotificationHelper {
 
 
         notificationManager.notify(NOTIFICATION_REQUEST_CODE, notification);
-        
+
     }
-    
-    
+
+
 }
 

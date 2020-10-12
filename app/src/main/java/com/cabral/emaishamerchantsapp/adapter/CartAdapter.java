@@ -27,13 +27,13 @@ import es.dmoral.toasty.Toasty;
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> {
 
 
-    private List<HashMap<String, String>> cart_product;
-    private Context context;
     MediaPlayer player;
     TextView txt_total_price, txt_no_product;
     Double total_price;
     TextView btnSubmitOrder;
     ImageView imgNoProduct;
+    private List<HashMap<String, String>> cart_product;
+    private Context context;
 
 
     public CartAdapter(Context context, List<HashMap<String, String>> cart_product, TextView txt_total_price, TextView btnSubmitOrder, ImageView imgNoProduct, TextView txt_no_product) {
@@ -87,7 +87,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
         databaseAccess.open();
         total_price = databaseAccess.getTotalPrice();
-        txt_total_price.setText(currency +" "+ total_price);
+        txt_total_price.setText(currency + " " + total_price);
 
 
         if (base64Image != null) {
@@ -138,7 +138,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
                     databaseAccess.open();
                     total_price = databaseAccess.getTotalPrice();
-                    txt_total_price.setText(currency +" "+ total_price);
+                    txt_total_price.setText(currency + " " + total_price);
 
 
                 } else {
@@ -175,7 +175,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
                 double cost = Double.parseDouble(price) * get_qty;
 
 
-                holder.txtPrice.setText(currency +" "+ f.format(cost));
+                holder.txtPrice.setText(currency + " " + f.format(cost));
                 holder.txtQtyNumber.setText("" + get_qty);
 
 
@@ -186,7 +186,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
                 // DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
                 total_price = total_price + Double.valueOf(price);
-                txt_total_price.setText(currency + " "+f.format(total_price));
+                txt_total_price.setText(currency + " " + f.format(total_price));
 
             }
         });
@@ -206,7 +206,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
                     double cost = Double.parseDouble(price) * get_qty;
 
-                    holder.txtPrice.setText(currency + "  "+ f.format(cost));
+                    holder.txtPrice.setText(currency + "  " + f.format(cost));
                     holder.txtQtyNumber.setText("" + get_qty);
 
 
@@ -215,7 +215,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
                     databaseAccess.updateProductQty(cart_id, "" + get_qty);
 
                     total_price = total_price - Double.valueOf(price);
-                    txt_total_price.setText(currency +"  "+ f.format(total_price));
+                    txt_total_price.setText(currency + "  " + f.format(total_price));
 
 
                 }

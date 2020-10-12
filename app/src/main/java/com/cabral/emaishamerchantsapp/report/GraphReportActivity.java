@@ -23,7 +23,6 @@ import java.util.Locale;
 public class GraphReportActivity extends BaseActivity {
 
 
-
     int mYear = 2020;
     BarChart barChart;
     TextView txtTotalSales, txtSelectYear;
@@ -51,11 +50,8 @@ public class GraphReportActivity extends BaseActivity {
         barChart.setDrawGridBackground(true);
 
 
-
         String currentYear = new SimpleDateFormat("yyyy", Locale.ENGLISH).format(new Date());
-        txtSelectYear.setText(getString(R.string.year)+currentYear);
-
-
+        txtSelectYear.setText(getString(R.string.year) + currentYear);
 
 
         getGraphData();
@@ -96,13 +92,12 @@ public class GraphReportActivity extends BaseActivity {
 
 
         databaseAccess.open();
-        String currency=databaseAccess.getCurrency();
+        String currency = databaseAccess.getCurrency();
         databaseAccess.open();
-        txtTotalSales.setText(currency +" " +databaseAccess.getTotalOrderPrice("yearly"));
+        txtTotalSales.setText(currency + " " + databaseAccess.getTotalOrderPrice("yearly"));
 
 
     }
-
 
 
     //for back button

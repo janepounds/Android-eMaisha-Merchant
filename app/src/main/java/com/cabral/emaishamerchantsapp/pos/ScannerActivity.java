@@ -23,8 +23,8 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 public class ScannerActivity extends BaseActivity implements ZXingScannerView.ResultHandler {
 
 
-    private ZXingScannerView scannerView;
     int currentApiVersion = Build.VERSION.SDK_INT;
+    private ZXingScannerView scannerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,8 +106,6 @@ public class ScannerActivity extends BaseActivity implements ZXingScannerView.Re
                     }
                 }).check();
     }
-
-
 
 
     //for back button

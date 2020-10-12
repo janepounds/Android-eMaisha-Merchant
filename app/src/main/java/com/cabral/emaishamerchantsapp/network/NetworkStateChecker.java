@@ -35,8 +35,63 @@ public class NetworkStateChecker extends BroadcastReceiver {
     private String shop_name;
     private List<HashMap<String, String>> shop_information, customers, products, categories, weights, suppliers, expenses, carts, payment_methods, orderList, orderTypes;
 
+    public static void RegisterDeviceForFCM(final Context context) {
+        DeviceInfo device = Utilities.getDeviceInfo(context);
+
+        String shop_id = SharedPrefManager.getInstance(context).getShopId() + "";
 
 
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                String deviceID = instanceIdResult.getToken();
+                Log.w("NEWTOKEN", deviceID);
+
+                Call<UserData> call = RetrofitClient.getInstance().getApi()
+                        .registerDeviceToFCM
+                                (
+                                        deviceID,
+                                        device.getDeviceType(),
+                                        device.getDeviceRAM(),
+                                        device.getDeviceProcessors(),
+                                        device.getDeviceAndroidOS(),
+                                        device.getDeviceLocation(),
+                                        device.getDeviceModel(),
+                                        device.getDeviceManufacturer(),
+                                        shop_id
+                                );
+
+                call.enqueue(new Callback<UserData>() {
+                    @Override
+                    public void onResponse(Call<UserData> call, retrofit2.Response<UserData> response) {
+
+                        if (response.isSuccessful()) {
+                            if (response.body().getSuccess().equalsIgnoreCase("1")) {
+
+                                Log.i("notification", response.body().getMessage());
+//                        Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_LONG).show();
+
+                            } else {
+
+                                Log.i("notification", response.body().getMessage());
+                                Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        } else {
+                            Log.i("notification", response.errorBody().toString());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<UserData> call, Throwable t) {
+//                Toast.makeText(context, "NetworkCallFailure : "+t, Toast.LENGTH_LONG).show();
+                    }
+                });
+
+            }
+        });
+
+
+    }
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -71,7 +126,6 @@ public class NetworkStateChecker extends BroadcastReceiver {
                 if (SharedPrefManager.getInstance(context).isShopSynced()) {
                     Log.d("Sync Status", "Shop Already Synced");
                     Integer shop_id = SharedPrefManager.getInstance(context).getShopId();
-
 
 
                     for (int i = 0; i < weights.size(); i++) {
@@ -478,6 +532,8 @@ public class NetworkStateChecker extends BroadcastReceiver {
         });
     }
 
+    //*********** Register Device to Admin Panel with the Device's Info ********//
+
     private void saveOrderTypes(Integer shop_id, String order_type_id, String order_type_name) {
         Call<ResponseBody> call = RetrofitClient
                 .getInstance()
@@ -504,71 +560,6 @@ public class NetworkStateChecker extends BroadcastReceiver {
                 t.printStackTrace();
             }
         });
-    }
-
-    //*********** Register Device to Admin Panel with the Device's Info ********//
-
-    public static void RegisterDeviceForFCM(final Context context) {
-        DeviceInfo device = Utilities.getDeviceInfo(context);
-
-        String shop_id = SharedPrefManager.getInstance(context).getShopId()+"";
-
-
-            FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
-                @Override
-                public void onSuccess(InstanceIdResult instanceIdResult) {
-                    String deviceID =instanceIdResult.getToken();
-                    Log.w("NEWTOKEN",deviceID);
-
-                    Call<UserData> call = RetrofitClient.getInstance().getApi()
-                            .registerDeviceToFCM
-                                    (
-                                            deviceID,
-                                            device.getDeviceType(),
-                                            device.getDeviceRAM(),
-                                            device.getDeviceProcessors(),
-                                            device.getDeviceAndroidOS(),
-                                            device.getDeviceLocation(),
-                                            device.getDeviceModel(),
-                                            device.getDeviceManufacturer(),
-                                            shop_id
-                                    );
-
-                    call.enqueue(new Callback<UserData>() {
-                        @Override
-                        public void onResponse(Call<UserData> call, retrofit2.Response<UserData> response) {
-
-                            if (response.isSuccessful()) {
-                                if (response.body().getSuccess().equalsIgnoreCase("1")) {
-
-                                    Log.i("notification", response.body().getMessage());
-//                        Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_LONG).show();
-
-                                }
-                                else {
-
-                                    Log.i("notification", response.body().getMessage());
-                                    Toast.makeText(context, response.body().getMessage(), Toast.LENGTH_LONG).show();
-                                }
-                            }
-                            else {
-                                Log.i("notification", response.errorBody().toString());
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<UserData> call, Throwable t) {
-//                Toast.makeText(context, "NetworkCallFailure : "+t, Toast.LENGTH_LONG).show();
-                        }
-                    });
-
-                }
-            });
-
-
-
-
-
     }
 
 }

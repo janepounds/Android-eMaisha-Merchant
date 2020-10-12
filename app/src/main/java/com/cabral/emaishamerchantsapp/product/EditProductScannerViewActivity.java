@@ -119,5 +119,5 @@ public class EditProductScannerViewActivity extends BaseActivity implements ZXin
                 return super.onOptionsItemSelected(item);
         }
     }
-    
+
 }

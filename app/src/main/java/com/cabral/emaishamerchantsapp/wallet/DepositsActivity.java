@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +15,9 @@ import com.cabral.emaishamerchantsapp.R;
 
 public class DepositsActivity extends AppCompatActivity {
     TextView txtSubmit;
+    EditText etxtPhone, etxtAccount, etxtAmount;
+    LinearLayout linearAccount, linearPhone;
+    CheckBox chkUseAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,14 +27,78 @@ public class DepositsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
         getSupportActionBar().setTitle("Cash Deposit");
 
+        etxtPhone = findViewById(R.id.etxt_phone_number);
+        etxtAccount = findViewById(R.id.etxt_customer_account);
+        etxtAmount = findViewById(R.id.etxt_customer_amount);
+
+        linearAccount = findViewById(R.id.linearAccount);
+        linearPhone = findViewById(R.id.linearPhoneNumber);
+        chkUseAccount = findViewById(R.id.checkBoxAccount);
+
+
         txtSubmit = findViewById(R.id.txt_deposits_submit);
+
+        chkUseAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (chkUseAccount.isChecked()) {
+                    linearPhone.setVisibility(View.GONE);
+                    linearAccount.setVisibility(View.VISIBLE);
+                    chkUseAccount.setVisibility(View.GONE);
+                }
+            }
+        });
+
 
         txtSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String phone = etxtPhone.getText().toString().trim();
+                String account = etxtAccount.getText().toString().trim();
+                String amount = etxtAmount.getText().toString().trim();
 
-                Intent intent = new Intent(DepositsActivity.this, DepositDetails.class);
-                startActivity(intent);
+
+                if (chkUseAccount.isChecked()) {
+                    if (account.equals("")) {
+                        etxtAccount.setError("Account is required");
+                        etxtAccount.requestFocus();
+                        return;
+                    }
+                    if (amount.equals("")) {
+                        etxtAmount.setError("Account is required");
+                        etxtAmount.requestFocus();
+                        return;
+                    }
+
+                    Intent intent = new Intent(DepositsActivity.this, DepositDetails.class);
+                    intent.putExtra("account", account);
+                    intent.putExtra("amount", amount);
+                    intent.putExtra("type", "account");
+                    startActivity(intent);
+
+                } else {
+
+                    if (phone.equals("")) {
+                        etxtPhone.setError("Phone is required");
+                        etxtPhone.requestFocus();
+                        return;
+                    }
+                    if (amount.equals("")) {
+                        etxtAmount.setError("Account is required");
+                        etxtAmount.requestFocus();
+                        return;
+                    }
+
+                    Intent intent = new Intent(DepositsActivity.this, DepositDetails.class);
+                    intent.putExtra("phone", phone);
+                    intent.putExtra("amount", amount);
+                    intent.putExtra("type", "phone");
+                    startActivity(intent);
+
+                }
+
+
+              
 
             }
         });

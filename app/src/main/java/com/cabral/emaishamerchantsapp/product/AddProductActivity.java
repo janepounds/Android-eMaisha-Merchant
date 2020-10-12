@@ -61,28 +61,26 @@ import retrofit2.Response;
 public class AddProductActivity extends BaseActivity {
 
 
-    ProgressDialog loading;
-    private List<Category> categories;
-    private List<Product> products;
-
     public static EditText etxtProductCode;
-    EditText etxtProductName, etxtProductCategory, etxtProductDescription, etxtProductBuyPrice, etxtProductSellPrice, etxtProductStock, etxtProductSupplier, etxtProdcutWeightUnit, etxtProductWeight,etxtProductManufucturer;
+    ProgressDialog loading;
+    EditText etxtProductName, etxtProductCategory, etxtProductDescription, etxtProductBuyPrice, etxtProductSellPrice, etxtProductStock, etxtProductSupplier, etxtProdcutWeightUnit, etxtProductWeight, etxtProductManufucturer;
     TextView txtAddProdcut;
-    ImageView  imgScanCode;
+    ImageView imgScanCode;
     String mediaPath, encodedImage = "N/A";
-    ArrayAdapter<String> categoryAdapter, supplierAdapter, productAdapter,manufacturersAdapter;
+    ArrayAdapter<String> categoryAdapter, supplierAdapter, productAdapter, manufacturersAdapter;
     List<String> categoryNames, supplierNames, weightUnitNames;
     Integer selectedCategoryID;
     Integer selectedManufacturersID;
     Integer selectedProductID;
     String selectedSupplierID;
     String selectedWeightUnitID;
+    String selectectedCategoryName, selectedProductName, selectedManufacturerName;
+    private List<Category> categories;
+    private List<Product> products;
     private List<String> catNames;
     private List<Manufacturer> manufacturers;
     private List<String> productNames;
     private List<String> manufacturersNames;
-    String selectectedCategoryName, selectedProductName,selectedManufacturerName;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,12 +112,12 @@ public class AddProductActivity extends BaseActivity {
         call1.enqueue(new Callback<ManufacturersResponse>() {
             @Override
             public void onResponse(Call<ManufacturersResponse> call, Response<ManufacturersResponse> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     manufacturers = response.body().getManufacturers();
                     saveManufacturersList(manufacturers);
                     Log.d("Categories", String.valueOf(categories));
 
-                }else{
+                } else {
                     Log.d("Failed", "Manufacturers Fetch failed");
 
                 }
@@ -157,9 +155,6 @@ public class AddProductActivity extends BaseActivity {
 
             }
         });
-
-
-
 
 
         categoryNames = new ArrayList<>();
@@ -287,7 +282,6 @@ public class AddProductActivity extends BaseActivity {
                         Log.d("Manufucturer_id", String.valueOf(manufacturers_id));
                     }
                 });
-
 
 
             }
@@ -569,7 +563,6 @@ public class AddProductActivity extends BaseActivity {
         });
 
 
-
         txtAddProdcut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -649,9 +642,9 @@ public class AddProductActivity extends BaseActivity {
                                 String s = null;
                                 try {
                                     s = response.body().string();
-                                    if(s!=null) {
+                                    if (s != null) {
                                         JSONObject jsonObject = new JSONObject(s);
-                                        boolean check = databaseAccess.addProduct(product_id.toString(), product_name, product_code, product_category_id,jsonObject.getJSONObject("data").getString("product_description"), product_buy_price, product_sell_price, product_stock, product_supplier, jsonObject.getJSONObject("data").getString("product_image"), jsonObject.getJSONObject("data").getString("product_weight_unit"),jsonObject.getJSONObject("data").getString("products_weight"));
+                                        boolean check = databaseAccess.addProduct(product_id.toString(), product_name, product_code, product_category_id, jsonObject.getJSONObject("data").getString("product_description"), product_buy_price, product_sell_price, product_stock, product_supplier, jsonObject.getJSONObject("data").getString("product_image"), jsonObject.getJSONObject("data").getString("product_weight_unit"), jsonObject.getJSONObject("data").getString("products_weight"));
 
                                         if (check) {
                                             Toasty.success(AddProductActivity.this, R.string.product_successfully_added, Toast.LENGTH_SHORT).show();
@@ -856,7 +849,6 @@ public class AddProductActivity extends BaseActivity {
     }
 
 
-
     public void saveList(List<Category> categories) {
         this.categories = categories;
     }
@@ -865,7 +857,9 @@ public class AddProductActivity extends BaseActivity {
         this.products = products;
     }
 
-    public void saveManufacturersList(List<Manufacturer> manufacturers){this.manufacturers = manufacturers;}
+    public void saveManufacturersList(List<Manufacturer> manufacturers) {
+        this.manufacturers = manufacturers;
+    }
 
 
 }

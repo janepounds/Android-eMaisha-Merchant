@@ -16,6 +16,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/linearPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -48,7 +49,7 @@
 
 
                 <EditText
-                    android:id="@+id/etxt_next_of_kin_name"
+                    android:id="@+id/etxt_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
@@ -56,7 +57,7 @@
                     android:layout_marginRight="10dp"
                     android:background="@drawable/round_shape"
                     android:fontFamily="@font/josefin_sans"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:padding="8dp"
                     android:textColor="#000"
                     android:textSize="16sp" />
@@ -76,8 +77,10 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearAccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -116,7 +119,7 @@
                     android:layout_marginRight="10dp"
                     android:background="@drawable/round_shape"
                     android:fontFamily="@font/josefin_sans"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:padding="8dp"
                     android:textColor="#000"
                     android:textSize="16sp" />
@@ -148,7 +151,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/josefin_sans"
-                        android:text="Enter Ammount"
+                        android:text="Enter Amount"
                         android:textColor="#929292"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -165,7 +168,7 @@
                     android:layout_marginRight="10dp"
                     android:background="@drawable/round_shape"
                     android:fontFamily="@font/josefin_sans"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:padding="8dp"
                     android:textColor="#000"
                     android:textSize="16sp" />

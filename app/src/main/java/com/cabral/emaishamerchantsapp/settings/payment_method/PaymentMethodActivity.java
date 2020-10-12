@@ -28,19 +28,15 @@ import es.dmoral.toasty.Toasty;
 public class PaymentMethodActivity extends BaseActivity {
 
 
-    private RecyclerView recyclerView;
-
     ImageView imgNoProduct;
     EditText etxtSearch;
-
     FloatingActionButton fabAdd;
-
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_method);
-
 
 
         getSupportActionBar().setHomeButtonEnabled(true); //for back button
@@ -86,7 +82,7 @@ public class PaymentMethodActivity extends BaseActivity {
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PaymentMethodActivity.this,AddPaymentMethodActivity.class);
+                Intent intent = new Intent(PaymentMethodActivity.this, AddPaymentMethodActivity.class);
                 startActivity(intent);
             }
         });

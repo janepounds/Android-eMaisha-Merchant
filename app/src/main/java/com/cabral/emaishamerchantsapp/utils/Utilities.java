@@ -84,8 +84,7 @@ public class Utilities {
                 }
             }
 
-        }
-        else {
+        } else {
             if (connectivity != null) {
 
                 NetworkInfo[] info = connectivity.getAllNetworkInfo();
@@ -122,9 +121,6 @@ public class Utilities {
         }
         return false;
     }
-    
-    
-
 
 
     @SuppressLint("SimpleDateFormat")
@@ -151,131 +147,135 @@ public class Utilities {
             return currencyCode;
         }
     }
-    
+
     //*********** Convert given String to Md5Hash ********//
-    
+
     public static String getMd5Hash(String input) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] messageDigest = md.digest(input.getBytes());
             BigInteger number = new BigInteger(1, messageDigest);
             String md5 = number.toString(16);
-            
+
             while (md5.length() < 32)
                 md5 = "0" + md5;
-            
+
             return md5;
         } catch (NoSuchAlgorithmException e) {
             Log.e("MD5", e.getLocalizedMessage());
             return null;
         }
     }
-    
-    
-    
+
+
     //*********** Returns information of the Device ********//
-    
+
     public static DeviceInfo getDeviceInfo(Context context) {
-    
+
         double lat = 0;
         double lng = 0;
         String IMEI = "";
         String NETWORK = "";
         String PROCESSORS = "";
-        
-        
+
+
         String UNIQUE_ID = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
         PROCESSORS = String.valueOf(Runtime.getRuntime().availableProcessors());
-    
+
         ActivityManager actManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         ActivityManager.MemoryInfo memInfo = new ActivityManager.MemoryInfo();
         actManager.getMemoryInfo(memInfo);
-        double totalRAM = Math.round( ((memInfo.totalMem /1024.0) /1024.0)  /1024.0 );
-        
-        
+        double totalRAM = Math.round(((memInfo.totalMem / 1024.0) / 1024.0) / 1024.0);
+
+
         if (CheckPermissions.is_PHONE_STATE_PermissionGranted()) {
             TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
             try {
                 IMEI = telephonyManager.getDeviceId();
                 NETWORK = telephonyManager.getNetworkOperatorName();
-                
+
             } catch (SecurityException e) {
                 e.printStackTrace();
             } catch (NullPointerException e) {
                 e.printStackTrace();
             }
         }
-    
-        
+
+
         if (CheckPermissions.is_LOCATION_PermissionGranted()) {
             LocationManager locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
             try {
                 boolean gps_enabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
                 boolean network_enabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-    
+
                 Location location = null;
                 String provider = locationManager.getBestProvider(new Criteria(), true);
                 final LocationListener locationListener = new LocationListener() {
                     @Override
-                    public void onLocationChanged(Location loc) {}
+                    public void onLocationChanged(Location loc) {
+                    }
+
                     @Override
-                    public void onStatusChanged(String provider, int status, Bundle extras) {}
+                    public void onStatusChanged(String provider, int status, Bundle extras) {
+                    }
+
                     @Override
-                    public void onProviderEnabled(String provider) {}
+                    public void onProviderEnabled(String provider) {
+                    }
+
                     @Override
-                    public void onProviderDisabled(String provider) {}
+                    public void onProviderDisabled(String provider) {
+                    }
                 };
 //                locationManager.requestLocationUpdates(provider, 1000, 0, locationListener);
-                
+
                 if (gps_enabled) {
                     location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 } else if (network_enabled) {
                     location = locationManager.getLastKnownLocation(provider);
                 }
-                
+
                 if (location != null) {
                     lat = location.getLatitude();
                     lng = location.getLongitude();
                 }
                 locationManager.removeUpdates(locationListener);
-        
+
             } catch (SecurityException se) {
                 se.printStackTrace();
             } catch (NullPointerException e) {
                 e.printStackTrace();
             }
         }
-        
-    
-    
+
+
         DeviceInfo device = new DeviceInfo();
-        
+
         device.setDeviceID(UNIQUE_ID);
         device.setDeviceType("Android");
         device.setDeviceUser(Build.USER);
-        device.setDeviceModel(Build.BRAND +" "+ Build.MODEL);
+        device.setDeviceModel(Build.BRAND + " " + Build.MODEL);
         device.setDeviceBrand(Build.BRAND);
         device.setDeviceSerial(Build.SERIAL);
         device.setDeviceSystemOS(System.getProperty("os.name"));
-        device.setDeviceAndroidOS("Android "+ Build.VERSION.RELEASE);
+        device.setDeviceAndroidOS("Android " + Build.VERSION.RELEASE);
         device.setDeviceManufacturer(Build.MANUFACTURER);
         device.setDeviceIMEI(IMEI);
-        device.setDeviceRAM(totalRAM +"GB");
+        device.setDeviceRAM(totalRAM + "GB");
         device.setDeviceCPU(Build.UNKNOWN);
         device.setDeviceStorage(Build.UNKNOWN);
         device.setDeviceProcessors(PROCESSORS);
         device.setDeviceIP(Build.UNKNOWN);
         device.setDeviceMAC(Build.UNKNOWN);
         device.setDeviceNetwork(NETWORK);
-        device.setDeviceLocation(lat +", "+ lng);
+        device.setDeviceLocation(lat + ", " + lng);
         device.setDeviceBatteryLevel(Build.UNKNOWN);
         device.setDeviceBatteryStatus(Build.UNKNOWN);
-        
+
         return device;
     }
-    
 
-    
+
     //*********** Returns the current DataTime of Device ********//
 
     public static String getDateTime() {
@@ -284,7 +284,6 @@ public class Utilities {
 
         return dateFormat.format(date);
     }
-
 
 
     //*********** Used to Tint the MenuIcons ********//
@@ -296,8 +295,6 @@ public class Utilities {
 
         item.setIcon(wrapDrawable);
     }
-
-
 
 
     //*********** Checks if the Date is not Passed ********//
@@ -327,7 +324,6 @@ public class Utilities {
         return isPassed;
     }
 
-    
 
     public static String getCompleteAddressString(Context context, double LATITUDE, double LONGITUDE) {
         String strAdd = "";
@@ -380,15 +376,14 @@ public class Utilities {
     //*********** Used to Share the App with Others ********//
 
     public static void shareMyApp(Context context) {
-    
-        String link = "https://play.google.com/store/apps/details?id="+context.getPackageName();
-        
+
+        String link = "https://play.google.com/store/apps/details?id=" + context.getPackageName();
+
         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
         sharingIntent.setType("text/*");
         sharingIntent.putExtra(Intent.EXTRA_TEXT, link);
         context.startActivity(Intent.createChooser(sharingIntent, "Share Via"));
     }
-
 
 
     //*********** Shares the Product with its Image and Url ********//
@@ -416,83 +411,78 @@ public class Utilities {
     }
 
 
-
     //*********** Convert Bitmap into Uri ********//
 
     public static Uri getLocalBitmapUri(Context context, ImageView imageView) {
         // Extract Bitmap from ImageView drawable
         Drawable drawable = imageView.getDrawable();
         Bitmap bitmap = null;
-        
-        if (drawable instanceof BitmapDrawable){
+
+        if (drawable instanceof BitmapDrawable) {
             bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-        }
-        else {
+        } else {
             Toast.makeText(context, "drawable isn't instanceof BitmapDrawable", Toast.LENGTH_SHORT).show();
             return null;
         }
-        
+
         // Store image to default external storage directory
         Uri bitmapUri = null;
-        
+
         try {
             // Use methods on Context to access package-specific directories on external storage.
             // This way, you don't need to request external read/write permission.
-            File file =  new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "share_image_" + System.currentTimeMillis() + ".png");
+            File file = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), "share_image_" + System.currentTimeMillis() + ".png");
             FileOutputStream out = new FileOutputStream(file);
             bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
             out.close();
-            
+
 //            bitmapUri = Uri.fromFile(file);
             bitmapUri = FileProvider.getUriForFile(context, BuildConfig.APPLICATION_ID + ".provider", file);
-            
+
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(context, "IOException"+e, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "IOException" + e, Toast.LENGTH_SHORT).show();
         }
-        
-        
+
+
         return bitmapUri;
     }
-
 
 
     //*********** Converts any Bitmap to Base64String ********//
 
     public static String getBase64ImageStringFromBitmap(Bitmap bitmap) {
         String imgString;
-        
-        if(bitmap != null) {
+
+        if (bitmap != null) {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-            
+
             byte[] profileImage = byteArrayOutputStream.toByteArray();
 
-            imgString = "data:image/jpeg;base64,"+ Base64.encodeToString(profileImage, Base64.NO_WRAP);
-            
-        }
-        else{
+            imgString = "data:image/jpeg;base64," + Base64.encodeToString(profileImage, Base64.NO_WRAP);
+
+        } else {
             imgString = "";
         }
-        
-        
+
+
         return imgString;
     }
-
 
 
     //*********** Converts a Base64String to the Bitmap ********//
 
     public static Bitmap getBitmapFromBase64ImageString(String b64) {
         Bitmap bitmap = null;
-        
+
         byte[] imageAsBytes = Base64.decode(b64.getBytes(), Base64.DEFAULT);
         bitmap = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
-        
-        
+
+
         return bitmap;
     }
-    
+
 
 }
 

@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F9F9F9">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_one"
@@ -12,7 +13,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
-        app:cardCornerRadius="5dp">
+        app:cardCornerRadius="3dp">
 
 
         <LinearLayout
@@ -42,7 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="3dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -51,7 +52,7 @@
                         android:fontFamily="@font/josefin_sans_bold"
                         android:text="UGX 175000"
                         android:textColor="@color/creditCardBackground"
-                        android:textSize="16sp"
+                        android:textSize="17sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -61,7 +62,7 @@
                         android:paddingTop="3dp"
                         android:text="Wallet Balance"
                         android:textColor="@color/creditCardBackground"
-                        android:textSize="16sp"
+                        android:textSize="17sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -95,7 +96,7 @@
                         android:fontFamily="@font/josefin_sans_bold"
                         android:text="UGX 400,000"
                         android:textColor="@color/creditCardBackground"
-                        android:textSize="16sp"
+                        android:textSize="17sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -105,7 +106,7 @@
                         android:paddingTop="3dp"
                         android:text="FLOAT"
                         android:textColor="@color/creditCardBackground"
-                        android:textSize="16sp"
+                        android:textSize="17sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -122,7 +123,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         app:cardBackgroundColor="@color/creditCardBackground"
-        app:cardCornerRadius="5dp"
+        app:cardCornerRadius="3dp"
 
         >
 
@@ -130,7 +131,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="10dp"
+            android:padding="3dp"
             android:weightSum="9">
 
 
@@ -150,12 +151,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="3dp"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/josefin_sans_bold"
                     android:text="TOPUP"
                     android:textColor="#fff"
-                    android:textSize="16sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -177,12 +178,12 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="3dp"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/josefin_sans_bold"
                     android:text="TRANSFER"
                     android:textColor="#fff"
-                    android:textSize="16sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -204,12 +205,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="3dp"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/josefin_sans_bold"
                     android:text="SETTLE NOW"
+                    android:textAlignment="center"
                     android:textColor="#fff"
-                    android:textSize="16sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -224,11 +226,11 @@
         android:layout_below="@+id/card_two"
         android:fontFamily="@font/josefin_sans_bold"
         android:gravity="center"
-        android:paddingTop="20dp"
-        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="3dp"
         android:text="TRANSACT WITH CUSTOMER"
         android:textColor="@color/creditCardBackground"
-        android:textSize="16sp"
+        android:textSize="17sp"
 
         />
 
@@ -237,7 +239,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/heading"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="3dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -255,67 +257,54 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="7.5dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginEnd="7.3dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
-
                         android:id="@+id/card_account_opening"
                         android:layout_width="match_parent"
-                        android:layout_height="110dp"
+                        android:layout_height="120dp"
                         android:layout_gravity="center"
-                        android:background="#FFFFFF"
-                        android:foreground="?android:attr/selectableItemBackground"
-                        android:theme="@style/ThemeOverlay.AppCompat.Light"
-                        app:cardBackgroundColor="@android:color/white"
-                        app:cardCornerRadius="5dp"
-                        app:cardElevation="0dp"
-                        app:layout_collapseMode="pin">
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardCornerRadius="3dp"
+                        app:cardElevation="15dp">
 
-                        <RelativeLayout
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="center"
-                                android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="10dp"
+                                app:srcCompat="@drawable/wallet_account_opening" />
 
-                                <ImageView
-                                    android:layout_width="80dp"
-                                    android:layout_height="50dp"
-                                    android:layout_marginTop="10dp"
-                                    app:srcCompat="@drawable/wallet_account_opening" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginBottom="10dp"
+                                android:fontFamily="@font/josefin_sans_bold"
+                                android:text="Account Opening"
+                                android:textAlignment="center"
+                                android:textColor="#000"
+                                android:textSize="17sp" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:fontFamily="@font/josefin_sans_bold"
-                                    android:text="Account Opening"
-                                    android:textAlignment="center"
-                                    android:textColor="#000"
-                                    android:textSize="16sp" />
-
-                            </LinearLayout>
-
-                        </RelativeLayout>
+                        </LinearLayout>
                     </androidx.cardview.widget.CardView>
-
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-
-                    android:layout_marginStart="7.5dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginStart="7.3dp"
+                    android:layout_marginEnd="13dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -323,108 +312,36 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/card_deposists"
                         android:layout_width="match_parent"
-                        android:layout_height="110dp"
-                        android:background="#FFFFFF"
-                        android:foreground="?android:attr/selectableItemBackground"
-                        android:theme="@style/ThemeOverlay.AppCompat.Light"
-                        app:cardBackgroundColor="@android:color/white"
-                        app:cardCornerRadius="5dp"
-                        app:cardElevation="0dp"
-                        app:layout_collapseMode="pin">
+                        android:layout_height="120dp"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardCornerRadius="3dp">
 
-                        <RelativeLayout
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="center"
-                                android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="10dp"
+                                app:srcCompat="@drawable/wallet_deposit" />
 
-                                <ImageView
-                                    android:layout_width="80dp"
-                                    android:layout_height="50dp"
-                                    android:layout_marginTop="10dp"
-                                    app:srcCompat="@drawable/wallet_deposit" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginBottom="10dp"
+                                android:fontFamily="@font/josefin_sans_bold"
+                                android:text="Deposits"
+                                android:textColor="#000"
+                                android:textSize="17sp" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:fontFamily="@font/josefin_sans_bold"
-                                    android:text="Deposits"
-                                    android:textColor="#000"
-                                    android:textSize="16sp" />
-
-                            </LinearLayout>
-
-
-                        </RelativeLayout>
+                        </LinearLayout>
                     </androidx.cardview.widget.CardView>
-
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-
-                    android:layout_marginStart="7.5dp"
-                    android:layout_marginEnd="15dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/card_withdraws"
-                        android:layout_width="match_parent"
-                        android:layout_height="110dp"
-                        android:background="#FFFFFF"
-                        android:foreground="?android:attr/selectableItemBackground"
-                        android:theme="@style/ThemeOverlay.AppCompat.Light"
-                        app:cardBackgroundColor="@android:color/white"
-                        app:cardCornerRadius="5dp"
-                        app:cardElevation="0dp"
-                        app:layout_collapseMode="pin">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                tools:ignore="UseCompoundDrawables">
-
-                                <ImageView
-                                    android:layout_width="80dp"
-                                    android:layout_height="50dp"
-                                    android:layout_marginTop="10dp"
-                                    app:srcCompat="@drawable/wallet_withdraw" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:fontFamily="@font/josefin_sans_bold"
-                                    android:text="Withdraws"
-                                    android:textColor="#000"
-                                    android:textSize="16sp" />
-
-                            </LinearLayout>
-
-
-                        </RelativeLayout>
-                    </androidx.cardview.widget.CardView>
-
-                </LinearLayout>
-
             </LinearLayout>
 
             <LinearLayout
@@ -435,9 +352,53 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="7.5dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="13dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_withdraws"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardCornerRadius="3dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            tools:ignore="UseCompoundDrawables">
+
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="10dp"
+                                app:srcCompat="@drawable/wallet_withdraw" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginBottom="10dp"
+                                android:fontFamily="@font/josefin_sans_bold"
+                                android:text="Withdraws"
+                                android:textColor="#000"
+                                android:textSize="17sp" />
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="13dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -445,57 +406,50 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/card_loan_application"
                         android:layout_width="match_parent"
-                        android:layout_height="110dp"
-                        android:background="#FFFFFF"
-                        android:foreground="?android:attr/selectableItemBackground"
-                        android:theme="@style/ThemeOverlay.AppCompat.Light"
-                        app:cardBackgroundColor="@android:color/white"
-                        app:cardCornerRadius="5dp"
-                        app:cardElevation="0dp"
-                        app:layout_collapseMode="pin">
+                        android:layout_height="120dp"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardCornerRadius="3dp">
 
-                        <RelativeLayout
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="center"
-                                android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="10dp"
+                                android:src="@drawable/wallet_loan_application" />
 
-                                <ImageView
-                                    android:layout_width="80dp"
-                                    android:layout_height="50dp"
-                                    android:layout_marginTop="10dp"
-                                    android:src="@drawable/wallet_loan_application" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginBottom="10dp"
+                                android:fontFamily="@font/josefin_sans_bold"
+                                android:text="Loan Application"
+                                android:textAlignment="center"
+                                android:textColor="#000"
+                                android:textSize="17sp" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:fontFamily="@font/josefin_sans_bold"
-                                    android:text="Loan Application"
-                                    android:textAlignment="center"
-                                    android:textColor="#000"
-                                    android:textSize="16sp" />
-
-                            </LinearLayout>
-
-
-                        </RelativeLayout>
+                        </LinearLayout>
                     </androidx.cardview.widget.CardView>
-
                 </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="7.5dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginStart="13dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginEnd="13dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -504,58 +458,44 @@
 
                         android:id="@+id/card_balance_inquiry"
                         android:layout_width="match_parent"
-                        android:layout_height="110dp"
-                        android:background="#FFFFFF"
-                        android:foreground="?android:attr/selectableItemBackground"
-                        android:theme="@style/ThemeOverlay.AppCompat.Light"
-                        app:cardBackgroundColor="@android:color/white"
-                        app:cardCornerRadius="5dp"
-                        app:cardElevation="0dp"
-                        app:layout_collapseMode="pin">
+                        android:layout_height="120dp"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardCornerRadius="3dp">
 
-                        <RelativeLayout
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            tools:ignore="UseCompoundDrawables">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                tools:ignore="UseCompoundDrawables">
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="10dp"
+                                app:srcCompat="@drawable/wallet_balance_inquriy" />
 
-                                <ImageView
-                                    android:layout_width="80dp"
-                                    android:layout_height="50dp"
-                                    android:layout_marginTop="10dp"
-                                    app:srcCompat="@drawable/wallet_balance_inquriy" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginBottom="10dp"
+                                android:fontFamily="@font/josefin_sans_bold"
+                                android:text="Balance Inquiry"
+                                android:textAlignment="center"
+                                android:textColor="#000"
+                                android:textSize="17sp" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:fontFamily="@font/josefin_sans_bold"
-                                    android:text="Balance Inquiry"
-                                    android:textAlignment="center"
-                                    android:textColor="#000"
-                                    android:textSize="16sp" />
-
-                            </LinearLayout>
-
-
-                        </RelativeLayout>
+                        </LinearLayout>
                     </androidx.cardview.widget.CardView>
-
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="7.5dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="13dp"
+                    android:layout_marginRight="13dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -563,47 +503,37 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/card_account_management"
                         android:layout_width="match_parent"
-                        android:layout_height="110dp"
-                        android:background="#FFFFFF"
-                        android:foreground="?android:attr/selectableItemBackground"
-                        android:theme="@style/ThemeOverlay.AppCompat.Light"
-                        app:cardBackgroundColor="@android:color/white"
-                        app:cardCornerRadius="5dp"
-                        app:cardElevation="0dp"
-                        app:layout_collapseMode="pin">
+                        android:layout_height="120dp"
+                        app:cardBackgroundColor="#FFFFFF"
+                        app:cardCornerRadius="3dp">
 
-                        <RelativeLayout
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:orientation="vertical">
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="center"
-                                android:orientation="vertical">
+                            <ImageView
+                                android:layout_width="80dp"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="10dp"
+                                app:srcCompat="@drawable/wallet_account_management" />
 
-                                <ImageView
-                                    android:layout_width="80dp"
-                                    android:layout_height="50dp"
-                                    android:layout_marginTop="10dp"
-                                    app:srcCompat="@drawable/wallet_account_management" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginBottom="3dp"
+                                android:fontFamily="@font/josefin_sans_bold"
+                                android:paddingLeft="3dp"
+                                android:paddingRight="3dp"
+                                android:text="Account Management"
+                                android:textAlignment="center"
+                                android:textColor="#000"
+                                android:textSize="17sp" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:fontFamily="@font/josefin_sans_bold"
-                                    android:text="Account Management"
-                                    android:textAlignment="center"
-                                    android:textColor="#000"
-                                    android:textSize="16sp" />
-
-                            </LinearLayout>
-
-
-                        </RelativeLayout>
+                        </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
                 </LinearLayout>

@@ -25,23 +25,18 @@ import es.dmoral.toasty.Toasty;
 public class OrderDetailsActivity extends BaseActivity {
 
 
-    private RecyclerView recyclerView;
-    private OrderDetailsAdapter orderDetailsAdapter;
-
     ImageView imgNoProduct;
     TextView txtNoProducts, txtTotalPrice, txtPdfReceipt;
     String order_id, order_date, order_time, customer_name;
     double total_price;
-
+    String longText, shortText, order_status, storage_status;
+    String currency;
+    private RecyclerView recyclerView;
+    private OrderDetailsAdapter orderDetailsAdapter;
     //how many headers or column you need, add here by using ,
     //headers and get clients para meter must be equal
     private String[] header = {"Description", "Price"};
-
-    String longText, shortText, order_status, storage_status;
-
     private TemplatePDF templatePDF;
-    String currency;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

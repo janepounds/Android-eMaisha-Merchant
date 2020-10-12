@@ -36,14 +36,10 @@ public class CustomersActivity extends BaseActivity {
 
 
     ProgressDialog loading;
-    private RecyclerView recyclerView;
-
     ImageView imgNoProduct;
     EditText etxtSearch;
-
     FloatingActionButton fabAdd;
-
-
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +52,7 @@ public class CustomersActivity extends BaseActivity {
 
         recyclerView = findViewById(R.id.recycler_view);
         imgNoProduct = findViewById(R.id.image_no_product);
-        etxtSearch=findViewById(R.id.etxt_customer_search);
+        etxtSearch = findViewById(R.id.etxt_customer_search);
         fabAdd = findViewById(R.id.fab_add);
 
         //for interstitial ads show
@@ -132,7 +128,6 @@ public class CustomersActivity extends BaseActivity {
                     imgNoProduct.setImageResource(R.drawable.no_data);
 
 
-
                 } else {
 
 
@@ -177,9 +172,7 @@ public class CustomersActivity extends BaseActivity {
             folderChooser();
 
             return true;
-        }
-
-        else if (id == android.R.id.home) {
+        } else if (id == android.R.id.home) {
             this.finish();
             return true;
         }
@@ -187,7 +180,6 @@ public class CustomersActivity extends BaseActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 
     public void folderChooser() {
@@ -201,17 +193,13 @@ public class CustomersActivity extends BaseActivity {
                     @Override
                     public void onChoosePath(String path, File pathFile) {
                         onExport(path);
-                        Log.d("path",path);
+                        Log.d("path", path);
 
                     }
                 })
                 .build()
                 .show();
     }
-
-
-
-
 
 
     public void onExport(String path) {
@@ -246,7 +234,6 @@ public class CustomersActivity extends BaseActivity {
                         Toasty.success(CustomersActivity.this, R.string.data_successfully_exported, Toast.LENGTH_SHORT).show();
 
 
-
                     }
                 }, 5000);
 
@@ -258,12 +245,10 @@ public class CustomersActivity extends BaseActivity {
                 loading.dismiss();
                 Toasty.error(CustomersActivity.this, R.string.data_export_fail, Toast.LENGTH_SHORT).show();
 
-                Log.d("Error",e.toString());
+                Log.d("Error", e.toString());
             }
         });
     }
-
-
 
 
 }

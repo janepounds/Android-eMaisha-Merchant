@@ -74,39 +74,71 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Registration extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback {
-    private TextView txtRegister;
+    // [START maps_current_place_state_keys]
+    public static final String KEY_CAMERA_POSITION = "camera_position";
+    private static final String TAG = "Maps Error";
+    private static final int DEFAULT_ZOOM = 15;
+    private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
+    private static final String KEY_LOCATION = "location";
+    public static GoogleMap map;
+    // The geographical location where the device is currently located. That is, the last-known
+    // location retrieved by the Fused Location Provider.
+    public static Location lastKnownLocation;
+    private final LatLng defaultLocation = new LatLng(0.347596, 32.582520);//A default location  kampala
     EditText etxtShopName, etxtShopContact, etxtShopEmail, etxtShopAddress, etxtShopCurrency, etxtPassword, etxtConfirmPassword;
-
     TextView proceed_checkout_btn;
     int PLACE_PICKER_REQUEST = 1463;
     String latitude, longitude;
-    private static final String TAG = "Maps Error";
-    public static GoogleMap map;
+    PlacesFieldSelector fieldSelector;
+    //Custom Dialog Vies
+    Dialog dialogOTP;
+    EditText ed_otp;
+    private TextView txtRegister;
     private CameraPosition cameraPosition;
     // The entry point to the Places API.
     private PlacesClient placesClient;
     // The entry point to the Fused Location Provider.
     private FusedLocationProviderClient fusedLocationProviderClient;
-    private final LatLng defaultLocation = new LatLng(0.347596, 32.582520);//A default location  kampala
-    private static final int DEFAULT_ZOOM = 15;
-    private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private boolean locationPermissionGranted;
-    // The geographical location where the device is currently located. That is, the last-known
-    // location retrieved by the Fused Location Provider.
-    public static Location lastKnownLocation;
-    // [START maps_current_place_state_keys]
-    public static final String KEY_CAMERA_POSITION = "camera_position";
-    private static final String KEY_LOCATION = "location";
-    private LatLng mCenterLatLong= new LatLng(0.347596, 32.582520);//kampala
-    PlacesFieldSelector fieldSelector;
-
-    //Custom Dialog Vies
-    Dialog dialogOTP;
-    EditText ed_otp;
+    private LatLng mCenterLatLong = new LatLng(0.347596, 32.582520);//kampala
     //It is the verification id that will be sent to the user
     private String mVerificationId;
     //firebase auth object
     private FirebaseAuth mAuth;
+    //the callback to detect the verification status
+    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+        @Override
+        public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
+
+            //Getting the code sent by SMS
+            String code = phoneAuthCredential.getSmsCode();
+
+            //sometime the code is not detected automatically
+            //in this case the code will be null
+            //so user has to manually enter the code
+            if (code != null) {
+
+                ed_otp.setText(code);
+                //verifying the code
+                verifyVerificationCode(code);
+            }
+        }
+
+        @Override
+        public void onVerificationFailed(FirebaseException e) {
+            Toast.makeText(Registration.this, e.getMessage(), Toast.LENGTH_LONG).show();
+            Log.e("Error : ", e.getMessage());
+            dialogOTP.dismiss();
+        }
+
+        @Override
+        public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+            super.onCodeSent(s, forceResendingToken);
+            Log.w("Error", "  verification id  is :" + s);
+            //storing the verification id that is sent to the user
+            mVerificationId = s;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,14 +208,13 @@ public class Registration extends AppCompatActivity implements GoogleApiClient.O
                 Log.d("Latitude", latitude);
                 Log.d("Latitude", longitude);
 
-                sendVerificationCode(getResources().getString(R.string.ugandan_code)+etxtShopContact.getText().toString().trim());
+                sendVerificationCode(getResources().getString(R.string.ugandan_code) + etxtShopContact.getText().toString().trim());
 
 
             }
 
 
         });
-
 
 
         fieldSelector = new PlacesFieldSelector();
@@ -269,7 +300,7 @@ public class Registration extends AppCompatActivity implements GoogleApiClient.O
         btn_resend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendVerificationCode(getResources().getString(R.string.ugandan_code)+etxtShopContact.getText().toString().trim());
+                sendVerificationCode(getResources().getString(R.string.ugandan_code) + etxtShopContact.getText().toString().trim());
             }
         });
 
@@ -289,7 +320,7 @@ public class Registration extends AppCompatActivity implements GoogleApiClient.O
     //the country id is concatenated
     //you can take the country id as user input as well
     private void sendVerificationCode(String mobile) {
-        Log.w("Mobile fomart Errpr: ",mobile);
+        Log.w("Mobile fomart Errpr: ", mobile);
         showOTPDialog(Registration.this, "");
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
@@ -300,43 +331,6 @@ public class Registration extends AppCompatActivity implements GoogleApiClient.O
                 mCallbacks);
 
     }
-
-
-    //the callback to detect the verification status
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-        @Override
-        public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-
-            //Getting the code sent by SMS
-            String code = phoneAuthCredential.getSmsCode();
-
-            //sometime the code is not detected automatically
-            //in this case the code will be null
-            //so user has to manually enter the code
-            if (code != null) {
-
-                ed_otp.setText(code);
-                //verifying the code
-                verifyVerificationCode(code);
-            }
-        }
-
-        @Override
-        public void onVerificationFailed(FirebaseException e) {
-            Toast.makeText(Registration.this, e.getMessage(), Toast.LENGTH_LONG).show();
-            Log.e("Error : ", e.getMessage());
-            dialogOTP.dismiss();
-        }
-
-        @Override
-        public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-            super.onCodeSent(s, forceResendingToken);
-            Log.w("Error", "  verification id  is :"+s);
-            //storing the verification id that is sent to the user
-            mVerificationId = s;
-        }
-    };
-
 
     private void verifyVerificationCode(String code) {
         //creating the credential
@@ -365,7 +359,7 @@ public class Registration extends AppCompatActivity implements GoogleApiClient.O
 
                             registerShop(
                                     name,
-                                    getString(R.string.ugandan_code)+contact,
+                                    getString(R.string.ugandan_code) + contact,
                                     email,
                                     address,
                                     currency,
@@ -463,6 +457,7 @@ public class Registration extends AppCompatActivity implements GoogleApiClient.O
         }
         super.onSaveInstanceState(outState);
     }
+
     @Override
     public void onMapReady(final GoogleMap map) {
         this.map = map;

@@ -52,16 +52,16 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull final CustomerAdapter.MyViewHolder holder, int position) {
 
-        final String customer_id=customerData.get(position).get("customer_id");
-        String name=customerData.get(position).get("customer_name");
-        String cell=customerData.get(position).get("customer_cell");
-        String email=customerData.get(position).get("customer_email");
-        String address=customerData.get(position).get("customer_address");
-        String addressTwo=customerData.get(position).get("customer_address_two");
+        final String customer_id = customerData.get(position).get("customer_id");
+        String name = customerData.get(position).get("customer_name");
+        String cell = customerData.get(position).get("customer_cell");
+        String email = customerData.get(position).get("customer_email");
+        String address = customerData.get(position).get("customer_address");
+        String addressTwo = customerData.get(position).get("customer_address_two");
         String base64Image = customerData.get(position).get("customer_image");
 
         holder.txtCustomerName.setText(name);
-        holder.txtCell.setText(context.getString(R.string.area_code)+" "+cell);
+        holder.txtCell.setText(context.getString(R.string.area_code) + " " + cell);
         holder.txtEmail.setText(email);
         holder.txtAddress.setText(address);
         holder.txtAddressTwo.setText(addressTwo);
@@ -103,10 +103,9 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.MyView
 
                                 DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
                                 databaseAccess.open();
-                                boolean deleteCustomer=databaseAccess.deleteCustomer(customer_id);
+                                boolean deleteCustomer = databaseAccess.deleteCustomer(customer_id);
 
-                                if (deleteCustomer)
-                                {
+                                if (deleteCustomer) {
                                     Toasty.error(context, R.string.customer_deleted, Toast.LENGTH_SHORT).show();
 
                                     customerData.remove(holder.getAdapterPosition());
@@ -114,10 +113,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.MyView
                                     // Notify that item at position has been removed
                                     notifyItemRemoved(holder.getAdapterPosition());
 
-                                }
-
-                                else
-                                {
+                                } else {
                                     Toast.makeText(context, R.string.failed, Toast.LENGTH_SHORT).show();
                                 }
                                 dialog.cancel();
@@ -140,10 +136,10 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.MyView
         return customerData.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView txtCustomerName, txtCell, txtEmail, txtAddress, txtAddressTwo;
-        ImageView imgDelete,imgCall, imageCustomer;
+        ImageView imgDelete, imgCall, imageCustomer;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -172,7 +168,6 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.MyView
             context.startActivity(i);
         }
     }
-
 
 
 }

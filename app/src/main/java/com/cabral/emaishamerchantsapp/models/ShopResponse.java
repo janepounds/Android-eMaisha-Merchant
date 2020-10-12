@@ -3,7 +3,7 @@ package com.cabral.emaishamerchantsapp.models;
 public class ShopResponse {
     private Integer shop_id;
     private String message;
-    private  Shop data;
+    private Shop data;
 
     public ShopResponse(Integer shop_id, String message, Shop data) {
         this.shop_id = shop_id;

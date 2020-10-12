@@ -1,8 +1,5 @@
 package com.cabral.emaishamerchantsapp.wallet;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.cabral.emaishamerchantsapp.R;
 
@@ -43,7 +43,7 @@ public class TransferDetailsActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         alertDialog.dismiss();
-                        Intent intent = new Intent(TransferDetailsActivity.this,WalletActivity.class );
+                        Intent intent = new Intent(TransferDetailsActivity.this, WalletActivity.class);
                         startActivity(intent);
                     }
                 });

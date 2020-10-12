@@ -10,6 +10,7 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -25,6 +26,38 @@ public interface Api {
             @Field("latitude") String latitude,
             @Field("longitude") String longitude
     );
+
+    @FormUrlEncoded
+    @POST("merchant/wallet/account/create")
+    Call<ResponseBody> createAccount(
+            @Header("Authorization") String token,
+            @Field("firstName") String first_name,
+            @Field("lastName") String last_name,
+            @Field("middleName") String middle_name,
+            @Field("gender") String gender,
+            @Field("dob") String date_of_birth,
+            @Field("district") String district,
+            @Field("subCounty") String sub_county,
+            @Field("village") String village,
+            @Field("addressStreet") String landmark,
+            @Field("phoneNumber") String phone_number,
+            @Field("email") String email,
+            @Field("nextOfKinFirstName") String next_of_kin_name,
+            @Field("nextOfKinLastName") String next_of_kin_second_name,
+            @Field("nextOfKinRelationship") String next_of_kin_relationship,
+            @Field("nextOfKinContact") String next_of_kin_contact,
+            @Field("nin") String nin,
+            @Field("nin_expiry") String national_id_valid_upto,
+            @Field("nationalId") String national_id_photo,
+            @Field("customerPhoto") String customer_photo,
+            @Field("photoWithId") String photo_with_national_id,
+            @Field("accountNumber") String account_number,
+            @Field("cardNumber") String card_number,
+            @Field("cardExpiryDate") String expiry_date,
+            @Field("Cvv") String cvv,
+            @Field("pin") String pin
+    );
+
 
     @FormUrlEncoded
     @POST("registerMerchant")
@@ -199,5 +232,22 @@ public interface Api {
                                        @Field("manufacturer") String manufacturer,
                                        @Field("shop_id") String shop_id);
 
+
+    @FormUrlEncoded
+    @POST("merchant/user/deposit")
+    Call<ResponseBody> depositAmountNumber(
+            @Field("phone_number") String number,
+            @Field("amount") String amount
+
+
+    );
+
+    @FormUrlEncoded
+    @POST("merchant/user/deposit")
+    Call<ResponseBody> depositAmountAccount(
+            @Field("account") String account,
+            @Field("amount_number") String amount
+
+    );
 
 }

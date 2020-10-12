@@ -18,8 +18,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp">
 
                 <LinearLayout
@@ -47,12 +47,14 @@
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
+                android:id="@+id/card_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp">
 
                 <LinearLayout
@@ -62,6 +64,7 @@
                     android:padding="10dp">
 
                     <TextView
+                        android:id="@+id/txtType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/josefin_sans"
@@ -70,6 +73,7 @@
                         android:textSize="20sp" />
 
                     <TextView
+                        android:id="@+id/txtType_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/josefin_sans"
@@ -80,12 +84,13 @@
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp">
 
                 <LinearLayout
@@ -103,6 +108,7 @@
                         android:textSize="20sp" />
 
                     <TextView
+                        android:id="@+id/txtAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/josefin_sans"
@@ -113,12 +119,13 @@
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp">
 
                 <LinearLayout
@@ -146,12 +153,13 @@
                         android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp">
 
                 <LinearLayout
@@ -169,6 +177,7 @@
                         android:textSize="20sp" />
 
                     <TextView
+                        android:id="@+id/txtTotalAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/josefin_sans"
@@ -183,20 +192,20 @@
 
         </LinearLayout>
     </ScrollView>
+
     <TextView
         android:id="@+id/txt_card_confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="@color/creditCardBackground"
+        android:fontFamily="@font/josefin_sans"
+        android:padding="10dp"
         android:text="CONFIRM"
         android:textAlignment="center"
-        android:textStyle="bold"
-        android:fontFamily="@font/josefin_sans"
         android:textColor="@color/white"
-        android:background="@color/creditCardBackground"
-        android:padding="10dp"
         android:textSize="20sp"
-        />
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

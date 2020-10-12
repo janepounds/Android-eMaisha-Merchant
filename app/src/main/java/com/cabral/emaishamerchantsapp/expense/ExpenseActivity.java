@@ -29,16 +29,12 @@ import es.dmoral.toasty.Toasty;
 public class ExpenseActivity extends BaseActivity {
 
 
-
-    private RecyclerView recyclerView;
     ExpenseAdapter productAdapter;
-
     ImageView imgNoProduct;
     EditText etxtSearch;
-
     TextView total_expense;
-
     FloatingActionButton fabAdd;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +42,8 @@ public class ExpenseActivity extends BaseActivity {
         setContentView(R.layout.activity_expense);
 
 
-        fabAdd=findViewById(R.id.fab_add);
-        etxtSearch=findViewById(R.id.etxt_search);
+        fabAdd = findViewById(R.id.fab_add);
+        etxtSearch = findViewById(R.id.etxt_search);
         getSupportActionBar().setHomeButtonEnabled(true); //for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
         getSupportActionBar().setTitle(R.string.all_expense);
@@ -70,7 +66,7 @@ public class ExpenseActivity extends BaseActivity {
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(ExpenseActivity.this, AddExpenseActivity.class);
+                Intent intent = new Intent(ExpenseActivity.this, AddExpenseActivity.class);
                 startActivity(intent);
             }
         });
@@ -80,9 +76,7 @@ public class ExpenseActivity extends BaseActivity {
         String currency = databaseAccess.getCurrency();
 
         databaseAccess.open();
-        total_expense.setText( currency +" "+ databaseAccess.getTotalExpense("total"));
-
-
+        total_expense.setText(currency + " " + databaseAccess.getTotalExpense("total"));
 
 
         databaseAccess.open();
@@ -106,11 +100,6 @@ public class ExpenseActivity extends BaseActivity {
 
 
         }
-
-
-
-
-
 
 
         etxtSearch.addTextChangedListener(new TextWatcher() {

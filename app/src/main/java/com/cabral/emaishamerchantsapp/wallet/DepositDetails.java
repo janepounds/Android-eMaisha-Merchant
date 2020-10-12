@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.cabral.emaishamerchantsapp.R;
 
 public class DepositDetails extends AppCompatActivity {
-    TextView txtSubmit;
+    TextView txtSubmit,txtType,txtTypeNumber,txtTotal,txtAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,24 @@ public class DepositDetails extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true); //for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
         getSupportActionBar().setTitle("Deposit Details");
+
+        txtType = findViewById(R.id.txtType);
+        txtTypeNumber = findViewById(R.id.txtType_number);
+        txtTotal = findViewById(R.id.txtTotalAmount);
+        txtAmount = findViewById(R.id.txtAmount);
+
+        if(getIntent().getExtras().getString("type").equals("account")){
+            txtType.setText("Account Number");
+            txtTypeNumber.setText(getIntent().getExtras().getString("account"));
+        }
+        if(getIntent().getExtras().getString("type").equals("phone")){
+            txtType.setText("Phone Number");
+            txtTypeNumber.setText(getIntent().getExtras().getString("phone"));
+        }
+
+        txtTotal.setText(getIntent().getExtras().getString("amount"));
+        txtAmount.setText(getIntent().getExtras().getString("amount"));
+
 
         txtSubmit = findViewById(R.id.txt_card_confirm);
         txtSubmit.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +59,7 @@ public class DepositDetails extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         alertDialog.dismiss();
-                        Intent intent = new Intent(DepositDetails.this,WalletActivity.class );
+                        Intent intent = new Intent(DepositDetails.this, WalletActivity.class);
                         startActivity(intent);
                         AlertDialog.Builder builder = new AlertDialog.Builder(DepositDetails.this);
                         ViewGroup viewGroup = findViewById(android.R.id.content);

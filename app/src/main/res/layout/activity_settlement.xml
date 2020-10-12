@@ -33,27 +33,26 @@
                     android:text="Settle Now"
                     android:textSize="18sp" />
 
-                <EditText
-                    android:id="@+id/etxt_settle_to"
+                <AutoCompleteTextView
+                    android:id="@+id/act_settlement_type"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/round_shape"
                     android:drawableRight="@drawable/drop_down"
                     android:fontFamily="@font/josefin_sans"
-                    android:inputType="text"
-                    android:padding="8dp"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
+                    android:padding="8dp" />
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linear_bank"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -66,7 +65,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/etxt_bank"
+                    android:id="@+id/etxt_settle_bank"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
@@ -83,9 +82,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearAccountNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -98,25 +99,27 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/etxt_account_no"
+                    android:id="@+id/etxt_settle_account_no"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/round_shape"
-                    android:drawableRight="@drawable/drop_down"
                     android:fontFamily="@font/josefin_sans"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:padding="8dp"
                     android:textColor="#000"
                     android:textSize="16sp" />
 
             </LinearLayout>
+
             <LinearLayout
+                android:id="@+id/linearHolder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -129,14 +132,13 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/etxt_bholder_name"
+                    android:id="@+id/etxt_settle_holder_name"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/round_shape"
-                    android:drawableRight="@drawable/drop_down"
                     android:fontFamily="@font/josefin_sans"
                     android:inputType="text"
                     android:padding="8dp"
@@ -144,7 +146,9 @@
                     android:textSize="16sp" />
 
             </LinearLayout>
+
             <LinearLayout
+                android:id="@+id/linearMobileNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -160,16 +164,15 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/etxt_mobile_number"
+                    android:id="@+id/etxt_settle_mobile_number"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/round_shape"
-                    android:drawableRight="@drawable/drop_down"
                     android:fontFamily="@font/josefin_sans"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:padding="8dp"
                     android:textColor="#000"
                     android:textSize="16sp" />

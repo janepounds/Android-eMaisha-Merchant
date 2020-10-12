@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F9F9F9"
     tools:context=".wallet.DepositsActivity">
 
 
@@ -48,7 +49,7 @@
 
 
                 <EditText
-                    android:id="@+id/etxt_customer_account"
+                    android:id="@+id/etxt_customer_withdraw_account"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
@@ -56,7 +57,7 @@
                     android:layout_marginRight="10dp"
                     android:background="@drawable/round_shape"
                     android:fontFamily="@font/josefin_sans"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:padding="8dp"
                     android:textColor="#000"
                     android:textSize="16sp" />
@@ -89,7 +90,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/josefin_sans"
-                        android:text="Enter Ammount"
+                        android:text="Enter Amount"
                         android:textColor="#929292"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -98,7 +99,7 @@
 
 
                 <EditText
-                    android:id="@+id/etxt_customer_amount"
+                    android:id="@+id/etxt_customer_withdraw_amount"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
@@ -106,7 +107,7 @@
                     android:layout_marginRight="10dp"
                     android:background="@drawable/round_shape"
                     android:fontFamily="@font/josefin_sans"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:padding="8dp"
                     android:textColor="#000"
                     android:textSize="16sp" />
@@ -147,7 +148,7 @@
 
 
                 <EditText
-                    android:id="@+id/etxt_next_of_kin_name"
+                    android:id="@+id/etxt_customer_withdraw_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
@@ -155,7 +156,7 @@
                     android:layout_marginRight="10dp"
                     android:background="@drawable/round_shape"
                     android:fontFamily="@font/josefin_sans"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:padding="8dp"
                     android:textColor="#000"
                     android:textSize="16sp" />

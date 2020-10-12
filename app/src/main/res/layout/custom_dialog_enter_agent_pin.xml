@@ -6,47 +6,44 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
         android:orientation="vertical"
-        android:paddingBottom="20dp"
-        >
+        android:paddingTop="5dp"
+        android:paddingBottom="20dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/josefin_sans"
+            android:padding="10dp"
             android:text="ENTER AGENT'S PIN"
             android:textColor="@color/black"
-            android:fontFamily="@font/josefin_sans"
-            android:layout_gravity="center"
-            android:textStyle="bold"
             android:textSize="20sp"
-            android:padding="10dp"
-            />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/etxt_create_agent_pin"
             android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/round_shape"
             android:fontFamily="@font/josefin_sans"
             android:hint="Create pin"
             android:inputType="text"
             android:padding="8dp"
             android:textColor="#000"
-            android:background="@drawable/round_shape"
             android:textSize="16sp" />
-
-
 
 
         <TextView
             android:id="@+id/txt_custom_add_agent_submit_pin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
             android:layout_marginBottom="2dp"
             android:background="@drawable/balance_cards"
             android:fontFamily="@font/josefin_sans"
@@ -56,8 +53,6 @@
             android:textColor="#ffffff"
             android:textSize="16sp"
             android:textStyle="bold" />
-
-
 
 
     </LinearLayout>

@@ -51,79 +51,80 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <EditText
                 android:id="@+id/etxt_fullname"
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/round_shape"
                 android:fontFamily="@font/josefin_sans"
                 android:hint="Full Name"
                 android:inputType="text"
                 android:padding="8dp"
                 android:textColor="#000"
-                android:background="@drawable/round_shape"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
+
             <EditText
                 android:id="@+id/etxt_middlename"
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/round_shape"
                 android:fontFamily="@font/josefin_sans"
                 android:hint="Middle Name"
                 android:inputType="text"
                 android:padding="8dp"
                 android:textColor="#000"
-                android:background="@drawable/round_shape"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/etxt_lastname"
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/round_shape"
                 android:fontFamily="@font/josefin_sans"
                 android:hint="Last Name"
                 android:inputType="text"
                 android:padding="8dp"
                 android:textColor="#000"
-                android:background="@drawable/round_shape"
-                android:textSize="16sp" />
-            <EditText
-                android:id="@+id/etxt_gender"
+                android:textSize="18sp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/act_gender"
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/round_shape"
+                android:drawableRight="@drawable/drop_down"
                 android:fontFamily="@font/josefin_sans"
                 android:hint="Gender"
-                android:drawableRight="@drawable/drop_down"
-                android:inputType="text"
-                android:padding="8dp"
-                android:textColor="#000"
-                android:background="@drawable/round_shape"
-                android:textSize="16sp" />
+                android:padding="8dp" />
+
             <EditText
                 android:id="@+id/etxt_date_of_birth"
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/round_shape"
+                android:drawableRight="@drawable/ic_baseline_date_range_24"
                 android:fontFamily="@font/josefin_sans"
                 android:hint="Date of birth"
-                android:drawableRight="@drawable/drop_down"
                 android:inputType="text"
                 android:padding="8dp"
                 android:textColor="#000"
-                android:background="@drawable/round_shape"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 

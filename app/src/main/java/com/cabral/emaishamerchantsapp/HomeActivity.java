@@ -15,23 +15,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.cabral.emaishamerchantsapp.customers.CustomersActivity;
 import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
 import com.cabral.emaishamerchantsapp.expense.ExpenseActivity;
-import com.cabral.emaishamerchantsapp.network.RetrofitClient;
-import com.cabral.emaishamerchantsapp.orders.OrdersActivity;
-import com.cabral.emaishamerchantsapp.pos.PosActivity;
-import com.cabral.emaishamerchantsapp.product.ProductActivity;
-import com.cabral.emaishamerchantsapp.report.ReportActivity;
-import com.cabral.emaishamerchantsapp.settings.SettingsActivity;
-import com.cabral.emaishamerchantsapp.storage.SharedPrefManager;
-import com.cabral.emaishamerchantsapp.suppliers.SuppliersActivity;
-import com.cabral.emaishamerchantsapp.utils.BaseActivity;
-import com.cabral.emaishamerchantsapp.utils.LocaleManager;
-import com.cabral.emaishamerchantsapp.customers.CustomersActivity;
-import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
-import com.cabral.emaishamerchantsapp.expense.ExpenseActivity;
-import com.cabral.emaishamerchantsapp.network.NetworkStateChecker;
 import com.cabral.emaishamerchantsapp.network.RetrofitClient;
 import com.cabral.emaishamerchantsapp.orders.OnlineOrders;
 import com.cabral.emaishamerchantsapp.orders.OrdersActivity;
@@ -69,13 +54,12 @@ import retrofit2.Response;
 public class HomeActivity extends BaseActivity {
 
 
-    CardView cardCustomers, cardProducts, cardSupplier, cardPos, cardOrderList, cardReport, cardSettings, cardExpense, cardWallet;
     //for double back press to exit
     private static final int TIME_DELAY = 2000;
-    private static long back_pressed;
-    private List<HashMap<String, String>> customers, products, categories, weights, suppliers, expenses, carts, payment_methods, orderList, orderTypes;
     public static Context context;
-
+    private static long back_pressed;
+    CardView cardCustomers, cardProducts, cardSupplier, cardPos, cardOrderList, cardReport, cardSettings, cardExpense, cardWallet;
+    private List<HashMap<String, String>> customers, products, categories, weights, suppliers, expenses, carts, payment_methods, orderList, orderTypes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -184,10 +168,10 @@ public class HomeActivity extends BaseActivity {
 
                             if (products.size() <= 0) {
                                 my_products = jsonObject.getJSONArray("products");
-                                if(my_products.length()>0){
-                                    Log.w("ProductSize",my_products.length()+"---------------------");
-                                    for(int i = 0; i< my_products.length(); i++){
-                                        boolean check= databaseAccess.addProduct(my_products.getJSONObject(i).getString("product_id"), my_products.getJSONObject(i).getString("product_name"), my_products.getJSONObject(i).getString("product_code"), my_products.getJSONObject(i).getString("product_category"),my_products.getJSONObject(i).getString("product_description"),my_products.getJSONObject(i).getString("product_buy_price"), my_products.getJSONObject(i).getString("product_sell_price"), my_products.getJSONObject(i).getString("product_stock"),my_products.getJSONObject(i).getString("product_supplier"), my_products.getJSONObject(i).getString("product_image"), my_products.getJSONObject(i).getString("product_weight_unit"),my_products.getJSONObject(i).getString("product_weight"));
+                                if (my_products.length() > 0) {
+                                    Log.w("ProductSize", my_products.length() + "---------------------");
+                                    for (int i = 0; i < my_products.length(); i++) {
+                                        boolean check = databaseAccess.addProduct(my_products.getJSONObject(i).getString("product_id"), my_products.getJSONObject(i).getString("product_name"), my_products.getJSONObject(i).getString("product_code"), my_products.getJSONObject(i).getString("product_category"), my_products.getJSONObject(i).getString("product_description"), my_products.getJSONObject(i).getString("product_buy_price"), my_products.getJSONObject(i).getString("product_sell_price"), my_products.getJSONObject(i).getString("product_stock"), my_products.getJSONObject(i).getString("product_supplier"), my_products.getJSONObject(i).getString("product_image"), my_products.getJSONObject(i).getString("product_weight_unit"), my_products.getJSONObject(i).getString("product_weight"));
 
                                         if (check) {
                                             Log.w("Products Insert", "Product Inserted Successfully");
@@ -244,12 +228,12 @@ public class HomeActivity extends BaseActivity {
                             JSONObject jsonObject = new JSONObject(s);
                             Log.d("Order Fetch", String.valueOf(jsonObject.getJSONArray("orders")));
                             JSONArray order_array = jsonObject.getJSONArray("orders");
-                            for(int i = 0; i<order_array.length(); i++){
+                            for (int i = 0; i < order_array.length(); i++) {
                                 Log.d("Order", String.valueOf(order_array.getJSONObject(i)));
                                 boolean check = databaseAccess.addOrder(order_array.getJSONObject(i));
-                                if(check){
+                                if (check) {
                                     Log.d("Update Status", "New Order inserted or updated Successfully");
-                                }else{
+                                } else {
                                     Log.d("Update Failure", "New Order insertion failed");
                                 }
 
@@ -263,7 +247,7 @@ public class HomeActivity extends BaseActivity {
                         e.printStackTrace();
                     }
 
-                }else{
+                } else {
                     Log.d("Order Fetch", "Response is an Error");
 
                 }
@@ -271,7 +255,7 @@ public class HomeActivity extends BaseActivity {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                    t.printStackTrace();
+                t.printStackTrace();
             }
         });
 

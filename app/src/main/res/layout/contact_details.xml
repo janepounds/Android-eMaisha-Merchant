@@ -5,27 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".wallet.WalletActivity">
+
     <TextView
         android:id="@+id/heading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter Contact Details"
         android:fontFamily="@font/josefin_sans"
-        android:textColor="@color/black"
-        android:textSize="22sp"
-        android:paddingBottom="10sp"
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
-        android:textStyle="bold"
-        />
+        android:paddingBottom="10sp"
+        android:text="Enter Contact Details"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
 
     <!-- Main content -->
     <com.kofigyan.stateprogressbar.StateProgressBar
-        android:layout_below="@+id/heading"
         android:id="@+id/your_state_progress_bar_contact_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/heading"
         android:layout_gravity="center_horizontal"
         android:textAlignment="center"
         app:layout_constraintTop_toTopOf="parent"
@@ -40,6 +40,7 @@
         app:spb_stateNumberBackgroundColor="#808080"
         app:spb_stateNumberForegroundColor="#eeeeee"
         tools:layout_editor_absoluteX="10dp" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,121 +50,120 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="4"
-                >
-                <EditText
-                    android:id="@+id/etxt_district"
+                android:weightSum="4">
+
+                <AutoCompleteTextView
+                    android:id="@+id/act_district"
                     android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/round_shape"
+                    android:drawableRight="@drawable/drop_down"
                     android:fontFamily="@font/josefin_sans"
                     android:hint="District"
-                    android:inputType="text"
                     android:padding="8dp"
-                    android:textColor="#000"
-                    android:drawableRight="@drawable/drop_down"
-                    android:background="@drawable/round_shape"
-                    android:textSize="16sp" />
-                <EditText
-                    android:id="@+id/etxt_subcounty"
+                    android:textSize="18dp" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/act_sub_county"
                     android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_height="50dp"
-                    android:fontFamily="@font/josefin_sans"
-                    android:hint="Subcounty"
-                    android:inputType="text"
-                    android:drawableRight="@drawable/drop_down"
-                    android:padding="8dp"
-                    android:textColor="#000"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="2"
                     android:background="@drawable/round_shape"
-                    android:textSize="16sp" />
+                    android:drawableRight="@drawable/drop_down"
+                    android:fontFamily="@font/josefin_sans"
+                    android:hint="Sub County"
+                    android:padding="8dp"
+                    android:textSize="18dp" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="4"
-                >
-                <EditText
-                    android:id="@+id/etxt_village"
+                android:weightSum="4">
+
+                <AutoCompleteTextView
+                    android:id="@+id/act_village"
                     android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/round_shape"
+                    android:drawableRight="@drawable/drop_down"
                     android:fontFamily="@font/josefin_sans"
                     android:hint="Village"
-                    android:inputType="text"
-                    android:padding="8dp"
-                    android:textColor="#000"
-                    android:drawableRight="@drawable/drop_down"
-                    android:background="@drawable/round_shape"
-                    android:textSize="16sp" />
+                    android:padding="8dp" />
+
                 <EditText
                     android:id="@+id/etxt_landmark"
                     android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/round_shape"
                     android:fontFamily="@font/josefin_sans"
                     android:hint="Landmark"
                     android:inputType="text"
                     android:padding="8dp"
                     android:textColor="#000"
-                    android:background="@drawable/round_shape"
                     android:textSize="16sp" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="4"
-                >
+                android:weightSum="4">
+
                 <EditText
                     android:id="@+id/etxt_phone_number"
                     android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/round_shape"
                     android:fontFamily="@font/josefin_sans"
                     android:hint="Phone Number"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:padding="8dp"
                     android:textColor="#000"
-                    android:background="@drawable/round_shape"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
+
                 <EditText
                     android:id="@+id/etxt_email"
                     android:layout_width="0dp"
-                    android:layout_weight="2"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/round_shape"
                     android:fontFamily="@font/josefin_sans"
                     android:hint="Email"
                     android:inputType="text"
                     android:padding="8dp"
                     android:textColor="#000"
-                    android:background="@drawable/round_shape"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
@@ -187,7 +187,7 @@
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/josefin_sans"
                         android:text="Next of Kin First Name"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
 
                     <EditText
                         android:id="@+id/etxt_next_of_kin_name"
@@ -219,7 +219,7 @@
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/josefin_sans"
                         android:text="Next of Kin Second Name"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
 
                     <EditText
                         android:id="@+id/etxt_next_of_kin_second_name"
@@ -239,34 +239,36 @@
 
 
             </LinearLayout>
+
             <EditText
                 android:id="@+id/etxt_kin_relationship"
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/round_shape"
                 android:fontFamily="@font/josefin_sans"
                 android:hint="Next of Kin Relationship"
                 android:inputType="text"
                 android:padding="8dp"
                 android:textColor="#000"
-                android:background="@drawable/round_shape"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
+
             <EditText
                 android:id="@+id/etxt_kin_contact"
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/round_shape"
                 android:fontFamily="@font/josefin_sans"
                 android:hint="Next Of Kin Contact"
-                android:inputType="text"
+                android:inputType="number"
                 android:padding="8dp"
                 android:textColor="#000"
-                android:background="@drawable/round_shape"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
 
         </LinearLayout>
