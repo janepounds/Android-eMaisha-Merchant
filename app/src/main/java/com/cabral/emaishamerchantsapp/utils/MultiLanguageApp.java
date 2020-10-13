@@ -18,6 +18,7 @@ public class MultiLanguageApp extends MultiDexApplication {
         super.onCreate();
         // set App Context
         context = this.getApplicationContext();
+        TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/JosefinSans-Regular.ttf"); // font from assets:
     }
 
     @Override

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -63,7 +64,7 @@ public class PersonalDetails extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         StateProgressBar stateProgressBar = view.findViewById(R.id.your_state_progress_bar_personal_details);
         stateProgressBar.setStateDescriptionData(descriptionData);
-
+        stateProgressBar.setStateDescriptionTypeface("fonts/JosefinSans-Bold.ttf");
 
         EditText first_name = view.findViewById(R.id.etxt_fullname);
         EditText middle_name = view.findViewById(R.id.etxt_middlename);
@@ -98,7 +99,7 @@ public class PersonalDetails extends Fragment {
         });
 
 
-        TextView next = view.findViewById(R.id.txt_next_two);
+        Button next = view.findViewById(R.id.txt_next_two);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +30,7 @@ import in.mayanknagwanshi.imagepicker.ImageSelectActivity;
 import static android.app.Activity.RESULT_OK;
 
 public class IdentityProof extends Fragment {
-    String[] descriptionData = {"Personal Details", "Contact Details", "Identity Proof"};
+    String[] descriptionData = {"Personal\n Details", "Contact\n Details", "Identity\n Proof"};
     String mediaPathNationalID, encodedImageID = "N/A", mediaPathCustomerPhoto, encodedImageCustomerPhoto = "N/A", mediaPathPhotoWithID, encodedImagePhotoWithID = "N/A";
     EditText etxt_national_id, etxt_customer_photo, etxt_photo_with_id;
     String firstname, lastname, middlename, gender, date_of_birth, district, village, sub_county, landmark, phone_number, email, next_of_kin_name, next_of_kin_second_name, next_of_kin_relationship, next_of_kin_contact;
@@ -59,9 +60,9 @@ public class IdentityProof extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         StateProgressBar stateProgressBar = view.findViewById(R.id.your_state_progress_bar_identity_proof);
         stateProgressBar.setStateDescriptionData(descriptionData);
+        stateProgressBar.setStateDescriptionTypeface("fonts/JosefinSans-Bold.ttf");
 
-
-        TextView next = view.findViewById(R.id.txt_next_submit);
+        Button next = view.findViewById(R.id.txt_next_submit);
         TextView finger_print = view.findViewById(R.id.txt_next_finger_print);
         TextView txt_upload_national_id = view.findViewById(R.id.txt_browse_national_id_photo);
         TextView txt_upload_customer_photo = view.findViewById(R.id.txt_browse_customer_photo);

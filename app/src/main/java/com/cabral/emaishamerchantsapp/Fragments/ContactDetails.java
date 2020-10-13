@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -42,8 +43,9 @@ public class ContactDetails extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         StateProgressBar stateProgressBar = view.findViewById(R.id.your_state_progress_bar_contact_details);
         stateProgressBar.setStateDescriptionData(descriptionData);
+        stateProgressBar.setStateDescriptionTypeface("fonts/JosefinSans-Bold.ttf");
 
-        TextView next = view.findViewById(R.id.txt_next_three);
+        Button next = view.findViewById(R.id.txt_next_three);
         AutoCompleteTextView act_districts = view.findViewById(R.id.act_district);
         AutoCompleteTextView act_sub_counties = view.findViewById(R.id.act_sub_county);
         AutoCompleteTextView act_villages = view.findViewById(R.id.act_village);

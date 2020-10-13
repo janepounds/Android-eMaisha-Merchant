@@ -34,6 +34,9 @@
         app:spb_currentStateDescriptionColor="@color/creditCardBackground"
         app:spb_currentStateNumber="two"
         app:spb_maxStateNumber="three"
+        app:spb_animationDuration="500"
+        app:spb_maxDescriptionLines="2"
+        app:spb_stateDescriptionSize="18sp"
         app:spb_stateBackgroundColor="#BDBDBD"
         app:spb_stateDescriptionColor="#808080"
         app:spb_stateForegroundColor="@color/creditCardBackground"
@@ -43,13 +46,15 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/your_state_progress_bar_contact_details">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:layout_marginBottom="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -70,7 +75,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/district"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:layout_marginBottom="4dp"/>
                 <AutoCompleteTextView
                     android:id="@+id/act_district"
@@ -79,7 +84,7 @@
                     android:background="@drawable/rounded_rectangle_edit_text"
                     android:drawableRight="@drawable/drop_down"
                     android:fontFamily="@font/josefin_sans"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -92,7 +97,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Sub County"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:layout_marginBottom="4dp"/>
                 <AutoCompleteTextView
                     android:id="@+id/act_sub_county"
@@ -101,7 +106,7 @@
                     android:background="@drawable/rounded_rectangle_edit_text"
                     android:drawableEnd="@drawable/drop_down"
                     android:fontFamily="@font/josefin_sans"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -124,7 +129,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Village"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:layout_marginBottom="4dp"/>
                 <AutoCompleteTextView
                     android:id="@+id/act_village"
@@ -145,7 +150,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Landmark"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         android:layout_marginBottom="4dp"/>
 
                 <EditText
@@ -157,7 +162,7 @@
                     android:fontFamily="@font/josefin_sans"
                     android:inputType="text"
                     android:textColor="#000"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -166,107 +171,116 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="4">
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="10dp">
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Phone Number"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="4dp"/>
                 <EditText
                     android:id="@+id/etxt_phone_number"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="2"
-                    android:background="@drawable/round_shape"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_rectangle_edit_text"
                     android:fontFamily="@font/josefin_sans"
-                    android:hint="Phone Number"
                     android:inputType="number"
-                    android:padding="8dp"
                     android:textColor="#000"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp">
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Email"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="4dp"/>
                 <EditText
                     android:id="@+id/etxt_email"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="2"
-                    android:background="@drawable/round_shape"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_rectangle_edit_text"
                     android:fontFamily="@font/josefin_sans"
-                    android:hint="Email"
-                    android:inputType="text"
-                    android:padding="8dp"
+                    android:inputType="textEmailAddress"
                     android:textColor="#000"
-                    android:textSize="18sp" />
-
+                    android:textSize="16sp" />
+                </LinearLayout>
             </LinearLayout>
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Next of Kin :"
+                android:textSize="18sp"
+                android:layout_margin="10dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="4">
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp">
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="10dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"
-                        android:fontFamily="@font/josefin_sans"
-                        android:text="Next of Kin First Name"
-                        android:textSize="15sp" />
-
+                        android:text="First Name"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="4dp"/>
                     <EditText
                         android:id="@+id/etxt_next_of_kin_name"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/round_shape"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_rectangle_edit_text"
                         android:fontFamily="@font/josefin_sans"
                         android:inputType="text"
-                        android:padding="8dp"
                         android:textColor="#000"
                         android:textSize="16sp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"
-                        android:fontFamily="@font/josefin_sans"
-                        android:text="Next of Kin Second Name"
-                        android:textSize="15sp" />
+                        android:text="Second Name"
+                        android:textSize="16sp"
+                        android:layout_marginBottom="4dp"/>
 
                     <EditText
                         android:id="@+id/etxt_next_of_kin_second_name"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@drawable/round_shape"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_rectangle_edit_text"
                         android:fontFamily="@font/josefin_sans"
                         android:inputType="text"
-                        android:padding="8dp"
                         android:textColor="#000"
                         android:textSize="16sp" />
 
@@ -275,43 +289,88 @@
 
             </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Relationship"
+                android:textSize="16sp"
+                android:layout_marginBottom="4dp"/>
+
             <EditText
                 android:id="@+id/etxt_kin_relationship"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/round_shape"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_rectangle_edit_text"
                 android:fontFamily="@font/josefin_sans"
-                android:hint="Next of Kin Relationship"
                 android:inputType="text"
-                android:padding="8dp"
                 android:textColor="#000"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Contact"
+                android:textSize="16sp"
+                android:layout_marginBottom="4dp"/>
             <EditText
                 android:id="@+id/etxt_kin_contact"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/round_shape"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_rectangle_edit_text"
                 android:fontFamily="@font/josefin_sans"
-                android:hint="Next Of Kin Contact"
                 android:inputType="number"
-                android:padding="8dp"
                 android:textColor="#000"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
+        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/buttons_farmer_profiling_step2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_weight="1"
+                    android:id="@+id/previous_button"
+                    style="@style/button_style_previous"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:text="PREVIOUS" />
 
-
+                <Button
+                    android:layout_weight="1"
+                    android:id="@+id/txt_next_three"
+                    style="@style/button_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:text="NEXT" />
+            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
 
     <TextView
-        android:id="@+id/txt_next_three"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
