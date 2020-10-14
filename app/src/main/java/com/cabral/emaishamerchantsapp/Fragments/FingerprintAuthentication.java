@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,7 +26,7 @@ public class FingerprintAuthentication extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TextView next = view.findViewById(R.id.txt_next_continue);
+        Button next = view.findViewById(R.id.txt_next_continue);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

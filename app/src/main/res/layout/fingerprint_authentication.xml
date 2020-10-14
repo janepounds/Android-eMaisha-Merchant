@@ -67,19 +67,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         app:layout_constraintVertical_bias="0.343"
         app:srcCompat="@drawable/fingerprint" />
-
-    <TextView
+    <Button
         android:id="@+id/txt_next_continue"
+        style="@style/button_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/creditCardBackground"
-        android:padding="15sp"
+        android:layout_margin="16dp"
         android:text="CONTINUE"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/imageView3"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

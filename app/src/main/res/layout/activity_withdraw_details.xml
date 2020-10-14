@@ -184,23 +184,20 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-
+            <Button
+                android:id="@+id/txt_withdraw_confirm"
+                style="@style/button_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="CONFIRM" />
         </LinearLayout>
     </ScrollView>
 
-    <TextView
-        android:id="@+id/txt_withdraw_confirm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/creditCardBackground"
-        android:fontFamily="@font/josefin_sans"
-        android:padding="10dp"
-        android:text="CONFIRM"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+
 
 
 </RelativeLayout>

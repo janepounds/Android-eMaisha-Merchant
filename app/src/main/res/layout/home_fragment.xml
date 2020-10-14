@@ -21,8 +21,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:orientation="horizontal"
-            android:paddingTop="20dp"
-            android:paddingBottom="10dp"
+            android:padding="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:weightSum="4">
 
             <LinearLayout
@@ -30,40 +31,40 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="2"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp">
+                android:layout_marginEnd="13dp"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="60dp"
+                    android:layout_height="55dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/trans_wallet" />
+                    android:src="@drawable/ic_wallet_balance" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="3dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
                     android:orientation="vertical">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/josefin_sans_bold"
-                        android:text="UGX 175000"
-                        android:textColor="@color/creditCardBackground"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
-
+                        android:text="Balance"
+                        android:textColor="#474747"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:paddingTop="5dp"
                         android:fontFamily="@font/josefin_sans_bold"
-                        android:paddingTop="3dp"
-                        android:text="Wallet Balance"
+                        android:text="UGX 175,000"
                         android:textColor="@color/creditCardBackground"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
+                        android:textSize="15sp"/>
+
+
 
                 </LinearLayout>
             </LinearLayout>
@@ -74,40 +75,42 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="2"
+                android:layout_marginStart="13dp"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="60dp"
+                    android:layout_height="55dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/wallet_float" />
+                    android:src="@drawable/ic_float" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp">
+                    android:layout_gravity="center_vertical"
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/josefin_sans_bold"
+                        android:text="Float"
+                        android:textColor="#474747"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textAllCaps="true"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/josefin_sans_bold"
                         android:text="UGX 400,000"
+                        android:paddingTop="5dp"
                         android:textColor="@color/creditCardBackground"
-                        android:textSize="17sp"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/josefin_sans_bold"
-                        android:paddingTop="3dp"
-                        android:text="FLOAT"
-                        android:textColor="@color/creditCardBackground"
-                        android:textSize="17sp"
-                        android:textStyle="bold" />
+
 
                 </LinearLayout>
             </LinearLayout>
@@ -281,7 +284,7 @@
 
                             <ImageView
                                 android:layout_width="80dp"
-                                android:layout_height="50dp"
+                                android:layout_height="46dp"
                                 android:layout_marginTop="10dp"
                                 app:srcCompat="@drawable/wallet_account_opening" />
 
@@ -293,7 +296,7 @@
                                 android:fontFamily="@font/josefin_sans_bold"
                                 android:text="Account Opening"
                                 android:textAlignment="center"
-                                android:textColor="#000"
+                                android:textColor="#474747"
                                 android:textSize="17sp" />
 
                         </LinearLayout>
@@ -336,7 +339,7 @@
                                 android:layout_marginBottom="10dp"
                                 android:fontFamily="@font/josefin_sans_bold"
                                 android:text="Deposits"
-                                android:textColor="#000"
+                                android:textColor="#474747"
                                 android:textSize="17sp" />
 
                         </LinearLayout>
@@ -387,7 +390,7 @@
                                 android:layout_marginBottom="10dp"
                                 android:fontFamily="@font/josefin_sans_bold"
                                 android:text="Withdraws"
-                                android:textColor="#000"
+                                android:textColor="#474747"
                                 android:textSize="17sp" />
 
                         </LinearLayout>
@@ -431,7 +434,7 @@
                                 android:fontFamily="@font/josefin_sans_bold"
                                 android:text="Loan Application"
                                 android:textAlignment="center"
-                                android:textColor="#000"
+                                android:textColor="#474747"
                                 android:textSize="17sp" />
 
                         </LinearLayout>
@@ -484,7 +487,7 @@
                                 android:fontFamily="@font/josefin_sans_bold"
                                 android:text="Balance Inquiry"
                                 android:textAlignment="center"
-                                android:textColor="#000"
+                                android:textColor="#474747"
                                 android:textSize="17sp" />
 
                         </LinearLayout>
@@ -530,7 +533,7 @@
                                 android:paddingRight="3dp"
                                 android:text="Account Management"
                                 android:textAlignment="center"
-                                android:textColor="#000"
+                                android:textColor="#474747"
                                 android:textSize="17sp" />
 
                         </LinearLayout>

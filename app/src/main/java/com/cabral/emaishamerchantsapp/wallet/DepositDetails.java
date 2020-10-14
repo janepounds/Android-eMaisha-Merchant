@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -15,8 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.cabral.emaishamerchantsapp.R;
 
 public class DepositDetails extends AppCompatActivity {
-    TextView txtSubmit,txtType,txtTypeNumber,txtTotal,txtAmount;
-
+    TextView txtType,txtTypeNumber,txtTotal,txtAmount;
+    Button txtSubmit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

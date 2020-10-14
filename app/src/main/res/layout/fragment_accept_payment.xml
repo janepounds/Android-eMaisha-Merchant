@@ -28,17 +28,18 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_baseline_account_circle_24" />
-
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:background="@drawable/circle"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_payment_method" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="10dp"
                         android:fontFamily="@font/josefin_sans"
+                        android:layout_gravity="center_vertical"
                         android:text="Payment Method"
                         android:textColor="#929292"
                         android:textSize="20sp"
@@ -78,10 +79,9 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/phone_call_one" />
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_phon_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -89,6 +89,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/josefin_sans"
+                        android:layout_gravity="center_vertical"
                         android:text="Enter Phone Number"
                         android:textColor="#929292"
                         android:textSize="20sp"
@@ -127,8 +128,8 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_baseline_monetization_on_24" />
 
@@ -138,7 +139,8 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/josefin_sans"
-                        android:text="Enter Ammount"
+                        android:text="Enter Amount"
+                        android:layout_gravity="center_vertical"
                         android:textColor="#929292"
                         android:textSize="20sp"
                         android:textStyle="bold" />

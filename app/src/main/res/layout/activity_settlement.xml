@@ -178,27 +178,23 @@
                     android:textSize="16sp" />
 
             </LinearLayout>
-
+            <Button
+                android:id="@+id/txt_settle_submit"
+                style="@style/button_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="SUBMIT" />
 
         </LinearLayout>
 
 
     </ScrollView>
 
-    <TextView
-        android:id="@+id/txt_settle_submit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/creditCardBackground"
-        android:fontFamily="@font/josefin_sans"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="SUBMIT"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintVertical_bias="0.973" />
+
 
 
 </RelativeLayout>

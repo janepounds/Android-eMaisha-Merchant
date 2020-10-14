@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -16,7 +17,7 @@ import com.cabral.emaishamerchantsapp.R;
 
 public class WithdrawDetailsActivity extends AppCompatActivity {
 
-    TextView txtConfirm;
+    Button txtConfirm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

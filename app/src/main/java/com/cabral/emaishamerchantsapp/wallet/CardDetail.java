@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -39,7 +40,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CardDetail extends AppCompatActivity {
-    TextView txtOpenCardPInDialog;
+    Button txtOpenCardPInDialog;
     String firstname, lastname, middlename, gender, date_of_birth, district, village, sub_county, landmark, phone_number, email, next_of_kin_name, next_of_kin_second_name, next_of_kin_relationship, next_of_kin_contact, nin, national_id_valid_upto, national_id_photo, customer_photo, customer_photo_with_id;
     EditText etxtCardNumber, etxtCardAccount, etxtExpiryDate, etxtCvv;
 

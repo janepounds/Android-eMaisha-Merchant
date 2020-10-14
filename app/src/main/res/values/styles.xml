@@ -44,7 +44,7 @@
     </style>
     <style name="button_style" parent="Widget.AppCompat.Button">
 
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:background">@drawable/rounded_rectangle_button</item>
@@ -54,7 +54,7 @@
 
     <style name="button_style_previous" parent="Widget.AppCompat.Button">
 
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:background">@drawable/rounded_rectangle_button_previous</item>
@@ -62,7 +62,7 @@
     </style>
     <style name="button_style_next" parent="Widget.AppCompat.Button">
 
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:background">@color/colorPrimary</item>

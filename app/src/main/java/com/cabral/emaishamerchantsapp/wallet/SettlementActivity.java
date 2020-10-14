@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.cabral.emaishamerchantsapp.R;
 
 public class SettlementActivity extends AppCompatActivity {
-    TextView txtSubmit;
+    Button txtSubmit;
     String[] types = {"Bank", "Mobile Money"};
     LinearLayout linearBank, linearAccount, linearHolder, linearMobile;
     AutoCompleteTextView act_settle_to;
