@@ -12,147 +12,117 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_margin="15dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:paddingTop="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="Product Manufucturer"
-                android:textColor="@color/creditCardBackground"
-                android:textSize="18sp" />
+                android:textColor="@color/textColorSecondaryLight"
+                android:textSize="16sp" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="35dp">
+
 
                 <EditText
                     android:id="@+id/etxt_product_manufucturer"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:layout_height="45dp"
+                    android:background="@drawable/edittext_corner"
                     android:drawableRight="@drawable/drop_down"
                     android:fontFamily="@font/josefin_sans"
-                    android:hint="Product Manufucturer"
                     android:inputType="text"
-                    android:padding="8dp"
-                    android:textColor="#000"
-                    android:textSize="18sp" />
-
-            </androidx.cardview.widget.CardView>
+                    android:padding="10dp"
+                    android:textColor="@color/creditCardBackground"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:paddingTop="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/product_category"
-                android:textColor="@color/creditCardBackground"
-                android:textSize="18sp" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="35dp">
+                android:textColor="@color/textColorSecondaryLight"
+                android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/etxt_product_category"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:layout_height="45dp"
+                    android:background="@drawable/edittext_corner"
                     android:drawableRight="@drawable/drop_down"
                     android:fontFamily="@font/josefin_sans"
-                    android:hint="@string/product_category"
                     android:inputType="text"
-                    android:padding="8dp"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
-
-            </androidx.cardview.widget.CardView>
+                    android:padding="10dp"
+                    android:textColor="@color/creditCardBackground"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:paddingTop="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/product_name"
-                android:textColor="@color/creditCardBackground"
-                android:textSize="18sp" />
+                android:textColor="@color/textColorSecondaryLight"
+                android:textSize="16sp" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="35dp">
 
                 <EditText
                     android:id="@+id/etxt_product_name"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:layout_height="45dp"
+                    android:background="@drawable/edittext_corner"
                     android:drawableRight="@drawable/drop_down"
                     android:fontFamily="@font/josefin_sans"
-                    android:hint="@string/product_name"
                     android:inputType="text"
-                    android:padding="8dp"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
-
-            </androidx.cardview.widget.CardView>
+                    android:textSize="18sp"
+                    android:padding="10dp"
+                    android:textColor="@color/creditCardBackground"
+                    android:layout_marginBottom="10dp"/>
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:paddingTop="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/product_code"
-                android:textColor="@color/creditCardBackground"
-                android:textSize="18sp" />
+                android:textColor="@color/textColorSecondaryLight"
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:weightSum="10">
+                android:weightSum="10"
+                android:layout_marginBottom="10dp">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_weight="8">
+
 
                     <EditText
                         android:id="@+id/etxt_product_code"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
+                        android:layout_height="45dp"
+                        android:layout_weight="2"
+                        android:background="@drawable/edittext_corner"
                         android:fontFamily="@font/josefin_sans"
-                        android:hint="@string/product_code"
                         android:inputType="text"
-                        android:padding="8dp"
-                        android:textColor="#000"
-                        android:textSize="16sp" />
+                        android:textSize="18sp"
+                        android:padding="10dp"
+                        android:textColor="@color/creditCardBackground" />
 
-                </androidx.cardview.widget.CardView>
 
 
                 <ImageView
                     android:id="@+id/img_scan_code"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_weight="2"
+                    android:layout_weight="8"
                     app:srcCompat="@drawable/new_barcode" />
             </LinearLayout>
 
@@ -160,134 +130,103 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:paddingTop="10dp"
-                android:textColor="@color/creditCardBackground"
-                android:textSize="18sp" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="35dp">
+                android:layout_marginBottom="5dp"
+                android:text="@string/unit_product_buy_price"
+                android:textColor="@color/textColorSecondaryLight"
+                android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/etxt_buy_price"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:layout_height="45dp"
+                    android:background="@drawable/edittext_corner"
                     android:fontFamily="@font/josefin_sans"
-                    android:hint="@string/unit_product_buy_price"
                     android:inputType="text"
-                    android:padding="8dp"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
+                    android:padding="10dp"
+                    android:textColor="@color/creditCardBackground"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"/>
 
-            </androidx.cardview.widget.CardView>
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:paddingTop="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/unit_product_sell_price"
-                android:textColor="@color/creditCardBackground"
-                android:textSize="18sp" />
+                android:textColor="@color/textColorSecondaryLight"
+                android:textSize="16sp" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="35dp">
+
 
                 <EditText
                     android:id="@+id/etxt_product_sell_price"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:layout_height="45dp"
+                    android:background="@drawable/edittext_corner"
                     android:fontFamily="@font/josefin_sans"
-                    android:hint="@string/product_sell_price"
                     android:inputType="text"
-                    android:padding="8dp"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
-
-            </androidx.cardview.widget.CardView>
+                    android:padding="10dp"
+                    android:textColor="@color/creditCardBackground"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"/>
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:paddingTop="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/product_stock"
-                android:textColor="@color/creditCardBackground"
-                android:textSize="18sp" />
+                android:textColor="@color/textColorSecondaryLight"
+                android:textSize="16sp" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="35dp">
+
 
                 <EditText
                     android:id="@+id/etxt_product_stock"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:layout_height="45dp"
+                    android:background="@drawable/edittext_corner"
                     android:fontFamily="@font/josefin_sans"
-                    android:hint="@string/product_stock"
                     android:inputType="text"
-                    android:padding="8dp"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
+                    android:padding="10dp"
+                    android:textColor="@color/creditCardBackground"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="10dp"/>
 
-            </androidx.cardview.widget.CardView>
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:paddingTop="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/select_supplier"
-                android:textColor="@color/creditCardBackground"
-                android:textSize="18sp" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="35dp">
+                android:textColor="@color/textColorSecondaryLight"
+                android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/etxt_supplier"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:layout_height="45dp"
+                    android:background="@drawable/edittext_corner"
                     android:drawableRight="@drawable/drop_down"
                     android:fontFamily="@font/josefin_sans"
-                    android:hint="@string/product_supplier"
                     android:inputType="text"
-                    android:padding="8dp"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
+                    android:padding="10dp"
+                    android:textColor="@color/creditCardBackground"
+                    android:textSize="18sp" />
 
-            </androidx.cardview.widget.CardView>
 
 
             <TextView
                 android:id="@+id/txt_add_product"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginEnd="20dp"
                 android:layout_marginBottom="18dp"
                 android:background="@drawable/balance_cards"
                 android:fontFamily="@font/josefin_sans"

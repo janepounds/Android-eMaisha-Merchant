@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     android:gravity="center_vertical"
     tools:context=".auth.Login">
 
@@ -27,62 +28,57 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
             android:fontFamily="@font/josefin_sans"
             android:paddingTop="30dp"
             android:text="Phone Number"
-            android:textColor="@color/creditCardBackground" />
+            android:textSize="16sp"
+            android:textColor="@color/textColorSecondaryLight" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="20dp">
+
 
             <EditText
                 android:id="@+id/etxt_merchant_contact"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:layout_height="50dp"
+                android:background="@drawable/edittext_corner"
                 android:fontFamily="@font/josefin_sans"
-                android:hint="Phone Number"
                 android:inputType="text"
                 android:padding="8dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:textColor="#000"
                 android:textSize="16sp" />
 
-        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
             android:fontFamily="@font/josefin_sans"
             android:paddingTop="20dp"
+            android:textSize="16sp"
             android:text="Password"
-            android:textColor="@color/creditCardBackground" />
+            android:textColor="@color/textColorSecondaryLight" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="20dp">
 
             <EditText
                 android:id="@+id/etxt_merchant_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:layout_height="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/edittext_corner"
                 android:fontFamily="@font/josefin_sans"
-                android:hint="Password"
                 android:inputType="textPassword"
                 android:padding="8dp"
                 android:textColor="#000"
                 android:textSize="16sp" />
 
-        </androidx.cardview.widget.CardView>
+
 
         <TextView
             android:id="@+id/txt_shop_login"
@@ -94,11 +90,12 @@
             android:background="@drawable/balance_cards"
             android:fontFamily="@font/josefin_sans"
             android:gravity="center"
-            android:padding="10dp"
+            android:padding="15dp"
             android:text="Login"
             android:textColor="#ffffff"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textAllCaps="true"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -115,7 +112,7 @@
                 android:text="@string/not_a_member"
                 android:textColor="@color/textColorSecondaryLight"
                 android:textSize="16sp"
-                android:textStyle="normal" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/login_signupText"

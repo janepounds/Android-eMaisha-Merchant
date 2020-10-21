@@ -4,27 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/windowBackground">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="10dp"
         android:foreground="?android:attr/selectableItemBackground"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="5dp"
-        app:cardElevation="10dp"
+        android:layout_margin="10dp"
         app:cardPreventCornerOverlap="false">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:baselineAligned="false"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="10">
+            android:weightSum="10"
+            android:padding="8dp">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -46,7 +43,6 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_weight="6"
                 android:orientation="vertical"
                 android:paddingLeft="10dp">
@@ -55,15 +51,18 @@
                     android:id="@+id/txt_supplier_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="6dp"
                     android:fontFamily="@font/josefin_sans"
                     android:text="Supplier Name"
                     android:textColor="@color/creditCardBackground"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/txt_contact_person"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
                     android:fontFamily="@font/josefin_sans"
                     android:text="@string/contact_person"
                     android:textColor="#000" />
@@ -72,6 +71,7 @@
                     android:id="@+id/txt_supplier_cell"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
                     android:fontFamily="@font/josefin_sans"
                     android:text="@string/mobile_number"
                     android:textColor="#000" />
@@ -80,6 +80,7 @@
                     android:id="@+id/txt_supplier_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
                     android:fontFamily="@font/josefin_sans"
                     android:text="Email "
                     android:textColor="#000" />
@@ -88,6 +89,7 @@
                     android:id="@+id/txt_supplier_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
                     android:fontFamily="@font/josefin_sans"
                     android:text="@string/supplier_address_one"
                     android:textColor="#000" />
@@ -96,6 +98,7 @@
                     android:id="@+id/txt_supplier_address_two"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
                     android:fontFamily="@font/josefin_sans"
                     android:text="@string/supplier_address_two"
                     android:textColor="#000" />
@@ -105,31 +108,32 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center_horizontal|center_vertical"
                     android:orientation="vertical">
-
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        app:srcCompat="@drawable/ic_right_arrow_green"
+                        tools:ignore="VectorDrawableCompat" />
                     <ImageView
                         android:id="@+id/img_call"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
+                        android:layout_marginTop="5dp"
                         app:srcCompat="@drawable/new_phone"
                         tools:ignore="VectorDrawableCompat" />
 
                     <ImageView
                         android:id="@+id/img_delete"
-                        android:layout_width="25dp"
+                        android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:layout_marginTop="10dp"
-                        app:srcCompat="@drawable/new_delete"
+                        app:srcCompat="@drawable/ic_close"
                         tools:ignore="VectorDrawableCompat" />
                 </LinearLayout>
 
