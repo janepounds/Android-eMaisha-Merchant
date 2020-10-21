@@ -4,25 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/windowBackground">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_margin="5dp"
         android:foreground="?android:attr/selectableItemBackground"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="5dp"
-        app:cardElevation="10dp"
         app:cardPreventCornerOverlap="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:baselineAligned="false"
+            android:padding="6dp"
             android:orientation="horizontal">
 
 
@@ -40,7 +38,9 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/josefin_sans"
                     android:text="Expense Name"
-                    android:textColor="#000000"
+                    android:layout_marginBottom="2dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/creditCardBackground"
                     android:textSize="16sp" />
 
                 <TextView
@@ -50,7 +50,7 @@
                     android:fontFamily="@font/josefin_sans"
                     android:padding="2dp"
                     android:text="Expense Amount"
-                    android:textColor="@color/deleteIconColor" />
+                    android:textColor="@color/textColorSecondaryLight" />
 
                 <TextView
                     android:id="@+id/txt_date_time"
@@ -59,7 +59,7 @@
                     android:fontFamily="@font/josefin_sans"
                     android:padding="2dp"
                     android:text="Date Time"
-                    android:textColor="@color/deleteIconColor" />
+                    android:textColor="@color/textColorSecondaryLight" />
 
                 <TextView
                     android:id="@+id/txt_expense_note"
@@ -68,30 +68,31 @@
                     android:fontFamily="@font/josefin_sans"
                     android:padding="2dp"
                     android:text="Note "
-                    android:textColor="@color/deleteIconColor" />
+                    android:textColor="@color/textColorSecondaryLight" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_marginRight="10dp"
-                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:gravity="end"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="right"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_gravity="end"
+                    android:gravity="end">
 
                     <ImageView
                         android:id="@+id/img_delete"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        app:srcCompat="@drawable/new_delete"
+                        android:gravity="end"
+                        android:layout_gravity="end"
+                        app:srcCompat="@drawable/ic_close"
                         tools:ignore="VectorDrawableCompat" />
                 </LinearLayout>
 

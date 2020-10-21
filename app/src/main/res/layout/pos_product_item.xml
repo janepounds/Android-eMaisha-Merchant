@@ -13,22 +13,46 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="7dp"
+            android:background="@drawable/edittext_corner"
             android:foreground="?android:attr/selectableItemBackground"
-            android:theme="@style/ThemeOverlay.AppCompat.Light"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="0dp">
+            android:theme="@style/ThemeOverlay.AppCompat.Light">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:weightSum="10">
+                android:weightSum="10.5">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/txt_weight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:padding="6dp"
+                        android:text="@string/weight"
+                        android:textColor="#000"
+                        app:fontFamily="@font/josefin_sans"
+                        android:background="@drawable/rounded_corners_edittext_light"/>
+                    <ImageView
+                        android:id="@+id/img_favorite"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_heart_shape_outline"/>
 
+                </RelativeLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -46,11 +70,12 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="5"
+                    android:layout_weight="4"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/txt_product_name"
+                        android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -63,6 +88,7 @@
 
                     <TextView
                         android:id="@+id/txt_price"
+                        android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -71,19 +97,12 @@
                         android:textColor="@color/creditCardBackground"
                         app:fontFamily="@font/sailec_regular" />
 
-                    <TextView
-                        android:id="@+id/txt_weight"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:padding="2dp"
-                        android:text="@string/weight"
-                        android:textColor="#000"
-                        app:fontFamily="@font/josefin_sans" />
+
 
 
                     <com.balysv.materialripple.MaterialRippleLayout
                         style="@style/RippleStyleWhite"
+                        android:layout_weight="2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -91,11 +110,10 @@
                         <Button
                             android:id="@+id/btn_add_cart"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
+                            android:layout_height="30dp"
+                            android:layout_marginStart="8dp"
                             android:layout_marginTop="2dp"
-                            android:layout_marginEnd="10dp"
-                            android:layout_marginBottom="5dp"
+                            android:layout_marginEnd="8dp"
                             android:background="@drawable/balance_cards"
                             android:fontFamily="@font/josefin_sans"
                             android:text="@string/add_to_cart"
@@ -104,7 +122,7 @@
                     </com.balysv.materialripple.MaterialRippleLayout>
                 </LinearLayout>
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
     </LinearLayout>
 

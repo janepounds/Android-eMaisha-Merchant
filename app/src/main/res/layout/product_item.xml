@@ -200,7 +200,7 @@
                 <FrameLayout
                     xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="30dp"
                     android:orientation="vertical"
                     android:padding="0dp">
 
@@ -208,7 +208,7 @@
                         android:id="@+id/img_delete"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:layout_gravity="top"
+                        android:layout_gravity="top|center_horizontal"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
                         app:srcCompat="@drawable/ic_close"
@@ -222,7 +222,7 @@
                         android:background="@drawable/rectangular_background_danger"
                         android:orientation="horizontal"
                         android:padding="0dp"
-                        android:visibility="gone"></LinearLayout>
+                        android:visibility="gone"/>
 
                 </FrameLayout>
 
