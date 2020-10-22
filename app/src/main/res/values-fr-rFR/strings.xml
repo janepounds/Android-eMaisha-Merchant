@@ -148,7 +148,7 @@
     <string name="note">Remarque: </string>
     <string name="want_to_delete_expense">Voulez supprimer les dépenses ?</string>
     <string name="expense_deleted">Dépense supprimée</string>
-    <string name="order_id">numéro de commande:</string>
+    <string name="order_id">numéro de commande</string>
     <string name="payment_method">Mode de paiement:</string>
     <string name="order_type">Type de commande:</string>
     <string name="want_to_delete_supplier">Voulez supprimer le fournisseur ?</string>

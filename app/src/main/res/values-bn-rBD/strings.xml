@@ -164,7 +164,7 @@
     <string name="note">নোট : </string>
     <string name="want_to_delete_expense">ব্যয় ডিলেট করতে চান ?</string>
     <string name="expense_deleted">ব্যয় ডিলেট </string>
-    <string name="order_id">অর্ডার আইডি :</string>
+    <string name="order_id">অর্ডার আইডি</string>
     <string name="payment_method">পেমেণ্ট মেথড:</string>
     <string name="order_type">অর্ডার টাইপ:</string>
     <string name="want_to_delete_supplier">সাপ্লাইয়ারস ডিলেট করতে চান  ?</string>

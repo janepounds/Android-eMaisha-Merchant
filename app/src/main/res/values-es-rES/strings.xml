@@ -149,7 +149,7 @@
     <string name="note">Nota:</string>
     <string name="want_to_delete_expense">¿Quieres eliminar gastos?</string>
     <string name="expense_deleted">Gastos eliminados</string>
-    <string name="order_id">Solicitar ID:</string>
+    <string name="order_id">Solicitar ID</string>
     <string name="payment_method">Método de pago:</string>
     <string name="order_type">Tipo de orden:</string>
     <string name="want_to_delete_supplier">¿Quieres eliminar al proveedor?</string>
