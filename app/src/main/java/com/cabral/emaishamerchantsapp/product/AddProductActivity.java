@@ -81,6 +81,7 @@ public class AddProductActivity extends BaseActivity {
     private List<Manufacturer> manufacturers;
     private List<String> productNames;
     private List<String> manufacturersNames;
+    private int measure_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -204,8 +205,10 @@ public class AddProductActivity extends BaseActivity {
             public void onClick(View v) {
                 Log.d("Categories", String.valueOf(categories));
                 manufacturersNames = new ArrayList<>();
-                for (int i = 0; i < manufacturers.size(); i++) {
-                    manufacturersNames.add(manufacturers.get(i).getManufacturer_name());
+                if(manufacturers!=null) {
+                    for (int i = 0; i < manufacturers.size(); i++) {
+                        manufacturersNames.add(manufacturers.get(i).getManufacturer_name());
+                    }
                 }
 
                 manufacturersAdapter = new ArrayAdapter<String>(AddProductActivity.this, R.layout.list_row);
@@ -293,7 +296,6 @@ public class AddProductActivity extends BaseActivity {
                 Log.d("Categories", String.valueOf(categories));
                 catNames = new ArrayList<>();
                 if (validateManufacturer()) {
-
                 for (int i = 0; i < categories.size(); i++) {
                     catNames.add(categories.get(i).getCategories_slug());
                 }
@@ -411,7 +413,8 @@ public class AddProductActivity extends BaseActivity {
                 Log.d("Products", String.valueOf(products));
                 if (validateProductCategory()) {
                     for (int i = 0; i < products.size(); i++) {
-                        productNames.add(products.get(i).getProducts_slug());
+                        productNames.add(products.get(i).getProducts_name()+ " "+ products.get(i).getProducts_weight()+ products.get(i).getProducts_weight_unit());
+                        measure_id = products.get(i).getMeasure_id();
                     }
 
                     productAdapter = new ArrayAdapter<String>(AddProductActivity.this, R.layout.list_row);
@@ -478,7 +481,7 @@ public class AddProductActivity extends BaseActivity {
                                 if (productNames.get(i).equalsIgnoreCase(selectedItem)) {
                                     // Get the ID of selected Country
                                     product_id = products.get(i).getProducts_id();
-                                    product_name = products.get(i).getProducts_slug();
+                                    product_name = products.get(i).getProducts_name()+ " "+ products.get(i).getProducts_weight()+ products.get(i).getProducts_weight_unit();
                                 }
                             }
 
@@ -623,6 +626,7 @@ public class AddProductActivity extends BaseActivity {
                             .getApi()
                             .postProduct(
                                     id,
+                                    measure_id,
                                     shop_id,
                                     product_id,
                                     product_buy_price,
