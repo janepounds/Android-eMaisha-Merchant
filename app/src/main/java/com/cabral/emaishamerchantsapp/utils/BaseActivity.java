@@ -38,7 +38,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
-
     //for Android Android N
     @Override
     public void applyOverrideConfiguration(Configuration overrideConfiguration) {

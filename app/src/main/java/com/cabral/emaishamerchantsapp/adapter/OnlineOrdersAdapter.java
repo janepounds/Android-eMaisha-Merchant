@@ -45,7 +45,6 @@ public class OnlineOrdersAdapter extends RecyclerView.Adapter<OnlineOrdersAdapte
         holder.txt_customer_address.setText(customer_address);
 
 
-
     }
 
     @Override

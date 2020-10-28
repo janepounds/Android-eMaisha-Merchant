@@ -15,17 +15,10 @@ import java.util.Locale;
 
 public class LocaleManager {
 
-    @Retention(RetentionPolicy.SOURCE)
-    @StringDef({ FRENCH,ENGLISH, BANGLA,SPANISH})
-    public @interface LocaleDef {
-        String[] SUPPORTED_LOCALES = {FRENCH, ENGLISH, BANGLA,SPANISH};
-    }
-
     static public final String FRENCH = "fr";
     static public final String ENGLISH = "en";
     static public final String BANGLA = "bn";
     static public final String SPANISH = "es";
-
     /**
      * SharedPreferences Key
      */
@@ -89,6 +82,12 @@ public class LocaleManager {
     public static Locale getLocale(Resources res) {
         Configuration config = res.getConfiguration();
         return Build.VERSION.SDK_INT >= 24 ? config.getLocales().get(0) : config.locale;
+    }
+
+    @Retention(RetentionPolicy.SOURCE)
+    @StringDef({FRENCH, ENGLISH, BANGLA, SPANISH})
+    public @interface LocaleDef {
+        String[] SUPPORTED_LOCALES = {FRENCH, ENGLISH, BANGLA, SPANISH};
     }
 
 

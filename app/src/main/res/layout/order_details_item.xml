@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -24,14 +23,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:baselineAligned="false"
-            android:weightSum="10"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="10">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:gravity="center"
                 android:layout_weight="2.5"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <ImageView
@@ -82,15 +81,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:weightSum="10"
-                    >
+                    android:weightSum="10">
 
                     <TextView
                         android:id="@+id/txt_price"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/josefin_sans"
                         android:layout_weight="2"
+                        android:fontFamily="@font/josefin_sans"
                         android:padding="2dp"
                         android:text="@string/price"
                         android:textColor="#000" />
@@ -99,9 +97,9 @@
                         android:id="@+id/txt_total_cost"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="5dp"
                         android:layout_weight="8"
                         android:fontFamily="@font/josefin_sans"
+                        android:paddingLeft="5dp"
                         android:text="Total Cost"
                         android:textColor="#000" />
                 </LinearLayout>

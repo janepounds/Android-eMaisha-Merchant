@@ -169,16 +169,16 @@
     <string name="note">Note: </string>
     <string name="want_to_delete_expense">Want to Delete Expense ?</string>
     <string name="expense_deleted">Expense Deleted</string>
-    <string name="order_id">Order ID:</string>
+    <string name="order_id">Order ID</string>
     <string name="payment_method">Payment Method:</string>
-    <string name="order_type">Order Type:</string>
+    <string name="order_type">Order Type</string>
     <string name="want_to_delete_supplier">Want to Delete Supplier ?</string>
     <string name="supplier_deleted">Supplier Deleted</string>
     <string name="quantity">Quantity:</string>
     <string name="date">Date:</string>
-    <string name="supplier">Supplier: </string>
-    <string name="buy_price">Buy Price:</string>
-    <string name="sell_price">Sell Price:</string>
+    <string name="supplier">Supplier </string>
+    <string name="buy_price">Buy Price</string>
+    <string name="sell_price">Sell Price</string>
     <string name="want_to_delete_product">Want to Delete Product ?</string>
     <string name="product_deleted">Product Deleted</string>
     <string name="product_added_to_cart">Product added to cart</string>
@@ -249,7 +249,7 @@
     <string name="user_address_one" translatable="false">Address 1</string>
     <string name="user_address_two" translatable="false">Address 2</string>
     <string name="order_payment_method" translatable="false">Cash</string>
-    <string name="order_payment_method_value" translatable="false">Payment Method: </string>
+    <string name="order_payment_method_value" translatable="false">Payment Method</string>
     <string name="order_status" translatable="false">Order Status:</string>
     <string name="order_id_value" translatable="false">1235678934</string>
     <string name="order_type_value" translatable="false">Home Delivery</string>
@@ -278,4 +278,5 @@
     <string name="accept_payment">Accept Payment</string>
     <string name="transactions">Transactions</string>
     <string name="home">Home</string>
+    <string name="district">District</string>
 </resources>

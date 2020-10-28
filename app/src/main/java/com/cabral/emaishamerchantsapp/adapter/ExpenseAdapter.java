@@ -50,25 +50,20 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.MyViewHo
 
         final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(context);
 
-        final String expense_id= expenseData.get(position).get("expense_id");
-        String expense_name= expenseData.get(position).get("expense_name");
-        String expense_note= expenseData.get(position).get("expense_note");
-        String expense_amount= expenseData.get(position).get("expense_amount");
-        String date= expenseData.get(position).get("expense_date");
-        String time= expenseData.get(position).get("expense_time");
+        final String expense_id = expenseData.get(position).get("expense_id");
+        String expense_name = expenseData.get(position).get("expense_name");
+        String expense_note = expenseData.get(position).get("expense_note");
+        String expense_amount = expenseData.get(position).get("expense_amount");
+        String date = expenseData.get(position).get("expense_date");
+        String time = expenseData.get(position).get("expense_time");
 
         databaseAccess.open();
-        String currency=databaseAccess.getCurrency();
+        String currency = databaseAccess.getCurrency();
 
         holder.txtExpenseName.setText(expense_name);
-        holder.txtExpenseAmount.setText(currency+" "+expense_amount);
-        holder.txtExpenseDateTime.setText(date+" "+time);
-        holder.txtExpenseNote.setText(context.getString(R.string.note)+" "+expense_note);
-
-
-
-
-
+        holder.txtExpenseAmount.setText(currency + " " + expense_amount);
+        holder.txtExpenseDateTime.setText(date + " " + time);
+        holder.txtExpenseNote.setText(context.getString(R.string.note) + " " + expense_note);
 
 
         holder.imgDelete.setOnClickListener(new View.OnClickListener() {
@@ -83,10 +78,9 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.MyViewHo
 
 
                                 databaseAccess.open();
-                                boolean deleteProduct=databaseAccess.deleteExpense(expense_id);
+                                boolean deleteProduct = databaseAccess.deleteExpense(expense_id);
 
-                                if (deleteProduct)
-                                {
+                                if (deleteProduct) {
                                     Toasty.error(context, R.string.expense_deleted, Toast.LENGTH_SHORT).show();
 
                                     expenseData.remove(holder.getAdapterPosition());
@@ -94,10 +88,7 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.MyViewHo
                                     // Notify that item at position has been removed
                                     notifyItemRemoved(holder.getAdapterPosition());
 
-                                }
-
-                                else
-                                {
+                                } else {
                                     Toast.makeText(context, R.string.failed, Toast.LENGTH_SHORT).show();
                                 }
                                 dialog.cancel();
@@ -121,17 +112,17 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.MyViewHo
         return expenseData.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView txtExpenseName, txtExpenseAmount, txtExpenseNote, txtExpenseDateTime;
-        ImageView imgDelete,product_image;
+        ImageView imgDelete, product_image;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             txtExpenseName = itemView.findViewById(R.id.txt_expense_name);
             txtExpenseAmount = itemView.findViewById(R.id.txt_expense_amount);
-            txtExpenseNote= itemView.findViewById(R.id.txt_expense_note);
+            txtExpenseNote = itemView.findViewById(R.id.txt_expense_note);
             txtExpenseDateTime = itemView.findViewById(R.id.txt_date_time);
 
             imgDelete = itemView.findViewById(R.id.img_delete);
@@ -153,7 +144,6 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseAdapter.MyViewHo
             context.startActivity(i);
         }
     }
-
 
 
 }

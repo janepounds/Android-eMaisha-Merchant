@@ -21,19 +21,30 @@ public class SharedPrefManager {
         return mInstance;
     }
 
-    public void saveShopId(Integer id){
+    public void saveShopId(Integer id) {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("shop_id", id);
         editor.apply();
     }
+    public void saveToken(String token){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("token", token);
+        editor.apply();
+    }
+
+    public String getToken(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return  sharedPreferences.getString("token",null);
+    }
 
     public boolean isShopSynced() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        return  sharedPreferences.getInt("shop_id", -1) != -1;
+        return sharedPreferences.getInt("shop_id", -1) != -1;
     }
 
-    public  Integer getShopId(){
+    public Integer getShopId() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getInt("shop_id", -1);
     }

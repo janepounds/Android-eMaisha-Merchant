@@ -34,13 +34,9 @@ import es.dmoral.toasty.Toasty;
 public class BackupActivity extends BaseActivity {
 
 
-
-
     ProgressDialog loading;
+    CardView cardLocalBackUp, cardLocalImport, cardExportToExcel;
     private LocalBackup localBackup;
-
-
-    CardView cardLocalBackUp, cardLocalImport,cardExportToExcel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +51,7 @@ public class BackupActivity extends BaseActivity {
         final DatabaseOpenHelper db = new DatabaseOpenHelper(getApplicationContext());
         cardLocalBackUp = findViewById(R.id.card_local_backup);
         cardLocalImport = findViewById(R.id.card_local_db_import);
-        cardExportToExcel=findViewById(R.id.card_export_to_excel);
+        cardExportToExcel = findViewById(R.id.card_export_to_excel);
 
 
         localBackup = new LocalBackup(BackupActivity.this);
@@ -86,8 +82,6 @@ public class BackupActivity extends BaseActivity {
                 localBackup.performBackup(db, outFileName);
             }
         });
-
-
 
 
         cardExportToExcel.setOnClickListener(new View.OnClickListener() {
@@ -154,12 +148,6 @@ public class BackupActivity extends BaseActivity {
     }
 
 
-
-
-
-
-
-
     public void folderChooser() {
         new ChooserDialog(BackupActivity.this)
 
@@ -171,17 +159,13 @@ public class BackupActivity extends BaseActivity {
                     @Override
                     public void onChoosePath(String path, File pathFile) {
                         onExport(path);
-                        Log.d("path",path);
+                        Log.d("path", path);
 
                     }
                 })
                 .build()
                 .show();
     }
-
-
-
-
 
 
     public void onExport(String path) {
@@ -193,7 +177,7 @@ public class BackupActivity extends BaseActivity {
         }
         // Export SQLite DB as EXCEL FILE
         SQLiteToExcel sqliteToExcel = new SQLiteToExcel(getApplicationContext(), DatabaseOpenHelper.DATABASE_NAME, directory_path);
-        sqliteToExcel.exportAllTables( "SmartPOS_AllData.xls", new SQLiteToExcel.ExportListener() {
+        sqliteToExcel.exportAllTables("SmartPOS_AllData.xls", new SQLiteToExcel.ExportListener() {
             @Override
             public void onStart() {
 
@@ -214,7 +198,6 @@ public class BackupActivity extends BaseActivity {
 
                         loading.dismiss();
                         Toasty.success(BackupActivity.this, R.string.data_successfully_exported, Toast.LENGTH_SHORT).show();
-
 
 
                     }

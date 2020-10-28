@@ -50,7 +50,6 @@
     <string name="something_went_wrong">Algo salió mal</string>
 
 
-
     <string name="add_product">Agregar producto</string>
     <string name="product_details">Detalles de producto</string>
     <string name="product_code">Código de producto</string>
@@ -97,7 +96,6 @@
     <string name="product_name">nombre del producto</string>
     <string name="weight">Peso</string>
     <string name="price">Precio</string>
-
 
 
     <string name="unit_product_buy_price"> Unidad Producto Precio de compra </string>
@@ -151,7 +149,7 @@
     <string name="note">Nota:</string>
     <string name="want_to_delete_expense">¿Quieres eliminar gastos?</string>
     <string name="expense_deleted">Gastos eliminados</string>
-    <string name="order_id">Solicitar ID:</string>
+    <string name="order_id">Solicitar ID</string>
     <string name="payment_method">Método de pago:</string>
     <string name="order_type">Tipo de orden:</string>
     <string name="want_to_delete_supplier">¿Quieres eliminar al proveedor?</string>
@@ -195,7 +193,6 @@
     <string name="open_pdf">Abrir PDF</string>
     <string name="open_with_external_pdf_reader">Abierto con lector externo de pdf</string>
     <string name="generate_pdf_receipt">Recibo PDF</string>
-
 
 
     <string name="edit_customer">Editar cliente</string>

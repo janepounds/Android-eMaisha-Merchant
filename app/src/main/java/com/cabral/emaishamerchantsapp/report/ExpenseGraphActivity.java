@@ -23,7 +23,6 @@ import java.util.Locale;
 public class ExpenseGraphActivity extends BaseActivity {
 
 
-
     int mYear = 2020;
     BarChart barChart;
     TextView txtTotalSales, txtSelectYear;
@@ -98,7 +97,7 @@ public class ExpenseGraphActivity extends BaseActivity {
         String currency = databaseAccess.getCurrency();
 
         databaseAccess.open();
-        txtTotalSales.setText( currency +" "+ databaseAccess.getTotalExpense("yearly"));
+        txtTotalSales.setText(currency + " " + databaseAccess.getTotalExpense("yearly"));
 
 
     }

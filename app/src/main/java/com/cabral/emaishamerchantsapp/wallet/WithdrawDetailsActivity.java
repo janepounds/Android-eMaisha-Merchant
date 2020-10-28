@@ -3,8 +3,10 @@ package com.cabral.emaishamerchantsapp.wallet;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -15,12 +17,15 @@ import com.cabral.emaishamerchantsapp.R;
 
 public class WithdrawDetailsActivity extends AppCompatActivity {
 
-    TextView txtConfirm;
+    Button txtConfirm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_withdraw_details);
+        getSupportActionBar().setHomeButtonEnabled(true); //for back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
+        getSupportActionBar().setTitle("Withdraw Details");
 
         txtConfirm = findViewById(R.id.txt_withdraw_confirm);
 
@@ -53,5 +58,19 @@ public class WithdrawDetailsActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    //for back button
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case android.R.id.home:
+                // app icon in action bar clicked; goto parent activity.
+                this.finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F9F9F9"
     tools:context=".wallet.DepositsActivity">
 
 
@@ -27,10 +28,10 @@
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
+
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:src="@drawable/ic_baseline_account_circle_24" />
 
                     <TextView
@@ -39,6 +40,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/josefin_sans"
+                        android:layout_gravity="center_vertical"
                         android:text="Enter Account No"
                         android:textColor="#929292"
                         android:textSize="20sp"
@@ -48,7 +50,7 @@
 
 
                 <EditText
-                    android:id="@+id/etxt_customer_account"
+                    android:id="@+id/etxt_customer_withdraw_account"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
@@ -56,7 +58,7 @@
                     android:layout_marginRight="10dp"
                     android:background="@drawable/round_shape"
                     android:fontFamily="@font/josefin_sans"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:padding="8dp"
                     android:textColor="#000"
                     android:textSize="16sp" />
@@ -78,8 +80,8 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
                         android:src="@drawable/ic_baseline_monetization_on_24" />
 
@@ -88,8 +90,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:layout_gravity="center_vertical"
                         android:fontFamily="@font/josefin_sans"
-                        android:text="Enter Ammount"
+                        android:text="Enter Amount"
                         android:textColor="#929292"
                         android:textSize="20sp"
                         android:textStyle="bold" />
@@ -98,7 +101,7 @@
 
 
                 <EditText
-                    android:id="@+id/etxt_customer_amount"
+                    android:id="@+id/etxt_customer_withdraw_amount"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
@@ -106,7 +109,7 @@
                     android:layout_marginRight="10dp"
                     android:background="@drawable/round_shape"
                     android:fontFamily="@font/josefin_sans"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:padding="8dp"
                     android:textColor="#000"
                     android:textSize="16sp" />
@@ -127,10 +130,9 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/phone_call_one" />
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_phon_icon" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -138,6 +140,7 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/josefin_sans"
+                        android:layout_gravity="center_vertical"
                         android:text="Enter Phone Number"
                         android:textColor="#929292"
                         android:textSize="20sp"
@@ -147,7 +150,7 @@
 
 
                 <EditText
-                    android:id="@+id/etxt_next_of_kin_name"
+                    android:id="@+id/etxt_customer_withdraw_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
@@ -155,31 +158,27 @@
                     android:layout_marginRight="10dp"
                     android:background="@drawable/round_shape"
                     android:fontFamily="@font/josefin_sans"
-                    android:inputType="text"
+                    android:inputType="number"
                     android:padding="8dp"
                     android:textColor="#000"
                     android:textSize="16sp" />
 
 
             </LinearLayout>
-
+            <Button
+                android:id="@+id/txt_withdraw_submit"
+                style="@style/button_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="SUBMIT"/>
         </LinearLayout>
 
     </ScrollView>
 
-    <TextView
-        android:id="@+id/txt_withdraw_submit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/creditCardBackground"
-        android:fontFamily="@font/josefin_sans"
-        android:gravity="center"
-        android:padding="10dp"
-        android:text="SUBMIT"
-        android:textColor="#ffffff"
-        android:textSize="20sp"
-        android:textStyle="bold" />
 
 
 </RelativeLayout>

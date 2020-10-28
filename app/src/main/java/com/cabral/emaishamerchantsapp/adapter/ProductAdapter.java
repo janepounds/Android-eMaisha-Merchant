@@ -61,7 +61,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         String buy_price = productData.get(position).get("product_buy_price");
         String sell_price = productData.get(position).get("product_sell_price");
         String base64Image = productData.get(position).get("product_image");
-        String productstock= productData.get(position).get("product_stock");
+        String productstock = productData.get(position).get("product_stock");
 
         databaseAccess.open();
         String currency = databaseAccess.getCurrency();
@@ -72,8 +72,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         holder.txtProductName.setText(name);
         holder.txt_product_stock.setText(productstock);
         holder.txtSupplierName.setText(supplier_name);
-        holder.txtBuyPrice.setText( currency +" "+ buy_price);
-        holder.txtSellPrice.setText(currency + " "+sell_price);
+        holder.txtBuyPrice.setText(currency + " " + buy_price);
+        holder.txtSellPrice.setText(currency + " " + sell_price);
 
 
         if (base64Image != null) {
@@ -145,7 +145,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView txtProductName, txtSupplierName, txtBuyPrice, txtSellPrice,txt_product_stock;
+        TextView txtProductName, txtSupplierName, txtBuyPrice, txtSellPrice, txt_product_stock;
         ImageView imgDelete, product_image;
         LinearLayout img_delete_shadow;
 

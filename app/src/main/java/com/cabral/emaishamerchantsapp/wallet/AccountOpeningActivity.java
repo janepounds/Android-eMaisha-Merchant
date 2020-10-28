@@ -1,16 +1,14 @@
 package com.cabral.emaishamerchantsapp.wallet;
 
+import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.os.Bundle;
-import android.view.MenuItem;
-
 import com.cabral.emaishamerchantsapp.Fragments.PersonalDetails;
-import com.cabral.emaishamerchantsapp.Fragments.TransactionsFragment;
 import com.cabral.emaishamerchantsapp.R;
-import com.kofigyan.stateprogressbar.StateProgressBar;
 
 public class AccountOpeningActivity extends AppCompatActivity {
 
@@ -46,6 +44,15 @@ public class AccountOpeningActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() == 1) {
+            moveTaskToBack(false);
+        } else {
+            super.onBackPressed();
         }
     }
 }

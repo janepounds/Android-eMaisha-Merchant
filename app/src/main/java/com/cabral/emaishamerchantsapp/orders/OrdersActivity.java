@@ -26,13 +26,11 @@ import es.dmoral.toasty.Toasty;
 public class OrdersActivity extends BaseActivity {
 
 
-    private RecyclerView recyclerView;
-    private OrderAdapter orderAdapter;
-
     ImageView imgNoProduct;
     TextView txtNoProducts;
     EditText etxtSearch;
-
+    private RecyclerView recyclerView;
+    private OrderAdapter orderAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +40,8 @@ public class OrdersActivity extends BaseActivity {
         recyclerView = findViewById(R.id.recycler);
         imgNoProduct = findViewById(R.id.image_no_product);
 
-        txtNoProducts=findViewById(R.id.txt_no_products);
-        etxtSearch=findViewById(R.id.etxt_search_order);
+        txtNoProducts = findViewById(R.id.txt_no_products);
+        etxtSearch = findViewById(R.id.etxt_search_order);
 
         imgNoProduct.setVisibility(View.GONE);
         txtNoProducts.setVisibility(View.GONE);
@@ -58,7 +56,7 @@ public class OrdersActivity extends BaseActivity {
 
 
         // set a GridLayoutManager with default vertical orientation and 3 number of columns
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(OrdersActivity.this,LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(OrdersActivity.this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager); // set LayoutManager to RecyclerView
 
         recyclerView.setHasFixedSize(true);
@@ -86,7 +84,6 @@ public class OrdersActivity extends BaseActivity {
         }
 
 
-
         etxtSearch.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -112,7 +109,6 @@ public class OrdersActivity extends BaseActivity {
                     recyclerView.setVisibility(View.GONE);
                     imgNoProduct.setVisibility(View.VISIBLE);
                     imgNoProduct.setImageResource(R.drawable.no_data);
-
 
 
                 } else {

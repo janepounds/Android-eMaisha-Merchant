@@ -27,9 +27,9 @@ import es.dmoral.toasty.Toasty;
 public class PosProductAdapter extends RecyclerView.Adapter<PosProductAdapter.MyViewHolder> {
 
 
+    MediaPlayer player;
     private List<HashMap<String, String>> productData;
     private Context context;
-    MediaPlayer player;
 
 
     public PosProductAdapter(Context context, List<HashMap<String, String>> productData) {
@@ -69,7 +69,7 @@ public class PosProductAdapter extends RecyclerView.Adapter<PosProductAdapter.My
 
         holder.txtProductName.setText(name);
         holder.txtWeight.setText(product_weight + " " + weight_unit_name);
-        holder.txtPrice.setText(currency +" "+ product_price);
+        holder.txtPrice.setText(currency + " " + product_price);
 
 
         if (base64Image != null) {

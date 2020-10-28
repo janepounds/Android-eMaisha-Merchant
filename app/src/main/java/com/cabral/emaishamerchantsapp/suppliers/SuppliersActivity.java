@@ -36,12 +36,11 @@ public class SuppliersActivity extends BaseActivity {
 
 
     ProgressDialog loading;
-
-    private RecyclerView recyclerView;
-
     ImageView imgNoProduct;
     EditText etxtSearch;
     FloatingActionButton fabAdd;
+    private RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,14 +52,13 @@ public class SuppliersActivity extends BaseActivity {
 
         recyclerView = findViewById(R.id.cart_recyclerview);
         imgNoProduct = findViewById(R.id.image_no_product);
-        etxtSearch=findViewById(R.id.etxt_supplier_search);
+        etxtSearch = findViewById(R.id.etxt_supplier_search);
         fabAdd = findViewById(R.id.fab_add);
 
 
         //for interstitial ads show
 //        Utils utils=new Utils();
 //        utils.interstitialAdsShow(SuppliersActivity.this);
-
 
 
         fabAdd.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +101,6 @@ public class SuppliersActivity extends BaseActivity {
         }
 
 
-
         etxtSearch.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -129,7 +126,6 @@ public class SuppliersActivity extends BaseActivity {
                     recyclerView.setVisibility(View.GONE);
                     imgNoProduct.setVisibility(View.VISIBLE);
                     imgNoProduct.setImageResource(R.drawable.no_data);
-
 
 
                 } else {
@@ -171,18 +167,13 @@ public class SuppliersActivity extends BaseActivity {
         if (id == R.id.menu_export_supplier) {
 
             folderChooser();
-        }
-
-        else if (id == android.R.id.home) {
+        } else if (id == android.R.id.home) {
             this.finish();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
-
-
 
 
     public void folderChooser() {
@@ -196,17 +187,13 @@ public class SuppliersActivity extends BaseActivity {
                     @Override
                     public void onChoosePath(String path, File pathFile) {
                         onExport(path);
-                        Log.d("path",path);
+                        Log.d("path", path);
 
                     }
                 })
                 .build()
                 .show();
     }
-
-
-
-
 
 
     public void onExport(String path) {
@@ -239,7 +226,6 @@ public class SuppliersActivity extends BaseActivity {
 
                         loading.dismiss();
                         Toasty.success(SuppliersActivity.this, R.string.data_successfully_exported, Toast.LENGTH_SHORT).show();
-
 
 
                     }

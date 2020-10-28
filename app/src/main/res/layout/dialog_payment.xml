@@ -31,9 +31,9 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:fontFamily="@font/josefin_sans"
                 android:gravity="center"
                 android:text="@string/payment"
-                android:fontFamily="@font/josefin_sans"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
                 android:textColor="@android:color/white" />
 
@@ -42,10 +42,10 @@
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textAllCaps="false"
                 android:fontFamily="@font/josefin_sans"
                 android:gravity="center"
                 android:text="@string/submit"
+                android:textAllCaps="false"
                 android:textColor="@android:color/white" />
 
         </LinearLayout>
@@ -74,9 +74,9 @@
                     android:id="@+id/dialog_customer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/josefin_sans"
                     android:layout_marginLeft="2dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/josefin_sans"
                     android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:text="Walk In Customer"
@@ -111,8 +111,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
                     android:layout_weight="1"
-                    android:paddingLeft="15dp"
                     android:fontFamily="@font/josefin_sans"
+                    android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:text="Pick Up"
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
@@ -146,8 +146,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
                     android:layout_weight="1"
-                    android:paddingLeft="15dp"
                     android:fontFamily="@font/josefin_sans"
+                    android:paddingLeft="15dp"
                     android:paddingRight="15dp"
                     android:text="Cash"
                     android:textAppearance="@style/TextAppearance.AppCompat.Subhead"

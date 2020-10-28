@@ -28,12 +28,10 @@ import es.dmoral.toasty.Toasty;
 public class CategoriesActivity extends BaseActivity {
 
 
-    private RecyclerView recyclerView;
-
     ImageView imgNoProduct;
     EditText etxtSearch;
-
     FloatingActionButton fabAdd;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -14,34 +14,52 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:orientation="vertical">
-            <EditText
-                android:id="@+id/etxt_kin_account_number"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_height="50dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/josefin_sans"
-                android:hint="Account Number"
-                android:inputType="text"
-                android:padding="8dp"
-                android:textColor="#000"
-                android:background="@drawable/round_shape"
+                android:text="Account Number"
                 android:textSize="16sp" />
             <EditText
-                android:id="@+id/etxt_kin_card_number"
+                android:id="@+id/etxt_card_account_number"
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_height="50dp"
+                android:background="@drawable/round_shape"
                 android:fontFamily="@font/josefin_sans"
-                android:hint="Card Number"
-                android:inputType="text"
+                android:inputType="number"
                 android:padding="8dp"
                 android:textColor="#000"
-                android:background="@drawable/round_shape"
                 android:textSize="16sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/josefin_sans"
+                android:text="Card Number"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/etxt_card_number"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/round_shape"
+                android:fontFamily="@font/josefin_sans"
+                android:inputType="number"
+                android:padding="8dp"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -57,21 +75,22 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="12dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/josefin_sans"
                         android:text="Expiry Date"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
                     <EditText
-                        android:id="@+id/etxt_expiry_date"
+                        android:id="@+id/etxt_card_expiry_date"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginRight="10dp"
                         android:background="@drawable/round_shape"
+                        android:drawableRight="@drawable/ic_baseline_date_range_24"
                         android:fontFamily="@font/josefin_sans"
                         android:inputType="text"
                         android:padding="8dp"
@@ -89,15 +108,15 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="12dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="10dp"
                         android:fontFamily="@font/josefin_sans"
                         android:text="CVV"
-                        android:textSize="14sp" />
+                        android:textSize="16sp" />
 
                     <EditText
-                        android:id="@+id/etxt_cvv"
+                        android:id="@+id/etxt_card_cvv"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginLeft="10dp"
@@ -105,7 +124,7 @@
                         android:layout_marginRight="10dp"
                         android:background="@drawable/round_shape"
                         android:fontFamily="@font/josefin_sans"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:padding="8dp"
                         android:textColor="#000"
                         android:textSize="16sp" />
@@ -114,23 +133,21 @@
 
 
             </LinearLayout>
+
+            <Button
+                android:id="@+id/txt_card_submit"
+                style="@style/button_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="SUBMIT" />
+
         </LinearLayout>
 
     </ScrollView>
-    <TextView
-        android:id="@+id/txt_card_submit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="SUBMIT"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:fontFamily="@font/josefin_sans"
-        android:textColor="@color/white"
-        android:background="@color/creditCardBackground"
-        android:padding="10dp"
-        android:textSize="20sp"
-        />
 
 
 

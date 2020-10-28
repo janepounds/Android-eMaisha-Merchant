@@ -26,12 +26,11 @@ public class EditExpenseActivity extends BaseActivity {
 
 
     String date_time = "";
-    int mYear,mMonth,mDay,mHour,mMinute;
-
+    int mYear, mMonth, mDay, mHour, mMinute;
 
 
     EditText etxtExpenseName, etxtExpenseNote, etxtExpenseAmount, etxtDate, etxtTime;
-    TextView txtEditExpense,txtUpdateExpense;
+    TextView txtEditExpense, txtUpdateExpense;
 
 
     @Override
@@ -51,15 +50,15 @@ public class EditExpenseActivity extends BaseActivity {
         etxtTime = findViewById(R.id.etxt_time);
 
         txtEditExpense = findViewById(R.id.txt_edit_expense);
-        txtUpdateExpense=findViewById(R.id.txt_update_expense);
+        txtUpdateExpense = findViewById(R.id.txt_update_expense);
 
 
-        String get_expense_id=getIntent().getExtras().getString("expense_id");
-        String get_expense_name=getIntent().getExtras().getString("expense_name");
-        String get_expense_note=getIntent().getExtras().getString("expense_note");
-        String get_expense_amount=getIntent().getExtras().getString("expense_amount");
-        String get_expense_date=getIntent().getExtras().getString("expense_date");
-        String get_expense_time=getIntent().getExtras().getString("expense_time");
+        String get_expense_id = getIntent().getExtras().getString("expense_id");
+        String get_expense_name = getIntent().getExtras().getString("expense_name");
+        String get_expense_note = getIntent().getExtras().getString("expense_note");
+        String get_expense_amount = getIntent().getExtras().getString("expense_amount");
+        String get_expense_date = getIntent().getExtras().getString("expense_date");
+        String get_expense_time = getIntent().getExtras().getString("expense_time");
 
 
         etxtExpenseName.setText(get_expense_name);
@@ -89,7 +88,7 @@ public class EditExpenseActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-             timePicker();
+                timePicker();
             }
         });
 
@@ -139,7 +138,7 @@ public class EditExpenseActivity extends BaseActivity {
                     DatabaseAccess databaseAccess = DatabaseAccess.getInstance(EditExpenseActivity.this);
                     databaseAccess.open();
 
-                    boolean check = databaseAccess.updateExpense(get_expense_id,expense_name, expense_amount, expense_note, expense_date, expense_time);
+                    boolean check = databaseAccess.updateExpense(get_expense_id, expense_name, expense_amount, expense_note, expense_date, expense_time);
 
                     if (check) {
                         Toasty.success(EditExpenseActivity.this, R.string.update_successfully, Toast.LENGTH_SHORT).show();
@@ -164,7 +163,6 @@ public class EditExpenseActivity extends BaseActivity {
     }
 
 
-
     private void datePicker() {
 
         // Get Current Date
@@ -179,17 +177,15 @@ public class EditExpenseActivity extends BaseActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-                        int month= monthOfYear+1;
-                        String fm=""+month;
-                        String fd=""+dayOfMonth;
+                        int month = monthOfYear + 1;
+                        String fm = "" + month;
+                        String fd = "" + dayOfMonth;
 
-                        if (monthOfYear<10)
-                        {
-                            fm ="0"+month;
+                        if (monthOfYear < 10) {
+                            fm = "0" + month;
                         }
-                        if (dayOfMonth<10)
-                        {
-                            fd="0"+dayOfMonth;
+                        if (dayOfMonth < 10) {
+                            fd = "0" + dayOfMonth;
                         }
                         date_time = year + "-" + (fm) + "-" + fd;
 

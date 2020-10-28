@@ -1,8 +1,5 @@
 package com.cabral.emaishamerchantsapp.wallet;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,10 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.cabral.emaishamerchantsapp.R;
 
 public class BalanceInquiryActivity extends AppCompatActivity {
-    TextView txtSubmit;
+    Button txtSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +48,7 @@ public class BalanceInquiryActivity extends AppCompatActivity {
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(BalanceInquiryActivity.this);
                         ViewGroup viewGroup = findViewById(android.R.id.content);
-                        View dialogView = LayoutInflater.from( BalanceInquiryActivity.this).inflate(R.layout.custom_dialog_balance_success, viewGroup, false);
+                        View dialogView = LayoutInflater.from(BalanceInquiryActivity.this).inflate(R.layout.custom_dialog_balance_success, viewGroup, false);
                         builder.setView(dialogView);
                         AlertDialog alertSuccessDialog = builder.create();
                         alertSuccessDialog.show();

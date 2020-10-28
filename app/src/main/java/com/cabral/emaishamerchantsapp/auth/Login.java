@@ -59,10 +59,10 @@ public class Login extends AppCompatActivity {
                     etxtContact.requestFocus();
                     return;
                 }
-                if(shop_contact.charAt(0)=='0'){
-                    shop_contact=shop_contact.substring(1,shop_contact.length());
-                    shop_contact=getString(R.string.ugandan_code)+shop_contact;
-                    Log.w("contact",shop_contact);
+                if (shop_contact.charAt(0) == '0') {
+                    shop_contact = shop_contact.substring(1, shop_contact.length());
+                    shop_contact = getString(R.string.ugandan_code) + shop_contact;
+                    Log.w("contact", shop_contact);
                 }
 
                 if (password.isEmpty()) {
@@ -93,35 +93,36 @@ public class Login extends AppCompatActivity {
                         String s = null;
                         if (response.isSuccessful()) {
                             progressDialog.dismiss();
-                                try {
-                                    s = response.body().string();
-                                    if (s != null) {
-                                        JSONObject jsonObject = new JSONObject(s);
-                                        SharedPrefManager.getInstance(Login.this).saveShopId(jsonObject.getInt("shop_id"));
-                                        DatabaseAccess databaseAccess = DatabaseAccess.getInstance(Login.this);
-                                        databaseAccess.open();
-                                        boolean check = databaseAccess.addShopInformation(jsonObject.getJSONObject("data").getString("shop_name"), jsonObject.getJSONObject("data").getString("shop_contact"), jsonObject.getJSONObject("data").getString("shop_email"), jsonObject.getJSONObject("data").getString("shop_address"), jsonObject.getJSONObject("data").getString("shop_currency"), jsonObject.getJSONObject("data").getString("latitude"), jsonObject.getJSONObject("data").getString("longitude"));
+                            try {
+                                s = response.body().string();
+                                if (s != null) {
+                                    JSONObject jsonObject = new JSONObject(s);
+                                    SharedPrefManager.getInstance(Login.this).saveShopId(jsonObject.getInt("shop_id"));
+                                    SharedPrefManager.getInstance(Login.this).saveToken(jsonObject.getString("token"));
+                                    DatabaseAccess databaseAccess = DatabaseAccess.getInstance(Login.this);
+                                    databaseAccess.open();
+                                    boolean check = databaseAccess.addShopInformation(jsonObject.getJSONObject("data").getString("shop_name"), jsonObject.getJSONObject("data").getString("shop_contact"), jsonObject.getJSONObject("data").getString("shop_email"), jsonObject.getJSONObject("data").getString("shop_address"), jsonObject.getJSONObject("data").getString("shop_currency"), jsonObject.getJSONObject("data").getString("latitude"), jsonObject.getJSONObject("data").getString("longitude"));
 
-                                        if (check) {
-                                            Toasty.success(Login.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                                            NetworkStateChecker.RegisterDeviceForFCM(getApplicationContext());
-                                            Intent intent = new Intent(Login.this, HomeActivity.class);
-                                            intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                            startActivity(intent);
-                                            finish();
-                                        } else {
-                                            Toasty.error(Login.this, R.string.failed, Toast.LENGTH_SHORT).show();
-
-                                        }
-
-                                    }else{
-                                        Log.d("Error", String.valueOf(response));
+                                    if (check) {
+                                        Toasty.success(Login.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                                        NetworkStateChecker.RegisterDeviceForFCM(getApplicationContext());
+                                        Intent intent = new Intent(Login.this, HomeActivity.class);
+                                        intent.setFlags(intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                        finish();
+                                    } else {
                                         Toasty.error(Login.this, R.string.failed, Toast.LENGTH_SHORT).show();
 
                                     }
-                                } catch (IOException | JSONException e) {
-                                    e.printStackTrace();
+
+                                } else {
+                                    Log.d("Error", String.valueOf(response));
+                                    Toasty.error(Login.this, R.string.failed, Toast.LENGTH_SHORT).show();
+
                                 }
+                            } catch (IOException | JSONException e) {
+                                e.printStackTrace();
+                            }
 
 
                         } else {

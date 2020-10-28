@@ -43,8 +43,8 @@ public class OrderDetailsAdapter extends RecyclerView.Adapter<OrderDetailsAdapte
 
         holder.txt_product_name.setText(orderData.get(position).get("product_name"));
 
-        holder.txt_product_qty.setText(context.getString(R.string.quantity) +"  "+ orderData.get(position).get("product_qty"));
-        holder.txt_product_Weight.setText(context.getString(R.string.weight) +"  "+ orderData.get(position).get("product_weight"));
+        holder.txt_product_qty.setText(context.getString(R.string.quantity) + "  " + orderData.get(position).get("product_qty"));
+        holder.txt_product_Weight.setText(context.getString(R.string.weight) + "  " + orderData.get(position).get("product_weight"));
         String base64Image = orderData.get(position).get("product_image");
 
 
@@ -57,7 +57,7 @@ public class OrderDetailsAdapter extends RecyclerView.Adapter<OrderDetailsAdapte
         databaseAccess.open();
         String currency = databaseAccess.getCurrency();
 
-        holder.txt_total_cost.setText(currency +" "+ unit_price + " x " + qty + " = "+currency+ " " + cost);
+        holder.txt_total_cost.setText(currency + " " + unit_price + " x " + qty + " = " + currency + " " + cost);
 
         if (base64Image != null) {
             if (base64Image.isEmpty() || base64Image.length() < 6) {

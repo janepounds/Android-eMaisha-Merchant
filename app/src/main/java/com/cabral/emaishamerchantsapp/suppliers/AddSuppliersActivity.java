@@ -35,10 +35,10 @@ public class AddSuppliersActivity extends BaseActivity {
 
 
     ProgressDialog loading;
-    EditText etxtSuppliersName,etxtSuppliersContactPerson,etxtSuppliersAddress,etxtSuppliersAddressTwo,etxtSuppliersCell,etxtSuppliersEmail;
+    EditText etxtSuppliersName, etxtSuppliersContactPerson, etxtSuppliersAddress, etxtSuppliersAddressTwo, etxtSuppliersCell, etxtSuppliersEmail;
     ImageView imgSupplier;
     String mediaPath, encodedImage = "N/A";
-    TextView txtAddSuppliers,txtChooseImage;
+    TextView txtAddSuppliers, txtChooseImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,15 +49,15 @@ public class AddSuppliersActivity extends BaseActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);//for back button
         getSupportActionBar().setTitle(R.string.add_suppliers);
 
-        etxtSuppliersName=findViewById(R.id.etxt_supplier_name);
-        etxtSuppliersContactPerson=findViewById(R.id.etxt_supplier_contact_name);
-        etxtSuppliersCell=findViewById(R.id.etxt_supplier_cell);
-        etxtSuppliersEmail=findViewById(R.id.etxt_supplier_email);
-        etxtSuppliersAddress=findViewById(R.id.etxt_supplier_address);
+        etxtSuppliersName = findViewById(R.id.etxt_supplier_name);
+        etxtSuppliersContactPerson = findViewById(R.id.etxt_supplier_contact_name);
+        etxtSuppliersCell = findViewById(R.id.etxt_supplier_cell);
+        etxtSuppliersEmail = findViewById(R.id.etxt_supplier_email);
+        etxtSuppliersAddress = findViewById(R.id.etxt_supplier_address);
         etxtSuppliersAddressTwo = findViewById(R.id.etxt_supplier_address_two);
         imgSupplier = findViewById(R.id.supplier_image);
         txtChooseImage = findViewById(R.id.txt_choose_supplier_image);
-        txtAddSuppliers=findViewById(R.id.txt_add_supplier);
+        txtAddSuppliers = findViewById(R.id.txt_add_supplier);
 
         txtChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,74 +88,50 @@ public class AddSuppliersActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-                String suppliers_name=etxtSuppliersName.getText().toString().trim();
-                String suppliers_contact_person=etxtSuppliersContactPerson.getText().toString().trim();
-                String suppliers_cell=etxtSuppliersCell.getText().toString().trim();
-                String suppliers_email=etxtSuppliersEmail.getText().toString().trim();
-                String suppliers_address=etxtSuppliersAddress.getText().toString().trim();
+                String suppliers_name = etxtSuppliersName.getText().toString().trim();
+                String suppliers_contact_person = etxtSuppliersContactPerson.getText().toString().trim();
+                String suppliers_cell = etxtSuppliersCell.getText().toString().trim();
+                String suppliers_email = etxtSuppliersEmail.getText().toString().trim();
+                String suppliers_address = etxtSuppliersAddress.getText().toString().trim();
                 String suppliers_address_two = etxtSuppliersAddressTwo.getText().toString().trim();
 
 
-                if (suppliers_name.isEmpty())
-                {
+                if (suppliers_name.isEmpty()) {
                     etxtSuppliersName.setError(getString(R.string.enter_suppliers_name));
                     etxtSuppliersName.requestFocus();
-                }
-
-               else if (suppliers_contact_person.isEmpty())
-                {
+                } else if (suppliers_contact_person.isEmpty()) {
                     etxtSuppliersContactPerson.setError(getString(R.string.enter_suppliers_contact_person_name));
                     etxtSuppliersContactPerson.requestFocus();
-                }
-
-                else if (suppliers_cell.isEmpty())
-                {
+                } else if (suppliers_cell.isEmpty()) {
                     etxtSuppliersCell.setError(getString(R.string.enter_suppliers_cell));
                     etxtSuppliersCell.requestFocus();
-                }
-
-
-                else if (suppliers_email.isEmpty() || !suppliers_email.contains("@") || !suppliers_email.contains("."))
-                {
+                } else if (suppliers_email.isEmpty() || !suppliers_email.contains("@") || !suppliers_email.contains(".")) {
                     etxtSuppliersEmail.setError(getString(R.string.enter_valid_email));
                     etxtSuppliersEmail.requestFocus();
-                }
-
-                else if (suppliers_address.isEmpty())
-                {
+                } else if (suppliers_address.isEmpty()) {
                     etxtSuppliersAddress.setError(getString(R.string.enter_suppliers_address));
                     etxtSuppliersAddress.requestFocus();
-                }
-                else if (suppliers_address_two.isEmpty())
-                {
+                } else if (suppliers_address_two.isEmpty()) {
                     etxtSuppliersAddressTwo.setError(getString(R.string.enter_suppliers_address));
                     etxtSuppliersAddressTwo.requestFocus();
-                }
-
-                else
-                {
+                } else {
 
                     DatabaseAccess databaseAccess = DatabaseAccess.getInstance(AddSuppliersActivity.this);
                     databaseAccess.open();
 
-                    boolean check=databaseAccess.addSuppliers(suppliers_name,suppliers_contact_person,suppliers_cell,suppliers_email,suppliers_address,suppliers_address_two, encodedImage);
+                    boolean check = databaseAccess.addSuppliers(suppliers_name, suppliers_contact_person, suppliers_cell, suppliers_email, suppliers_address, suppliers_address_two, encodedImage);
 
-                    if (check)
-                    {
+                    if (check) {
                         Toasty.success(AddSuppliersActivity.this, R.string.suppliers_successfully_added, Toast.LENGTH_SHORT).show();
-                        Intent intent=new Intent(AddSuppliersActivity.this, HomeActivity.class);
+                        Intent intent = new Intent(AddSuppliersActivity.this, HomeActivity.class);
                         startActivity(intent);
                         finish();
-                    }
-
-                    else {
+                    } else {
 
                         Toasty.error(AddSuppliersActivity.this, R.string.failed, Toast.LENGTH_SHORT).show();
 
                     }
                 }
-
-
 
 
             }
@@ -188,12 +164,6 @@ public class AddSuppliersActivity extends BaseActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
-
-
-
-
 
 
     //import data from Excel xls file

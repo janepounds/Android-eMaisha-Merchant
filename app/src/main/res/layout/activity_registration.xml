@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#EDE7D4">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -12,146 +13,121 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"
+            android:layout_margin="@dimen/dimen_20dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:fontFamily="@font/josefin_sans"
-                android:padding="5dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/shop_name"
-                android:textColor="@color/creditCardBackground" />
+                android:textSize="16sp"
+                android:textColor="@color/textColorSecondaryLight" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="35dp">
 
                 <EditText
                     android:id="@+id/etxt_shop_name"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:layout_height="45dp"
+                    android:background="@drawable/edittext_corner"
                     android:fontFamily="@font/josefin_sans"
-                    android:hint="@string/shop_name"
                     android:inputType="text"
                     android:padding="8dp"
                     android:textColor="#000"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:layout_marginBottom="10dp"/>
 
-            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:padding="5dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/shop_contact_number"
-                android:textColor="@color/creditCardBackground" />
+                android:textSize="16sp"
+                android:textColor="@color/textColorSecondaryLight" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="35dp">
+
 
                 <com.cabral.emaishamerchantsapp.utils.OtpEdittext
                     android:id="@+id/etxt_shop_contact"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:visibility="visible"
-                    android:gravity="start|center_vertical"
-                    android:hint="@string/contact_format"
-                    android:inputType="phone"
-                    android:textAlignment="viewStart"
-                    android:tag="+256 "
-                    android:textColor="#000"
+                    android:layout_height="45dp"
+                    android:background="@drawable/edittext_corner"
+                    android:layout_marginBottom="10dp"
                     android:fontFamily="@font/josefin_sans"
-                    android:textColorHint="@color/textColorPrimaryDark"
-                    android:background="@color/white"
-                    />
+                    android:gravity="start|center_vertical"
+                    android:inputType="phone"
+                    android:paddingStart="10dp"
+                    android:tag="+256 "
+                    android:textAlignment="viewStart"
+                    android:textColor="#000"
+                    android:visibility="visible" />
 
-            </androidx.cardview.widget.CardView>
+
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:padding="5dp"
+                android:layout_marginBottom="5dp"
+                android:textSize="16sp"
                 android:text="@string/shop_email"
-                android:textColor="@color/creditCardBackground" />
+                android:textColor="@color/textColorSecondaryLight" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="35dp">
 
                 <EditText
                     android:id="@+id/etxt_shop_email"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:layout_height="45dp"
+                    android:background="@drawable/edittext_corner"
                     android:fontFamily="@font/josefin_sans"
-                    android:hint="@string/shop_email"
-                    android:inputType="text"
+                    android:inputType="textEmailAddress"
                     android:padding="8dp"
                     android:textColor="#000"
-                    android:textSize="16sp" />
-
-            </androidx.cardview.widget.CardView>
+                    android:textSize="16sp"
+                    android:layout_marginBottom="10dp"/>
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:padding="5dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/currency_symbol"
-                android:textColor="@color/creditCardBackground" />
+                android:textSize="16sp"
+                android:textColor="@color/textColorSecondaryLight" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="35dp">
+
 
                 <EditText
                     android:id="@+id/etxt_shop_currency"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:layout_height="45dp"
+                    android:background="@drawable/edittext_corner"
                     android:fontFamily="@font/josefin_sans"
-                    android:hint="@string/shop_currency"
                     android:inputType="text"
                     android:padding="8dp"
                     android:textColor="#000"
-                    android:textSize="16sp" />
-            </androidx.cardview.widget.CardView>
+                    android:textSize="16sp"
+                    android:layout_marginBottom="10dp"/>
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:padding="5dp"
+                android:layout_marginBottom="5dp"
                 android:text="@string/shop_address"
-                android:textColor="@color/creditCardBackground" />
+                android:textSize="16sp"
+                android:textColor="@color/textColorSecondaryLight" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toTopOf="@+id/autocomplete_fragmentlaout"
                 app:layout_constraintTop_toTopOf="@+id/parent">
@@ -207,8 +183,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/rounded_corners_button_green">
 
@@ -224,94 +198,78 @@
             </LinearLayout>
 
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="35dp">
 
                 <EditText
                     android:id="@+id/etxt_shop_address"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:layout_height="45dp"
+                    android:background="@drawable/edittext_corner"
                     android:fontFamily="@font/josefin_sans"
                     android:hint="@string/supplier_address_one"
                     android:inputType="text"
                     android:padding="8dp"
                     android:textColor="#000"
-                    android:textSize="16sp" />
-            </androidx.cardview.widget.CardView>
+                    android:textSize="16sp"
+                    android:layout_marginBottom="10dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:padding="5dp"
+                android:layout_marginBottom="5dp"
                 android:text="Shop Password"
-                android:textColor="@color/creditCardBackground" />
+                android:textSize="16sp"
+                android:textColor="@color/textColorSecondaryLight" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="35dp">
+
 
                 <EditText
                     android:id="@+id/etxt_shop_password"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:layout_height="45dp"
+                    android:background="@drawable/edittext_corner"
                     android:fontFamily="@font/josefin_sans"
-                    android:hint="Password"
                     android:inputType="textPassword"
                     android:padding="8dp"
                     android:textColor="#000"
-                    android:textSize="16sp" />
-            </androidx.cardview.widget.CardView>
+                    android:textSize="16sp"
+                    android:layout_marginBottom="10dp"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:fontFamily="@font/josefin_sans"
-                android:padding="5dp"
+                android:layout_marginBottom="5dp"
                 android:text="Confirm Shop Password"
-                android:textColor="@color/creditCardBackground" />
+                android:textSize="16sp"
+                android:textColor="@color/textColorSecondaryLight" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="35dp">
 
                 <EditText
                     android:id="@+id/etxt_shop_confirm_password"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
+                    android:layout_height="45dp"
+                    android:background="@drawable/edittext_corner"
                     android:fontFamily="@font/josefin_sans"
-                    android:hint="Confirm Password"
                     android:inputType="textPassword"
                     android:padding="8dp"
                     android:textColor="#000"
-                    android:textSize="16sp" />
-            </androidx.cardview.widget.CardView>
+                    android:textSize="16sp"
+                    android:layout_marginBottom="10dp"/>
 
 
             <TextView
                 android:id="@+id/txt_shop_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="35dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/balance_cards"
                 android:fontFamily="@font/josefin_sans"
                 android:gravity="center"
-                android:padding="10dp"
+                android:padding="15dp"
                 android:text="Register"
+                android:textAllCaps="true"
                 android:textColor="#ffffff"
                 android:textSize="16sp"
                 android:textStyle="bold" />

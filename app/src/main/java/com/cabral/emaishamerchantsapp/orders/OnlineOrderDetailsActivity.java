@@ -31,12 +31,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class OnlineOrderDetailsActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
-    private OnlineOrderDetailsAdapter onlineOrderDetailsAdapter;
     String order_id, customer_name, order_status, currency, customer_email, customer_cell, customer_address, delivery_fee;
     double total_price;
     TextView txtSubTotal, txtCustomerName, txtOrderStatus, txtApprove, txtReject, txtDelivery, txtCustomerPhone, txtCustomerEmail, txtOverallTotal;
-
+    private RecyclerView recyclerView;
+    private OnlineOrderDetailsAdapter onlineOrderDetailsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -19,9 +19,9 @@ import java.util.Locale;
 
 
 public class DatabaseAccess {
+    private static DatabaseAccess instance;
     private SQLiteOpenHelper openHelper;
     private SQLiteDatabase database;
-    private static DatabaseAccess instance;
 
     /**
      * Private constructor to avoid object creation from outside classes.
@@ -616,7 +616,6 @@ public class DatabaseAccess {
             values.put("customer_email", customer_email);
 
 
-
             int id = getID(order_id);
 
 
@@ -671,7 +670,6 @@ public class DatabaseAccess {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
 
 
         database.close();
@@ -792,6 +790,7 @@ public class DatabaseAccess {
         database.close();
         return orderList;
     }
+
     public ArrayList<HashMap<String, String>> getOnlineOrderList() {
         ArrayList<HashMap<String, String>> orderList = new ArrayList<>();
         this.database = openHelper.getWritableDatabase();
@@ -846,8 +845,6 @@ public class DatabaseAccess {
 //        database.close();
 //        return orderList;
 //    }
-
-
 
 
     public ArrayList<HashMap<String, String>> searchOrderList(String s) {

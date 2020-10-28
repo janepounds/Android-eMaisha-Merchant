@@ -28,7 +28,7 @@ public class AddExpenseActivity extends BaseActivity {
 
 
     String date_time = "";
-    int mYear,mMonth,mDay,mHour,mMinute;
+    int mYear, mMonth, mDay, mHour, mMinute;
 
 
     EditText etxtExpenseName, etxtExpenseNote, etxtExpenseAmount, etxtDate, etxtTime;
@@ -138,17 +138,15 @@ public class AddExpenseActivity extends BaseActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
-                        int month= monthOfYear+1;
-                        String fm=""+month;
-                        String fd=""+dayOfMonth;
+                        int month = monthOfYear + 1;
+                        String fm = "" + month;
+                        String fd = "" + dayOfMonth;
 
-                        if (monthOfYear<10)
-                        {
-                            fm ="0"+month;
+                        if (monthOfYear < 10) {
+                            fm = "0" + month;
                         }
-                        if (dayOfMonth<10)
-                        {
-                            fd="0"+dayOfMonth;
+                        if (dayOfMonth < 10) {
+                            fd = "0" + dayOfMonth;
                         }
                         date_time = year + "-" + (fm) + "-" + fd;
 

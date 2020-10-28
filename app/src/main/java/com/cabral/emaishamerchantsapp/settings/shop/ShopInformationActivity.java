@@ -54,36 +54,35 @@ import java.util.Locale;
 
 import es.dmoral.toasty.Toasty;
 
-public class ShopInformationActivity extends BaseActivity implements GoogleApiClient.OnConnectionFailedListener , OnMapReadyCallback {
+public class ShopInformationActivity extends BaseActivity implements GoogleApiClient.OnConnectionFailedListener, OnMapReadyCallback {
 
 
-    TextView txtUpdate, txtShopEdit;
-    EditText etxtShopName, etxtShopContact, etxtShopEmail, etxtShopAddress, etxtShopCurrency;
+    // [START maps_current_place_state_keys]
+    public static final String KEY_CAMERA_POSITION = "camera_position";
+    private static final String TAG = "Maps Error";
 
     //location variables
-
+    private static final int DEFAULT_ZOOM = 15;
+    private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
+    private static final String KEY_LOCATION = "location";
+    public static GoogleMap map;
+    // The geographical location where the device is currently located. That is, the last-known
+    // location retrieved by the Fused Location Provider.
+    public static Location lastKnownLocation;
+    private final LatLng defaultLocation = new LatLng(0.347596, 32.582520);//A default location  kampala
+    TextView txtUpdate, txtShopEdit;
+    EditText etxtShopName, etxtShopContact, etxtShopEmail, etxtShopAddress, etxtShopCurrency;
     TextView proceed_checkout_btn;
     int PLACE_PICKER_REQUEST = 1463;
     String latitude, longitude;
-    private static final String TAG ="Maps Error";
-    public static GoogleMap map;
+    PlacesFieldSelector fieldSelector;
     private CameraPosition cameraPosition;
     // The entry point to the Places API.
     private PlacesClient placesClient;
     // The entry point to the Fused Location Provider.
     private FusedLocationProviderClient fusedLocationProviderClient;
-    private final LatLng defaultLocation = new LatLng(0.347596, 32.582520);//A default location  kampala
-    private static final int DEFAULT_ZOOM = 15;
-    private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private boolean locationPermissionGranted;
-    // The geographical location where the device is currently located. That is, the last-known
-    // location retrieved by the Fused Location Provider.
-    public static Location lastKnownLocation;
-    // [START maps_current_place_state_keys]
-    public static final String KEY_CAMERA_POSITION = "camera_position";
-    private static final String KEY_LOCATION = "location";
     private LatLng mCenterLatLong;
-    PlacesFieldSelector fieldSelector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,7 +116,7 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
         String shop_email = shopData.get(0).get("shop_email");
         String shop_address = shopData.get(0).get("shop_address");
         String shop_currency = shopData.get(0).get("shop_currency");
-        mCenterLatLong= new LatLng(Double.parseDouble(shopData.get(0).get("latitude")), Double.parseDouble(shopData.get(0).get("longitude")) );
+        mCenterLatLong = new LatLng(Double.parseDouble(shopData.get(0).get("latitude")), Double.parseDouble(shopData.get(0).get("longitude")));
 
         etxtShopName.setText(shop_name);
         etxtShopContact.setText(shop_contact);
@@ -187,7 +186,7 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
                     DatabaseAccess databaseAccess = DatabaseAccess.getInstance(ShopInformationActivity.this);
                     databaseAccess.open();
 
-                    boolean check = databaseAccess.updateShopInformation(shop_name, shop_contact, shop_email, shop_address, shop_currency,latitude,longitude);
+                    boolean check = databaseAccess.updateShopInformation(shop_name, shop_contact, shop_email, shop_address, shop_currency, latitude, longitude);
 
                     if (check) {
                         Toasty.success(ShopInformationActivity.this, R.string.shop_information_updated_successfully, Toast.LENGTH_SHORT).show();
@@ -238,10 +237,10 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
         autocompleteFragment.setCountries("UG");
         autocompleteFragment.setHint(getString(R.string.searchShippingAddress));
         // ((Button)autocompleteFragment.getView().findViewById(R.id.places_autocomplete_search_button)).setTextColor(getResources().getColor(R.color.colorWhite));
-        ((EditText)autocompleteFragment.getView().findViewById(R.id.places_autocomplete_search_input)).setTextColor(getResources().getColor(R.color.white));
-        ((EditText)autocompleteFragment.getView().findViewById(R.id.places_autocomplete_search_input)).setTextSize(10.5f);
-        ImageView searchIcon = (ImageView)((LinearLayout) autocompleteFragment.getView()).getChildAt(0);
-        ImageView cancelIcon = (ImageView)((LinearLayout) autocompleteFragment.getView()).getChildAt(2);
+        ((EditText) autocompleteFragment.getView().findViewById(R.id.places_autocomplete_search_input)).setTextColor(getResources().getColor(R.color.white));
+        ((EditText) autocompleteFragment.getView().findViewById(R.id.places_autocomplete_search_input)).setTextSize(10.5f);
+        ImageView searchIcon = (ImageView) ((LinearLayout) autocompleteFragment.getView()).getChildAt(0);
+        ImageView cancelIcon = (ImageView) ((LinearLayout) autocompleteFragment.getView()).getChildAt(2);
         cancelIcon.setColorFilter(getResources().getColor(R.color.white));
         searchIcon.setColorFilter(getResources().getColor(R.color.white));
         // Set up a PlaceSelectionListener to handle the response.
@@ -249,15 +248,15 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
             @Override
             public void onPlaceSelected(@NotNull Place place) {
                 // TODO: Get info about the selected place.
-                Log.w(TAG, "Place: " + place.getName() + ", " +place.getAddress() + ", " + place.getId());
-                LatLng selectedLocation= place.getLatLng();
-                latitude = selectedLocation.latitude+"";
-                longitude = selectedLocation.longitude+"";
+                Log.w(TAG, "Place: " + place.getName() + ", " + place.getAddress() + ", " + place.getId());
+                LatLng selectedLocation = place.getLatLng();
+                latitude = selectedLocation.latitude + "";
+                longitude = selectedLocation.longitude + "";
                 map.moveCamera(CameraUpdateFactory.newLatLngZoom(
                         new LatLng(selectedLocation.latitude,
                                 selectedLocation.longitude), DEFAULT_ZOOM));
 
-                etxtShopAddress.setText(place.getAddress()+" "+ place.getName());
+                etxtShopAddress.setText(place.getAddress() + " " + place.getName());
 
             }
 
@@ -269,7 +268,6 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
 
             }
         });
-
 
 
     }
@@ -306,7 +304,7 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
         map.setOnCameraMoveListener(new GoogleMap.OnCameraMoveListener() {
             @Override
             public void onCameraMove() {
-                cameraPosition= map.getCameraPosition();
+                cameraPosition = map.getCameraPosition();
                 Log.w("Camera postion change" + "", cameraPosition + "");
 
 
@@ -314,25 +312,25 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
                 Geocoder geocoder;
                 List<Address> addresses = null;
                 geocoder = new Geocoder(ShopInformationActivity.this, Locale.getDefault());
-                if( map!=null){
+                if (map != null) {
                     mCenterLatLong = cameraPosition.target;
-                    latitude = mCenterLatLong.latitude+"";
-                    longitude = mCenterLatLong.longitude+"";
+                    latitude = mCenterLatLong.latitude + "";
+                    longitude = mCenterLatLong.longitude + "";
                 }
 
                 try {
-                    if(mCenterLatLong!=null)
+                    if (mCenterLatLong != null)
                         addresses = geocoder.getFromLocation(mCenterLatLong.latitude, mCenterLatLong.longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
                 } catch (IOException e) {
                     e.printStackTrace();
-                    Log.e(TAG,e.getMessage());
+                    Log.e(TAG, e.getMessage());
                 }
 
                 final String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
                 final String city = addresses.get(0).getLocality();
                 final String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
                 //final String streetname = addresses.get(0).getThoroughfare()+", "+addresses.get(0).getSubThoroughfare();
-                etxtShopAddress.setText( city+", "+ address);
+                etxtShopAddress.setText(city + ", " + address);
 
             }
         });
@@ -344,10 +342,10 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
 
         // Turn on the My Location layer and the related control on the map.
         updateLocationUI();
-        if(mCenterLatLong==null){
+        if (mCenterLatLong == null) {
             // Get the current location of the device and set the position of the map.
             getDeviceLocation();
-        }else {
+        } else {
             map.moveCamera(CameraUpdateFactory
                     .newLatLngZoom(mCenterLatLong, DEFAULT_ZOOM));
             map.getUiSettings().setMyLocationButtonEnabled(false);
@@ -371,6 +369,7 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
 
         super.onActivityResult(requestCode, resultCode, data);
     }
+
     // [START maps_current_place_get_device_location]
     private void getDeviceLocation() {
         /*
@@ -380,7 +379,7 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
         try {
             if (locationPermissionGranted) {
                 Task<Location> locationResult = fusedLocationProviderClient.getLastLocation();
-                locationResult.addOnCompleteListener( ShopInformationActivity.this, new OnCompleteListener<Location>() {
+                locationResult.addOnCompleteListener(ShopInformationActivity.this, new OnCompleteListener<Location>() {
                     @Override
                     public void onComplete(@NonNull Task<Location> task) {
                         if (task.isSuccessful()) {
@@ -401,7 +400,7 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
                     }
                 });
             }
-        } catch (SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage(), e);
         }
     }
@@ -417,7 +416,7 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
          * device. The result of the permission request is handled by a callback,
          * onRequestPermissionsResult.
          */
-        if (ContextCompat.checkSelfPermission( ShopInformationActivity.this,
+        if (ContextCompat.checkSelfPermission(ShopInformationActivity.this,
                 android.Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             locationPermissionGranted = true;
@@ -465,7 +464,7 @@ public class ShopInformationActivity extends BaseActivity implements GoogleApiCl
                 lastKnownLocation = null;
                 getLocationPermission();
             }
-        } catch (SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
     }

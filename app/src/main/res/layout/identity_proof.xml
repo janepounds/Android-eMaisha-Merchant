@@ -34,6 +34,9 @@
         app:spb_currentStateDescriptionColor="@color/creditCardBackground"
         app:spb_currentStateNumber="three"
         app:spb_maxStateNumber="three"
+        app:spb_animationDuration="500"
+        app:spb_maxDescriptionLines="2"
+        app:spb_stateDescriptionSize="18sp"
         app:spb_stateBackgroundColor="#BDBDBD"
         app:spb_stateDescriptionColor="#808080"
         app:spb_stateForegroundColor="@color/creditCardBackground"
@@ -45,181 +48,214 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/your_state_progress_bar_identity_proof">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="@dimen/dimen_20dp"
-            android:layout_marginStart="@dimen/dimen_20dp"
-            android:layout_marginEnd="@dimen/dimen_20dp"
-            android:weightSum="4">
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:orientation="vertical">
+                android:layout_marginStart="@dimen/dimen_20dp"
+                android:layout_marginEnd="@dimen/dimen_20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:fontFamily="@font/josefin_sans"
-                    android:text="National ID NIN"
-                    android:textSize="14sp" />
+                    android:layout_weight="1"
+                    android:layout_marginEnd="5dp"
+                    android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/etxt_next_of_kin_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/round_shape"
-                    android:fontFamily="@font/josefin_sans"
-                    android:inputType="text"
-                    android:padding="8dp"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/josefin_sans"
+                        android:text="National ID NIN"
+                        android:layout_marginBottom="4dp"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/etxt_nin"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/rounded_rectangle_edit_text"
+                        android:fontFamily="@font/josefin_sans"
+                        android:inputType="text"
+
+                        android:textColor="#000"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/josefin_sans"
+                        android:text="Valid Up to"
+                        android:layout_marginBottom="4dp"
+                        android:textSize="16sp" />
+
+                    <EditText
+                        android:id="@+id/etxt_id_expiry_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/rounded_rectangle_edit_text"
+                        android:fontFamily="@font/josefin_sans"
+                        android:inputType="date"
+                        android:drawableEnd="@drawable/ic_baseline_date_range_24"
+                        android:textColor="#000"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/josefin_sans"
-                    android:text="Valid Up to"
-                    android:textSize="14sp" />
-
-                <EditText
-                    android:id="@+id/etxt_next_of_kin_second_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/round_shape"
-                    android:fontFamily="@font/josefin_sans"
-                    android:inputType="text"
-                    android:padding="8dp"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
-
-
-        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_marginStart="@dimen/dimen_20dp"
             android:layout_marginEnd="@dimen/dimen_20dp"
-            android:layout_marginBottom="@dimen/dimen_20dp"
-            android:background="@drawable/edittext_corner"
-            android:weightSum="10"
-            >
-            <EditText
-                android:id="@+id/etxt_district"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:layout_weight="7"
-                android:fontFamily="@font/josefin_sans"
-                android:hint="Upload National ID"
-                android:inputType="text"
-                android:padding="8dp"
-                android:textColor="#000"
-                android:textSize="16sp" />
+            android:layout_marginBottom="10dp">
+
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="3"
-                android:layout_height="match_parent"
-                android:background="@drawable/edittext_right_corners_green"
-                android:fontFamily="@font/josefin_sans"
-                android:gravity="center"
-                android:text="Browse"
-                android:textColor="#ffffff"
-                android:textSize="20sp"
-                android:textStyle="bold"
-               />
-
-        </LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload National ID"
+                android:textSize="16sp"
+                android:layout_marginBottom="4dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:orientation="horizontal"
-                android:layout_marginStart="@dimen/dimen_20dp"
-                android:layout_marginEnd="@dimen/dimen_20dp"
-                android:layout_marginBottom="@dimen/dimen_20dp"
                 android:background="@drawable/edittext_corner"
-                android:weightSum="10"
-                >
+                android:orientation="horizontal"
+                android:weightSum="10">
+
                 <EditText
-                    android:id="@+id/etxt_custom_id"
+                    android:id="@+id/etxt_national_id"
                     android:layout_width="0dp"
-                    android:layout_weight="7"
                     android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:background="@android:color/transparent"
                     android:fontFamily="@font/josefin_sans"
-                    android:hint="Upload Custom Photo"
                     android:inputType="text"
                     android:padding="8dp"
                     android:textColor="#000"
-                    android:background="@android:color/transparent"
                     android:textSize="16sp" />
 
                 <TextView
-                    android:layout_weight="3"
+                    android:id="@+id/txt_browse_national_id_photo"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
+                    android:layout_weight="3"
                     android:background="@drawable/edittext_right_corners_green"
                     android:fontFamily="@font/josefin_sans"
                     android:gravity="center"
                     android:text="Browse"
                     android:textColor="#ffffff"
                     android:textSize="20sp"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
             </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/dimen_20dp"
+            android:layout_marginEnd="@dimen/dimen_20dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload Customer Photo"
+                android:textSize="16sp"
+                android:layout_marginBottom="4dp"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:orientation="horizontal"
-                android:layout_marginStart="@dimen/dimen_20dp"
-                android:layout_marginEnd="@dimen/dimen_20dp"
-                android:layout_marginBottom="@dimen/dimen_20dp"
                 android:background="@drawable/edittext_corner"
-                android:weightSum="10"
-                >
+                android:orientation="horizontal"
+                android:weightSum="10">
+
                 <EditText
-                    android:id="@+id/etxt_profile"
+                    android:id="@+id/etxt_customer_photo"
                     android:layout_width="0dp"
-                    android:layout_weight="7"
                     android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:background="@android:color/transparent"
                     android:fontFamily="@font/josefin_sans"
-                    android:hint="Upload Photo with ID"
                     android:inputType="text"
                     android:padding="8dp"
                     android:textColor="#000"
-                    android:background="@android:color/transparent"
                     android:textSize="16sp" />
+
                 <TextView
+                    android:id="@+id/txt_browse_customer_photo"
                     android:layout_width="0dp"
-                    android:layout_weight="3"
                     android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:background="@drawable/edittext_right_corners_green"
+                    android:fontFamily="@font/josefin_sans"
+                    android:gravity="center"
+                    android:text="Browse"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/dimen_20dp"
+            android:layout_marginEnd="@dimen/dimen_20dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload Photo with ID"
+                android:textSize="16sp"
+                android:layout_marginBottom="4dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/edittext_corner"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <EditText
+                    android:id="@+id/etxt_photo_with_id"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/josefin_sans"
+                    android:inputType="text"
+                    android:padding="8dp"
+                    android:textColor="#000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txt_browse_photo_with_id"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
                     android:background="@drawable/edittext_right_corners_green"
                     android:fontFamily="@font/josefin_sans"
                     android:gravity="center"
@@ -227,46 +263,63 @@
                     android:text="Browse"
                     android:textColor="#ffffff"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/txt_next_submit"
+        </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_weight="1"
+                    android:id="@+id/previous_button_two"
+                    style="@style/button_style_previous"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:text="PREVIOUS" />
+
+                <Button
+                    android:layout_weight="1"
+                    android:id="@+id/txt_next_submit"
+                    style="@style/button_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:text="@string/submit" />
+            </LinearLayout>
+            <TextView
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_20dp"
                 android:background="@drawable/balance_cards"
                 android:fontFamily="@font/josefin_sans"
                 android:gravity="center"
                 android:padding="10dp"
-                android:layout_margin="@dimen/dimen_20dp"
                 android:text="SUBMIT"
                 android:textColor="#ffffff"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txt_next_finger_print"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/current_balance_card"
-                android:fontFamily="@font/josefin_sans"
-                android:gravity="center"
-                android:padding="10dp"
+                android:layout_marginLeft="@dimen/dimen_20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="@dimen/dimen_20dp"
-                android:layout_marginLeft="@dimen/dimen_20dp"
+                android:background="@drawable/current_balance_card"
+                android:gravity="center"
+                android:padding="10dp"
                 android:text="Fingerprint Authentication"
                 android:textColor="#000"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
-
-
 
 
 </RelativeLayout>

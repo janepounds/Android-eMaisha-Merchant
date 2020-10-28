@@ -34,6 +34,9 @@
         app:spb_currentStateDescriptionColor="@color/creditCardBackground"
         app:spb_currentStateNumber="one"
         app:spb_maxStateNumber="three"
+        app:spb_animationDuration="500"
+        app:spb_maxDescriptionLines="2"
+        app:spb_stateDescriptionSize="18sp"
         app:spb_stateBackgroundColor="#BDBDBD"
         app:spb_stateDescriptionColor="#808080"
         app:spb_stateForegroundColor="@color/creditCardBackground"
@@ -45,85 +48,130 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:layout_below="@+id/your_state_progress_bar_personal_details">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="First Name"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="4dp"
+                android:textSize="18sp"/>
             <EditText
                 android:id="@+id/etxt_fullname"
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/rounded_rectangle_edit_text"
                 android:fontFamily="@font/josefin_sans"
-                android:hint="Full Name"
                 android:inputType="text"
-                android:padding="8dp"
                 android:textColor="#000"
-                android:background="@drawable/round_shape"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Middle Name"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="4dp"
+                android:textSize="18sp"/>
+
             <EditText
                 android:id="@+id/etxt_middlename"
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/rounded_rectangle_edit_text"
                 android:fontFamily="@font/josefin_sans"
-                android:hint="Middle Name"
                 android:inputType="text"
-                android:padding="8dp"
                 android:textColor="#000"
-                android:background="@drawable/round_shape"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Last Name"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="4dp"
+                android:textSize="18sp"/>
 
             <EditText
                 android:id="@+id/etxt_lastname"
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/rounded_rectangle_edit_text"
                 android:fontFamily="@font/josefin_sans"
-                android:hint="Last Name"
                 android:inputType="text"
-                android:padding="8dp"
                 android:textColor="#000"
-                android:background="@drawable/round_shape"
-                android:textSize="16sp" />
-            <EditText
-                android:id="@+id/etxt_gender"
+                android:textSize="18sp" />
+            <TextView
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gender"
+                android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_height="50dp"
-                android:fontFamily="@font/josefin_sans"
-                android:hint="Gender"
-                android:drawableRight="@drawable/drop_down"
-                android:inputType="text"
-                android:padding="8dp"
-                android:textColor="#000"
-                android:background="@drawable/round_shape"
-                android:textSize="16sp" />
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="4dp"
+                android:textSize="18sp"/>
+            <AutoCompleteTextView
+                android:id="@+id/act_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/rounded_rectangle_edit_text"
+                android:drawableEnd="@drawable/drop_down"
+                android:fontFamily="@font/josefin_sans" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Date of Birth"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="4dp"
+                android:textSize="18sp"/>
             <EditText
                 android:id="@+id/etxt_date_of_birth"
                 android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/rounded_rectangle_edit_text"
+                android:drawableEnd="@drawable/ic_baseline_date_range_24"
                 android:fontFamily="@font/josefin_sans"
-                android:hint="Date of birth"
-                android:drawableRight="@drawable/drop_down"
                 android:inputType="text"
                 android:padding="8dp"
                 android:textColor="#000"
-                android:background="@drawable/round_shape"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
+            <Button
+                android:id="@+id/txt_next_two"
+                style="@style/button_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:text="Next" />
 
         </LinearLayout>
 
@@ -131,7 +179,7 @@
 
 
     <TextView
-        android:id="@+id/txt_next_two"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -143,7 +191,8 @@
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintVertical_bias="0.973" />
+        app:layout_constraintVertical_bias="0.973"
+        android:visibility="gone"/>
 
 
 </RelativeLayout>

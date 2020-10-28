@@ -32,13 +32,12 @@ public class SalesReportActivity extends BaseActivity {
 
 
     ProgressDialog loading;
-    private RecyclerView recyclerView;
-    private SalesReportAdapter orderDetailsAdapter;
-
     ImageView imgNoProduct;
     TextView txtNoProducts, txtTotalPrice;
     List<HashMap<String, String>> orderDetailsList;
     double total_price;
+    private RecyclerView recyclerView;
+    private SalesReportAdapter orderDetailsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,11 +93,11 @@ public class SalesReportActivity extends BaseActivity {
         }
 
         databaseAccess.open();
-        String currency=databaseAccess.getCurrency();
+        String currency = databaseAccess.getCurrency();
 
         databaseAccess.open();
         total_price = databaseAccess.getTotalOrderPrice("all");
-        txtTotalPrice.setText(currency +" " +total_price);
+        txtTotalPrice.setText(currency + " " + total_price);
 
 
     }
@@ -162,7 +161,7 @@ public class SalesReportActivity extends BaseActivity {
         DatabaseAccess databaseAccess = DatabaseAccess.getInstance(SalesReportActivity.this);
         databaseAccess.open();
 
-        Log.d("TYPE",type);
+        Log.d("TYPE", type);
 
         //get data from local database
 
@@ -192,15 +191,11 @@ public class SalesReportActivity extends BaseActivity {
 
 
         databaseAccess.open();
-        String currency=databaseAccess.getCurrency();
+        String currency = databaseAccess.getCurrency();
         databaseAccess.open();
         total_price = databaseAccess.getTotalOrderPrice(type);
-        txtTotalPrice.setText(getString(R.string.total_sales)+currency + total_price);
+        txtTotalPrice.setText(getString(R.string.total_sales) + currency + total_price);
     }
-
-
-
-
 
 
     public void folderChooser() {
@@ -214,17 +209,13 @@ public class SalesReportActivity extends BaseActivity {
                     @Override
                     public void onChoosePath(String path, File pathFile) {
                         onExport(path);
-                        Log.d("path",path);
+                        Log.d("path", path);
 
                     }
                 })
                 .build()
                 .show();
     }
-
-
-
-
 
 
     public void onExport(String path) {
@@ -257,7 +248,6 @@ public class SalesReportActivity extends BaseActivity {
 
                         loading.dismiss();
                         Toasty.success(SalesReportActivity.this, R.string.data_successfully_exported, Toast.LENGTH_SHORT).show();
-
 
 
                     }

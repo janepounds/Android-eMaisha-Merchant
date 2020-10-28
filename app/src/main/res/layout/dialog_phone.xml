@@ -1,57 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:orientation="vertical"
+        android:background="@color/colorPrimary"
         android:gravity="center"
-        android:background="@color/colorPrimary">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/dialog_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Verify Contact Number"
             android:fontFamily="@font/josefin_sans"
+            android:text="Verify Contact Number"
             android:textColor="@color/white"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:layout_weight="1"
-        android:padding="10dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
-        android:orientation="vertical" >
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <com.cabral.emaishamerchantsapp.utils.OtpEdittext
             android:id="@+id/dialog_input"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:hint="@string/contact_no"
-            android:inputType="phone"
-            android:imeOptions="actionSearch"
-            android:textSize="16sp"
-            android:textColor="@color/textColorSecondaryLight"
-            android:textColorHint="@color/textColorPrimaryDark"
+            android:background="@drawable/rounded_corners_edittext_light"
+            android:drawableStart="@drawable/ic_phone_android"
+            android:drawableLeft="@drawable/ic_phone_android"
             android:drawablePadding="10dp"
             android:fontFamily="@font/josefin_sans"
-            android:tag="@string/ugandan_code"
-            android:drawableStart="@drawable/ic_phone_android"
+            android:hint="@string/contact_no"
+            android:imeOptions="actionSearch"
+            android:inputType="phone"
             android:padding="5dp"
-            android:background="@drawable/rounded_corners_edittext_light"
-            android:drawableLeft="@drawable/ic_phone_android" />
+            android:tag="@string/ugandan_code"
+            android:textColor="@color/textColorSecondaryLight"
+            android:textColorHint="@color/textColorPrimaryDark"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -59,19 +58,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp" >
+        android:padding="10dp">
 
         <Button
             android:id="@+id/dialog_button"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:text="@string/send"
-            android:fontFamily="@font/josefin_sans"
-            android:textAllCaps="false"
-            android:textSize="20sp"
-            android:textColor="@color/white"
             android:layout_gravity="end"
-            android:background="@drawable/rounded_corners_button_accent" />
+            android:background="@drawable/rounded_corners_button_accent"
+            android:fontFamily="@font/josefin_sans"
+            android:text="@string/send"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
     </LinearLayout>
 

@@ -1,9 +1,5 @@
 package com.cabral.emaishamerchantsapp.orders;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,9 +8,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.cabral.emaishamerchantsapp.R;
 import com.cabral.emaishamerchantsapp.adapter.OnlineOrdersAdapter;
-import com.cabral.emaishamerchantsapp.adapter.OrderAdapter;
 import com.cabral.emaishamerchantsapp.database.DatabaseAccess;
 
 import java.util.HashMap;
@@ -23,12 +22,11 @@ import java.util.List;
 import es.dmoral.toasty.Toasty;
 
 public class OnlineOrders extends AppCompatActivity {
-    private RecyclerView recyclerView;
-    private OnlineOrdersAdapter onlineOrdersAdapter;
-
     ImageView imgNoProduct;
     TextView txtNoProducts;
     EditText etxtSearch;
+    private RecyclerView recyclerView;
+    private OnlineOrdersAdapter onlineOrdersAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +39,13 @@ public class OnlineOrders extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler);
         imgNoProduct = findViewById(R.id.image_no_product);
 
-        txtNoProducts=findViewById(R.id.txt_no_products);
-        etxtSearch=findViewById(R.id.etxt_search_order);
+        txtNoProducts = findViewById(R.id.txt_no_products);
+        etxtSearch = findViewById(R.id.etxt_search_order);
 
         imgNoProduct.setVisibility(View.GONE);
         txtNoProducts.setVisibility(View.GONE);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(OnlineOrders.this,LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(OnlineOrders.this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager); // set LayoutManager to RecyclerView
 
         recyclerView.setHasFixedSize(true);
@@ -75,6 +73,7 @@ public class OnlineOrders extends AppCompatActivity {
 
 
     }
+
     //for back button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

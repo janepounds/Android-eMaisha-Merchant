@@ -63,7 +63,7 @@ public class SupplierAdapter extends RecyclerView.Adapter<SupplierAdapter.MyView
 
         holder.txtSuppliersName.setText(name);
         holder.txtSupplierContactPerson.setText(contact_perosn);
-        holder.txtSupplierCell.setText(context.getString(R.string.area_code)+cell);
+        holder.txtSupplierCell.setText(context.getString(R.string.area_code) + cell);
         holder.txtSupplierEmail.setText(email);
         holder.txtSupplierAddress.setText(address);
         holder.txtSupplierAddressTwo.setText(address_two);
@@ -80,7 +80,6 @@ public class SupplierAdapter extends RecyclerView.Adapter<SupplierAdapter.MyView
 
             }
         }
-
 
 
         holder.imgCall.setOnClickListener(new View.OnClickListener() {
@@ -143,7 +142,7 @@ public class SupplierAdapter extends RecyclerView.Adapter<SupplierAdapter.MyView
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView txtSuppliersName, txtSupplierContactPerson, txtSupplierCell, txtSupplierEmail, txtSupplierAddress, txtSupplierAddressTwo;
-        ImageView imgDelete,imgCall,  imageSupplier;
+        ImageView imgDelete, imgCall, imageSupplier;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

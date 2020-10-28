@@ -3,7 +3,6 @@ package com.cabral.emaishamerchantsapp.network;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Build;
 import android.util.Log;
 
 import com.cabral.emaishamerchantsapp.HomeActivity;
@@ -22,8 +21,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onNewToken(String s) {
         Log.e("NEW_TOKEN", s);
-        if(HomeActivity.context!=null)
-        NetworkStateChecker.RegisterDeviceForFCM(getApplicationContext());
+        if (HomeActivity.context != null)
+            NetworkStateChecker.RegisterDeviceForFCM(getApplicationContext());
 
     }
 
@@ -43,7 +42,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             notification_title = remoteMessage.getNotification().getTitle();
             notification_message = remoteMessage.getNotification().getBody();
         }
-        Log.w("Firebase", notification_title+" Meassage: " + notification_message);
+        Log.w("Firebase", notification_title + " Meassage: " + notification_message);
         notificationBitmap = BitmapFactory.decodeResource(this.getResources(),
                 R.drawable.emaisha_logo);
 
@@ -52,24 +51,21 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
 
-            NotificationHelper.showNewNotification
-                    (
-                            getApplicationContext(),
-                            notificationIntent,
-                            notification_title,
-                            notification_message,
-                            notificationBitmap
-                    );
-        }
-
-
+        NotificationHelper.showNewNotification
+                (
+                        getApplicationContext(),
+                        notificationIntent,
+                        notification_title,
+                        notification_message,
+                        notificationBitmap
+                );
+    }
 
 
     public Bitmap getBitmapFromUrl(String imageUrl) {
         if ("".equalsIgnoreCase(imageUrl)) {
             return null;
-        }
-        else {
+        } else {
             try {
                 URL url = new URL(imageUrl);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();

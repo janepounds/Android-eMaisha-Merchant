@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -10,8 +10,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_marginBottom="30dp"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/upper_card"
@@ -53,7 +53,8 @@
                             android:inputType="text"
                             android:padding="8dp"
                             android:textColor="#000"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:drawableEnd="@drawable/ic_baseline_date_range_24"/>
 
                     </LinearLayout>
 
@@ -61,8 +62,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:orientation="vertical"
-                        >
+                        android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -86,330 +86,325 @@
                             android:inputType="text"
                             android:padding="8dp"
                             android:textColor="#000"
+                            android:textSize="16sp"
+                            android:drawableEnd="@drawable/ic_baseline_date_range_24"/>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/your_account"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/upper_card"
+                android:fontFamily="@font/josefin_sans_bold"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="Your Account"
+                android:textSize="20sp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/account_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/your_account"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="7dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:weightSum="4">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:fontFamily="@font/josefin_sans"
+                            android:paddingLeft="10dp"
+                            android:text="Deposits"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:fontFamily="@font/josefin_sans_bold"
+                            android:paddingRight="10dp"
+                            android:text="UGX 180,000"
+                            android:textAlignment="textEnd"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:weightSum="4">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:fontFamily="@font/josefin_sans"
+                            android:paddingLeft="10dp"
+                            android:text="Withdraws"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:fontFamily="@font/josefin_sans_bold"
+                            android:paddingRight="10dp"
+                            android:text="UGX 170,000"
+                            android:textAlignment="textEnd"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:background="#BBBBBB" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:weightSum="4">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:fontFamily="@font/josefin_sans_bold"
+                            android:paddingLeft="10dp"
+                            android:text="Total"
+                            android:textColor="@color/creditCardBackground"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:fontFamily="@font/josefin_sans_bold"
+                            android:paddingRight="10dp"
+                            android:text="UGX 850,000"
+                            android:textAlignment="textEnd"
                             android:textSize="16sp" />
 
                     </LinearLayout>
 
 
                 </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:layout_below="@+id/upper_card"
-                android:id="@+id/your_account"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Your Account"
-                android:textSize="20sp"
-                android:paddingTop="10dp"
-                android:paddingLeft="10dp"
-                android:fontFamily="@font/josefin_sans_bold"
-                />
-            <androidx.cardview.widget.CardView
-                android:layout_below="@+id/your_account"
-                android:id="@+id/account_card"
-                android:layout_width="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp"
-                app:cardCornerRadius="7dp"
-                android:layout_marginRight="10dp"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:weightSum="4"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:orientation="horizontal"
-                        >
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="2"
-                            android:layout_height="wrap_content"
-                            android:paddingLeft="10dp"
-                            android:text="Deposits"
-                            android:fontFamily="@font/josefin_sans"
-                            android:textSize="16sp"
-                            />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="2"
-                            android:textAlignment="textEnd"
-                            android:paddingRight="10dp"
-                            android:layout_height="wrap_content"
-                            android:text="UGX 180,000"
-                            android:fontFamily="@font/josefin_sans_bold"
-                            android:textSize="16sp"
-                            />
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:weightSum="4"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:orientation="horizontal"
-                        >
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="2"
-                            android:layout_height="wrap_content"
-                            android:paddingLeft="10dp"
-                            android:text="Withdraws"
-                            android:fontFamily="@font/josefin_sans"
-                            android:textSize="16sp"
-                            />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="2"
-                            android:textAlignment="textEnd"
-                            android:paddingRight="10dp"
-                            android:layout_height="wrap_content"
-                            android:text="UGX 170,000"
-                            android:fontFamily="@font/josefin_sans_bold"
-                            android:textSize="16sp"
-                            />
-
-                    </LinearLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="5dp"
-                        android:background="#BBBBBB" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:weightSum="4"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:orientation="horizontal"
-                        >
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="2"
-                            android:layout_height="wrap_content"
-                            android:paddingLeft="10dp"
-                            android:text="Total"
-                            android:textColor="@color/creditCardBackground"
-                            android:fontFamily="@font/josefin_sans_bold"
-                            android:textSize="16sp"
-                            />
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="2"
-                            android:textAlignment="textEnd"
-                            android:paddingRight="10dp"
-                            android:layout_height="wrap_content"
-                            android:text="UGX 850,000"
-                            android:fontFamily="@font/josefin_sans_bold"
-                            android:textSize="16sp"
-                            />
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-            <TextView
-                android:layout_below="@+id/account_card"
                 android:id="@+id/your_settlements"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Your Transactions"
-                android:textSize="20sp"
-                android:paddingTop="10dp"
-                android:paddingLeft="10dp"
+                android:layout_below="@+id/account_card"
                 android:fontFamily="@font/josefin_sans_bold"
-                />
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:text="Your Transactions"
+                android:textSize="20sp" />
+
             <androidx.cardview.widget.CardView
-                android:layout_below="@+id/your_settlements"
                 android:id="@+id/settlements_card_one"
                 android:layout_width="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/your_settlements"
                 android:layout_marginLeft="10dp"
-                app:cardCornerRadius="7dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
-                android:layout_height="wrap_content">
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="7dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:weightSum="4"
+                        android:orientation="horizontal"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
-                        android:orientation="horizontal"
-                        >
+                        android:weightSum="4">
 
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_weight="2"
                             android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:fontFamily="@font/josefin_sans_bold"
                             android:paddingLeft="10dp"
                             android:text="Aug 22, 2020 | 8:24"
                             android:textColor="@color/creditCardBackground"
-                            android:fontFamily="@font/josefin_sans_bold"
-                            android:textSize="16sp"
-                            />
+                            android:textSize="16sp" />
+
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_weight="2"
-                            android:textAlignment="textEnd"
-                            android:paddingRight="10dp"
                             android:layout_height="wrap_content"
-                            android:text="UGX 110,000"
+                            android:layout_weight="2"
                             android:fontFamily="@font/josefin_sans_bold"
-                            android:textSize="16sp"
-                            />
+                            android:paddingRight="10dp"
+                            android:text="UGX 110,000"
+                            android:textAlignment="textEnd"
+                            android:textSize="16sp" />
 
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="5dp"
                         android:background="#BBBBBB" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/josefin_sans_bold"
-                        android:textSize="16sp"
                         android:paddingLeft="10dp"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:text="KIWANUKA PETER(success)"
-                        />
+                        android:textSize="16sp" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:weightSum="10"
                         android:orientation="horizontal"
-                        >
+                        android:weightSum="10">
+
                         <View
                             android:layout_width="0dp"
-                            android:layout_weight="0.2"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginBottom="5dp"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
                             android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_weight="0.2"
                             android:background="#CCCCCC" />
+
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_weight="9.8"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            >
+                            android:layout_weight="9.8"
+                            android:orientation="vertical">
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:weightSum="4"
+                                android:orientation="horizontal"
                                 android:paddingTop="5dp"
                                 android:paddingBottom="5dp"
-                                android:orientation="horizontal"
-                                >
+                                android:weightSum="4">
 
                                 <TextView
                                     android:layout_width="0dp"
-                                    android:layout_weight="2"
                                     android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:fontFamily="@font/josefin_sans"
                                     android:paddingLeft="10dp"
                                     android:text="Tnx ID"
-                                    android:fontFamily="@font/josefin_sans"
-                                    android:textSize="16sp"
-                                    />
+                                    android:textSize="16sp" />
+
                                 <TextView
                                     android:layout_width="0dp"
-                                    android:layout_weight="2"
-                                    android:textAlignment="textEnd"
-                                    android:paddingRight="10dp"
                                     android:layout_height="wrap_content"
-                                    android:text="098534"
+                                    android:layout_weight="2"
                                     android:fontFamily="@font/josefin_sans_bold"
-                                    android:textSize="16sp"
-                                    />
+                                    android:paddingRight="10dp"
+                                    android:text="098534"
+                                    android:textAlignment="textEnd"
+                                    android:textSize="16sp" />
 
                             </LinearLayout>
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:weightSum="4"
+                                android:orientation="horizontal"
                                 android:paddingTop="4dp"
                                 android:paddingBottom="5dp"
-                                android:orientation="horizontal"
-                                >
+                                android:weightSum="4">
 
                                 <TextView
                                     android:layout_width="0dp"
-                                    android:layout_weight="2"
                                     android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:fontFamily="@font/josefin_sans"
                                     android:paddingLeft="10dp"
                                     android:text="Tnx Type"
-                                    android:fontFamily="@font/josefin_sans"
-                                    android:textSize="16sp"
-                                    />
+                                    android:textSize="16sp" />
+
                                 <TextView
                                     android:layout_width="0dp"
-                                    android:layout_weight="2"
-                                    android:textAlignment="textEnd"
-                                    android:paddingRight="10dp"
                                     android:layout_height="wrap_content"
-                                    android:text="Withdraw"
+                                    android:layout_weight="2"
                                     android:fontFamily="@font/josefin_sans_bold"
-                                    android:textSize="16sp"
-                                    />
+                                    android:paddingRight="10dp"
+                                    android:text="Withdraw"
+                                    android:textAlignment="textEnd"
+                                    android:textSize="16sp" />
 
                             </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:weightSum="4"
+                                android:orientation="horizontal"
                                 android:paddingTop="5dp"
                                 android:paddingBottom="5dp"
-                                android:orientation="horizontal"
-                                >
+                                android:weightSum="4">
 
                                 <TextView
                                     android:layout_width="0dp"
-                                    android:layout_weight="2"
                                     android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:fontFamily="@font/josefin_sans"
                                     android:paddingLeft="10dp"
                                     android:text="Tnx Fee"
-                                    android:fontFamily="@font/josefin_sans"
-                                    android:textSize="16sp"
-                                    />
+                                    android:textSize="16sp" />
+
                                 <TextView
                                     android:layout_width="0dp"
-                                    android:layout_weight="2"
-                                    android:textAlignment="textEnd"
-                                    android:paddingRight="10dp"
                                     android:layout_height="wrap_content"
-                                    android:text="UGX 45,000"
+                                    android:layout_weight="2"
                                     android:fontFamily="@font/josefin_sans_bold"
-                                    android:textSize="16sp"
-                                    />
+                                    android:paddingRight="10dp"
+                                    android:text="UGX 45,000"
+                                    android:textAlignment="textEnd"
+                                    android:textSize="16sp" />
 
                             </LinearLayout>
 
 
                         </LinearLayout>
-
 
 
                     </LinearLayout>
@@ -418,183 +413,180 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
             <androidx.cardview.widget.CardView
-                android:layout_below="@+id/settlements_card_one"
                 android:id="@+id/settlements_card_two"
                 android:layout_width="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/settlements_card_one"
                 android:layout_marginLeft="10dp"
-                app:cardCornerRadius="7dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
-                android:layout_height="wrap_content">
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="7dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    >
+                    android:orientation="vertical">
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:weightSum="4"
+                        android:orientation="horizontal"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
-                        android:orientation="horizontal"
-                        >
+                        android:weightSum="4">
 
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_weight="2"
                             android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:fontFamily="@font/josefin_sans_bold"
                             android:paddingLeft="10dp"
                             android:text="Aug 22, 2020 | 8:24"
                             android:textColor="@color/creditCardBackground"
-                            android:fontFamily="@font/josefin_sans_bold"
-                            android:textSize="16sp"
-                            />
+                            android:textSize="16sp" />
+
                         <TextView
                             android:layout_width="0dp"
-                            android:layout_weight="2"
-                            android:textAlignment="textEnd"
-                            android:paddingRight="10dp"
                             android:layout_height="wrap_content"
-                            android:text="UGX 110,000"
+                            android:layout_weight="2"
                             android:fontFamily="@font/josefin_sans_bold"
-                            android:textSize="16sp"
-                            />
+                            android:paddingRight="10dp"
+                            android:text="UGX 110,000"
+                            android:textAlignment="textEnd"
+                            android:textSize="16sp" />
 
                     </LinearLayout>
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginTop="5dp"
                         android:background="#BBBBBB" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/josefin_sans_bold"
-                        android:textSize="16sp"
                         android:paddingLeft="10dp"
                         android:paddingTop="5dp"
                         android:paddingBottom="5dp"
                         android:text="PETER MUGWANYA(success)"
-                        />
+                        android:textSize="16sp" />
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:weightSum="10"
                         android:orientation="horizontal"
-                        >
+                        android:weightSum="10">
+
                         <View
                             android:layout_width="0dp"
-                            android:layout_weight="0.2"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginBottom="5dp"
                             android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
                             android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:layout_weight="0.2"
                             android:background="#CCCCCC" />
+
                         <LinearLayout
                             android:layout_width="0dp"
-                            android:layout_weight="9.8"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            >
+                            android:layout_weight="9.8"
+                            android:orientation="vertical">
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:weightSum="4"
+                                android:orientation="horizontal"
                                 android:paddingTop="5dp"
                                 android:paddingBottom="5dp"
-                                android:orientation="horizontal"
-                                >
+                                android:weightSum="4">
 
                                 <TextView
                                     android:layout_width="0dp"
-                                    android:layout_weight="2"
                                     android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:fontFamily="@font/josefin_sans"
                                     android:paddingLeft="10dp"
                                     android:text="Tnx ID"
-                                    android:fontFamily="@font/josefin_sans"
-                                    android:textSize="16sp"
-                                    />
+                                    android:textSize="16sp" />
+
                                 <TextView
                                     android:layout_width="0dp"
-                                    android:layout_weight="2"
-                                    android:textAlignment="textEnd"
-                                    android:paddingRight="10dp"
                                     android:layout_height="wrap_content"
-                                    android:text="78993394"
+                                    android:layout_weight="2"
                                     android:fontFamily="@font/josefin_sans_bold"
-                                    android:textSize="16sp"
-                                    />
+                                    android:paddingRight="10dp"
+                                    android:text="78993394"
+                                    android:textAlignment="textEnd"
+                                    android:textSize="16sp" />
 
                             </LinearLayout>
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:weightSum="4"
+                                android:orientation="horizontal"
                                 android:paddingTop="4dp"
                                 android:paddingBottom="5dp"
-                                android:orientation="horizontal"
-                                >
+                                android:weightSum="4">
 
                                 <TextView
                                     android:layout_width="0dp"
-                                    android:layout_weight="2"
                                     android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:fontFamily="@font/josefin_sans"
                                     android:paddingLeft="10dp"
                                     android:text="Tnx Type"
-                                    android:fontFamily="@font/josefin_sans"
-                                    android:textSize="16sp"
-                                    />
+                                    android:textSize="16sp" />
+
                                 <TextView
                                     android:layout_width="0dp"
-                                    android:layout_weight="2"
-                                    android:textAlignment="textEnd"
-                                    android:paddingRight="10dp"
                                     android:layout_height="wrap_content"
-                                    android:text="Withdraw"
+                                    android:layout_weight="2"
                                     android:fontFamily="@font/josefin_sans_bold"
-                                    android:textSize="16sp"
-                                    />
+                                    android:paddingRight="10dp"
+                                    android:text="Withdraw"
+                                    android:textAlignment="textEnd"
+                                    android:textSize="16sp" />
 
                             </LinearLayout>
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:weightSum="4"
+                                android:orientation="horizontal"
                                 android:paddingTop="5dp"
                                 android:paddingBottom="5dp"
-                                android:orientation="horizontal"
-                                >
+                                android:weightSum="4">
 
                                 <TextView
                                     android:layout_width="0dp"
-                                    android:layout_weight="2"
                                     android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:fontFamily="@font/josefin_sans"
                                     android:paddingLeft="10dp"
                                     android:text="Tnx Fee"
-                                    android:fontFamily="@font/josefin_sans"
-                                    android:textSize="16sp"
-                                    />
+                                    android:textSize="16sp" />
+
                                 <TextView
                                     android:layout_width="0dp"
-                                    android:layout_weight="2"
-                                    android:textAlignment="textEnd"
-                                    android:paddingRight="10dp"
                                     android:layout_height="wrap_content"
-                                    android:text="UGX 45,000"
+                                    android:layout_weight="2"
                                     android:fontFamily="@font/josefin_sans_bold"
-                                    android:textSize="16sp"
-                                    />
+                                    android:paddingRight="10dp"
+                                    android:text="UGX 45,000"
+                                    android:textAlignment="textEnd"
+                                    android:textSize="16sp" />
 
                             </LinearLayout>
 
 
                         </LinearLayout>
-
 
 
                     </LinearLayout>

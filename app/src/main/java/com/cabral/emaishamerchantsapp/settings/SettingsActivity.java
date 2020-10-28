@@ -17,7 +17,7 @@ import com.cabral.emaishamerchantsapp.utils.BaseActivity;
 public class SettingsActivity extends BaseActivity {
 
 
-    CardView cardShopInfo, cardBackup,cardCategory,cardPaymentMethod;
+    CardView cardShopInfo, cardBackup, cardCategory, cardPaymentMethod;
 
 
     @Override
@@ -32,8 +32,8 @@ public class SettingsActivity extends BaseActivity {
 
         cardShopInfo = findViewById(R.id.card_shop_info);
         cardBackup = findViewById(R.id.card_backup);
-        cardCategory=findViewById(R.id.card_category);
-        cardPaymentMethod=findViewById(R.id.card_payment_method);
+        cardCategory = findViewById(R.id.card_category);
+        cardPaymentMethod = findViewById(R.id.card_payment_method);
 
 
         //for interstitial ads show
@@ -48,11 +48,10 @@ public class SettingsActivity extends BaseActivity {
         });
 
 
-
         cardCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(SettingsActivity.this, CategoriesActivity.class);
+                Intent intent = new Intent(SettingsActivity.this, CategoriesActivity.class);
                 startActivity(intent);
             }
         });

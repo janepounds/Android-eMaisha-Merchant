@@ -20,7 +20,6 @@ public class UserData {
     private String message;
 
 
-
     public String getSuccess() {
         return success;
     }

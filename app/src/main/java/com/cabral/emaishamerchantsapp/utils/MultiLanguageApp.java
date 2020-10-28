@@ -9,15 +9,16 @@ public class MultiLanguageApp extends MultiDexApplication {
 
     private static Context context;
 
+    public static Context getContext() {
+        return context;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
         // set App Context
         context = this.getApplicationContext();
-    }
-
-    public static Context getContext() {
-        return context;
+        TypefaceUtil.overrideFont(getApplicationContext(), "SERIF", "fonts/JosefinSans-Regular.ttf"); // font from assets:
     }
 
     @Override

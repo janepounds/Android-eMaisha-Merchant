@@ -34,14 +34,12 @@ import es.dmoral.toasty.Toasty;
 
 public class ProductActivity extends BaseActivity {
 
-    private RecyclerView recyclerView;
     ProductAdapter productAdapter;
-
     ImageView imgNoProduct;
     EditText etxtSearch;
-
     FloatingActionButton fabAdd;
     ProgressDialog loading;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
