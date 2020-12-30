@@ -130,6 +130,7 @@ public interface Api {
     @POST("stockMerchantProduct")
     Call<ResponseBody> postProduct(
             @Field("id") String id,
+            @Field("measure_id") int measure_id,
             @Field("shop_id") Integer shop_id,
             @Field("product_id") Integer product_id,
             @Field("product_buy_price") String product_buy_price,

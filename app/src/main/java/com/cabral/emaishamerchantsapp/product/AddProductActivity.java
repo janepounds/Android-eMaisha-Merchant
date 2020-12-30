@@ -81,6 +81,7 @@ public class AddProductActivity extends BaseActivity {
     private List<Manufacturer> manufacturers;
     private List<String> productNames;
     private List<String> manufacturersNames;
+    private int measure_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -204,8 +205,10 @@ public class AddProductActivity extends BaseActivity {
             public void onClick(View v) {
                 Log.d("Categories", String.valueOf(categories));
                 manufacturersNames = new ArrayList<>();
-                for (int i = 0; i < manufacturers.size(); i++) {
-                    manufacturersNames.add(manufacturers.get(i).getManufacturer_name());
+                if(manufacturers!=null) {
+                    for (int i = 0; i < manufacturers.size(); i++) {
+                        manufacturersNames.add(manufacturers.get(i).getManufacturer_name());
+                    }
                 }
 
                 manufacturersAdapter = new ArrayAdapter<String>(AddProductActivity.this, R.layout.list_row);
@@ -292,6 +295,7 @@ public class AddProductActivity extends BaseActivity {
             public void onClick(View v) {
                 Log.d("Categories", String.valueOf(categories));
                 catNames = new ArrayList<>();
+                if (validateManufacturer()) {
                 for (int i = 0; i < categories.size(); i++) {
                     catNames.add(categories.get(i).getCategories_slug());
                 }
@@ -399,6 +403,7 @@ public class AddProductActivity extends BaseActivity {
                     }
                 });
             }
+            }
         });
 
         etxtProductName.setOnClickListener(new View.OnClickListener() {
@@ -406,83 +411,86 @@ public class AddProductActivity extends BaseActivity {
             public void onClick(View v) {
                 productNames = new ArrayList<>();
                 Log.d("Products", String.valueOf(products));
-                for (int i = 0; i < products.size(); i++) {
-                    productNames.add(products.get(i).getProducts_slug());
-                }
-
-                productAdapter = new ArrayAdapter<String>(AddProductActivity.this, R.layout.list_row);
-                productAdapter.addAll(productNames);
-
-
-                AlertDialog.Builder dialog = new AlertDialog.Builder(AddProductActivity.this);
-                View dialogView = getLayoutInflater().inflate(R.layout.dialog_list_search, null);
-                dialog.setView(dialogView);
-                dialog.setCancelable(false);
-
-                Button dialog_button = dialogView.findViewById(R.id.dialog_button);
-                EditText dialog_input = dialogView.findViewById(R.id.dialog_input);
-                TextView dialog_title = dialogView.findViewById(R.id.dialog_title);
-                ListView dialog_list = dialogView.findViewById(R.id.dialog_list);
-
-
-                dialog_title.setText("Products");
-                dialog_list.setVerticalScrollBarEnabled(true);
-                dialog_list.setAdapter(productAdapter);
-
-
-                dialog_input.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if (validateProductCategory()) {
+                    for (int i = 0; i < products.size(); i++) {
+                        productNames.add(products.get(i).getProducts_name()+ " "+ products.get(i).getProducts_weight()+ products.get(i).getProducts_weight_unit());
+                        measure_id = products.get(i).getMeasure_id();
                     }
 
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
-                        productAdapter.getFilter().filter(charSequence);
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-                    }
-                });
+                    productAdapter = new ArrayAdapter<String>(AddProductActivity.this, R.layout.list_row);
+                    productAdapter.addAll(productNames);
 
 
-                final AlertDialog alertDialog = dialog.create();
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(AddProductActivity.this);
+                    View dialogView = getLayoutInflater().inflate(R.layout.dialog_list_search, null);
+                    dialog.setView(dialogView);
+                    dialog.setCancelable(false);
 
-                dialog_button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
-
-                alertDialog.show();
-
-
-                dialog_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                        alertDialog.dismiss();
-                        final String selectedItem = productAdapter.getItem(position);
-
-                        Integer product_id = 0;
-                        String product_name = "";
-                        etxtProductName.setText(selectedItem);
+                    Button dialog_button = dialogView.findViewById(R.id.dialog_button);
+                    EditText dialog_input = dialogView.findViewById(R.id.dialog_input);
+                    TextView dialog_title = dialogView.findViewById(R.id.dialog_title);
+                    ListView dialog_list = dialogView.findViewById(R.id.dialog_list);
 
 
-                        for (int i = 0; i < productNames.size(); i++) {
-                            if (productNames.get(i).equalsIgnoreCase(selectedItem)) {
-                                // Get the ID of selected Country
-                                product_id = products.get(i).getProducts_id();
-                                product_name = products.get(i).getProducts_slug();
-                            }
+                    dialog_title.setText("Products");
+                    dialog_list.setVerticalScrollBarEnabled(true);
+                    dialog_list.setAdapter(productAdapter);
+
+
+                    dialog_input.addTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                         }
 
-                        selectedProductID = product_id;
-                        selectedProductName = product_name;
-                        Log.d("Product ID", String.valueOf(product_id));
-                    }
-                });
+                        @Override
+                        public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+                            productAdapter.getFilter().filter(charSequence);
+                        }
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+                        }
+                    });
+
+
+                    final AlertDialog alertDialog = dialog.create();
+
+                    dialog_button.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            alertDialog.dismiss();
+                        }
+                    });
+
+                    alertDialog.show();
+
+
+                    dialog_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            alertDialog.dismiss();
+                            final String selectedItem = productAdapter.getItem(position);
+
+                            Integer product_id = 0;
+                            String product_name = "";
+                            etxtProductName.setText(selectedItem);
+
+
+                            for (int i = 0; i < productNames.size(); i++) {
+                                if (productNames.get(i).equalsIgnoreCase(selectedItem)) {
+                                    // Get the ID of selected Country
+                                    product_id = products.get(i).getProducts_id();
+                                    product_name = products.get(i).getProducts_name()+ " "+ products.get(i).getProducts_weight()+ products.get(i).getProducts_weight_unit();
+                                }
+                            }
+
+                            selectedProductID = product_id;
+                            selectedProductName = product_name;
+                            Log.d("Product ID", String.valueOf(product_id));
+                        }
+                    });
+                }
             }
         });
 
@@ -618,6 +626,7 @@ public class AddProductActivity extends BaseActivity {
                             .getApi()
                             .postProduct(
                                     id,
+                                    measure_id,
                                     shop_id,
                                     product_id,
                                     product_buy_price,
@@ -861,7 +870,25 @@ public class AddProductActivity extends BaseActivity {
         this.manufacturers = manufacturers;
     }
 
+    public boolean validateManufacturer() {
+        if (etxtProductManufucturer.getText().toString().isEmpty()) {
+            etxtProductManufucturer.setError(getString(R.string.select_manufacturer));
+            return false;
+        } else {
+            etxtProductManufucturer.setError(null);
+            return true;
+        }
+    }
 
+    public boolean validateProductCategory() {
+        if (etxtProductCategory.getText().toString().isEmpty()) {
+            etxtProductCategory.setError(getString(R.string.select_product_category));
+            return false;
+        } else {
+            etxtProductCategory.setError(null);
+            return true;
+        }
+    }
 }
 
 

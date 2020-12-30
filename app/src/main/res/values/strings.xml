@@ -279,4 +279,6 @@
     <string name="transactions">Transactions</string>
     <string name="home">Home</string>
     <string name="district">District</string>
+    <string name="select_manufacturer">please select manufacturer</string>
+    <string name="select_product_category">please select product category</string>
 </resources>
