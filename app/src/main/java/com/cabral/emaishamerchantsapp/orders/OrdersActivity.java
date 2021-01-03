@@ -75,7 +75,7 @@ public class OrdersActivity extends BaseActivity {
             Toasty.info(OrdersActivity.this, R.string.no_order_found, Toast.LENGTH_SHORT).show();
             recyclerView.setVisibility(View.GONE);
             imgNoProduct.setVisibility(View.VISIBLE);
-            imgNoProduct.setImageResource(R.drawable.not_found);
+            imgNoProduct.setImageResource(R.drawable.ic_delivery_cuate);
             txtNoProducts.setVisibility(View.VISIBLE);
         } else {
             orderAdapter = new OrderAdapter(OrdersActivity.this, orderList);

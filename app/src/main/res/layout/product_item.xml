@@ -13,7 +13,10 @@
         android:foreground="?android:attr/selectableItemBackground"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="5dp"
-        android:layout_margin="10dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="10dp"
+        app:cardElevation="0dp"
         app:cardPreventCornerOverlap="false">
 
         <LinearLayout
@@ -21,7 +24,9 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="10"
-            android:padding="2dp">
+            android:paddingStart="2dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="10dp">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -34,7 +39,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:padding="5dp">
+                    android:padding="1dp"
+                    android:layout_marginStart="2dp">
 
                     <ImageView
                         android:id="@+id/product_image"
@@ -57,32 +63,24 @@
                 android:paddingLeft="5dp">
 
                 <TextView
-                    android:id="@+id/txt_product_name"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/josefin_sans"
-                    android:text="Product Name"
+                    android:text="000"
                     android:layout_marginBottom="4dp"
-                    android:textColor="@color/creditCardBackground"
-                    android:textSize="16sp"
+                    android:textColor="#31244A"
+                    android:textSize="18sp"
                     android:textStyle="bold"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:weightSum="2"
-                    android:layout_marginBottom="6dp">
+                    android:layout_marginBottom="6dp"
+                    android:visibility="gone">
 
-                    <TextView
-                        android:id="@+id/txt_product_supplier"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".7"
-                        android:fontFamily="@font/josefin_sans"
-                        android:text="@string/supplier"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
+
 
                     <TextView
                         android:id="@+id/txt_product_supplier_value"
@@ -100,18 +98,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:weightSum="2"
-                    android:layout_marginBottom="6dp">
-
-                    <TextView
-                        android:id="@+id/txt_product_buy_price"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".7"
-                        android:fontFamily="@font/josefin_sans"
-                        android:text="@string/buy_price"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
+                    android:layout_marginBottom="6dp"
+                    android:visibility="gone">
 
                     <TextView
                         android:id="@+id/txt_product_buy_price_value"
@@ -125,68 +113,85 @@
                         android:textStyle="bold"/>
 
                 </LinearLayout>
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:weightSum="2"
-                    android:layout_marginBottom="6dp">
+                    android:layout_marginBottom="4dp">
 
                     <TextView
-                        android:id="@+id/txt_product_sell_price"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".7"
-                        android:fontFamily="@font/josefin_sans"
-                        android:text="@string/sell_price"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/txt_product_sell_price_value"
+                        android:id="@+id/txt_product_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.3"
                         android:fontFamily="@font/josefin_sans"
-                        android:text="@string/buy_sell_value"
-                        android:textColor="#000"
-                        android:textSize="14sp"
-                        android:textStyle="bold"/>
-
+                        android:text="@string/product_name"
+                        android:textColor="#B9B9B9"
+                        android:textSize="14sp"/>
 
                 </LinearLayout>
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:weightSum="2"
                     android:layout_marginBottom="4dp">
 
                     <TextView
                         android:id="@+id/txt_product_stock"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight=".7"
                         android:fontFamily="@font/josefin_sans"
-                        android:text="@string/productstock"
-                        android:textColor="#000"
+                        android:text="In stock :"
+                        android:textColor="#B9B9B9"
                         android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/txt_product_stock_value"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.3"
                         android:fontFamily="@font/josefin_sans"
                         android:text="@string/stock_value"
-                        android:textColor="#000"
+                        android:textColor="#B9B9B9"
                         android:textSize="14sp"
-                        android:textStyle="bold"/>
+                        android:layout_marginStart="5dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/josefin_sans"
+                        android:text="pcs"
+                        android:textColor="#B9B9B9"
+                        android:textSize="14sp"
+                        android:layout_marginStart="5dp"/>
 
 
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="6dp">
+
+                    <TextView
+                        android:id="@+id/txt_product_sell_price_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/josefin_sans"
+                        android:text="@string/buy_sell_value"
+                        android:textColor="#B9B9B9"
+                        android:textSize="14sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/josefin_sans"
+                        android:text="/Pc"
+                        android:textColor="#B9B9B9"
+                        android:textSize="14sp"
+                        android:layout_marginStart="5dp"/>
+
+
+                </LinearLayout>
+
+
 
             </LinearLayout>
 
@@ -208,6 +213,7 @@
                         android:id="@+id/img_delete"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:layout_marginTop="5dp"
                         android:layout_gravity="top|center_horizontal"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"

@@ -89,7 +89,7 @@
 
     <string name="year_2020">Year 2020</string>
     <string name="total_sales">Total Sales : </string>
-    <string name="search_here">Search Here. . . .</string>
+    <string name="search_here">Search Here</string>
     <string name="no_order_found">No Order Found</string>
     <string name="no_product_found">No Product Found</string>
     <string name="submit_order">Submit Order</string>
@@ -281,4 +281,7 @@
     <string name="district">District</string>
     <string name="select_manufacturer">please select manufacturer</string>
     <string name="select_product_category">please select product category</string>
+    <string name="title_activity_p_o_s_home">POSHomeActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>
