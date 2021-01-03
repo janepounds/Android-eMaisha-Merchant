@@ -2,6 +2,6 @@
 <network-security-config>
     <base-config cleartextTrafficPermitted="true" />
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">http://emaishaadmin.myfarmnow.com/api/</domain>
+        <domain includeSubdomains="true">https://emaisha.com/api/</domain>
     </domain-config>
 </network-security-config>
