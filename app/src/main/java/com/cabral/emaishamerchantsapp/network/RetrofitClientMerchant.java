@@ -14,7 +14,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClientMerchant {
-    private static final String BASE_URL = "http://emaishawallet.myfarmnow.com/api/";
+    private static final String BASE_URL = "https://emaisha.com/api/";
     private static RetrofitClientMerchant mInstance;
     private Retrofit retrofit;
 

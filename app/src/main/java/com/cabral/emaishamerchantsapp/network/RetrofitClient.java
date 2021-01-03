@@ -14,18 +14,18 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    private static final String BASE_URL = "http://emaishaadmin.myfarmnow.com/api/";
+    private static final String BASE_URL = "https://emaisha.com/api/";
     private static RetrofitClient mInstance;
     private Retrofit retrofit;
 
     private RetrofitClient() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor(new
-                                                                                           HttpLoggingInterceptor.Logger() {
-                                                                                               @Override
-                                                                                               public void log(String message) {
-                                                                                                   Log.e("Retrofit2 Errors", "message: " + message);
-                                                                                               }
-                                                                                           });
+                                                                   HttpLoggingInterceptor.Logger() {
+                                                                       @Override
+                                                                       public void log(String message) {
+                                                                           Log.e("Retrofit2 Errors", "message: " + message);
+                                                                       }
+                                                                   });
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
