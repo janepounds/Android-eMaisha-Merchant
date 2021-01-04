@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/windowBackground">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+         app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="0dp"
+        app:cardPreventCornerOverlap="false">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/josefin_sans"
+                android:text="Sales Details"
+                android:textColor="@color/textColorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:padding="10dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:background="#31244A"
+                android:alpha=".1"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layout_sales_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".4"
+                android:text="Sales Date"
+                android:textColor="@color/textColorPrimaryDark"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:alpha=".7"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".1"
+                android:text=":"
+                android:textColor="#B9B9B9"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:alpha=".7"/>
+            <TextView
+                android:id="@+id/tv_sales_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Dec 24, 2020"
+                android:textColor="#B9B9B9"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:alpha=".7"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:id="@+id/layout_sales_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".4"
+                    android:text="Sales ID"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:alpha=".7"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".1"
+                    android:text=":"
+                    android:textColor="#B9B9B9"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:alpha=".7"/>
+                <TextView
+                    android:id="@+id/tv_sales_id"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="123"
+                    android:textColor="#B9B9B9"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:alpha=".7"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp">
+
+
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/josefin_sans"
+                    android:text="@string/products"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"/>
+
+
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/layout_products"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_margin="10dp"
+                android:background="#31244A"
+                android:alpha=".1"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/josefin_sans"
+                    android:padding="5dp"
+                    android:text="Total"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_online_overall_total_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/josefin_sans"
+                    android:gravity="end"
+                    android:padding="5dp"
+                    android:text="UGX 5000"
+                    android:textColor="@color/textColorPrimaryDark"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="15dp"
+                 android:padding="12dp"
+                 android:background="@drawable/balance_cards">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/josefin_sans"
+                    android:gravity="center|end"
+                    android:text="Payment Method  : "
+                    android:textColor="#ffffff"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+                 <TextView
+                     android:id="@+id/tv_payment_method"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_weight="1"
+                     android:fontFamily="@font/josefin_sans"
+                     android:gravity="center_vertical"
+
+                     android:text="eMaisha Pay"
+                     android:textColor="#ffffff"
+                     android:textSize="16dp"
+                     android:textStyle="bold" />
+             </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="15dp">
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="2"
+            android:background="@drawable/balance_cards"
+            android:backgroundTint="#FF3C00"
+            android:fontFamily="@font/josefin_sans"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="Delete"
+            android:textColor="#ffffff"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="2"
+            android:background="@drawable/balance_cards"
+            android:backgroundTint="#C7C7C9"
+            android:fontFamily="@font/josefin_sans"
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="@string/cancel"
+            android:textColor="#fff"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -32,10 +32,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".pos.POSHomeActivity"
-            android:label="@string/title_activity_p_o_s_home"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".wallet.BalanceInquiryActivity" />
         <activity android:name=".wallet.SettlementDetailsActivity" />
         <activity android:name=".wallet.SettlementActivity" />
