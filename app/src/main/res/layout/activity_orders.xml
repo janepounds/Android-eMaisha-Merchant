@@ -59,7 +59,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/josefin_sans"
                         android:gravity="center"
-                        android:text="Receive and track Order from here"
+                        android:text="Receive and track order from here"
                         android:textColor="#31244A"
                         android:textSize="24sp"
                         android:textStyle="bold"/>

@@ -82,16 +82,17 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="60dp"
         android:background="@drawable/round_border"
-        android:drawableTint="@color/creditCardBackground"
+        app:drawableTint="@color/creditCardBackground"
         android:drawableEnd="@drawable/ic_check_mark"
         android:ems="10"
         android:fontFamily="@font/josefin_sans"
         android:text="Charge UGX 0"
         android:textColor="#6F6F6F"
         android:textStyle="bold"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:padding="10dp"
         android:visibility="visible"
+        android:focusable="true"
         android:focusedByDefault="true"/>
 
     <LinearLayout
