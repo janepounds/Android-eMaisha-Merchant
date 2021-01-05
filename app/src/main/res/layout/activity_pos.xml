@@ -6,12 +6,14 @@
     android:background="@color/windowBackground"
     android:orientation="vertical">
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_cart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="15dp"
         android:padding="12dp"
-        android:background="@drawable/balance_cards">
+        android:background="@drawable/balance_cards"
+        android:visibility="gone">
         <ImageView
             android:id="@+id/cart"
             android:layout_width="wrap_content"
@@ -79,11 +81,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginEnd="14dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="25dp"
         android:layout_marginBottom="60dp"
         android:background="@drawable/round_border"
-        app:drawableTint="@color/creditCardBackground"
-        android:drawableEnd="@drawable/ic_check_mark"
+        android:drawableEnd="@drawable/ic_check"
         android:ems="10"
         android:fontFamily="@font/josefin_sans"
         android:text="Charge UGX 0"
@@ -190,7 +191,8 @@
             android:fontFamily="@font/josefin_sans"
             android:hint="@string/search_here"
             android:inputType="textPersonName"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:visibility="gone"/>
 
         <ImageView
             android:id="@+id/img_scanner"
@@ -207,9 +209,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="?android:attr/selectableItemBackground">
+        android:background="?android:attr/selectableItemBackground"
+        android:visibility="gone"/>
 
-    </androidx.recyclerview.widget.RecyclerView>
 
     <ScrollView
         android:layout_width="match_parent"

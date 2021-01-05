@@ -12,7 +12,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cabral.emaishamerchantsapp.R;
@@ -26,10 +28,11 @@ import java.util.List;
 public class PosActivity extends BaseActivity {
 
 
-    public static EditText etxtSearch;
+    public static EditText etxtSearch,etxtCharge;
     PosProductAdapter productAdapter;
-    TextView txtNoProducts;
-
+    TextView txtNoProducts,txtEnter,txtItems;
+    View enterView, itemsView;
+    ConstraintLayout layoutCart;
     ImageView imgNoProduct, imgScanner;
     private RecyclerView recyclerView;
 
@@ -49,10 +52,84 @@ public class PosActivity extends BaseActivity {
         txtNoProducts = findViewById(R.id.txt_no_products);
         imgScanner = findViewById(R.id.img_scanner);
 
+        etxtCharge = findViewById(R.id.pos_charge);
+        txtEnter = findViewById(R.id.txt_enter);
+        txtItems = findViewById(R.id.txt_items);
+        enterView = findViewById(R.id.enter_selected);
+        itemsView = findViewById(R.id.items_selected);
+        layoutCart = findViewById(R.id.layout_cart);
 
         //for interstitial ads show
 //        Utils utils=new Utils();
 //        utils.interstitialAdsShow(PosActivity.this);
+        final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(PosActivity.this);
+        databaseAccess.open();
+
+        txtEnter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                enterView.setVisibility(View.VISIBLE);
+                itemsView.setVisibility(View.INVISIBLE);
+                etxtSearch.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.GONE);
+                layoutCart.setVisibility(View.GONE);
+                etxtCharge.setVisibility(View.VISIBLE);
+                etxtCharge.requestFocus();
+
+            }
+        });
+        txtItems.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                enterView.setVisibility(View.INVISIBLE);
+                itemsView.setVisibility(View.VISIBLE);
+                etxtSearch.setVisibility(View.VISIBLE);
+                recyclerView.setVisibility(View.VISIBLE);
+                layoutCart.setVisibility(View.VISIBLE);
+                etxtCharge.setVisibility(View.GONE);
+                etxtCharge.clearFocus();
+
+
+
+
+                //get data from local database
+                List<HashMap<String, String>> productList;
+                productList = databaseAccess.getProducts();
+
+                if (productList.size() <= 0 ) {
+
+                    recyclerView.setVisibility(View.GONE);
+                    imgNoProduct.setVisibility(View.VISIBLE);
+                    imgNoProduct.setImageResource(R.drawable.not_found);
+                    txtNoProducts.setVisibility(View.VISIBLE);
+
+
+                } else {
+
+
+                    recyclerView.setVisibility(View.VISIBLE);
+                    imgNoProduct.setVisibility(View.GONE);
+                    txtNoProducts.setVisibility(View.GONE);
+
+                    productAdapter = new PosProductAdapter(PosActivity.this, productList);
+
+                    recyclerView.setAdapter(productAdapter);
+
+
+                }
+
+            }
+        });
+
+
+        layoutCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PosActivity.this, ProductCart.class);
+                startActivity(intent);
+            }
+        });
+
 
         imgScanner.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,42 +142,14 @@ public class PosActivity extends BaseActivity {
         imgNoProduct.setVisibility(View.GONE);
         txtNoProducts.setVisibility(View.GONE);
 
-        // set a GridLayoutManager with default vertical orientation and 3 number of columns
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
-        recyclerView.setLayoutManager(gridLayoutManager); // set LayoutManager to RecyclerView
+        // set a LinearLayoutManager with default vertical orientation
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(linearLayoutManager); // set LayoutManager to RecyclerView
 
 
         recyclerView.setHasFixedSize(true);
 
 
-        final DatabaseAccess databaseAccess = DatabaseAccess.getInstance(PosActivity.this);
-        databaseAccess.open();
-
-        //get data from local database
-        List<HashMap<String, String>> productList;
-        productList = databaseAccess.getProducts();
-
-        if (productList.size() <= 0) {
-
-            recyclerView.setVisibility(View.GONE);
-            imgNoProduct.setVisibility(View.VISIBLE);
-            imgNoProduct.setImageResource(R.drawable.not_found);
-            txtNoProducts.setVisibility(View.VISIBLE);
-
-
-        } else {
-
-
-            recyclerView.setVisibility(View.VISIBLE);
-            imgNoProduct.setVisibility(View.GONE);
-            txtNoProducts.setVisibility(View.GONE);
-
-            productAdapter = new PosProductAdapter(PosActivity.this, productList);
-
-            recyclerView.setAdapter(productAdapter);
-
-
-        }
 
 
         etxtSearch.addTextChangedListener(new TextWatcher() {
@@ -175,22 +224,17 @@ public class PosActivity extends BaseActivity {
     //for back button
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-
-
-            case R.id.menu_cart_button:
-                Intent intent = new Intent(PosActivity.this, ProductCart.class);
-                startActivity(intent);
-                return true;
-
-
-            case android.R.id.home:
-                // app icon in action bar clicked; goto parent activity.
-                this.finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        //
+        //            case R.id.menu_cart_button:
+        //                Intent intent = new Intent(PosActivity.this, ProductCart.class);
+        //                startActivity(intent);
+        //                return true;
+        //
+        if (item.getItemId() == android.R.id.home) {// app icon in action bar clicked; goto parent activity.
+            this.finish();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
 
