@@ -14,6 +14,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,6 +44,7 @@ public class ProductActivity extends BaseActivity {
     FloatingActionButton fabAdd;
     ProgressDialog loading;
     private RecyclerView recyclerView;
+    FragmentManager fm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +73,19 @@ public class ProductActivity extends BaseActivity {
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProductActivity.this, AddProductActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(ProductActivity.this, AddProductActivity.class);
+//                startActivity(intent);
+
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                Fragment prev = getSupportFragmentManager().findFragmentByTag("dialog");
+                if (prev != null) {
+                    ft.remove(prev);
+                }
+                ft.addToBackStack(null);
+
+                // Create and show the dialog.
+                DialogFragment addProductDialog = new AddProductFragment();
+                addProductDialog.show(ft, "dialog");
             }
         });
 
